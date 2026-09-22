@@ -1,0 +1,634 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>src/NW_Device.h - NW_Core</title>
+<meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_Core">
+<meta property="og:title" content="src/NW_Device.h">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Files/NW__Device_8h/">
+
+
+  <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Files/NW__Device_8h/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_Core/feed.xml" type="application/atom+xml" rel="alternate" title="NW_Core Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_Core/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_Core/">
+          NW_Core
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_Core/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Device/"><span class="nav__sub-title">NW_Device Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Readings/"><span class="nav__sub-title">NW_Readings Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Fault/"><span class="nav__sub-title">NW_Fault Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="src/NW_Device.h">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://docs.northernwidget.com/NW_Core/Files/NW__Device_8h/" itemprop="url">src/NW_Device.h
+</a>
+          </h1>
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#defines">Defines</a></li><li><a href="#macros-documentation">Macros Documentation</a><ul><li><a href="#define-nw_reg_schema">define NW_REG_SCHEMA</a></li><li><a href="#define-nw_reg_name">define NW_REG_NAME</a></li><li><a href="#define-nw_reg_hw_major">define NW_REG_HW_MAJOR</a></li><li><a href="#define-nw_reg_hw_minor">define NW_REG_HW_MINOR</a></li><li><a href="#define-nw_reg_fw_patch">define NW_REG_FW_PATCH</a></li><li><a href="#define-nw_reg_i2c_addr">define NW_REG_I2C_ADDR</a></li><li><a href="#define-nw_reg_status">define NW_REG_STATUS</a></li><li><a href="#define-nw_reg_ctrl">define NW_REG_CTRL</a></li><li><a href="#define-nw_reg_counter">define NW_REG_COUNTER</a></li><li><a href="#define-nw_reg_request">define NW_REG_REQUEST</a></li><li><a href="#define-nw_reg_config">define NW_REG_CONFIG</a></li><li><a href="#define-nw_reg_fault">define NW_REG_FAULT</a></li><li><a href="#define-nw_reg_data">define NW_REG_DATA</a></li><li><a href="#define-nw_bit_ready">define NW_BIT_READY</a></li><li><a href="#define-nw_bit_panfault">define NW_BIT_PANFAULT</a></li><li><a href="#define-nw_ctrl_trigger">define NW_CTRL_TRIGGER</a></li><li><a href="#define-nw_ctrl_sleep">define NW_CTRL_SLEEP</a></li><li><a href="#define-nw_wire_chunk">define NW_WIRE_CHUNK</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
+            </nav>
+          </aside>
+        
+        <p>The NW-Device-Specification Schema 1 device protocol over I2C.</p>
+
+<h2 id="classes">Classes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>class</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/">NW_Device</a></strong> <br />One NW Schema 1 device on the I2C bus: identity gates, the reading handshake, batches, faults.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="defines">Defines</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-schema">NW_REG_SCHEMA</a></strong> <br />0x01 = Schema 1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-name">NW_REG_NAME</a></strong> <br />7-byte device name, null-padded (0x01-0x07)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-hw-major">NW_REG_HW_MAJOR</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-hw-minor">NW_REG_HW_MINOR</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-fw-patch">NW_REG_FW_PATCH</a></strong> <br />written by the firmware</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-i2c-addr">NW_REG_I2C_ADDR</a></strong> <br />writable; takes effect at the device’s next boot</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-status">NW_REG_STATUS</a></strong> <br />bit 0 ready; bits 1-6 chip faults; bit 7 pan-fault</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-ctrl">NW_REG_CTRL</a></strong> <br />writable: bit 0 trigger; bits 1-6 chip select; bit 7 sleep</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-counter">NW_REG_COUNTER</a></strong> <br />reading counter, uint16 little-endian (0x22-0x23)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-request">NW_REG_REQUEST</a></strong> <br />readings requested (batch size), uint16 little-endian, writable (0x24-0x25)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-config">NW_REG_CONFIG</a></strong> <br />writable, device-specific, volatile</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-fault">NW_REG_FAULT</a></strong> <br />latched fault code; cleared by any Control write</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-data">NW_REG_DATA</a></strong> <br />first device data byte</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-bit-ready">NW_BIT_READY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-bit-panfault">NW_BIT_PANFAULT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-ctrl-trigger">NW_CTRL_TRIGGER</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-ctrl-sleep">NW_CTRL_SLEEP</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-wire-chunk">NW_WIRE_CHUNK</a></strong> <br />the AVR Wire buffer; longer reads are split into transactions of this size</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="macros-documentation">Macros Documentation</h2>
+
+<h3 id="define-nw_reg_schema">define NW_REG_SCHEMA</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_SCHEMA 0x00
+</span></code></pre></div></div>
+
+<p>0x01 = Schema 1</p>
+
+<h3 id="define-nw_reg_name">define NW_REG_NAME</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_NAME 0x01
+</span></code></pre></div></div>
+
+<p>7-byte device name, null-padded (0x01-0x07)</p>
+
+<h3 id="define-nw_reg_hw_major">define NW_REG_HW_MAJOR</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_HW_MAJOR 0x08
+</span></code></pre></div></div>
+
+<h3 id="define-nw_reg_hw_minor">define NW_REG_HW_MINOR</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_HW_MINOR 0x09
+</span></code></pre></div></div>
+
+<h3 id="define-nw_reg_fw_patch">define NW_REG_FW_PATCH</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_FW_PATCH 0x0A
+</span></code></pre></div></div>
+
+<p>written by the firmware</p>
+
+<h3 id="define-nw_reg_i2c_addr">define NW_REG_I2C_ADDR</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_I2C_ADDR 0x1F
+</span></code></pre></div></div>
+
+<p>writable; takes effect at the device’s next boot</p>
+
+<h3 id="define-nw_reg_status">define NW_REG_STATUS</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_STATUS 0x20
+</span></code></pre></div></div>
+
+<p>bit 0 ready; bits 1-6 chip faults; bit 7 pan-fault</p>
+
+<h3 id="define-nw_reg_ctrl">define NW_REG_CTRL</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_CTRL 0x21
+</span></code></pre></div></div>
+
+<p>writable: bit 0 trigger; bits 1-6 chip select; bit 7 sleep</p>
+
+<h3 id="define-nw_reg_counter">define NW_REG_COUNTER</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_COUNTER 0x22
+</span></code></pre></div></div>
+
+<p>reading counter, uint16 little-endian (0x22-0x23)</p>
+
+<h3 id="define-nw_reg_request">define NW_REG_REQUEST</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_REQUEST 0x24
+</span></code></pre></div></div>
+
+<p>readings requested (batch size), uint16 little-endian, writable (0x24-0x25)</p>
+
+<h3 id="define-nw_reg_config">define NW_REG_CONFIG</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_CONFIG 0x26
+</span></code></pre></div></div>
+
+<p>writable, device-specific, volatile</p>
+
+<h3 id="define-nw_reg_fault">define NW_REG_FAULT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_FAULT 0x27
+</span></code></pre></div></div>
+
+<p>latched fault code; cleared by any Control write</p>
+
+<h3 id="define-nw_reg_data">define NW_REG_DATA</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_DATA 0x28
+</span></code></pre></div></div>
+
+<p>first device data byte</p>
+
+<h3 id="define-nw_bit_ready">define NW_BIT_READY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_BIT_READY 0x01
+</span></code></pre></div></div>
+
+<h3 id="define-nw_bit_panfault">define NW_BIT_PANFAULT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_BIT_PANFAULT 0x80
+</span></code></pre></div></div>
+
+<h3 id="define-nw_ctrl_trigger">define NW_CTRL_TRIGGER</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_CTRL_TRIGGER 0x01
+</span></code></pre></div></div>
+
+<h3 id="define-nw_ctrl_sleep">define NW_CTRL_SLEEP</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_CTRL_SLEEP 0x80
+</span></code></pre></div></div>
+
+<h3 id="define-nw_wire_chunk">define NW_WIRE_CHUNK</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_WIRE_CHUNK 32
+</span></code></pre></div></div>
+
+<p>the AVR Wire buffer; longer reads are split into transactions of this size</p>
+
+<h2 id="source-code">Source code</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">#ifndef NW_Device_h
+#define NW_Device_h
+</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Arduino.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;Wire.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">"NW_Fault.h"</span><span class="cp">
+</span>
+<span class="c1">// Page 0 (identity, served from EEPROM) and Page 1 Block 0 (status and control),</span>
+<span class="c1">// as NW-Device-Specification defines them for every device.</span>
+<span class="cp">#define NW_REG_SCHEMA    0x00  
+#define NW_REG_NAME      0x01  
+#define NW_REG_HW_MAJOR  0x08
+#define NW_REG_HW_MINOR  0x09
+#define NW_REG_FW_PATCH  0x0A  
+#define NW_REG_I2C_ADDR  0x1F  
+#define NW_REG_STATUS    0x20  
+#define NW_REG_CTRL      0x21  
+#define NW_REG_COUNTER   0x22  
+#define NW_REG_REQUEST   0x24  
+#define NW_REG_CONFIG    0x26  
+#define NW_REG_FAULT     0x27  
+#define NW_REG_DATA      0x28  
+#define NW_BIT_READY     0x01
+#define NW_BIT_PANFAULT  0x80
+#define NW_CTRL_TRIGGER  0x01
+#define NW_CTRL_SLEEP    0x80
+#define NW_WIRE_CHUNK    32    
+</span>
+<span class="k">class</span> <span class="nc">NW_Device</span> <span class="p">{</span>
+    <span class="nl">public:</span>
+        <span class="kt">bool</span> <span class="n">begin</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">address</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">minPatch</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">bootTimeoutMs</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="kt">uint8_t</span> <span class="n">address</span><span class="p">()</span> <span class="k">const</span>          <span class="p">{</span> <span class="k">return</span> <span class="n">_adr</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">uint8_t</span> <span class="n">hardwareMajor</span><span class="p">()</span> <span class="k">const</span>    <span class="p">{</span> <span class="k">return</span> <span class="n">_hwMajor</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">uint8_t</span> <span class="n">hardwareMinor</span><span class="p">()</span> <span class="k">const</span>    <span class="p">{</span> <span class="k">return</span> <span class="n">_hwMinor</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">uint8_t</span> <span class="n">firmwareVersion</span><span class="p">()</span> <span class="k">const</span>  <span class="p">{</span> <span class="k">return</span> <span class="n">_fwPatch</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="kt">bool</span> <span class="nf">setI2CAddress</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">newAddress</span><span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">setTimeout</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">ms</span><span class="p">)</span> <span class="p">{</span> <span class="n">_timeout</span> <span class="o">=</span> <span class="n">ms</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">timeout</span><span class="p">()</span> <span class="k">const</span>     <span class="p">{</span> <span class="k">return</span> <span class="n">_timeout</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="c1">// --- Handshake ---</span>
+        <span class="kt">bool</span> <span class="nf">ready</span><span class="p">();</span>
+        <span class="kt">uint16_t</span> <span class="nf">readCounter</span><span class="p">();</span>
+        <span class="kt">bool</span> <span class="nf">newReading</span><span class="p">();</span>
+        <span class="kt">bool</span> <span class="nf">requestReading</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span><span class="p">);</span>
+        <span class="kt">bool</span> <span class="nf">waitReading</span><span class="p">();</span>
+        <span class="kt">bool</span> <span class="nf">captureReading</span><span class="p">();</span>
+        <span class="kt">bool</span> <span class="nf">takeReading</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span><span class="p">);</span>
+
+        <span class="c1">// --- Batches (NW-Device-Specification 0x24-0x25) ---</span>
+        <span class="kt">bool</span> <span class="nf">writeBatch</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">n</span><span class="p">);</span>
+        <span class="kt">void</span> <span class="nf">resetBatch</span><span class="p">()</span>                 <span class="p">{</span> <span class="n">_absentChips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">bool</span> <span class="n">batchFaulted</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span> <span class="o">=</span> <span class="mh">0x3F</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">_absentChips</span> <span class="o">&amp;</span> <span class="n">chips</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="c1">// --- Faults ---</span>
+        <span class="k">const</span> <span class="n">NW_Fault</span><span class="o">&amp;</span> <span class="n">fault</span><span class="p">()</span> <span class="k">const</span>     <span class="p">{</span> <span class="k">return</span> <span class="n">_fault</span><span class="p">;</span> <span class="p">}</span>
+        <span class="kt">bool</span> <span class="nf">faulted</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chip</span><span class="p">)</span> <span class="k">const</span>  <span class="p">{</span> <span class="k">return</span> <span class="n">_fault</span><span class="p">.</span><span class="n">chipFaulted</span><span class="p">(</span><span class="n">chip</span><span class="p">);</span> <span class="p">}</span>
+        <span class="kt">bool</span> <span class="nf">anyFault</span><span class="p">()</span> <span class="k">const</span>             <span class="p">{</span> <span class="k">return</span> <span class="n">_fault</span><span class="p">.</span><span class="n">any</span><span class="p">();</span> <span class="p">}</span>
+        <span class="kt">uint8_t</span> <span class="nf">faultChip</span><span class="p">()</span> <span class="k">const</span>         <span class="p">{</span> <span class="k">return</span> <span class="n">_fault</span><span class="p">.</span><span class="n">chip</span><span class="p">();</span> <span class="p">}</span>
+        <span class="kt">uint8_t</span> <span class="nf">faultKind</span><span class="p">()</span> <span class="k">const</span>         <span class="p">{</span> <span class="k">return</span> <span class="n">_fault</span><span class="p">.</span><span class="n">kind</span><span class="p">();</span> <span class="p">}</span>
+
+        <span class="c1">// --- Registers ---</span>
+        <span class="kt">bool</span> <span class="nf">readBytes</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">n</span><span class="p">);</span>
+        <span class="kt">bool</span> <span class="nf">writeByte</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">value</span><span class="p">);</span>
+        <span class="kt">uint8_t</span> <span class="nf">readConfig</span><span class="p">();</span>
+        <span class="kt">bool</span> <span class="nf">writeConfig</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">value</span><span class="p">)</span>   <span class="p">{</span> <span class="k">return</span> <span class="n">writeByte</span><span class="p">(</span><span class="n">NW_REG_CONFIG</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span> <span class="p">}</span>
+        <span class="kt">bool</span> <span class="nf">sleep</span><span class="p">()</span>                      <span class="p">{</span> <span class="k">return</span> <span class="n">writeByte</span><span class="p">(</span><span class="n">NW_REG_CTRL</span><span class="p">,</span> <span class="n">NW_CTRL_SLEEP</span><span class="p">);</span> <span class="p">}</span>
+
+    <span class="k">private</span><span class="o">:</span>
+        <span class="kt">uint8_t</span> <span class="n">_adr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">uint8_t</span> <span class="n">_hwMajor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_hwMinor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_fwPatch</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">_timeout</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
+        <span class="kt">uint16_t</span> <span class="n">_lastCounter</span> <span class="o">=</span> <span class="mh">0xFFFF</span><span class="p">;</span>     <span class="c1">// counter of the last captured reading</span>
+        <span class="kt">uint16_t</span> <span class="n">_counterBefore</span> <span class="o">=</span> <span class="mh">0xFFFF</span><span class="p">;</span>   <span class="c1">// counter seen at the last request</span>
+        <span class="kt">uint8_t</span>  <span class="n">_chips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                <span class="c1">// chips selected at the last request</span>
+        <span class="kt">uint8_t</span> <span class="n">_absentChips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>           <span class="c1">// chips that reported absent since the last writeBatch()/resetBatch()</span>
+        <span class="n">NW_Fault</span> <span class="n">_fault</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#endif
+</span></code></pre></div></div>
+
+<hr />
+
+<p>Updated on 2026-09-22 at 23:09:52 +0000</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_Core/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_Core</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_Core/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

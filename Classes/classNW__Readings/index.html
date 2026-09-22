@@ -1,0 +1,494 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>NW_Readings - NW_Core</title>
+<meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_Core">
+<meta property="og:title" content="NW_Readings">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Classes/classNW__Readings/">
+
+
+  <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Classes/classNW__Readings/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_Core/feed.xml" type="application/atom+xml" rel="alternate" title="NW_Core Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_Core/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_Core/">
+          NW_Core
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_Core/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Device/"><span class="nav__sub-title">NW_Device Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Readings/"><span class="nav__sub-title">NW_Readings Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Fault/"><span class="nav__sub-title">NW_Fault Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="NW_Readings">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://docs.northernwidget.com/NW_Core/Classes/classNW__Readings/" itemprop="url">NW_Readings
+</a>
+          </h1>
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-reset">function reset</a></li><li><a href="#function-append">function append</a></li><li><a href="#function-count">function count</a></li><li><a href="#function-last">function last</a></li><li><a href="#function-data">function data</a></li><li><a href="#function-mean">function mean</a></li><li><a href="#function-std">function std</a></li><li><a href="#function-sterr">function sterr</a></li><li><a href="#function-median">function median</a></li><li><a href="#function-capacity">function capacity</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-nw_readings_empty">variable NW_READINGS_EMPTY</a></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>Fixed-capacity store for one measurement’s readings, with statistics.  <a href="#detailed-description">More…</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">#include &lt;NW_Readings.h&gt;</code></p>
+
+<h2 id="public-functions">Public Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#function-reset">reset</a></strong>()</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#function-append">append</a></strong>(T v)</td>
+    </tr>
+    <tr>
+      <td>uint16_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#function-count">count</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>T</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#function-last">last</a></strong>() const<br />The newest reading (meaningful only if count() &gt; 0).</td>
+    </tr>
+    <tr>
+      <td>const T *</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#function-data">data</a></strong>() const<br />The readings, in storage order (not chronological after a wrap; statistics do not care).</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#function-mean">mean</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#function-std">std</a></strong>() const<br />Sample standard deviation (n-1); 0 for a single reading.</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#function-sterr">sterr</a></strong>() const<br />Standard error of the mean, std / sqrt(n); 0 for a single reading.</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#function-median">median</a></strong>() const<br />Median: copies the readings once and insertion-sorts (n &lt;= CAPACITY).</td>
+    </tr>
+    <tr>
+      <td>constexpr uint16_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#function-capacity">capacity</a></strong>()</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="public-attributes">Public Attributes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>constexpr float</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Readings/#variable-nw-readings-empty">NW_READINGS_EMPTY</a></strong> <br />returned by the statistics when count() == 0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="detailed-description">Detailed Description</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span> <span class="p">,</span>
+<span class="kt">uint16_t</span> <span class="n">CAPACITY</span><span class="p">&gt;</span>
+<span class="k">class</span> <span class="nc">NW_Readings</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Fixed-capacity store for one measurement’s readings, with statistics.</p>
+
+<p><strong>Template Parameters</strong>:</p>
+
+<ul>
+  <li><strong>T</strong> element type (int16_t, uint16_t, uint32_t, float)</li>
+  <li><strong>CAPACITY</strong> number of readings kept</li>
+</ul>
+
+<p>One storage path (LIBRARY-DESIGN, decided 2026-09-22): every acquisition appends here; the scalar getter of a library returns <a href="/NW_Core/Classes/classNW__Readings/#function-last">last()</a>; the statistics are computed from the array on demand, so a batch logged through logReading() has its statistics without a second acquisition. Appending past CAPACITY overwrites the oldest reading (the newest CAPACITY readings are kept). No heap. mean/std/sterr are two-pass in float, exact enough for CAPACITY up to a few hundred; median copies the array once onto the stack (CAPACITY * sizeof(T) bytes), so keep CAPACITY modest on small AVRs.</p>
+
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+
+<h3 id="function-reset">function reset</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">reset</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="function-append">function append</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">append</span><span class="p">(</span>
+    <span class="n">T</span> <span class="n">v</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="function-count">function count</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">uint16_t</span> <span class="n">count</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-last">function last</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">T</span> <span class="n">last</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>The newest reading (meaningful only if count() &gt; 0).</p>
+
+<h3 id="function-data">function data</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="k">const</span> <span class="n">T</span> <span class="o">*</span> <span class="n">data</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>The readings, in storage order (not chronological after a wrap; statistics do not care).</p>
+
+<h3 id="function-mean">function mean</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">float</span> <span class="n">mean</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-std">function std</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">float</span> <span class="n">std</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>Sample standard deviation (n-1); 0 for a single reading.</p>
+
+<h3 id="function-sterr">function sterr</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">float</span> <span class="n">sterr</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>Standard error of the mean, std / sqrt(n); 0 for a single reading.</p>
+
+<h3 id="function-median">function median</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">float</span> <span class="n">median</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>Median: copies the readings once and insertion-sorts (n &lt;= CAPACITY).</p>
+
+<h3 id="function-capacity">function capacity</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kr">inline</span> <span class="k">constexpr</span> <span class="kt">uint16_t</span> <span class="n">capacity</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
+
+<h3 id="variable-nw_readings_empty">variable NW_READINGS_EMPTY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="k">constexpr</span> <span class="kt">float</span> <span class="n">NW_READINGS_EMPTY</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>returned by the statistics when count() == 0</p>
+
+<hr />
+
+<p>Updated on 2026-09-22 at 23:09:52 +0000</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_Core/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_Core</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_Core/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

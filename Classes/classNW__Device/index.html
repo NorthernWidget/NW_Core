@@ -1,0 +1,702 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>NW_Core</title>
+<meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_Core">
+<meta property="og:title" content="NW_Core">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Classes/classNW__Device/">
+
+
+  <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Classes/classNW__Device/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_Core/feed.xml" type="application/atom+xml" rel="alternate" title="NW_Core Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_Core/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_Core/">
+          NW_Core
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_Core/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Device/"><span class="nav__sub-title">NW_Device Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Readings/"><span class="nav__sub-title">NW_Readings Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Fault/"><span class="nav__sub-title">NW_Fault Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-begin">function begin</a></li><li><a href="#function-address">function address</a></li><li><a href="#function-hardwaremajor">function hardwareMajor</a></li><li><a href="#function-hardwareminor">function hardwareMinor</a></li><li><a href="#function-firmwareversion">function firmwareVersion</a></li><li><a href="#function-seti2caddress">function setI2CAddress</a></li><li><a href="#function-settimeout">function setTimeout</a></li><li><a href="#function-timeout">function timeout</a></li><li><a href="#function-ready">function ready</a></li><li><a href="#function-readcounter">function readCounter</a></li><li><a href="#function-newreading">function newReading</a></li><li><a href="#function-requestreading">function requestReading</a></li><li><a href="#function-waitreading">function waitReading</a></li><li><a href="#function-capturereading">function captureReading</a></li><li><a href="#function-takereading">function takeReading</a></li><li><a href="#function-writebatch">function writeBatch</a></li><li><a href="#function-resetbatch">function resetBatch</a></li><li><a href="#function-batchfaulted">function batchFaulted</a></li><li><a href="#function-fault">function fault</a></li><li><a href="#function-faulted">function faulted</a></li><li><a href="#function-anyfault">function anyFault</a></li><li><a href="#function-faultchip">function faultChip</a></li><li><a href="#function-faultkind">function faultKind</a></li><li><a href="#function-readbytes">function readBytes</a></li><li><a href="#function-writebyte">function writeByte</a></li><li><a href="#function-readconfig">function readConfig</a></li><li><a href="#function-writeconfig">function writeConfig</a></li><li><a href="#function-sleep">function sleep</a></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>One NW Schema 1 device on the I2C bus: identity gates, the reading handshake, batches, faults.  <a href="#detailed-description">More…</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">#include &lt;NW_Device.h&gt;</code></p>
+
+<h2 id="public-functions">Public Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-begin">begin</a></strong>(uint8_t address, const char * name, uint8_t minPatch, unsigned long bootTimeoutMs =0)<br />Open the device and check that it is what the library expects.</td>
+    </tr>
+    <tr>
+      <td>uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-address">address</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-hardwaremajor">hardwareMajor</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-hardwareminor">hardwareMinor</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-firmwareversion">firmwareVersion</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-seti2caddress">setI2CAddress</a></strong>(uint8_t newAddress)<br />Write a new I2C address to Page 0 (0x1F); the device uses it from its next boot.</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-settimeout">setTimeout</a></strong>(unsigned long ms)<br />Ceiling on the wait for a reading [ms]. Not a delay: <a href="">waitReading()</a> returns as soon as the counter moves. Must exceed the device’s slowest path to ready, which is its fault path (see the device appendix); default 500.</td>
+    </tr>
+    <tr>
+      <td>unsigned long</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-timeout">timeout</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-ready">ready</a></strong>()<br />Status bit 0: the data registers hold a complete reading.</td>
+    </tr>
+    <tr>
+      <td>uint16_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-readcounter">readCounter</a></strong>()<br />The reading counter (0x22-0x23).</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-newreading">newReading</a></strong>()<br />The counter differs from the last captured reading’s (true before any capture).</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-requestreading">requestReading</a></strong>(uint8_t chips)<br />Trigger a reading of the given chips.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-waitreading">waitReading</a></strong>()<br />Wait until the counter moves past the value seen at the last request (or the last capture), within timeout().</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-capturereading">captureReading</a></strong>()<br />Read Block 0 after a reading: status and latched fault into fault(); notes the counter.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-takereading">takeReading</a></strong>(uint8_t chips)<br /><a href="/NW_Core/Classes/classNW__Device/#function-requestreading">requestReading()</a> + <a href="/NW_Core/Classes/classNW__Device/#function-waitreading">waitReading()</a> + <a href="/NW_Core/Classes/classNW__Device/#function-capturereading">captureReading()</a>. false on bus error or timeout.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-writebatch">writeBatch</a></strong>(uint16_t n)<br />Declare how many readings follow, so the device holds its chips powered for exactly that many.</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-resetbatch">resetBatch</a></strong>()<br />Forget a previous batch’s absent chips without writing the size (single readings).</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-batchfaulted">batchFaulted</a></strong>(uint8_t chips =0x3F) const<br />Any of the given chips reported, earlier in this batch, that it is not coming (no acknowledge or not initialised). Per chip: an absent accelerometer does not stop the range readings of the same batch.</td>
+    </tr>
+    <tr>
+      <td>const <a href="/NW_Core/Classes/structNW__Fault/">NW_Fault</a> &amp;</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-fault">fault</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-faulted">faulted</a></strong>(uint8_t chip) const</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-anyfault">anyFault</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-faultchip">faultChip</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-faultkind">faultKind</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-readbytes">readBytes</a></strong>(uint8_t reg, uint8_t * buf, uint8_t n)<br />Read n bytes from reg; reads longer than NW_WIRE_CHUNK are split into several transactions.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-writebyte">writeByte</a></strong>(uint8_t reg, uint8_t value)</td>
+    </tr>
+    <tr>
+      <td>uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-readconfig">readConfig</a></strong>()</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-writeconfig">writeConfig</a></strong>(uint8_t value)</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-sleep">sleep</a></strong>()<br />Ask the device to enter its lowest-power state (Control bit 7); it wakes on its next address match.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="detailed-description">Detailed Description</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NW_Device</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>One NW Schema 1 device on the I2C bus: identity gates, the reading handshake, batches, faults.</p>
+
+<p>A sensor library holds one of these and forwards to it. The handshake is three steps so that a library can trigger a reading and come back for it later: requestReading(chips), <a href="/NW_Core/Classes/classNW__Device/#function-waitreading">waitReading()</a>, <a href="/NW_Core/Classes/classNW__Device/#function-capturereading">captureReading()</a>; takeReading(chips) does all three. Readings started by the device itself (a free-running device) are seen through the counter: <a href="/NW_Core/Classes/classNW__Device/#function-newreading">newReading()</a> and <a href="/NW_Core/Classes/classNW__Device/#function-waitreading">waitReading()</a> work without a request.</p>
+
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+
+<h3 id="function-begin">function begin</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">begin</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">address</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">name</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">minPatch</span><span class="p">,</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">bootTimeoutMs</span> <span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Open the device and check that it is what the library expects.</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li><strong>address</strong> 7-bit I2C address</li>
+  <li><strong>name</strong> the device’s name as the spec spells it (up to 7 characters)</li>
+  <li><strong>minPatch</strong> lowest firmware patch (Page 0 byte 0x0A) this library accepts</li>
+  <li><strong>bootTimeoutMs</strong> how long to keep retrying the first acknowledge (0 = one try)</li>
+</ul>
+
+<p><strong>Return</strong>: true if the device answered and passed the three gates</p>
+
+<p>Starts Wire, waits for an acknowledge at the address for up to bootTimeoutMs (a logger often calls <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a> the instant it powers the sensor rail), reads Page 0 bytes 0x00-0x0F, stores the hardware and firmware versions, then refuses the device unless the schema byte is 0x01, the 7-byte name matches, and the firmware patch is at least minPatch. The versions are stored before any refusal so a sketch can report why.</p>
+
+<h3 id="function-address">function address</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">uint8_t</span> <span class="n">address</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-hardwaremajor">function hardwareMajor</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">uint8_t</span> <span class="n">hardwareMajor</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-hardwareminor">function hardwareMinor</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">uint8_t</span> <span class="n">hardwareMinor</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-firmwareversion">function firmwareVersion</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">uint8_t</span> <span class="n">firmwareVersion</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-seti2caddress">function setI2CAddress</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">setI2CAddress</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">newAddress</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Write a new I2C address to Page 0 (0x1F); the device uses it from its next boot.</p>
+
+<h3 id="function-settimeout">function setTimeout</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">setTimeout</span><span class="p">(</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">ms</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Ceiling on the wait for a reading [ms]. Not a delay: <a href="">waitReading()</a> returns as soon as the counter moves. Must exceed the device’s slowest path to ready, which is its fault path (see the device appendix); default 500.</p>
+
+<h3 id="function-timeout">function timeout</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">timeout</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-ready">function ready</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">ready</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Status bit 0: the data registers hold a complete reading.</p>
+
+<h3 id="function-readcounter">function readCounter</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">uint16_t</span> <span class="n">readCounter</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The reading counter (0x22-0x23).</p>
+
+<h3 id="function-newreading">function newReading</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">newReading</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The counter differs from the last captured reading’s (true before any capture).</p>
+
+<h3 id="function-requestreading">function requestReading</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">requestReading</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">chips</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Trigger a reading of the given chips.</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>chips</strong> bit n = chip n (0..5); the control byte gets trigger</td>
+          <td>chips « 1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h3 id="function-waitreading">function waitReading</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">waitReading</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Wait until the counter moves past the value seen at the last request (or the last capture), within timeout().</p>
+
+<h3 id="function-capturereading">function captureReading</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">captureReading</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Read Block 0 after a reading: status and latched fault into fault(); notes the counter.</p>
+
+<h3 id="function-takereading">function takeReading</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">takeReading</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">chips</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p><a href="/NW_Core/Classes/classNW__Device/#function-requestreading">requestReading()</a> + <a href="/NW_Core/Classes/classNW__Device/#function-waitreading">waitReading()</a> + <a href="/NW_Core/Classes/classNW__Device/#function-capturereading">captureReading()</a>. false on bus error or timeout.</p>
+
+<h3 id="function-writebatch">function writeBatch</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">writeBatch</span><span class="p">(</span>
+    <span class="kt">uint16_t</span> <span class="n">n</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Declare how many readings follow, so the device holds its chips powered for exactly that many.</p>
+
+<p>Also clears <a href="/NW_Core/Classes/classNW__Device/#function-batchfaulted">batchFaulted()</a>. 0 or 1 means one reading per trigger, powered down after each.</p>
+
+<h3 id="function-resetbatch">function resetBatch</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">resetBatch</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Forget a previous batch’s absent chips without writing the size (single readings).</p>
+
+<h3 id="function-batchfaulted">function batchFaulted</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">batchFaulted</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">chips</span> <span class="o">=</span><span class="mh">0x3F</span>
+<span class="p">)</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>Any of the given chips reported, earlier in this batch, that it is not coming (no acknowledge or not initialised). Per chip: an absent accelerometer does not stop the range readings of the same batch.</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li><strong>chips</strong> bit n = chip n; default: any chip</li>
+</ul>
+
+<p>Set by <a href="/NW_Core/Classes/classNW__Device/#function-capturereading">captureReading()</a> for a selected chip; a library skips that chip’s remaining readings instead of waiting out each one.</p>
+
+<h3 id="function-fault">function fault</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="k">const</span> <span class="n">NW_Fault</span> <span class="o">&amp;</span> <span class="n">fault</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-faulted">function faulted</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">faulted</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">chip</span>
+<span class="p">)</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-anyfault">function anyFault</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">anyFault</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-faultchip">function faultChip</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">uint8_t</span> <span class="n">faultChip</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-faultkind">function faultKind</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">uint8_t</span> <span class="n">faultKind</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-readbytes">function readBytes</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">readBytes</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">buf</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">n</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Read n bytes from reg; reads longer than NW_WIRE_CHUNK are split into several transactions.</p>
+
+<h3 id="function-writebyte">function writeByte</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">writeByte</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">value</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="function-readconfig">function readConfig</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">uint8_t</span> <span class="n">readConfig</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="function-writeconfig">function writeConfig</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">writeConfig</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">value</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="function-sleep">function sleep</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">sleep</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Ask the device to enter its lowest-power state (Control bit 7); it wakes on its next address match.</p>
+
+<hr />
+
+<p>Updated on 2026-09-22 at 23:09:52 +0000</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_Core/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_Core</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_Core/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

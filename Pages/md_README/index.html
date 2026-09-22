@@ -1,0 +1,373 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>NW_Core</title>
+<meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_Core">
+<meta property="og:title" content="NW_Core">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Pages/md_README/">
+
+
+  <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Pages/md_README/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_Core/feed.xml" type="application/atom+xml" rel="alternate" title="NW_Core Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_Core/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_Core/">
+          NW_Core
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_Core/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Device/"><span class="nav__sub-title">NW_Device Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Readings/"><span class="nav__sub-title">NW_Readings Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Fault/"><span class="nav__sub-title">NW_Fault Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="NW_Core">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://docs.northernwidget.com/NW_Core/Pages/md_README/" itemprop="url">NW_Core
+</a>
+          </h1>
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#using-it-in-a-library">Using it in a library</a></li><li><a href="#testing">Testing</a></li></ul>
+            </nav>
+          </aside>
+        
+        <p>Shared foundation for Northern Widget sensor libraries. Unversioned and unregistered during the 2026 library overhaul; it becomes a Library Manager dependency of every NW sensor library once the overhaul is finished.</p>
+
+<p>Three parts, one include:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">#include</span> <span class="cpf">&lt;NW_Core.h&gt;</span><span class="cp">
+</span></code></pre></div></div>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">[NW_Device](/NW_Core/Classes/classNW__Device/)</code></strong> speaks the <a href="https://github.com/NorthernWidget/NW-Device-Specification">NW-Device-Specification</a> Schema 1 register map over I2C: Page 0 identity with the three <code class="language-plaintext highlighter-rouge">begin()</code> gates (schema byte, name, minimum firmware patch) and a boot-time retry; the Block 0 handshake in three steps, <code class="language-plaintext highlighter-rouge">requestReading(chips)</code>, <code class="language-plaintext highlighter-rouge">waitReading()</code>, <code class="language-plaintext highlighter-rouge">captureReading()</code>, or <code class="language-plaintext highlighter-rouge">takeReading(chips)</code> for all three; batches through the readings-requested word; the latched fault; register reads split at the 32-byte Wire buffer.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">[NW_Readings](/NW_Core/Classes/classNW__Readings/)&lt;T, CAPACITY&gt;</code></strong> holds one measurement’s readings in a fixed array, no heap: every acquisition appends; <code class="language-plaintext highlighter-rouge">last()</code> is the scalar; <code class="language-plaintext highlighter-rouge">mean()</code>, <code class="language-plaintext highlighter-rouge">std()</code>, <code class="language-plaintext highlighter-rouge">sterr()</code>, <code class="language-plaintext highlighter-rouge">median()</code> are computed from the array on demand, so a batch logged to a file has its statistics without a second acquisition.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">[NW_Fault](/NW_Core/Classes/structNW__Fault/)</code></strong> decodes the status and latched-fault bytes and prints the universal fault kind in words; the library prints its own chip name.
+A sensor library holds one <code class="language-plaintext highlighter-rouge">[NW_Device](/NW_Core/Classes/classNW__Device/)</code> and one <code class="language-plaintext highlighter-rouge">[NW_Readings](/NW_Core/Classes/classNW__Readings/)</code> per measurement and forwards to them; nothing inherits. The design, and the line between what lives here and what stays in each library, is in <a href="https://github.com/NorthernWidget/NW-Device-Specification/blob/master/LIBRARY-DESIGN.md">LIBRARY-DESIGN.md</a>, section 11.</li>
+</ul>
+
+<h1 id="using-it-in-a-library">Using it in a library</h1>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">class</span> <span class="nc">Apis</span> <span class="p">{</span>
+    <span class="n">NW_Device</span> <span class="n">_dev</span><span class="p">;</span>
+    <span class="n">NW_Readings</span><span class="o">&lt;</span><span class="kt">int16_t</span><span class="p">,</span> <span class="mi">64</span><span class="o">&gt;</span> <span class="n">_range</span><span class="p">;</span>
+  <span class="nl">public:</span>
+    <span class="kt">bool</span> <span class="n">begin</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">address</span> <span class="o">=</span> <span class="n">DEFAULT_ADDRESS</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_dev</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="s">"Apis"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="p">}</span>
+    <span class="kt">bool</span> <span class="nf">updateRange</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">_dev</span><span class="p">.</span><span class="n">batchFaulted</span><span class="p">()</span> <span class="o">||</span> <span class="o">!</span><span class="n">_dev</span><span class="p">.</span><span class="n">takeReading</span><span class="p">(</span><span class="mh">0x01</span><span class="p">))</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>   <span class="c1">// chip 0</span>
+        <span class="kt">uint8_t</span> <span class="n">d</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="n">_dev</span><span class="p">.</span><span class="n">readBytes</span><span class="p">(</span><span class="n">NW_REG_DATA</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="n">_range</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="kt">int16_t</span><span class="p">)((</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">float</span> <span class="nf">getRangeMean</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_range</span><span class="p">.</span><span class="n">mean</span><span class="p">();</span> <span class="p">}</span>
+    <span class="kt">size_t</span> <span class="nf">printFault</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">_dev</span><span class="p">.</span><span class="n">faultChip</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="s">"LiDAR"</span> <span class="o">:</span> <span class="s">"accelerometer"</span><span class="p">);</span>
+        <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">": "</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">_dev</span><span class="p">.</span><span class="n">fault</span><span class="p">().</span><span class="n">printKind</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h1 id="testing">Testing</h1>
+
+<p><code class="language-plaintext highlighter-rouge">extras/test/run.sh</code> compiles the library on a desktop against stub <code class="language-plaintext highlighter-rouge">Arduino.h</code> and <code class="language-plaintext highlighter-rouge">Wire.h</code> (an emulated Schema 1 device with firmware behaviour, boot delay, free running, faults, and the 32-byte Wire buffer) and checks that the output is byte-identical to <code class="language-plaintext highlighter-rouge">extras/test/baseline.txt</code>. The stubs are shared: every NW library’s harness includes them from here (<code class="language-plaintext highlighter-rouge">NW_CORE</code> path, default the sibling checkout). <code class="language-plaintext highlighter-rouge">--record</code> rewrites the baseline when a change is intended.</p>
+
+<p><strong>Full API reference:</strong><a href="https://docs.northernwidget.com/NW_Core/">https://docs.northernwidget.com/NW_Core/</a></p>
+
+<hr />
+
+<p>Updated on 2026-09-22 at 23:09:52 +0000</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_Core/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_Core</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_Core/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
