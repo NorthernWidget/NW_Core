@@ -1,0 +1,9 @@
+{
+  "baseUrl": "/NW_Core/",
+  "indexInFolders": true,
+  "linkSuffix": "/",
+  "fileExt": "md",
+  "mainPageInRoot": true,
+  "mainPageName": "index",
+  "sort": false
+}
