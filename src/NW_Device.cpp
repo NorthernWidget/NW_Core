@@ -105,7 +105,7 @@ bool NW_Device::captureReading() {
     // A selected chip that reports "no acknowledge" or "not initialised" is not
     // coming for the rest of this batch (NW-Device-Specification, Readings requested).
     uint8_t chip = _fault.chip();
-    if (chip < 6 && (_chips & (1 << chip)) && _fault.chipFaulted(chip) && _fault.chipAbsent()) _batchFaulted = true;
+    if (chip < 6 && (_chips & (1 << chip)) && _fault.chipFaulted(chip) && _fault.chipAbsent()) _absentChips |= (1 << chip);
     return true;
 }
 
@@ -116,6 +116,6 @@ bool NW_Device::takeReading(uint8_t chips) {
 }
 
 bool NW_Device::writeBatch(uint16_t n) {
-    _batchFaulted = false;
+    _absentChips = 0;
     return writeByte(NW_REG_REQUEST, n & 0xFF) && writeByte(NW_REG_REQUEST + 1, n >> 8);
 }

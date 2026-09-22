@@ -97,13 +97,17 @@ class NW_Device {
          * @details Also clears batchFaulted(). 0 or 1 means one reading per trigger, powered down after each.
          */
         bool writeBatch(uint16_t n);
-        /** @brief Forget a previous batch's fault without writing the size (single readings). */
-        void resetBatch()                 { _batchFaulted = false; }
+        /** @brief Forget a previous batch's absent chips without writing the size (single readings). */
+        void resetBatch()                 { _absentChips = 0; }
         /**
-         * @brief A chip selected in this batch reported that it is not coming (no acknowledge or not initialised).
-         * @details Set by captureReading(); a library stops the batch instead of waiting out every reading.
+         * @brief Any of the given chips reported, earlier in this batch, that it is not coming
+         * (no acknowledge or not initialised). Per chip: an absent accelerometer does not stop
+         * the range readings of the same batch.
+         * @param chips bit n = chip n; default: any chip
+         * @details Set by captureReading() for a selected chip; a library skips that chip's
+         * remaining readings instead of waiting out each one.
          */
-        bool batchFaulted() const         { return _batchFaulted; }
+        bool batchFaulted(uint8_t chips = 0x3F) const { return (_absentChips & chips) != 0; }
 
         // --- Faults ---
         const NW_Fault& fault() const     { return _fault; }
@@ -128,7 +132,7 @@ class NW_Device {
         uint16_t _lastCounter = 0xFFFF;     // counter of the last captured reading
         uint16_t _counterBefore = 0xFFFF;   // counter seen at the last request
         uint8_t  _chips = 0;                // chips selected at the last request
-        bool _batchFaulted = false;
+        uint8_t _absentChips = 0;           // chips that reported absent since the last writeBatch()/resetBatch()
         NW_Fault _fault;
 };
 

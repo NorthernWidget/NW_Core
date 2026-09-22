@@ -16,7 +16,7 @@
 [fault] chip0 no-ack, chip0 selected: batchFaulted=1 'no acknowledge'
 [fault] writeBatch(4): batchFaulted=0 word=4
 [fault] chip1 no-ack, only chip0 selected: batchFaulted=0
-[fault] chip1 no-ack, chip1 selected: batchFaulted=1
+[fault] chip1 no-ack, chip1 selected: batchFaulted(any)=1 chip0=0 chip1=1
 [fault] unit: chip=7 isUnit=1 'reset since configured' batchFaulted=0
 [fault] device-specific kind: 'kind 17'
 [readBytes] 40 bytes from 0x20: ok=1 transactions=2 first=0x20 last=0x47

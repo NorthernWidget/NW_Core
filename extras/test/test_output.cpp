@@ -80,7 +80,7 @@ int main() {
       d.writeBatch(4); printf("[fault] writeBatch(4): batchFaulted=%d word=%u\n", d.batchFaulted(), Wire.image[0x24] | (Wire.image[0x25] << 8));
       Wire.beforeRead = [](TwoWire& w, uint8_t) { w.image[0x20] = 0x85; w.image[0x27] = 0x21; };   // chip 1 no-ack
       d.takeReading(0x01); printf("[fault] chip1 no-ack, only chip0 selected: batchFaulted=%d\n", d.batchFaulted());
-      d.takeReading(0x02); printf("[fault] chip1 no-ack, chip1 selected: batchFaulted=%d\n", d.batchFaulted());
+      d.takeReading(0x02); printf("[fault] chip1 no-ack, chip1 selected: batchFaulted(any)=%d chip0=%d chip1=%d\n", d.batchFaulted(), d.batchFaulted(0x01), d.batchFaulted(0x02));
       Wire.beforeRead = [](TwoWire& w, uint8_t) { w.image[0x20] = 0x01; w.image[0x27] = 0xE6; };   // unit: reset since configured
       d.resetBatch(); d.takeReading(0x01); printf("[fault] unit: chip=%u isUnit=%d '%s' batchFaulted=%d\n", d.faultChip(), d.fault().isUnit(), kindText(d.fault()), d.batchFaulted());
       Wire.beforeRead = [](TwoWire& w, uint8_t) { w.image[0x20] = 0x01; w.image[0x27] = 0x11; };   // chip 0 kind 17
