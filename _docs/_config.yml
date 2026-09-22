@@ -1,0 +1,26 @@
+theme: minimal-mistakes-jekyll
+plugins:
+  - jekyll-include-cache
+  - jekyll-seo-tag
+
+title: "NW_Core"
+description: "Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics"
+baseurl: "/NW_Core"
+url: "https://docs.northernwidget.com"
+permalink: /:path/
+
+minimal_mistakes_skin: "default"
+
+author:
+  name: "Northern Widget"
+  url: "https://northernwidget.com"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: single
+      toc: true
+      toc_sticky: true
+      sidebar:
+        nav: api

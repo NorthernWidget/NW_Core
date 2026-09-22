@@ -1,0 +1,13 @@
+api:
+  - title: "Overview"
+    url: /
+  - title: "NW_Device Class"
+    url: /Classes/classNW__Device/
+  - title: "NW_Readings Class"
+    url: /Classes/classNW__Readings/
+  - title: "NW_Fault Class"
+    url: /Classes/classNW__Fault/
+  - title: "Classes"
+    url: /Classes/index_classes/
+  - title: "Files"
+    url: /Files/index_files/
