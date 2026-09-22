@@ -1,0 +1,85 @@
+#######################################
+# Syntax Coloring Map for NW_Core
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+NW_Device	KEYWORD1
+NW_Readings	KEYWORD1
+NW_Fault	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+address	KEYWORD2
+hardwareMajor	KEYWORD2
+hardwareMinor	KEYWORD2
+firmwareVersion	KEYWORD2
+setI2CAddress	KEYWORD2
+setTimeout	KEYWORD2
+timeout	KEYWORD2
+ready	KEYWORD2
+readCounter	KEYWORD2
+newReading	KEYWORD2
+requestReading	KEYWORD2
+waitReading	KEYWORD2
+captureReading	KEYWORD2
+takeReading	KEYWORD2
+writeBatch	KEYWORD2
+resetBatch	KEYWORD2
+batchFaulted	KEYWORD2
+fault	KEYWORD2
+faulted	KEYWORD2
+anyFault	KEYWORD2
+faultChip	KEYWORD2
+faultKind	KEYWORD2
+readBytes	KEYWORD2
+writeByte	KEYWORD2
+readConfig	KEYWORD2
+writeConfig	KEYWORD2
+sleep	KEYWORD2
+chipFaulted	KEYWORD2
+any	KEYWORD2
+chip	KEYWORD2
+kind	KEYWORD2
+isUnit	KEYWORD2
+printKind	KEYWORD2
+chipAbsent	KEYWORD2
+append	KEYWORD2
+reset	KEYWORD2
+count	KEYWORD2
+capacity	KEYWORD2
+last	KEYWORD2
+data	KEYWORD2
+mean	KEYWORD2
+std	KEYWORD2
+sterr	KEYWORD2
+median	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+NW_ERROR	LITERAL1
+NW_REG_SCHEMA	LITERAL1
+NW_REG_NAME	LITERAL1
+NW_REG_HW_MAJOR	LITERAL1
+NW_REG_HW_MINOR	LITERAL1
+NW_REG_FW_PATCH	LITERAL1
+NW_REG_I2C_ADDR	LITERAL1
+NW_REG_STATUS	LITERAL1
+NW_REG_CTRL	LITERAL1
+NW_REG_COUNTER	LITERAL1
+NW_REG_REQUEST	LITERAL1
+NW_REG_CONFIG	LITERAL1
+NW_REG_FAULT	LITERAL1
+NW_REG_DATA	LITERAL1
+NW_BIT_READY	LITERAL1
+NW_BIT_PANFAULT	LITERAL1
+NW_CTRL_TRIGGER	LITERAL1
+NW_CTRL_SLEEP	LITERAL1
+NW_WIRE_CHUNK	LITERAL1
