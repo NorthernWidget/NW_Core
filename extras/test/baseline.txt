@@ -1,0 +1,28 @@
+[begin] ok=1 hw=0.1 fw=2 attempts=1
+[begin] wrong name: ok=0 fw=2 (versions stored before refusal)
+[begin] name 'Api' vs 'Apis': ok=0
+[begin] schema 0x00: ok=0
+[begin] patch 1 < min 2: ok=0 fw=1
+[begin] absent, no boot wait: ok=0 attempts=1
+[begin] boots after 30 ms, wait 100: ok=1 attempts=31 took=30 ms
+[begin] boots after 300 ms, wait 100: ok=0 took=100 ms
+[handshake] newReading before any=1 ready=1
+[handshake] takeReading(chip0): ok=1 counter=2 newReading=0 ctrl=0x02 fault='none' transactions=3
+[handshake] request(chips 0,1) ok=1 ctrl written=0x07 wait=1 capture=1 status=0x01
+[free-running] waitReading without request: ok=1 took=10 ms counter=2
+[timeout] default: ok=0 after 500 ms
+[timeout] setTimeout(50): ok=0 after 50 ms
+[fault] faulted(0)=1 faulted(1)=0 any=1 chip=0 kind=2 'timeout' batchFaulted=0
+[fault] chip0 no-ack, chip0 selected: batchFaulted=1 'no acknowledge'
+[fault] writeBatch(4): batchFaulted=0 word=4
+[fault] chip1 no-ack, only chip0 selected: batchFaulted=0
+[fault] chip1 no-ack, chip1 selected: batchFaulted=1
+[fault] unit: chip=7 isUnit=1 'reset since configured' batchFaulted=0
+[fault] device-specific kind: 'kind 17'
+[readBytes] 40 bytes from 0x20: ok=1 transactions=2 first=0x20 last=0x47
+[registers] batch=300 config=0x03 ctrl=0x80 addr=0x45 readConfig=0x03
+[readings] empty: count=0 mean=-9999.0
+[readings] int16 cap 4 after 5 appends: count=4 last=50 mean=35.0000 std=12.9099 sterr=6.4550 median=35.0000
+[readings] single: count=1 mean=7.0000 std=0.0000 sterr=0.0000 median=7.0000
+[readings] float 3 values: mean=4.6667 median=2.5000 last=2.50 capacity=8
+[readings] float 4 values: median=3.2500 (even count averages the middle two)
