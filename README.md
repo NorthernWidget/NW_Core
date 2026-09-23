@@ -8,7 +8,7 @@ Three parts, one include:
 #include <NW_Core.h>
 ```
 
-- **`NW_Device`** speaks the [NW-Device-Specification](https://github.com/NorthernWidget/NW-Device-Specification) Schema 1 register map over I2C: Page 0 identity with the three `begin()` gates (schema byte, name, minimum firmware patch) and a boot-time retry, with `beginFailure()` naming the gate that refused; the Block 0 handshake in three steps, `requestReading(chips)`, `waitReading()`, `captureReading()`, or `takeReading(chips)` for all three; batches through the readings-requested word (`beginBatch(n)`, `batchFaulted(chips)`, and `takeReadings(chips, n, readOne)`, the N-readings loop every library runs); the latched fault; register reads split at the 32-byte Wire buffer.
+- **`NW_Device`** speaks the [NW-Device-Specification](https://github.com/NorthernWidget/NW-Device-Specification) Schema 1 register map over I2C: Page 0 identity with the three `begin()` gates (schema byte, name, minimum firmware patch) and a boot-time retry, with `beginFailure()` naming the gate that refused; the Block 0 handshake in three steps, `requestReading(chips)`, `waitReading()`, `captureReading()`, or `takeReading(chips)` for all three; batches through the readings-requested word (`beginBatch(n)`, `batchFaulted(chips)`, and `takeReadings(chips, n, readOne)`, the N-readings loop every library runs); the latched fault; `readData()`, the data read checked against the counter with a bounded retry (`dataMoved()` when a device outruns it); register reads split at the 32-byte Wire buffer.
 - **`NW_Readings<T, CAPACITY>`** holds one measurement's readings in a fixed array, no heap: every acquisition appends; `last()` is the scalar; `mean()`, `std()`, `sterr()`, `median()` are computed from the array on demand, so a batch logged to a file has its statistics without a second acquisition.
 - **`NW_Error.h`** defines `NW_ERROR` (-9999), the missing value on file, and `nwScaled(v, divisor)`, which scales a statistic from register units and passes the sentinel through. **`NW_ReadingsConfig`** holds, per chip group, how many readings `updateMeasurements()` takes (`set(n, capacity)` clamps) and whether its std and sterr columns print (`columns()`).
 - **`NW_Fault`** decodes the status and latched-fault bytes and prints the whole fault (`print(out, chipNames, n)`: "MS5803: no acknowledge") or gives it as one word for a note column (`note(chipNames, n)`: "MS5803NoACK"), the library passing its chip-name table; `printKind()` and `kindWord()` give the universal kind alone.
@@ -29,7 +29,7 @@ class Walrus {
     bool begin(uint8_t address = DEFAULT_ADDRESS) { return _dev.begin(address, "Walrus", WALRUS_FW_MIN_PATCH); }
     bool updatePressure() {                                            // one reading of one chip group
         uint8_t d[6];
-        if (!_dev.takeReading(MS5803) || !_dev.readBytes(PRES_REG, d, 6) || _dev.faulted(0)) return false;
+        if (!_dev.takeReading(MS5803) || !_dev.readData(PRES_REG, d, 6) || _dev.faulted(0)) return false;
         _pressureReadings.append((int32_t)(d[0] | (d[1] << 8) | ((uint32_t)d[2] << 16) | ((uint32_t)d[3] << 24)));
         return true;
     }
