@@ -88,6 +88,24 @@ int main() {
     printf("[readings] float 3 values: mean=%.4f median=%.4f last=%.2f capacity=%u\n", f.mean(), f.median(), f.last(), f.capacity());
     f.append(4.0f); printf("[readings] float 4 values: median=%.4f (even count averages the middle two)\n", f.median()); }
 
+  // 9. takeReadings: the N-readings loop. Five readings through a counting lambda with the batch
+  //    word seen by the stub; then a chip that reports absent on the first reading stops a batch of 10.
+  loadImage(); firmware(); Wire.deviceAddress = 0x41;
+  { NW_Device d; d.begin(0x41, "Apis", 2); int calls = 0; lastRequest = 0;
+    uint16_t taken = d.takeReadings(0x01, 5, [&] { calls++; return d.takeReading(0x01); });
+    printf("[takeReadings] n=5: taken=%u calls=%d lastRequest=%u batchFaulted=%d\n", taken, calls, lastRequest, d.batchFaulted(0x01));
+    onReading = [](TwoWire& w) { w.image[0x20] = 0x83; w.image[0x27] = 0x01; };   // LiDAR: no acknowledge
+    calls = 0; taken = d.takeReadings(0x01, 10, [&] { calls++; return d.takeReading(0x01) && !d.faulted(0); });
+    printf("[takeReadings] dead chip, n=10: taken=%u calls=%d batchFaulted=%d note=%s\n", taken, calls, d.batchFaulted(0x01), d.fault().note(nullptr, 0).c_str());
+    onReading = nullptr;
+    taken = d.takeReadings(0x01, 0, [&] { return true; }); printf("[takeReadings] n=0: taken=%u\n", taken); }
+
+  // 10. NW_ReadingsConfig and nwScaled.
+  { NW_ReadingsConfig c; printf("[config] defaults n=%u stats=%d columns=%d\n", c.n, c.stats, c.columns());
+    printf("[config] set(5,16)=%u set(99,16)=%u set(0,16)=%u\n", c.set(5, 16), c.set(99, 16), c.set(0, 16));
+    c.set(3, 16); c.stats = true; printf("[config] n=3 stats: columns=%d; n=1 stats: columns=%d\n", c.columns(), (c.set(1, 16), c.columns()));
+    printf("[nwScaled] 101325/100=%.2f  -9999 passes=%.0f  mean of empty=%.0f\n", nwScaled(101325, 100.0), nwScaled(NW_ERROR, 100.0), nwScaled(NW_Readings<int16_t, 4>().mean(), 100.0)); }
+
   // Fault text with a library's chip-name table: chip 0, chip 1, unit, and a chip beyond the table.
   { static const char* const chips[] = {"MS5803", "MCP9808"}; NW_Fault f; char b[48];
     uint8_t codes[] = {0x01, 0x22, 0xE6, 0x51, 0x00};

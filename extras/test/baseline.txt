@@ -26,6 +26,13 @@
 [readings] single: count=1 mean=7.0000 std=0.0000 sterr=0.0000 median=7.0000
 [readings] float 3 values: mean=4.6667 median=2.5000 last=2.50 capacity=8
 [readings] float 4 values: median=3.2500 (even count averages the middle two)
+[takeReadings] n=5: taken=5 calls=5 lastRequest=5 batchFaulted=0
+[takeReadings] dead chip, n=10: taken=0 calls=1 batchFaulted=1 note=Chip0NoACK
+[takeReadings] n=0: taken=0
+[config] defaults n=1 stats=0 columns=0
+[config] set(5,16)=5 set(99,16)=16 set(0,16)=0
+[config] n=3 stats: columns=0; n=1 stats: columns=0
+[nwScaled] 101325/100=1013.25  -9999 passes=-9999  mean of empty=-9999
 [fault text] code=0x01 text='MS5803: no acknowledge' note='MS5803NoACK'
 [fault text] code=0x22 text='MCP9808: timeout' note='MCP9808Timeout'
 [fault text] code=0xE6 text='unit: reset since configured' note='UnitReset'
