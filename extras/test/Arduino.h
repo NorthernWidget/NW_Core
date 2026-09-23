@@ -9,6 +9,13 @@
 #include <cmath>
 #include <string>
 
+// Pin-level constants, the AVR core's values.
+#define HIGH 0x1
+#define LOW  0x0
+#define INPUT 0x0
+#define OUTPUT 0x1
+#define INPUT_PULLUP 0x2
+
 // PROGMEM strings: on the host they are ordinary strings.
 #define PROGMEM
 #define F(x) x
