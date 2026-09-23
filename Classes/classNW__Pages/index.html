@@ -322,7 +322,7 @@
     </tr>
     <tr>
       <td>size_t</td>
-      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-printsnapshot">printSnapshot</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips, const char * fw, const <a href="/NW_Core/Classes/structNW__Report/">NW_Report</a> * r =nullptr, const char *const * kindWords =nullptr, uint8_t nKindWords =0) const<br />One status line for the logger’s status file, the columns of <a href="">NW_Device::printSnapshot()</a>: name, serial (Page 0 Block 2), HW major.minor, FW (the library version, given), report code and note word (r, the current report by default; device-specific kinds through kindWords), Pages 0, 1 and 2 in hex. No newline.</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-printsnapshot">printSnapshot</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips, const char * fw, const <a href="/NW_Core/Classes/structNW__Report/">NW_Report</a> * r =nullptr, const char *const * kindWords =nullptr, uint8_t nKindWords =0, const char * fwCommit =””, const char * lib =””, const char * libCommit =””) const<br />One status line for the logger’s status file, the columns of <a href="">NW_Device::printSnapshot()</a>: name, serial (Page 0 Block 2), HW major.minor, FW (the library version, given), FWCommit (its build commit, given), Lib and LibCommit (blank and the sketch’s commit for a logger), report code and note word (r, the current report by default; device-specific kinds through kindWords), Pages 0, 1 and 2 in hex. No newline.</td>
     </tr>
     <tr>
       <td>uint8_t</td>
@@ -495,11 +495,14 @@
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">fw</span><span class="p">,</span>
     <span class="k">const</span> <span class="n">NW_Report</span> <span class="o">*</span> <span class="n">r</span> <span class="o">=</span><span class="nb">nullptr</span><span class="p">,</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">kindWords</span> <span class="o">=</span><span class="nb">nullptr</span><span class="p">,</span>
-    <span class="kt">uint8_t</span> <span class="n">nKindWords</span> <span class="o">=</span><span class="mi">0</span>
+    <span class="kt">uint8_t</span> <span class="n">nKindWords</span> <span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">fwCommit</span> <span class="o">=</span><span class="s">""</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">lib</span> <span class="o">=</span><span class="s">""</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">libCommit</span> <span class="o">=</span><span class="s">""</span>
 <span class="p">)</span> <span class="k">const</span>
 </code></pre></div></div>
 
-<p>One status line for the logger’s status file, the columns of <a href="">NW_Device::printSnapshot()</a>: name, serial (Page 0 Block 2), HW major.minor, FW (the library version, given), report code and note word (r, the current report by default; device-specific kinds through kindWords), Pages 0, 1 and 2 in hex. No newline.</p>
+<p>One status line for the logger’s status file, the columns of <a href="">NW_Device::printSnapshot()</a>: name, serial (Page 0 Block 2), HW major.minor, FW (the library version, given), FWCommit (its build commit, given), Lib and LibCommit (blank and the sketch’s commit for a logger), report code and note word (r, the current report by default; device-specific kinds through kindWords), Pages 0, 1 and 2 in hex. No newline.</p>
 
 <h3 id="function-crc8">function crc8</h3>
 
@@ -536,7 +539,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 20:56:27 +0000</p>
+<p>Updated on 2026-09-23 at 22:42:22 +0000</p>
 
         
       </section>

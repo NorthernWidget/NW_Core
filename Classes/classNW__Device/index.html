@@ -286,7 +286,7 @@
     </tr>
     <tr>
       <td>size_t</td>
-      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-printsnapshot">printSnapshot</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips, bool boot =false)<br />Print one status line for a logger’s status file: the device as it is now.</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-printsnapshot">printSnapshot</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips, bool boot =false, const char * lib =””, const char * libCommit =””)<br />Print one status line for a logger’s status file: the device as it is now.</td>
     </tr>
     <tr>
       <td>void</td>
@@ -481,7 +481,9 @@
     <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span>
     <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span>
-    <span class="kt">bool</span> <span class="n">boot</span> <span class="o">=</span><span class="nb">false</span>
+    <span class="kt">bool</span> <span class="n">boot</span> <span class="o">=</span><span class="nb">false</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">lib</span> <span class="o">=</span><span class="s">""</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">libCommit</span> <span class="o">=</span><span class="s">""</span>
 <span class="p">)</span>
 </code></pre></div></div>
 
@@ -492,11 +494,13 @@
 <ul>
   <li><strong>chipNames</strong> the device’s chip table for the note word; nullptr for “ChipN”</li>
   <li><strong>boot</strong> print the boot report (<a href="/NW_Core/Classes/classNW__Device/#function-bootreport">bootReport()</a>) in the code and note columns instead of report()</li>
+  <li><strong>lib</strong> the version of the library that read the device (its <LIB>_LIBRARY_VERSION)</LIB></li>
+  <li><strong>libCommit</strong> that library’s build commit (<LIB>_LIBRARY_COMMIT; blank in an IDE build)</LIB></li>
 </ul>
 
 <p><strong>Return</strong>: bytes written</p>
 
-<p>Columns, comma separated, no newline: name, serial (Page 0 Block 2 as four hex groups), HW version (major.minor), FW patch, the last report captured as code (0xNN) and as note word, then Pages 0, 1 and 2 as hex, each page four 8-byte blocks with a space between them. One value per column, so a logger’s status file is a table: Time,Device,Serial,HW,FW,Code,Note,Page0,Page1,Page2. Three page reads, no write: the report is not acknowledged. A logger prints its timestamp, calls this, ends the line. Meant for whenever reportKind() is not zero, and for any moment worth a record (boot, a visit).</p>
+<p>Columns, comma separated, no newline: name, serial (Page 0 Block 2 as four hex groups), HW version (major.minor), FW patch, FW build commit (Page 0 bytes 0x18-0x1B as 8 hex characters, “+” appended when 0x1C bit 0 says the tree was dirty; blank when the firmware carried none), the library’s version and commit as given, the last report captured as code (0xNN) and as note word, then Pages 0, 1 and 2 as hex, each page four 8-byte blocks with a space between them. One value per column, so a logger’s status file is a table: Time,Trigger,Device,Serial,HW,FW,FWCommit,Lib,LibCommit,Code,Note,Page0,Page1,Page2. Three page reads, no write: the report is not acknowledged. A logger prints its timestamp, calls this, ends the line. Meant for whenever reportKind() is not zero, and for any moment worth a record (boot, a visit).</p>
 
 <h3 id="function-settimeout">function setTimeout</h3>
 
@@ -745,7 +749,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 20:56:27 +0000</p>
+<p>Updated on 2026-09-23 at 22:42:22 +0000</p>
 
         
       </section>

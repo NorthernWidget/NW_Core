@@ -241,11 +241,32 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#source-code">Source code</a></li></ul>
+              <ul class="toc__menu"><li><a href="#defines">Defines</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#macros-documentation">Macros Documentation</a><ul><li><a href="#define-nw_core_library_version">define NW_CORE_LIBRARY_VERSION</a></li><li><a href="#define-nw_core_library_commit">define NW_CORE_LIBRARY_COMMIT</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
             </nav>
           </aside>
         
         <p>Northern Widget shared library foundation.  <a href="#detailed-description">More…</a></p>
+
+<h2 id="defines">Defines</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Core_8h/#define-nw-core-library-version">NW_CORE_LIBRARY_VERSION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Core_8h/#define-nw-core-library-commit">NW_CORE_LIBRARY_COMMIT</a></strong></td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="detailed-description">Detailed Description</h2>
 
@@ -263,6 +284,18 @@
   <li><a href="/NW_Core/Classes/structNW__ReadingsConfig/">NW_ReadingsConfig</a>: how many readings a chip group takes and whether its statistics columns print. Sensor libraries hold an <a href="/NW_Core/Classes/classNW__Device/">NW_Device</a> and one <a href="/NW_Core/Classes/classNW__Readings/">NW_Readings</a> per measurement. Names exported by this library carry the NW_ prefix; everything else in an NW sensor library is scoped to its own class.</li>
 </ul>
 
+<h2 id="macros-documentation">Macros Documentation</h2>
+
+<h3 id="define-nw_core_library_version">define NW_CORE_LIBRARY_VERSION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_CORE_LIBRARY_VERSION "0.0.0"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_core_library_commit">define NW_CORE_LIBRARY_COMMIT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_CORE_LIBRARY_COMMIT ""
+</span></code></pre></div></div>
+
 <h2 id="source-code">Source code</h2>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
@@ -270,7 +303,15 @@
 #define NW_Core_h
 </span>
 <span class="cp">#include</span> <span class="cpf">"NW_Error.h"</span><span class="cp">
-#include</span> <span class="cpf">"NW_Report.h"</span><span class="cp">
+</span><span class="c1">// Build identity. The version is this library's, held equal to library.properties by</span>
+<span class="c1">// NW-Tests/version_check.py; the commit is set by the build wrapper (NW-Build) from git,</span>
+<span class="c1">// and blank when built in the Arduino IDE. Both reach the status file's Lib columns.</span>
+<span class="cp">#define NW_CORE_LIBRARY_VERSION "0.0.0"
+#ifndef NW_CORE_LIBRARY_COMMIT
+#define NW_CORE_LIBRARY_COMMIT ""
+#endif
+</span>
+<span class="cp">#include</span> <span class="cpf">"NW_Report.h"</span><span class="cp">
 #include</span> <span class="cpf">"NW_Sensor.h"</span><span class="cp">
 #include</span> <span class="cpf">"NW_Pages.h"</span><span class="cp">
 #include</span> <span class="cpf">"NW_Readings.h"</span><span class="cp">
@@ -281,7 +322,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 20:56:27 +0000</p>
+<p>Updated on 2026-09-23 at 22:42:22 +0000</p>
 
         
       </section>
