@@ -80,6 +80,8 @@ class Print {
     return n;
   }
   size_t println() { return print("\n"); }
+  template <typename T> size_t println(T v) { size_t n = print(v); return n + print("\n"); }
+  template <typename T, typename U> size_t println(T v, U base) { size_t n = print(v, base); return n + print("\n"); }
 };
 
 // Serial: a Print that writes to stdout, so a library's debug helpers link.
