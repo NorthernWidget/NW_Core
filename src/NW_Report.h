@@ -37,18 +37,18 @@ struct NW_Report {
   /** @brief The report is a notice: a code with no status bit behind it (reset, calibration stored, batch abandoned). */
   bool isNotice() const                 { return kind() != 0 && !isFault(); }
 
-  /** @brief Print the kind in words ("timeout"; "kind 17" for device-specific kinds). */
+  /** @brief Print the kind in words ("timed out"; "kind 17" for device-specific kinds): the spec's table of note words, spoken. */
   size_t printKind(Print& out) const {
     switch (kind()) {
       case 0: return out.print(F("none"));
-      case 1: return out.print(F("no acknowledge"));
-      case 2: return out.print(F("timeout"));
-      case 3: return out.print(F("checksum"));
+      case 1: return out.print(F("not answering"));
+      case 2: return out.print(F("timed out"));
+      case 3: return out.print(isUnit() ? F("Page 0 invalid") : F("checksum failed"));
       case 4: return out.print(F("out of range"));
-      case 5: return out.print(F("not initialised"));
-      case 6: return out.print(F("reset since configured"));
-      case 7: return out.print(F("config rejected"));
-      case 8: return out.print(F("supply fault"));
+      case 5: return out.print(F("self-test failed"));
+      case 6: return out.print(F("restarted since configured"));
+      case 7: return out.print(F("configuration rejected"));
+      case 8: return out.print(F("power fault"));
       case 9: return out.print(F("calibration stored"));
       case 10: return out.print(F("batch abandoned"));
       default: { size_t n = out.print(F("kind ")); return n + out.print(kind()); }
@@ -58,22 +58,22 @@ struct NW_Report {
   String kindWord() const {
     switch (kind()) {
       case 0: return String(F("None"));
-      case 1: return String(F("NoACK"));
+      case 1: return String(F("NotAnswering"));
       case 2: return String(F("Timeout"));
-      case 3: return String(F("Checksum"));
-      case 4: return String(F("Range"));
-      case 5: return String(F("NotInit"));
-      case 6: return String(F("Reset"));
-      case 7: return String(F("Config"));
-      case 8: return String(F("Supply"));
-      case 9: return String(F("Calibrated"));
+      case 3: return String(isUnit() ? F("Page0Invalid") : F("ChecksumFailed"));
+      case 4: return String(F("OutOfRange"));
+      case 5: return String(F("SelfTestFailed"));
+      case 6: return String(F("Restarted"));
+      case 7: return String(F("ConfigRejected"));
+      case 8: return String(F("PowerFault"));
+      case 9: return String(F("CalibrationStored"));
       case 10: return String(F("BatchAbandoned"));
       default: { String w = F("Kind"); w += String(kind()); return w; }
     }
   }
   /**
    * @brief Print the report in words: the chip, then the kind, e.g.
-   * "MS5803: no acknowledge", "unit: reset since configured"; "none" when
+   * "MS5803: not answering", "unit: restarted since configured"; "none" when
    * there is no report. A library passes its chip-name table from the spec's
    * chip table; a chip beyond it prints as "chip N".
    * @return Bytes written.
@@ -90,7 +90,7 @@ struct NW_Report {
   }
   /**
    * @brief The report as one word for a data-table note column: the
-   * chip, then the kind, e.g. "MS5803NoACK", "UnitReset", "Chip2Kind17";
+   * chip, then the kind, e.g. "MS5803NotAnswering", "UnitRestarted", "Chip2Kind17";
    * "UnitNone" when there is no report.
    */
   String note(const char* const* chipNames, uint8_t nChips) const {

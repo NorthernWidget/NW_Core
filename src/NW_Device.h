@@ -63,7 +63,7 @@ class NW_Device {
     bool begin(uint8_t address, const char* name, uint8_t minPatch, unsigned long bootTimeoutMs = 0);
     /**
      * @brief Why the last begin() refused, as one word for a data-table note:
-     * "NoACK", "ReadFailed", "NotSchema1", "WrongName", "OldFirmware"; "None"
+     * "NotAnswering", "ReadFailed", "NotSchema1", "WrongName", "OldFirmware"; "None"
      * after a successful begin().
      */
     String beginFailure() const;

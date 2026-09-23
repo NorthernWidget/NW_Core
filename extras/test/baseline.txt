@@ -4,8 +4,8 @@
 [begin] schema 0x00: ok=0
 [begin] patch 1 < min 2: ok=0 fw=1
 [begin] absent, no boot wait: ok=0 attempts=1
-[begin] boot report: code=0xE6 notice=1 fault=0 note=UnitReset after first reading: code=0x00 bootReport=0xE6 cleared=0x00
-[begin] boot status line (Page 0 check failed at boot, then a clean reading): Apis,4101-0007-002A-0000,0.1,2,0xE3,UnitChecksum,014170697300000000010...
+[begin] boot report: code=0xE6 notice=1 fault=0 note=UnitRestarted after first reading: code=0x00 bootReport=0xE6 cleared=0x00
+[begin] boot status line (Page 0 check failed at boot, then a clean reading): Apis,4101-0007-002A-0000,0.1,2,0xE3,UnitPage0Invalid,01417069730000000...
 [begin] boots after 30 ms, wait 100: ok=1 attempts=31 took=30 ms
 [begin] boots after 300 ms, wait 100: ok=0 took=100 ms
 [handshake] newReading before any=1 ready=1
@@ -14,12 +14,12 @@
 [free-running] waitReading without request: ok=1 took=10 ms counter=2
 [timeout] default: ok=0 after 500 ms
 [timeout] setTimeout(50): ok=0 after 50 ms
-[report] faulted(0)=1 faulted(1)=0 any=1 chip=0 kind=2 'timeout' batchFaulted=0
-[report] chip0 no-ack, chip0 selected: batchFaulted=1 'no acknowledge'
+[report] faulted(0)=1 faulted(1)=0 any=1 chip=0 kind=2 'timed out' batchFaulted=0
+[report] chip0 no-ack, chip0 selected: batchFaulted=1 'not answering'
 [report] writeBatch(4): batchFaulted=0 word=4
 [report] chip1 no-ack, only chip0 selected: batchFaulted=0
 [report] chip1 no-ack, chip1 selected: batchFaulted(any)=1 chip0=0 chip1=1
-[report] unit: chip=7 isUnit=1 'reset since configured' batchFaulted=0
+[report] unit: chip=7 isUnit=1 'restarted since configured' batchFaulted=0
 [report] device-specific kind: 'kind 17'
 [readBytes] 40 bytes from 0x40: ok=1 transactions=2 first=0x40 last=0x67
 [readData] plain readBytes: captured counter=2 data=0xAA counter now=3 (data belongs to the next reading)
@@ -27,7 +27,7 @@
 [readData] a commit on every transaction: ok=0 moved=1 transactions=8 (bounded by NW_DATA_RETRIES=2)
 [readData] after the runaway stops: ok=1 moved=0 transactions=5 (one recapture)
 [readData] quiet device: ok=1 moved=0 transactions=2
-[snapshot] 246 bytes: Apis,4101-0007-002A-0000,0.1,2,0x29,AccelCalibrated,0141706973000000000102000000000041010007002A000000000000004E4E41,0000000000000000000000000000000000000000000000000000000000000000,0104020000000029000000000000000000000000000000000000000000000000
+[snapshot] 253 bytes: Apis,4101-0007-002A-0000,0.1,2,0x29,AccelCalibrationStored,0141706973000000000102000000000041010007002A000000000000004E4E41,0000000000000000000000000000000000000000000000000000000000000000,0104020000000029000000000000000000000000000000000000000000000000
 [registers] batch=300 config=0x03 ctrl=0x80 addr=0x45 readConfig=0x03
 [readings] empty: count=0 mean=-9999.0
 [readings] int16 cap 4 after 5 appends: count=4 last=50 mean=35.0000 std=12.9099 sterr=6.4550 median=35.0000
@@ -35,14 +35,14 @@
 [readings] float 3 values: mean=4.6667 median=2.5000 last=2.50 capacity=8
 [readings] float 4 values: median=3.2500 (even count averages the middle two)
 [takeReadings] n=5: taken=5 calls=5 lastRequest=5 batchFaulted=0
-[takeReadings] dead chip, n=10: taken=0 calls=1 batchFaulted=1 note=Chip0NoACK
+[takeReadings] dead chip, n=10: taken=0 calls=1 batchFaulted=1 note=Chip0NotAnswering
 [takeReadings] n=0: taken=0
 [config] defaults n=1 stats=0 columns=0
 [config] set(5,16)=5 set(99,16)=16 set(0,16)=0
 [config] n=3 stats: columns=0; n=1 stats: columns=0
 [nwScaled] 101325/100=1013.25  -9999 passes=-9999  mean of empty=-9999
-[report text] code=0x01 text='MS5803: no acknowledge' note='MS5803NoACK' fault=1 notice=0
-[report text] code=0x22 text='MCP9808: timeout' note='MCP9808Timeout' fault=1 notice=0
-[report text] code=0xE6 text='unit: reset since configured' note='UnitReset' fault=0 notice=1
+[report text] code=0x01 text='MS5803: not answering' note='MS5803NotAnswering' fault=1 notice=0
+[report text] code=0x22 text='MCP9808: timed out' note='MCP9808Timeout' fault=1 notice=0
+[report text] code=0xE6 text='unit: restarted since configured' note='UnitRestarted' fault=0 notice=1
 [report text] code=0x51 text='chip 2: kind 17' note='Chip2Kind17' fault=1 notice=0
 [report text] code=0x00 text='none' note='UnitNone' fault=0 notice=0

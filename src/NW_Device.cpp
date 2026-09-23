@@ -43,7 +43,7 @@ bool NW_Device::begin(uint8_t address, const char* name, uint8_t minPatch, unsig
 
 String NW_Device::beginFailure() const {
   switch (_beginFailure) {
-    case 1: return String(F("NoACK"));
+    case 1: return String(F("NotAnswering"));
     case 2: return String(F("ReadFailed"));
     case 3: return String(F("NotSchema1"));
     case 4: return String(F("WrongName"));
@@ -99,7 +99,7 @@ size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_
   const NW_Report& r = boot ? _bootReport : _report;
   uint8_t page[32];
   size_t n = 0;
-  if (!readBytes(0x00, page, 32)) return out.print(F("NoACK"));
+  if (!readBytes(0x00, page, 32)) return out.print(F("NotAnswering"));
   for (uint8_t i = 1; i <= 7 && page[i]; i++) n += out.print((char)page[i]);   // name
   n += out.print(',');
   for (uint8_t i = 0; i < 4; i++) { if (i) n += out.print('-'); n += printHex(out, page + 0x10 + 2 * i, 2); }   // serial, Block 2
@@ -110,7 +110,7 @@ size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_
   n += out.print(','); n += printHex(out, page, 32);                                   // Page 0
   for (uint8_t p = 0x20; p <= 0x40; p += 0x20) {                                       // Page 1 (calibration), Page 2 (data)
     n += out.print(',');
-    if (readBytes(p, page, 32)) n += printHex(out, page, 32); else n += out.print(F("NoACK"));
+    if (readBytes(p, page, 32)) n += printHex(out, page, 32); else n += out.print(F("NotAnswering"));
   }
   return n;
 }
