@@ -31,7 +31,11 @@ int main() {
   // before its first write, and the first trigger (a Control write) then clears it.
   { loadImage(); Wire.image[0x47] = 0xE6; firmware(); NW_Device d; d.begin(0x41, "Apis", 2);
     printf("[begin] boot report: code=0x%02X notice=%d fault=%d note=%s", d.report().code, d.report().isNotice(), d.report().isFault(), d.report().note(nullptr, 0).c_str());
-    d.takeReading(0x01); printf(" after first reading: code=0x%02X\n", d.report().code); }
+    d.takeReading(0x01); printf(" after first reading: code=0x%02X bootReport=0x%02X", d.report().code, d.bootReport().code);
+    d.clearBootReport(); printf(" cleared=0x%02X\n", d.bootReport().code); }
+  { loadImage(); Wire.image[0x47] = 0xE3; firmware(); NW_Device d; d.begin(0x41, "Apis", 2); d.takeReading(0x01); char sb[260];
+    static const char* const chips[] = {"LiDAR", "Accel"}; BufferPrint bp(sb, sizeof sb); d.printSnapshot(bp, chips, 2, true);
+    sb[70] = 0; printf("[begin] boot status line (Page 0 check failed at boot, then a clean reading): %s...\n", sb); }
   { loadImage(); Wire.presentAfterMs = 30; NW_Device d; bool ok = d.begin(0x41, "Apis", 2, 100);
     printf("[begin] boots after 30 ms, wait 100: ok=%d attempts=%u took=%u ms\n", ok, Wire.ackAttempts, (unsigned)millis()); }
   { loadImage(); Wire.presentAfterMs = 300; NW_Device d; bool ok = d.begin(0x41, "Apis", 2, 100);

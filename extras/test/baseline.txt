@@ -4,7 +4,8 @@
 [begin] schema 0x00: ok=0
 [begin] patch 1 < min 2: ok=0 fw=1
 [begin] absent, no boot wait: ok=0 attempts=1
-[begin] boot report: code=0xE6 notice=1 fault=0 note=UnitReset after first reading: code=0x00
+[begin] boot report: code=0xE6 notice=1 fault=0 note=UnitReset after first reading: code=0x00 bootReport=0xE6 cleared=0x00
+[begin] boot status line (Page 0 check failed at boot, then a clean reading): Apis,4101-0007-002A-0000,0.1,2,0xE3,UnitChecksum,014170697300000000010...
 [begin] boots after 30 ms, wait 100: ok=1 attempts=31 took=30 ms
 [begin] boots after 300 ms, wait 100: ok=0 took=100 ms
 [handshake] newReading before any=1 ready=1

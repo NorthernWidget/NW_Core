@@ -8,6 +8,7 @@
  *   - NW_Readings<T, CAPACITY>: a measurement's readings in a fixed array
  *     (no heap) with mean, standard deviation, standard error, and median.
  *   - NW_Report: the decoded Status and Report bytes (faults and notices).
+ *   - NW_Sensor: the interface a logger keeps a status file through (name, reports, status line).
  *   - NW_Error.h: NW_ERROR (-9999), the missing value on file, and nwScaled().
  *   - NW_ReadingsConfig: how many readings a chip group takes and whether its
  *     statistics columns print.
@@ -20,6 +21,7 @@
 
 #include "NW_Error.h"
 #include "NW_Report.h"
+#include "NW_Sensor.h"
 #include "NW_Readings.h"
 #include "NW_Device.h"
 

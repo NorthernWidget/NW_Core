@@ -36,6 +36,7 @@ bool NW_Device::begin(uint8_t address, const char* name, uint8_t minPatch, unsig
   if (!readBytes(NW_REG_STATUS, b0, 8)) { _beginFailure = 2; return false; }
   _report.status = b0[0];
   _report.code   = b0[7];
+  _bootReport = _report;               // kept for the logger's status file until it clears it
   _beginFailure = 0;
   return true;
 }
@@ -94,7 +95,8 @@ static size_t printHex(Print& out, const uint8_t* b, uint8_t n) {
   return k;
 }
 
-size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips) {
+size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips, bool boot) {
+  const NW_Report& r = boot ? _bootReport : _report;
   uint8_t page[32];
   size_t n = 0;
   if (!readBytes(0x00, page, 32)) return out.print(F("NoACK"));
@@ -103,8 +105,8 @@ size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_
   for (uint8_t i = 0; i < 4; i++) { if (i) n += out.print('-'); n += printHex(out, page + 0x10 + 2 * i, 2); }   // serial, Block 2
   n += out.print(','); n += out.print(page[NW_REG_HW_MAJOR]); n += out.print('.'); n += out.print(page[NW_REG_HW_MINOR]);   // HW version
   n += out.print(','); n += out.print(page[NW_REG_FW_PATCH]);                                                               // FW patch
-  n += out.print(F(",0x")); n += printHex(out, &_report.code, 1);
-  n += out.print(','); n += out.print(_report.note(chipNames, nChips));
+  n += out.print(F(",0x")); n += printHex(out, &r.code, 1);
+  n += out.print(','); n += out.print(r.note(chipNames, nChips));
   n += out.print(','); n += printHex(out, page, 32);                                   // Page 0
   for (uint8_t p = 0x20; p <= 0x40; p += 0x20) {                                       // Page 1 (calibration), Page 2 (data)
     n += out.print(',');

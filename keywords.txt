@@ -9,6 +9,7 @@
 NW_Device	KEYWORD1
 NW_Readings	KEYWORD1
 NW_Report	KEYWORD1
+NW_Sensor	KEYWORD1
 NW_ReadingsConfig	KEYWORD1
 
 #######################################
@@ -95,3 +96,10 @@ NW_BIT_PANFAULT	LITERAL1
 NW_CTRL_TRIGGER	LITERAL1
 NW_CTRL_SLEEP	LITERAL1
 NW_WIRE_CHUNK	LITERAL1
+bootReport	KEYWORD2
+clearBootReport	KEYWORD2
+printSnapshot	KEYWORD2
+bootReportKind	KEYWORD2
+reportIsFault	KEYWORD2
+printStatus	KEYWORD2
+name	KEYWORD2

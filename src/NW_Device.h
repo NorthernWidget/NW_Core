@@ -84,9 +84,10 @@ class NW_Device {
      * A logger prints its timestamp, calls this, ends the line. Meant for whenever
      * reportKind() is not zero, and for any moment worth a record (boot, a visit).
      * @param chipNames the device's chip table for the note word; nullptr for "ChipN"
+     * @param boot print the boot report (bootReport()) in the code and note columns instead of report()
      * @return bytes written
      */
-    size_t printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips);
+    size_t printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips, bool boot = false);
     /**
      * @brief Ceiling on the wait for a reading [ms]. Not a delay: waitReading() returns as
      * soon as the counter moves. Must exceed the device's slowest path to ready, which is
@@ -186,6 +187,12 @@ class NW_Device {
     bool readData(uint8_t reg, uint8_t* buf, uint8_t n);
     /** @brief The last readData() gave up: the device committed a new reading during every attempt. */
     bool dataMoved() const            { return _dataMoved; }
+    /**
+     * @brief The report begin() captured before the first trigger cleared it (unit reset 0xE6,
+     * Page 0 check 0xE3, ...), kept until clearBootReport(); code 0 once cleared or if none.
+     */
+    const NW_Report& bootReport() const { return _bootReport; }
+    void clearBootReport()            { _bootReport.code = 0; _bootReport.status = 0; }
     bool writeByte(uint8_t reg, uint8_t value);
     uint8_t readConfig();
     bool writeConfig(uint8_t value)   { return writeByte(NW_REG_CONFIG, value); }
@@ -203,6 +210,7 @@ class NW_Device {
     uint8_t _absentChips = 0;           // chips that reported absent since the last writeBatch()/resetBatch()
     bool _dataMoved = false;            // readData() exhausted its retries
     NW_Report _report;
+    NW_Report _bootReport;              // what begin() captured, until the logger clears it
 };
 
 #endif
