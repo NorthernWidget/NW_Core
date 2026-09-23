@@ -19,33 +19,33 @@
  * printKind() for the universal part.
  */
 struct NW_Fault {
-    uint8_t status = 0;   ///< Block 0 byte 0x20
-    uint8_t code   = 0;   ///< Block 0 byte 0x27
+  uint8_t status = 0;   ///< Block 0 byte 0x20
+  uint8_t code   = 0;   ///< Block 0 byte 0x27
 
-    bool ready() const                    { return status & 0x01; }
-    bool chipFaulted(uint8_t chip) const  { return status & (1 << (chip + 1)); }   ///< chip 0..5 faulted on the last reading
-    bool any() const                      { return status & 0x80; }               ///< pan-fault
-    uint8_t chip() const                  { return code >> 5; }                   ///< 0..6, or 7 for the unit
-    uint8_t kind() const                  { return code & 0x1F; }
-    bool isUnit() const                   { return chip() == 7; }
+  bool ready() const                    { return status & 0x01; }
+  bool chipFaulted(uint8_t chip) const  { return status & (1 << (chip + 1)); }   ///< chip 0..5 faulted on the last reading
+  bool any() const                      { return status & 0x80; }               ///< pan-fault
+  uint8_t chip() const                  { return code >> 5; }                   ///< 0..6, or 7 for the unit
+  uint8_t kind() const                  { return code & 0x1F; }
+  bool isUnit() const                   { return chip() == 7; }
 
-    /** @brief Print the kind in words ("timeout"; "kind 17" for device-specific kinds). */
-    size_t printKind(Print& out) const {
-        switch (kind()) {
-            case 0: return out.print(F("none"));
-            case 1: return out.print(F("no acknowledge"));
-            case 2: return out.print(F("timeout"));
-            case 3: return out.print(F("checksum"));
-            case 4: return out.print(F("out of range"));
-            case 5: return out.print(F("not initialised"));
-            case 6: return out.print(F("reset since configured"));
-            case 7: return out.print(F("config rejected"));
-            case 8: return out.print(F("supply fault"));
-            default: { size_t n = out.print(F("kind ")); return n + out.print(kind()); }
-        }
+  /** @brief Print the kind in words ("timeout"; "kind 17" for device-specific kinds). */
+  size_t printKind(Print& out) const {
+    switch (kind()) {
+      case 0: return out.print(F("none"));
+      case 1: return out.print(F("no acknowledge"));
+      case 2: return out.print(F("timeout"));
+      case 3: return out.print(F("checksum"));
+      case 4: return out.print(F("out of range"));
+      case 5: return out.print(F("not initialised"));
+      case 6: return out.print(F("reset since configured"));
+      case 7: return out.print(F("config rejected"));
+      case 8: return out.print(F("supply fault"));
+      default: { size_t n = out.print(F("kind ")); return n + out.print(kind()); }
     }
-    /** @brief True for the kinds that mean the chip is not coming back this batch (no acknowledge, not initialised). */
-    bool chipAbsent() const               { return kind() == 1 || kind() == 5; }
+  }
+  /** @brief True for the kinds that mean the chip is not coming back this batch (no acknowledge, not initialised). */
+  bool chipAbsent() const               { return kind() == 1 || kind() == 5; }
 };
 
 #endif

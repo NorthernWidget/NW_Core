@@ -40,100 +40,100 @@
  * waitReading() work without a request.
  */
 class NW_Device {
-    public:
-        /**
-         * @brief Open the device and check that it is what the library expects.
-         * @details Starts Wire, waits for an acknowledge at the address for up to
-         * bootTimeoutMs (a logger often calls begin() the instant it powers the
-         * sensor rail), reads Page 0 bytes 0x00-0x0F, stores the hardware and
-         * firmware versions, then refuses the device unless the schema byte is
-         * 0x01, the 7-byte name matches, and the firmware patch is at least
-         * minPatch. The versions are stored before any refusal so a sketch can
-         * report why.
-         * @param address       7-bit I2C address
-         * @param name          the device's name as the spec spells it (up to 7 characters)
-         * @param minPatch      lowest firmware patch (Page 0 byte 0x0A) this library accepts
-         * @param bootTimeoutMs how long to keep retrying the first acknowledge (0 = one try)
-         * @return true if the device answered and passed the three gates
-         */
-        bool begin(uint8_t address, const char* name, uint8_t minPatch, unsigned long bootTimeoutMs = 0);
-        uint8_t address() const          { return _adr; }
-        uint8_t hardwareMajor() const    { return _hwMajor; }
-        uint8_t hardwareMinor() const    { return _hwMinor; }
-        uint8_t firmwareVersion() const  { return _fwPatch; }
+  public:
+    /**
+     * @brief Open the device and check that it is what the library expects.
+     * @details Starts Wire, waits for an acknowledge at the address for up to
+     * bootTimeoutMs (a logger often calls begin() the instant it powers the
+     * sensor rail), reads Page 0 bytes 0x00-0x0F, stores the hardware and
+     * firmware versions, then refuses the device unless the schema byte is
+     * 0x01, the 7-byte name matches, and the firmware patch is at least
+     * minPatch. The versions are stored before any refusal so a sketch can
+     * report why.
+     * @param address       7-bit I2C address
+     * @param name          the device's name as the spec spells it (up to 7 characters)
+     * @param minPatch      lowest firmware patch (Page 0 byte 0x0A) this library accepts
+     * @param bootTimeoutMs how long to keep retrying the first acknowledge (0 = one try)
+     * @return true if the device answered and passed the three gates
+     */
+    bool begin(uint8_t address, const char* name, uint8_t minPatch, unsigned long bootTimeoutMs = 0);
+    uint8_t address() const          { return _adr; }
+    uint8_t hardwareMajor() const    { return _hwMajor; }
+    uint8_t hardwareMinor() const    { return _hwMinor; }
+    uint8_t firmwareVersion() const  { return _fwPatch; }
 
-        /** @brief Write a new I2C address to Page 0 (0x1F); the device uses it from its next boot. */
-        bool setI2CAddress(uint8_t newAddress);
-        /**
-         * @brief Ceiling on the wait for a reading [ms]. Not a delay: waitReading() returns as
-         * soon as the counter moves. Must exceed the device's slowest path to ready, which is
-         * its fault path (see the device appendix); default 500.
-         */
-        void setTimeout(unsigned long ms) { _timeout = ms; }
-        unsigned long timeout() const     { return _timeout; }
+    /** @brief Write a new I2C address to Page 0 (0x1F); the device uses it from its next boot. */
+    bool setI2CAddress(uint8_t newAddress);
+    /**
+     * @brief Ceiling on the wait for a reading [ms]. Not a delay: waitReading() returns as
+     * soon as the counter moves. Must exceed the device's slowest path to ready, which is
+     * its fault path (see the device appendix); default 500.
+     */
+    void setTimeout(unsigned long ms) { _timeout = ms; }
+    unsigned long timeout() const     { return _timeout; }
 
-        // --- Handshake ---
-        /** @brief Status bit 0: the data registers hold a complete reading. */
-        bool ready();
-        /** @brief The reading counter (0x22-0x23). */
-        uint16_t readCounter();
-        /** @brief The counter differs from the last captured reading's (true before any capture). */
-        bool newReading();
-        /**
-         * @brief Trigger a reading of the given chips.
-         * @param chips bit n = chip n (0..5); the control byte gets trigger | chips << 1
-         */
-        bool requestReading(uint8_t chips);
-        /** @brief Wait until the counter moves past the value seen at the last request (or the last capture), within timeout(). */
-        bool waitReading();
-        /** @brief Read Block 0 after a reading: status and latched fault into fault(); notes the counter. */
-        bool captureReading();
-        /** @brief requestReading() + waitReading() + captureReading(). false on bus error or timeout. */
-        bool takeReading(uint8_t chips);
+    // --- Handshake ---
+    /** @brief Status bit 0: the data registers hold a complete reading. */
+    bool ready();
+    /** @brief The reading counter (0x22-0x23). */
+    uint16_t readCounter();
+    /** @brief The counter differs from the last captured reading's (true before any capture). */
+    bool newReading();
+    /**
+     * @brief Trigger a reading of the given chips.
+     * @param chips bit n = chip n (0..5); the control byte gets trigger | chips << 1
+     */
+    bool requestReading(uint8_t chips);
+    /** @brief Wait until the counter moves past the value seen at the last request (or the last capture), within timeout(). */
+    bool waitReading();
+    /** @brief Read Block 0 after a reading: status and latched fault into fault(); notes the counter. */
+    bool captureReading();
+    /** @brief requestReading() + waitReading() + captureReading(). false on bus error or timeout. */
+    bool takeReading(uint8_t chips);
 
-        // --- Batches (NW-Device-Specification 0x24-0x25) ---
-        /**
-         * @brief Declare how many readings follow, so the device holds its chips powered for exactly that many.
-         * @details Also clears batchFaulted(). 0 or 1 means one reading per trigger, powered down after each.
-         */
-        bool writeBatch(uint16_t n);
-        /** @brief Forget a previous batch's absent chips without writing the size (single readings). */
-        void resetBatch()                 { _absentChips = 0; }
-        /**
-         * @brief Any of the given chips reported, earlier in this batch, that it is not coming
-         * (no acknowledge or not initialised). Per chip: an absent accelerometer does not stop
-         * the range readings of the same batch.
-         * @param chips bit n = chip n; default: any chip
-         * @details Set by captureReading() for a selected chip; a library skips that chip's
-         * remaining readings instead of waiting out each one.
-         */
-        bool batchFaulted(uint8_t chips = 0x3F) const { return (_absentChips & chips) != 0; }
+    // --- Batches (NW-Device-Specification 0x24-0x25) ---
+    /**
+     * @brief Declare how many readings follow, so the device holds its chips powered for exactly that many.
+     * @details Also clears batchFaulted(). 0 or 1 means one reading per trigger, powered down after each.
+     */
+    bool writeBatch(uint16_t n);
+    /** @brief Forget a previous batch's absent chips without writing the size (single readings). */
+    void resetBatch()                 { _absentChips = 0; }
+    /**
+     * @brief Any of the given chips reported, earlier in this batch, that it is not coming
+     * (no acknowledge or not initialised). Per chip: an absent accelerometer does not stop
+     * the range readings of the same batch.
+     * @param chips bit n = chip n; default: any chip
+     * @details Set by captureReading() for a selected chip; a library skips that chip's
+     * remaining readings instead of waiting out each one.
+     */
+    bool batchFaulted(uint8_t chips = 0x3F) const { return (_absentChips & chips) != 0; }
 
-        // --- Faults ---
-        const NW_Fault& fault() const     { return _fault; }
-        bool faulted(uint8_t chip) const  { return _fault.chipFaulted(chip); }
-        bool anyFault() const             { return _fault.any(); }
-        uint8_t faultChip() const         { return _fault.chip(); }
-        uint8_t faultKind() const         { return _fault.kind(); }
+    // --- Faults ---
+    const NW_Fault& fault() const     { return _fault; }
+    bool faulted(uint8_t chip) const  { return _fault.chipFaulted(chip); }
+    bool anyFault() const             { return _fault.any(); }
+    uint8_t faultChip() const         { return _fault.chip(); }
+    uint8_t faultKind() const         { return _fault.kind(); }
 
-        // --- Registers ---
-        /** @brief Read n bytes from reg; reads longer than NW_WIRE_CHUNK are split into several transactions. */
-        bool readBytes(uint8_t reg, uint8_t* buf, uint8_t n);
-        bool writeByte(uint8_t reg, uint8_t value);
-        uint8_t readConfig();
-        bool writeConfig(uint8_t value)   { return writeByte(NW_REG_CONFIG, value); }
-        /** @brief Ask the device to enter its lowest-power state (Control bit 7); it wakes on its next address match. */
-        bool sleep()                      { return writeByte(NW_REG_CTRL, NW_CTRL_SLEEP); }
+    // --- Registers ---
+    /** @brief Read n bytes from reg; reads longer than NW_WIRE_CHUNK are split into several transactions. */
+    bool readBytes(uint8_t reg, uint8_t* buf, uint8_t n);
+    bool writeByte(uint8_t reg, uint8_t value);
+    uint8_t readConfig();
+    bool writeConfig(uint8_t value)   { return writeByte(NW_REG_CONFIG, value); }
+    /** @brief Ask the device to enter its lowest-power state (Control bit 7); it wakes on its next address match. */
+    bool sleep()                      { return writeByte(NW_REG_CTRL, NW_CTRL_SLEEP); }
 
-    private:
-        uint8_t _adr = 0;
-        uint8_t _hwMajor = 0, _hwMinor = 0, _fwPatch = 0;
-        unsigned long _timeout = 500;
-        uint16_t _lastCounter = 0xFFFF;     // counter of the last captured reading
-        uint16_t _counterBefore = 0xFFFF;   // counter seen at the last request
-        uint8_t  _chips = 0;                // chips selected at the last request
-        uint8_t _absentChips = 0;           // chips that reported absent since the last writeBatch()/resetBatch()
-        NW_Fault _fault;
+  private:
+    uint8_t _adr = 0;
+    uint8_t _hwMajor = 0, _hwMinor = 0, _fwPatch = 0;
+    unsigned long _timeout = 500;
+    uint16_t _lastCounter = 0xFFFF;     // counter of the last captured reading
+    uint16_t _counterBefore = 0xFFFF;   // counter seen at the last request
+    uint8_t  _chips = 0;                // chips selected at the last request
+    uint8_t _absentChips = 0;           // chips that reported absent since the last writeBatch()/resetBatch()
+    NW_Fault _fault;
 };
 
 #endif
