@@ -74,6 +74,17 @@ class NW_Device {
     /** @brief Write a new I2C address to Page 0 (0x1F); the device uses it from its next boot. */
     bool setI2CAddress(uint8_t newAddress);
     /**
+     * @brief Print one status line for a logger's status file: the device as it is now.
+     * @details name, serial (Page 0 Block 2 as four hex groups), HW and FW versions, the
+     * last report captured (code and note word), then Pages 0, 1 and 2 as hex, comma
+     * separated, no newline. Three page reads, no write: the report is not acknowledged.
+     * A logger prints its timestamp, calls this, ends the line. Meant for whenever
+     * reportKind() is not zero, and for any moment worth a record (boot, a visit).
+     * @param chipNames the device's chip table for the note word; nullptr for "ChipN"
+     * @return bytes written
+     */
+    size_t printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips);
+    /**
      * @brief Ceiling on the wait for a reading [ms]. Not a delay: waitReading() returns as
      * soon as the counter moves. Must exceed the device's slowest path to ready, which is
      * its fault path (see the device appendix); default 500.

@@ -99,6 +99,12 @@ int main() {
     tx = Wire.transactions; ok = d.readData(0x28, &b, 1);
     printf("[readData] quiet device: ok=%d moved=%d transactions=%u\n", ok, d.dataMoved(), Wire.transactions - tx); }
 
+  // 6c. The status line for a logger's status file: name, serial, versions, the last report, three pages in hex.
+  { loadImage(); firmware(); NW_Device d; d.begin(0x41, "Apis", 2); char sb[260];
+    onReading = [](TwoWire& w) { w.image[0x20] = 0x01; w.image[0x27] = 0x29; }; d.takeReading(0x02);
+    static const char* const chips[] = {"LiDAR", "Accel"}; BufferPrint bp(sb, sizeof sb); size_t k = d.printSnapshot(bp, chips, 2);
+    printf("[snapshot] %zu bytes: %s\n", k, sb); onReading = nullptr; }
+
   // 7. Registers: batch word, config, sleep, address
   { loadImage(); NW_Device d; d.begin(0x41, "Apis", 2); d.writeBatch(300); d.writeConfig(0x03); d.sleep(); d.setI2CAddress(0x45);
     printf("[registers] batch=%u config=0x%02X ctrl=0x%02X addr=0x%02X readConfig=0x%02X\n",

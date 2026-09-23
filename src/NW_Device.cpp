@@ -87,6 +87,32 @@ bool NW_Device::writeByte(uint8_t reg, uint8_t value) {
 
 bool NW_Device::setI2CAddress(uint8_t newAddress) { return writeByte(NW_REG_I2C_ADDR, newAddress); }
 
+static size_t printHex(Print& out, const uint8_t* b, uint8_t n) {
+  static const char digits[] = "0123456789ABCDEF";
+  size_t k = 0;
+  for (uint8_t i = 0; i < n; i++) { k += out.print(digits[b[i] >> 4]); k += out.print(digits[b[i] & 0x0F]); }
+  return k;
+}
+
+size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips) {
+  uint8_t page[32];
+  size_t n = 0;
+  if (!readBytes(0x00, page, 32)) return out.print(F("NoACK"));
+  for (uint8_t i = 1; i <= 7 && page[i]; i++) n += out.print((char)page[i]);   // name
+  n += out.print(',');
+  for (uint8_t i = 0; i < 4; i++) { if (i) n += out.print('-'); n += printHex(out, page + 0x10 + 2 * i, 2); }   // serial, Block 2
+  n += out.print(F(",HW")); n += out.print(page[NW_REG_HW_MAJOR]); n += out.print('.'); n += out.print(page[NW_REG_HW_MINOR]);
+  n += out.print(F(",FW")); n += out.print(page[NW_REG_FW_PATCH]);
+  n += out.print(F(",0x")); n += printHex(out, &_report.code, 1);
+  n += out.print(','); n += out.print(_report.note(chipNames, nChips));
+  n += out.print(','); n += printHex(out, page, 32);                                   // Page 0
+  for (uint8_t p = 0x20; p <= 0x40; p += 0x20) {                                       // Pages 1 and 2
+    n += out.print(',');
+    if (readBytes(p, page, 32)) n += printHex(out, page, 32); else n += out.print(F("NoACK"));
+  }
+  return n;
+}
+
 uint8_t NW_Device::readConfig() {
   uint8_t v = 0xFF;
   readBytes(NW_REG_CONFIG, &v, 1);
