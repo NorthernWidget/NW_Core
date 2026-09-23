@@ -16,7 +16,7 @@
 class TwoWire {
   public:
   uint8_t image[128] = {0};
-  uint8_t deviceAddress = 0x41;
+  uint8_t deviceAddress = 0x00;           // the harness sets the device under test's address
   bool present = true;
   uint32_t presentAfterMs = 0;             // no ACK before this millis() (boot emulation)
   uint32_t freeRunPeriodMs = 0;            // >0: counter (0x22-0x23) advances every period, ready set

@@ -7,33 +7,15 @@ TwoWire Wire;
 #include "../../src/NW_Core.h"
 #include "../../src/NW_Device.cpp"
 
-static uint8_t crc8(const uint8_t* d, uint8_t n) {           // CRC-8/SMBUS, as NW-Provision writes it
-  uint8_t c = 0; for (uint8_t i = 0; i < n; i++) { c ^= d[i]; for (int b = 0; b < 8; b++) c = (c & 0x80) ? (c << 1) ^ 0x07 : (c << 1); }
-  return c;
-}
-// A provisioned Schema 1 device named "Apis", HW 0.1, given firmware patch, a completed reading.
+#include "NW_TestSupport.h"
+// A provisioned Schema 1 device named "Apis" at 0x41, HW 0.1, given firmware patch, a completed reading.
 static void loadImage(uint8_t fwPatch = 2, uint8_t schema = 0x01, const char* name = "Apis") {
-  Wire = TwoWire(); uint8_t* r = Wire.image;
-  r[0x00] = schema; for (int i = 0; i < 7 && name[i]; i++) r[0x01 + i] = name[i];
-  r[0x08] = 0; r[0x09] = 1; r[0x0A] = fwPatch;
-  r[0x10] = 0x41; r[0x11] = 0x01; r[0x12] = 0; r[0x13] = 7; r[0x14] = 0; r[0x15] = 42;
-  r[0x1D] = 0x4E; r[0x1E] = crc8(r, 0x1E); r[0x1F] = 0x41;
-  r[0x20] = 0x01; r[0x21] = 0x06; r[0x22] = 1; r[0x23] = 0;
+  Wire = TwoWire(); Wire.deviceAddress = 0x41;
+  nwLoadPage0(Wire.image, name, 0x41, 1, fwPatch, schema);
   _millis_counter() = 0;
 }
 // Emulated firmware: a trigger completes a reading at once.
-static void firmware() {
-  Wire.onWrite = [](TwoWire& w, uint8_t reg, uint8_t val) {
-    if (reg == 0x21 && (val & 0x01)) { w.image[0x21] = val & ~0x01; w.image[0x27] = 0; w.bumpCounter(); }
-    if (reg == 0x21) w.image[0x27] = 0;                  // any control write clears the latched fault
-  };
-}
-class BufferPrint : public Print {
-  char* _buf; size_t _cap, _len = 0;
-  public:
-  BufferPrint(char* buf, size_t cap) : _buf(buf), _cap(cap) { _buf[0] = 0; }
-  size_t write(uint8_t c) override { if (_len + 1 >= _cap) return 0; _buf[_len++] = c; _buf[_len] = 0; return 1; }
-};
+static void firmware() { installFirmwareEmulation(); }
 static const char* kindText(const NW_Fault& f) { static char b[40]; BufferPrint bp(b, sizeof b); f.printKind(bp); return b; }
 
 int main() {
