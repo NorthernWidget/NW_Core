@@ -12,13 +12,13 @@
 [free-running] waitReading without request: ok=1 took=10 ms counter=2
 [timeout] default: ok=0 after 500 ms
 [timeout] setTimeout(50): ok=0 after 50 ms
-[fault] faulted(0)=1 faulted(1)=0 any=1 chip=0 kind=2 'timeout' batchFaulted=0
-[fault] chip0 no-ack, chip0 selected: batchFaulted=1 'no acknowledge'
-[fault] writeBatch(4): batchFaulted=0 word=4
-[fault] chip1 no-ack, only chip0 selected: batchFaulted=0
-[fault] chip1 no-ack, chip1 selected: batchFaulted(any)=1 chip0=0 chip1=1
-[fault] unit: chip=7 isUnit=1 'reset since configured' batchFaulted=0
-[fault] device-specific kind: 'kind 17'
+[report] faulted(0)=1 faulted(1)=0 any=1 chip=0 kind=2 'timeout' batchFaulted=0
+[report] chip0 no-ack, chip0 selected: batchFaulted=1 'no acknowledge'
+[report] writeBatch(4): batchFaulted=0 word=4
+[report] chip1 no-ack, only chip0 selected: batchFaulted=0
+[report] chip1 no-ack, chip1 selected: batchFaulted(any)=1 chip0=0 chip1=1
+[report] unit: chip=7 isUnit=1 'reset since configured' batchFaulted=0
+[report] device-specific kind: 'kind 17'
 [readBytes] 40 bytes from 0x20: ok=1 transactions=2 first=0x20 last=0x47
 [readData] plain readBytes: captured counter=2 data=0xAA counter now=3 (data belongs to the next reading)
 [readData] one commit during the read: ok=1 data=0xAA counter=4 moved=0 transactions=5
@@ -38,8 +38,8 @@
 [config] set(5,16)=5 set(99,16)=16 set(0,16)=0
 [config] n=3 stats: columns=0; n=1 stats: columns=0
 [nwScaled] 101325/100=1013.25  -9999 passes=-9999  mean of empty=-9999
-[fault text] code=0x01 text='MS5803: no acknowledge' note='MS5803NoACK'
-[fault text] code=0x22 text='MCP9808: timeout' note='MCP9808Timeout'
-[fault text] code=0xE6 text='unit: reset since configured' note='UnitReset'
-[fault text] code=0x51 text='chip 2: kind 17' note='Chip2Kind17'
-[fault text] code=0x00 text='none' note='UnitNone'
+[report text] code=0x01 text='MS5803: no acknowledge' note='MS5803NoACK'
+[report text] code=0x22 text='MCP9808: timeout' note='MCP9808Timeout'
+[report text] code=0xE6 text='unit: reset since configured' note='UnitReset'
+[report text] code=0x51 text='chip 2: kind 17' note='Chip2Kind17'
+[report text] code=0x00 text='none' note='UnitNone'

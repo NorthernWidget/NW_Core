@@ -50,7 +50,9 @@ class NW_Device {
      * firmware versions, then refuses the device unless the schema byte is
      * 0x01, the 7-byte name matches, and the firmware patch is at least
      * minPatch. The versions are stored before any refusal so a sketch can
-     * report why.
+     * report why. Then reads Block 0 once, before any write, so the reports
+     * the device made at boot (reset, invalid Page 0) are in report() before
+     * the first trigger acknowledges them.
      * @param address       7-bit I2C address
      * @param name          the device's name as the spec spells it (up to 7 characters)
      * @param minPatch      lowest firmware patch (Page 0 byte 0x0A) this library accepts

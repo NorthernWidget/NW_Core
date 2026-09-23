@@ -30,6 +30,12 @@ bool NW_Device::begin(uint8_t address, const char* name, uint8_t minPatch, unsig
     if (p0[NW_REG_NAME + i] != (uint8_t)expected) { _beginFailure = 4; return false; }
   }
   if (_fwPatch < minPatch) { _beginFailure = 5; return false; }   // register map older than this library
+  // Block 0 before any write: the boot reports (unit reset 0xE6, Page 0 check 0xE3)
+  // would be cleared by the first trigger, which is a Control write.
+  uint8_t b0[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+  if (!readBytes(NW_REG_STATUS, b0, 8)) { _beginFailure = 2; return false; }
+  _report.status = b0[0];
+  _report.code   = b0[7];
   _beginFailure = 0;
   return true;
 }
