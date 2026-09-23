@@ -1,6 +1,6 @@
 /**
  * @file NW_Report.h
- * @brief Decoded Block 0 status (0x20) and report (0x27) of a Schema 1 device.
+ * @brief Decoded Block 0 status (0x40) and report (0x47) of a Schema 1 device.
  */
 #ifndef NW_Report_h
 #define NW_Report_h
@@ -9,8 +9,8 @@
 
 /**
  * @brief The two Block 0 bytes that describe a reading's health, with their decoding.
- * @details status (0x20) is live: bit 0 ready, bits 1-6 chip n-1 faulted now,
- * bit 7 pan-fault (OR of bits 1-6). code (0x27) is the Report register, the
+ * @details status (0x40) is live: bit 0 ready, bits 1-6 chip n-1 faulted now,
+ * bit 7 pan-fault (OR of bits 1-6). code (0x47) is the Report register, the
  * device's most recent report, good or bad, latched until the controller next
  * writes Control: bits 7-5 chip (7 = the unit), bits 4-0 kind. A report is a
  * fault when the chip's status bit is set too, a notice otherwise.
@@ -23,8 +23,8 @@
  * the universal part alone.
  */
 struct NW_Report {
-  uint8_t status = 0;   ///< Block 0 byte 0x20
-  uint8_t code   = 0;   ///< Block 0 byte 0x27
+  uint8_t status = 0;   ///< Block 0 byte 0x40
+  uint8_t code   = 0;   ///< Block 0 byte 0x47
 
   bool ready() const                    { return status & 0x01; }
   bool chipFaulted(uint8_t chip) const  { return status & (1 << (chip + 1)); }   ///< chip 0..5 faulted on the last reading

@@ -24,10 +24,10 @@ static void nwLoadPage0(uint8_t* r, const char* name, uint8_t address, uint8_t h
   r[0x08] = 0; r[0x09] = hwMinor; r[0x0A] = fwPatch;
   r[0x10] = address; r[0x11] = hwMinor; r[0x12] = 0; r[0x13] = 7; r[0x14] = 0; r[0x15] = 42;
   r[0x1D] = 0x4E; r[0x1E] = crc8(r, 0x1E); r[0x1F] = address;
-  r[0x20] = 0x01;                                                   // ready
-  r[0x21] = 0x06;                                                   // both chips selected
-  r[0x22] = 1; r[0x23] = 0;                                         // reading counter = 1
-  r[0x26] = 0x00; r[0x27] = 0x00;
+  r[0x40] = 0x01;                                                   // ready
+  r[0x41] = 0x06;                                                   // both chips selected
+  r[0x42] = 1; r[0x43] = 0;                                         // reading counter = 1
+  r[0x46] = 0x00; r[0x47] = 0x00;
 }
 
 // Emulate the Schema 1 firmware's response to a control write: a trigger
@@ -39,16 +39,16 @@ static std::function<void(TwoWire&)> onReading;
 static uint16_t lastRequest = 0;
 static void installFirmwareEmulation() {
   Wire.onWrite = [](TwoWire& w, uint8_t reg, uint8_t val) {
-    if (reg == 0x24) lastRequest = (lastRequest & 0xFF00) | val;
-    if (reg == 0x25) lastRequest = (lastRequest & 0x00FF) | (val << 8);
-    if (reg != 0x21) return;
-    w.image[0x27] = 0;                                  // any control write acknowledges the fault
+    if (reg == 0x44) lastRequest = (lastRequest & 0xFF00) | val;
+    if (reg == 0x45) lastRequest = (lastRequest & 0x00FF) | (val << 8);
+    if (reg != 0x41) return;
+    w.image[0x47] = 0;                                  // any control write acknowledges the fault
     if (!(val & 0x01)) return;
-    w.image[0x21] = val & 0x7E;                         // trigger and sleep consumed
+    w.image[0x41] = val & 0x7E;                         // trigger and sleep consumed
     if (onReading) onReading(w);
-    uint16_t c = w.image[0x22] | (w.image[0x23] << 8); c++;
-    w.image[0x22] = c & 0xFF; w.image[0x23] = c >> 8;
-    w.image[0x20] |= 0x01;
+    uint16_t c = w.image[0x42] | (w.image[0x43] << 8); c++;
+    w.image[0x42] = c & 0xFF; w.image[0x43] = c >> 8;
+    w.image[0x40] |= 0x01;
   };
 }
 

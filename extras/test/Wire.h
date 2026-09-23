@@ -63,8 +63,8 @@ class TwoWire {
   uint8_t requestFrom(int adr, int n) { return requestFrom((uint8_t)adr, (uint8_t)n); }
   int read() { if (_q.empty()) return -1; int v = _q.front(); _q.pop_front(); return v; }
   int available() { return (int)_q.size(); }
-  uint16_t counter() const { return image[0x22] | (image[0x23] << 8); }
-  void bumpCounter() { uint16_t c = counter() + 1; image[0x22] = c & 0xFF; image[0x23] = c >> 8; image[0x20] |= 0x01; }
+  uint16_t counter() const { return image[0x42] | (image[0x43] << 8); }
+  void bumpCounter() { uint16_t c = counter() + 1; image[0x42] = c & 0xFF; image[0x43] = c >> 8; image[0x40] |= 0x01; }
   private:
   bool _present() { return present && (isPresent ? isPresent(_adr) : _adr == deviceAddress) && millis() >= presentAfterMs; }
   void _freeRun() {

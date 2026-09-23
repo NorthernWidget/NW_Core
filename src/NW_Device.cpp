@@ -106,7 +106,7 @@ size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_
   n += out.print(F(",0x")); n += printHex(out, &_report.code, 1);
   n += out.print(','); n += out.print(_report.note(chipNames, nChips));
   n += out.print(','); n += printHex(out, page, 32);                                   // Page 0
-  for (uint8_t p = 0x20; p <= 0x40; p += 0x20) {                                       // Pages 1 and 2
+  for (uint8_t p = 0x20; p <= 0x40; p += 0x20) {                                       // Page 1 (calibration), Page 2 (data)
     n += out.print(',');
     if (readBytes(p, page, 32)) n += printHex(out, page, 32); else n += out.print(F("NoACK"));
   }
@@ -152,7 +152,7 @@ bool NW_Device::waitReading() {
 }
 
 bool NW_Device::captureReading() {
-  // Block 0 of the new reading: status (0x20) and report (0x27), one 8-byte read.
+  // Block 0 of the new reading: status (0x40) and report (0x47), one 8-byte read.
   uint8_t b0[8] = {0, 0, 0, 0, 0, 0, 0, 0};
   if (!readBytes(NW_REG_STATUS, b0, 8)) return false;
   _report.status = b0[0];
