@@ -109,6 +109,21 @@ int main() {
     static const char* const chips[] = {"LiDAR", "Accel"}; BufferPrint bp(sb, sizeof sb); size_t k = d.printSnapshot(bp, chips, 2);
     printf("[snapshot] %zu bytes: %s\n", k, sb); onReading = nullptr; }
 
+  // 6d. NW_Pages: a logger's own pages. Page 0 provisioned in the EEPROM stub, Page 1 blank; a reading with
+  //     one chip faulted; a notice does not overwrite the fault, a fault overwrites a notice; the snapshot line.
+  { uint8_t img[128]; nwLoadPage0(img, "Margay", 0xFF, 3, 0, 0x01);
+    for (int i = 0; i < 32; i++) { EEPROM.write(4096 - 64 + i, img[i]); EEPROM.write(4096 - 32 + i, 0xFF); }
+    NW_Pages pg; pg.loadStored(4096 - 64);
+    printf("[pages] page0Valid=%d page1Blank=%d name=%c%c%c counter=%u\n", pg.page0Valid(), pg.page1Blank(), pg.page[1], pg.page[2], pg.page[3], pg.counter());
+    pg.beginReading(); pg.put16(0x49, 412); pg.put32(0x58, 1790000000UL); pg.endReading(0x02);   // chip 1 (Clock) faulted
+    pg.latchFault(0x21); pg.latchNotice(0xF1); NW_Report r = pg.report();
+    printf("[pages] after a reading: status=0x%02X counter=%u report=0x%02X (notice refused while a fault waits) fault=%d\n", r.status, pg.counter(), r.code, r.isFault());
+    pg.acknowledge(); pg.latchNotice(0xF1); pg.latchFault(0x01); printf("[pages] notice then fault: report=0x%02X\n", pg.report().code);
+    pg.acknowledge(); pg.latchNotice(0xF0); static const char* const chips[] = {"SDCard", "Clock", "BME280", "SensorBus", "Battery"};
+    static const char* const words[] = {"LoggingStarted", "NewLogFile", "RowNotWritten"};
+    char sb[300]; BufferPrint bp(sb, sizeof sb); size_t k = pg.printSnapshot(bp, chips, 5, "1.2.0", nullptr, words, 3); sb[90] = 0;
+    printf("[pages] snapshot (%zu bytes): %s...\n", k, sb); }
+
   // 7. Registers: batch word, config, sleep, address
   { loadImage(); NW_Device d; d.begin(0x41, "Apis", 2); d.writeBatch(300); d.writeConfig(0x03); d.sleep(); d.setI2CAddress(0x45);
     printf("[registers] batch=%u config=0x%02X ctrl=0x%02X addr=0x%02X readConfig=0x%02X\n",

@@ -10,6 +10,7 @@ NW_Device	KEYWORD1
 NW_Readings	KEYWORD1
 NW_Report	KEYWORD1
 NW_Sensor	KEYWORD1
+NW_Pages	KEYWORD1
 NW_ReadingsConfig	KEYWORD1
 
 #######################################
@@ -103,3 +104,18 @@ bootReportKind	KEYWORD2
 reportIsFault	KEYWORD2
 printStatus	KEYWORD2
 name	KEYWORD2
+loadStored	KEYWORD2
+page0Valid	KEYWORD2
+page1Blank	KEYWORD2
+beginReading	KEYWORD2
+endReading	KEYWORD2
+latchFault	KEYWORD2
+latchNotice	KEYWORD2
+acknowledge	KEYWORD2
+put8	KEYWORD2
+put16	KEYWORD2
+put32	KEYWORD2
+get16	KEYWORD2
+getFloat	KEYWORD2
+nwPrintHex	KEYWORD2
+isFaultCode	KEYWORD2

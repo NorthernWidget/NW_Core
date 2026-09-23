@@ -7,6 +7,14 @@
 
 #include <Arduino.h>
 
+/** @brief Print n bytes as upper-case hex pairs, no separators; the status file's page columns. */
+inline size_t nwPrintHex(Print& out, const uint8_t* b, uint8_t n) {
+  static const char digits[] = "0123456789ABCDEF";
+  size_t k = 0;
+  for (uint8_t i = 0; i < n; i++) { k += out.print(digits[b[i] >> 4]); k += out.print(digits[b[i] & 0x0F]); }
+  return k;
+}
+
 /**
  * @brief The two Block 0 bytes that describe a reading's health, with their decoding.
  * @details status (0x40) is live: bit 0 ready, bits 1-6 chip n-1 faulted now,
@@ -78,9 +86,10 @@ struct NW_Report {
    * chip table; a chip beyond it prints as "chip N".
    * @return Bytes written.
    */
-  size_t print(Print& out, const char* const* chipNames, uint8_t nChips) const {
+  size_t print(Print& out, const char* const* chipNames, uint8_t nChips, const char* const* kindWords = nullptr, uint8_t nKindWords = 0) const {
     uint8_t c = chip(), k = kind();
     if (k == 0) return out.print(F("none"));
+    if (k >= 16 && kindWords && (uint8_t)(k - 16) < nKindWords) return out.print(kindWords[k - 16]);   // a device-specific kind: its own word says it all
     size_t n = 0;
     if (c == 7) n += out.print(F("unit"));
     else if (c < nChips) n += out.print(chipNames[c]);
@@ -91,12 +100,14 @@ struct NW_Report {
   /**
    * @brief The report as one word for a data-table note column: the
    * chip, then the kind, e.g. "MS5803NotAnswering", "UnitRestarted", "Chip2Kind17";
-   * "UnitNone" when there is no report.
+   * "UnitNone" when there is no report. A device-specific kind (16-31) prints its
+   * appendix word alone when the library passes its table ("LoggingStarted").
    */
-  String note(const char* const* chipNames, uint8_t nChips) const {
+  String note(const char* const* chipNames, uint8_t nChips, const char* const* kindWords = nullptr, uint8_t nKindWords = 0) const {
     uint8_t c = chip();
     String w;
     if (kind() == 0) return String(F("UnitNone"));
+    if (kind() >= 16 && kindWords && (uint8_t)(kind() - 16) < nKindWords) return String(kindWords[kind() - 16]);   // device-specific: the appendix's word alone
     if (c == 7) w = F("Unit");
     else if (c < nChips) w = chipNames[c];
     else { w = F("Chip"); w += String(c); }
