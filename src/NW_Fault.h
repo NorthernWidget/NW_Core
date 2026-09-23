@@ -44,6 +44,21 @@ struct NW_Fault {
       default: { size_t n = out.print(F("kind ")); return n + out.print(kind()); }
     }
   }
+  /** @brief The kind as one word for a data-table note ("Timeout"; "Kind17" for device-specific kinds). */
+  String kindWord() const {
+    switch (kind()) {
+      case 0: return String(F("None"));
+      case 1: return String(F("NoACK"));
+      case 2: return String(F("Timeout"));
+      case 3: return String(F("Checksum"));
+      case 4: return String(F("Range"));
+      case 5: return String(F("NotInit"));
+      case 6: return String(F("Reset"));
+      case 7: return String(F("Config"));
+      case 8: return String(F("Supply"));
+      default: { String w = F("Kind"); w += String(kind()); return w; }
+    }
+  }
   /** @brief True for the kinds that mean the chip is not coming back this batch (no acknowledge, not initialised). */
   bool chipAbsent() const               { return kind() == 1 || kind() == 5; }
 };
