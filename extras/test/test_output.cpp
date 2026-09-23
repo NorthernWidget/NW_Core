@@ -135,7 +135,8 @@ int main() {
   // Fault text with a library's chip-name table: chip 0, chip 1, unit, and a chip beyond the table.
   { static const char* const chips[] = {"MS5803", "MCP9808"}; NW_Report f; char b[48];
     uint8_t codes[] = {0x01, 0x22, 0xE6, 0x51, 0x00};
-    for (uint8_t code : codes) { f.code = code; BufferPrint bp(b, sizeof b); f.print(bp, chips, 2);
+    uint8_t statuses[] = {0x83, 0x85, 0x01, 0x89, 0x01};   // the chip's fault bit set for the faults; none for the notice and for no report
+    for (int i = 0; i < 5; i++) { uint8_t code = codes[i]; f.code = code; f.status = statuses[i]; BufferPrint bp(b, sizeof b); f.print(bp, chips, 2);
       printf("[report text] code=0x%02X text='%s' note='%s' fault=%d notice=%d\n", code, b, f.note(chips, 2).c_str(), f.isFault(), f.isNotice()); } }
 
   fprintf(stderr, "bus transactions total: %u\n", Wire.transactions);

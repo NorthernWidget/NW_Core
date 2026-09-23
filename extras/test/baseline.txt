@@ -39,8 +39,8 @@
 [config] set(5,16)=5 set(99,16)=16 set(0,16)=0
 [config] n=3 stats: columns=0; n=1 stats: columns=0
 [nwScaled] 101325/100=1013.25  -9999 passes=-9999  mean of empty=-9999
-[report text] code=0x01 text='MS5803: no acknowledge' note='MS5803NoACK' fault=0 notice=1
-[report text] code=0x22 text='MCP9808: timeout' note='MCP9808Timeout' fault=0 notice=1
+[report text] code=0x01 text='MS5803: no acknowledge' note='MS5803NoACK' fault=1 notice=0
+[report text] code=0x22 text='MCP9808: timeout' note='MCP9808Timeout' fault=1 notice=0
 [report text] code=0xE6 text='unit: reset since configured' note='UnitReset' fault=0 notice=1
-[report text] code=0x51 text='chip 2: kind 17' note='Chip2Kind17' fault=0 notice=1
+[report text] code=0x51 text='chip 2: kind 17' note='Chip2Kind17' fault=1 notice=0
 [report text] code=0x00 text='none' note='UnitNone' fault=0 notice=0
