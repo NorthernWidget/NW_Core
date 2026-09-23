@@ -27,6 +27,11 @@ int main() {
   { loadImage(2, 0x00);         NW_Device d; printf("[begin] schema 0x00: ok=%d\n", d.begin(0x41, "Apis", 2)); }
   { loadImage(1);               NW_Device d; bool ok = d.begin(0x41, "Apis", 2); printf("[begin] patch 1 < min 2: ok=%d fw=%u\n", ok, d.firmwareVersion()); }
   { loadImage(); Wire.present = false; NW_Device d; bool ok = d.begin(0x41, "Apis", 2); printf("[begin] absent, no boot wait: ok=%d attempts=%u\n", ok, Wire.ackAttempts); }
+  // The boot report: the firmware latches 0xE6 (unit reset) before any reading; begin() reads it
+  // before its first write, and the first trigger (a Control write) then clears it.
+  { loadImage(); Wire.image[0x27] = 0xE6; firmware(); NW_Device d; d.begin(0x41, "Apis", 2);
+    printf("[begin] boot report: code=0x%02X notice=%d fault=%d note=%s", d.report().code, d.report().isNotice(), d.report().isFault(), d.report().note(nullptr, 0).c_str());
+    d.takeReading(0x01); printf(" after first reading: code=0x%02X\n", d.report().code); }
   { loadImage(); Wire.presentAfterMs = 30; NW_Device d; bool ok = d.begin(0x41, "Apis", 2, 100);
     printf("[begin] boots after 30 ms, wait 100: ok=%d attempts=%u took=%u ms\n", ok, Wire.ackAttempts, (unsigned)millis()); }
   { loadImage(); Wire.presentAfterMs = 300; NW_Device d; bool ok = d.begin(0x41, "Apis", 2, 100);
@@ -131,7 +136,7 @@ int main() {
   { static const char* const chips[] = {"MS5803", "MCP9808"}; NW_Report f; char b[48];
     uint8_t codes[] = {0x01, 0x22, 0xE6, 0x51, 0x00};
     for (uint8_t code : codes) { f.code = code; BufferPrint bp(b, sizeof b); f.print(bp, chips, 2);
-      printf("[report text] code=0x%02X text='%s' note='%s'\n", code, b, f.note(chips, 2).c_str()); } }
+      printf("[report text] code=0x%02X text='%s' note='%s' fault=%d notice=%d\n", code, b, f.note(chips, 2).c_str(), f.isFault(), f.isNotice()); } }
 
   fprintf(stderr, "bus transactions total: %u\n", Wire.transactions);
   return 0;

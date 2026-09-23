@@ -4,6 +4,7 @@
 [begin] schema 0x00: ok=0
 [begin] patch 1 < min 2: ok=0 fw=1
 [begin] absent, no boot wait: ok=0 attempts=1
+[begin] boot report: code=0xE6 notice=1 fault=0 note=UnitReset after first reading: code=0x00
 [begin] boots after 30 ms, wait 100: ok=1 attempts=31 took=30 ms
 [begin] boots after 300 ms, wait 100: ok=0 took=100 ms
 [handshake] newReading before any=1 ready=1
@@ -38,8 +39,8 @@
 [config] set(5,16)=5 set(99,16)=16 set(0,16)=0
 [config] n=3 stats: columns=0; n=1 stats: columns=0
 [nwScaled] 101325/100=1013.25  -9999 passes=-9999  mean of empty=-9999
-[report text] code=0x01 text='MS5803: no acknowledge' note='MS5803NoACK'
-[report text] code=0x22 text='MCP9808: timeout' note='MCP9808Timeout'
-[report text] code=0xE6 text='unit: reset since configured' note='UnitReset'
-[report text] code=0x51 text='chip 2: kind 17' note='Chip2Kind17'
-[report text] code=0x00 text='none' note='UnitNone'
+[report text] code=0x01 text='MS5803: no acknowledge' note='MS5803NoACK' fault=0 notice=1
+[report text] code=0x22 text='MCP9808: timeout' note='MCP9808Timeout' fault=0 notice=1
+[report text] code=0xE6 text='unit: reset since configured' note='UnitReset' fault=0 notice=1
+[report text] code=0x51 text='chip 2: kind 17' note='Chip2Kind17' fault=0 notice=1
+[report text] code=0x00 text='none' note='UnitNone' fault=0 notice=0
