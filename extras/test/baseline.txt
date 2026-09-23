@@ -37,4 +37,4 @@
 [fault text] code=0x22 text='MCP9808: timeout' note='MCP9808Timeout'
 [fault text] code=0xE6 text='unit: reset since configured' note='UnitReset'
 [fault text] code=0x51 text='chip 2: kind 17' note='Chip2Kind17'
-[fault text] code=0x00 text='none' note='MS5803None'
+[fault text] code=0x00 text='none' note='UnitNone'

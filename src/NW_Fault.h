@@ -85,6 +85,7 @@ struct NW_Fault {
   String note(const char* const* chipNames, uint8_t nChips) const {
     uint8_t c = chip();
     String w;
+    if (kind() == 0) return String(F("UnitNone"));
     if (c == 7) w = F("Unit");
     else if (c < nChips) w = chipNames[c];
     else { w = F("Chip"); w += String(c); }
