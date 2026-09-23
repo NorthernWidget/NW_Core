@@ -7,6 +7,7 @@
 
 #include <Arduino.h>
 #include <math.h>
+#include "NW_Error.h"
 
 /**
  * @brief Fixed-capacity store for one measurement's readings, with statistics.
@@ -56,7 +57,7 @@ class NW_Readings {
                 : ((float)tmp[_count / 2 - 1] + (float)tmp[_count / 2]) / 2;
     }
 
-    static constexpr float NW_READINGS_EMPTY = -9999;   ///< returned by the statistics when count() == 0
+    static constexpr float NW_READINGS_EMPTY = NW_ERROR;   ///< returned by the statistics when count() == 0: the file sentinel
 
   private:
     T _v[CAPACITY];
@@ -71,6 +72,21 @@ class NW_Readings {
       sd = (_count > 1) ? sqrt(m2 / (_count - 1)) : 0;
       se = (_count > 1) ? sd / sqrt((float)_count) : 0;
     }
+};
+
+
+/**
+ * @brief How many readings a chip group takes per updateMeasurements() and
+ * whether its statistics columns print: one per chip group in a library.
+ * @details set() clamps to the group's array capacity and returns what was
+ * set; columns() is the one rule for printing std and sterr (enabled, and
+ * more than one reading, since one reading has no statistics).
+ */
+struct NW_ReadingsConfig {
+  uint16_t n = 1;
+  bool stats = false;
+  uint16_t set(uint16_t v, uint16_t capacity) { n = (v > capacity) ? capacity : v; return n; }
+  bool columns() const { return stats && n > 1; }
 };
 
 #endif

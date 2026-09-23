@@ -9,6 +9,7 @@
 NW_Device	KEYWORD1
 NW_Readings	KEYWORD1
 NW_Fault	KEYWORD1
+NW_ReadingsConfig	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -47,6 +48,9 @@ readConfig	KEYWORD2
 writeConfig	KEYWORD2
 sleep	KEYWORD2
 chipFaulted	KEYWORD2
+nwScaled	KEYWORD2
+set	KEYWORD2
+columns	KEYWORD2
 any	KEYWORD2
 chip	KEYWORD2
 kind	KEYWORD2
