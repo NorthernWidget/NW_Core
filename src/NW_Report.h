@@ -15,6 +15,18 @@ inline size_t nwPrintHex(Print& out, const uint8_t* b, uint8_t n) {
   return k;
 }
 
+/**
+ * @brief Print a build commit from Page 0 Block 3: bytes 0x18-0x1B as 8 hex characters, "+" when
+ * byte 0x1C bit 0 marks a dirty tree; nothing when the four bytes are zero (no build wrapper).
+ * @param b the five bytes at Page 0 offset 0x18
+ */
+inline size_t nwPrintCommit(Print& out, const uint8_t* b) {
+  if (!(b[0] | b[1] | b[2] | b[3])) return 0;
+  size_t k = nwPrintHex(out, b, 4);
+  if (b[4] & 0x01) k += out.print('+');
+  return k;
+}
+
 /** @brief Print a 32-byte page as four 8-byte blocks in hex, a space between blocks: the status file's page columns. */
 inline size_t nwPrintPage(Print& out, const uint8_t* page) {
   size_t k = 0;

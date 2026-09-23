@@ -88,7 +88,7 @@ bool NW_Device::writeByte(uint8_t reg, uint8_t value) {
 
 bool NW_Device::setI2CAddress(uint8_t newAddress) { return writeByte(NW_REG_I2C_ADDR, newAddress); }
 
-size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips, bool boot) {
+size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips, bool boot, const char* lib, const char* libCommit) {
   const NW_Report& r = boot ? _bootReport : _report;
   uint8_t page[32];
   size_t n = 0;
@@ -98,6 +98,8 @@ size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_
   for (uint8_t i = 0; i < 4; i++) { if (i) n += out.print('-'); n += nwPrintHex(out, page + 0x10 + 2 * i, 2); }   // serial, Block 2
   n += out.print(','); n += out.print(page[NW_REG_HW_MAJOR]); n += out.print('.'); n += out.print(page[NW_REG_HW_MINOR]);   // HW version
   n += out.print(','); n += out.print(page[NW_REG_FW_PATCH]);                                                               // FW patch
+  n += out.print(','); n += nwPrintCommit(out, page + 0x18);                                                                // FW build commit, Block 3
+  n += out.print(','); n += out.print(lib); n += out.print(','); n += out.print(libCommit);                                // the reading library
   n += out.print(F(",0x")); n += nwPrintHex(out, &r.code, 1);
   n += out.print(','); n += out.print(r.note(chipNames, nChips));
   n += out.print(','); n += nwPrintPage(out, page);                                      // Page 0

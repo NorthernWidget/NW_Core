@@ -21,6 +21,14 @@
 #define NW_Core_h
 
 #include "NW_Error.h"
+// Build identity. The version is this library's, held equal to library.properties by
+// NW-Tests/version_check.py; the commit is set by the build wrapper (NW-Build) from git,
+// and blank when built in the Arduino IDE. Both reach the status file's Lib columns.
+#define NW_CORE_LIBRARY_VERSION "0.0.0"
+#ifndef NW_CORE_LIBRARY_COMMIT
+#define NW_CORE_LIBRARY_COMMIT ""
+#endif
+
 #include "NW_Report.h"
 #include "NW_Sensor.h"
 #include "NW_Pages.h"

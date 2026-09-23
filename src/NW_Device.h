@@ -77,17 +77,23 @@ class NW_Device {
     /**
      * @brief Print one status line for a logger's status file: the device as it is now.
      * @details Columns, comma separated, no newline: name, serial (Page 0 Block 2 as
-     * four hex groups), HW version (major.minor), FW patch, the last report captured
-     * as code (0xNN) and as note word, then Pages 0, 1 and 2 as hex, each page four 8-byte blocks with a space between them. One value per
-     * column, so a logger's status file is a table:
-     * Time,Device,Serial,HW,FW,Code,Note,Page0,Page1,Page2. Three page reads, no write: the report is not acknowledged.
+     * four hex groups), HW version (major.minor), FW patch, FW build commit (Page 0
+     * bytes 0x18-0x1B as 8 hex characters, "+" appended when 0x1C bit 0 says the tree
+     * was dirty; blank when the firmware carried none), the library's version and
+     * commit as given, the last report captured as code (0xNN) and as note word, then
+     * Pages 0, 1 and 2 as hex, each page four 8-byte blocks with a space between them.
+     * One value per column, so a logger's status file is a table:
+     * Time,Trigger,Device,Serial,HW,FW,FWCommit,Lib,LibCommit,Code,Note,Page0,Page1,Page2. Three page reads, no write: the report is not acknowledged.
      * A logger prints its timestamp, calls this, ends the line. Meant for whenever
      * reportKind() is not zero, and for any moment worth a record (boot, a visit).
      * @param chipNames the device's chip table for the note word; nullptr for "ChipN"
      * @param boot print the boot report (bootReport()) in the code and note columns instead of report()
+     * @param lib the version of the library that read the device (its <LIB>_LIBRARY_VERSION)
+     * @param libCommit that library's build commit (<LIB>_LIBRARY_COMMIT; blank in an IDE build)
      * @return bytes written
      */
-    size_t printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips, bool boot = false);
+    size_t printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips, bool boot = false,
+                         const char* lib = "", const char* libCommit = "");
     /**
      * @brief Ceiling on the wait for a reading [ms]. Not a delay: waitReading() returns as
      * soon as the counter moves. Must exceed the device's slowest path to ready, which is

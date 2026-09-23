@@ -33,7 +33,7 @@ int main() {
     printf("[begin] boot report: code=0x%02X notice=%d fault=%d note=%s", d.report().code, d.report().isNotice(), d.report().isFault(), d.report().note(nullptr, 0).c_str());
     d.takeReading(0x01); printf(" after first reading: code=0x%02X bootReport=0x%02X", d.report().code, d.bootReport().code);
     d.clearBootReport(); printf(" cleared=0x%02X\n", d.bootReport().code); }
-  { loadImage(); Wire.image[0x47] = 0xE3; firmware(); NW_Device d; d.begin(0x41, "Apis", 2); d.takeReading(0x01); char sb[260];
+  { loadImage(); Wire.image[0x47] = 0xE3; firmware(); NW_Device d; d.begin(0x41, "Apis", 2); d.takeReading(0x01); char sb[320];
     static const char* const chips[] = {"LiDAR", "Accel"}; BufferPrint bp(sb, sizeof sb); d.printSnapshot(bp, chips, 2, true);
     sb[70] = 0; printf("[begin] boot status line (Page 0 check failed at boot, then a clean reading): %s...\n", sb); }
   { loadImage(); Wire.presentAfterMs = 30; NW_Device d; bool ok = d.begin(0x41, "Apis", 2, 100);
@@ -104,10 +104,13 @@ int main() {
     printf("[readData] quiet device: ok=%d moved=%d transactions=%u\n", ok, d.dataMoved(), Wire.transactions - tx); }
 
   // 6c. The status line for a logger's status file: name, serial, versions, the last report, three pages in hex.
-  { loadImage(); firmware(); NW_Device d; d.begin(0x41, "Apis", 2); char sb[260];
+  { loadImage(); firmware(); NW_Device d; d.begin(0x41, "Apis", 2); char sb[320];
     onReading = [](TwoWire& w) { w.image[0x40] = 0x01; w.image[0x47] = 0x29; }; d.takeReading(0x02);
     static const char* const chips[] = {"LiDAR", "Accel"}; BufferPrint bp(sb, sizeof sb); size_t k = d.printSnapshot(bp, chips, 2);
-    printf("[snapshot] %zu bytes: %s\n", k, sb); onReading = nullptr; }
+    printf("[snapshot] %zu bytes: %s\n", k, sb);
+    Wire.image[0x18] = 0xA1; Wire.image[0x19] = 0xB2; Wire.image[0x1A] = 0xC3; Wire.image[0x1B] = 0xD4; Wire.image[0x1C] = 0x01;   // a build commit, dirty
+    BufferPrint bp2(sb, sizeof sb); d.printSnapshot(bp2, chips, 2, false, "0.1.0", "9f8e7d6c"); sb[70] = 0;
+    printf("[snapshot] with a build commit and the library's identity: %s...\n", sb); onReading = nullptr; }
 
   // 6d. NW_Pages: a logger's own pages. Page 0 provisioned in the EEPROM stub, Page 1 blank; a reading with
   //     one chip faulted; a notice does not overwrite the fault, a fault overwrites a notice; the snapshot line.
@@ -121,7 +124,7 @@ int main() {
     pg.acknowledge(); pg.latchNotice(0xF1); pg.latchFault(0x01); printf("[pages] notice then fault: report=0x%02X\n", pg.report().code);
     pg.acknowledge(); pg.latchNotice(0xF0); static const char* const chips[] = {"SDCard", "Clock", "BME280", "SensorBus", "Battery"};
     static const char* const words[] = {"LoggingStarted", "NewLogFile", "RowNotWritten"};
-    char sb[300]; BufferPrint bp(sb, sizeof sb); size_t k = pg.printSnapshot(bp, chips, 5, "1.2.0", nullptr, words, 3); sb[90] = 0;
+    char sb[320]; BufferPrint bp(sb, sizeof sb); size_t k = pg.printSnapshot(bp, chips, 5, "1.2.0", nullptr, words, 3); sb[90] = 0;
     printf("[pages] snapshot (%zu bytes): %s...\n", k, sb); }
 
   // 7. Registers: batch word, config, sleep, address
