@@ -31,6 +31,7 @@ captureReading	KEYWORD2
 takeReading	KEYWORD2
 writeBatch	KEYWORD2
 resetBatch	KEYWORD2
+beginBatch	KEYWORD2
 batchFaulted	KEYWORD2
 fault	KEYWORD2
 faulted	KEYWORD2

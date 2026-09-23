@@ -106,6 +106,15 @@ class NW_Device {
     /** @brief Forget a previous batch's absent chips without writing the size (single readings). */
     void resetBatch()                 { _absentChips = 0; }
     /**
+     * @brief Start a batch of n readings: writeBatch(n) when n > 1, else resetBatch().
+     * @details The library's loop then calls takeReading() n times, appending
+     * each successful reading to its NW_Readings, and stops early on
+     * batchFaulted(chips). One reading is a batch of one (n = 0 or 1), which
+     * writes nothing to the device.
+     * @return false if the batch word could not be written
+     */
+    bool beginBatch(uint16_t n)       { if (n > 1) return writeBatch(n); resetBatch(); return true; }
+    /**
      * @brief Any of the given chips reported, earlier in this batch, that it is not coming
      * (no acknowledge or not initialised). Per chip: an absent accelerometer does not stop
      * the range readings of the same batch.
