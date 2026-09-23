@@ -15,8 +15,9 @@
  * Kinds (NW-Device-Specification): 0 none, 1 no acknowledge, 2 timeout,
  * 3 checksum, 4 out of range, 5 not initialised, 6 reset since configured,
  * 7 config rejected, 8 supply fault, 9-15 reserved, 16-31 device-specific.
- * The chip names are the device's own; a library prints them itself and calls
- * printKind() for the universal part.
+ * The chip names are the device's own: a library passes its table (the spec's
+ * chip table, in order) to print() and note(); printKind() and kindWord() give
+ * the universal part alone.
  */
 struct NW_Fault {
   uint8_t status = 0;   ///< Block 0 byte 0x20
@@ -58,6 +59,37 @@ struct NW_Fault {
       case 8: return String(F("Supply"));
       default: { String w = F("Kind"); w += String(kind()); return w; }
     }
+  }
+  /**
+   * @brief Print the latched fault in words: the chip, then the kind, e.g.
+   * "MS5803: no acknowledge", "unit: reset since configured"; "none" when
+   * there is no fault. A library passes its chip-name table from the spec's
+   * chip table; a chip beyond it prints as "chip N".
+   * @return Bytes written.
+   */
+  size_t print(Print& out, const char* const* chipNames, uint8_t nChips) const {
+    uint8_t c = chip(), k = kind();
+    if (k == 0) return out.print(F("none"));
+    size_t n = 0;
+    if (c == 7) n += out.print(F("unit"));
+    else if (c < nChips) n += out.print(chipNames[c]);
+    else { n += out.print(F("chip ")); n += out.print(c); }
+    n += out.print(F(": "));
+    return n + printKind(out);
+  }
+  /**
+   * @brief The latched fault as one word for a data-table note column: the
+   * chip, then the kind, e.g. "MS5803NoACK", "UnitReset", "Chip2Kind17";
+   * "UnitNone" when there is no fault (check any() first).
+   */
+  String note(const char* const* chipNames, uint8_t nChips) const {
+    uint8_t c = chip();
+    String w;
+    if (c == 7) w = F("Unit");
+    else if (c < nChips) w = chipNames[c];
+    else { w = F("Chip"); w += String(c); }
+    w += kindWord();
+    return w;
   }
   /** @brief True for the kinds that mean the chip is not coming back this batch (no acknowledge, not initialised). */
   bool chipAbsent() const               { return kind() == 1 || kind() == 5; }

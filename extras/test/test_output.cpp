@@ -88,6 +88,12 @@ int main() {
     printf("[readings] float 3 values: mean=%.4f median=%.4f last=%.2f capacity=%u\n", f.mean(), f.median(), f.last(), f.capacity());
     f.append(4.0f); printf("[readings] float 4 values: median=%.4f (even count averages the middle two)\n", f.median()); }
 
+  // Fault text with a library's chip-name table: chip 0, chip 1, unit, and a chip beyond the table.
+  { static const char* const chips[] = {"MS5803", "MCP9808"}; NW_Fault f; char b[48];
+    uint8_t codes[] = {0x01, 0x22, 0xE6, 0x51, 0x00};
+    for (uint8_t code : codes) { f.code = code; BufferPrint bp(b, sizeof b); f.print(bp, chips, 2);
+      printf("[fault text] code=0x%02X text='%s' note='%s'\n", code, b, f.note(chips, 2).c_str()); } }
+
   fprintf(stderr, "bus transactions total: %u\n", Wire.transactions);
   return 0;
 }
