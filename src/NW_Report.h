@@ -7,11 +7,18 @@
 
 #include <Arduino.h>
 
-/** @brief Print n bytes as upper-case hex pairs, no separators; the status file's page columns. */
+/** @brief Print n bytes as upper-case hex pairs, no separators. */
 inline size_t nwPrintHex(Print& out, const uint8_t* b, uint8_t n) {
   static const char digits[] = "0123456789ABCDEF";
   size_t k = 0;
   for (uint8_t i = 0; i < n; i++) { k += out.print(digits[b[i] >> 4]); k += out.print(digits[b[i] & 0x0F]); }
+  return k;
+}
+
+/** @brief Print a 32-byte page as four 8-byte blocks in hex, a space between blocks: the status file's page columns. */
+inline size_t nwPrintPage(Print& out, const uint8_t* page) {
+  size_t k = 0;
+  for (uint8_t b = 0; b < 4; b++) { if (b) k += out.print(' '); k += nwPrintHex(out, page + 8 * b, 8); }
   return k;
 }
 

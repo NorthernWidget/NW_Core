@@ -78,7 +78,7 @@ class NW_Device {
      * @brief Print one status line for a logger's status file: the device as it is now.
      * @details Columns, comma separated, no newline: name, serial (Page 0 Block 2 as
      * four hex groups), HW version (major.minor), FW patch, the last report captured
-     * as code (0xNN) and as note word, then Pages 0, 1 and 2 as hex. One value per
+     * as code (0xNN) and as note word, then Pages 0, 1 and 2 as hex, each page four 8-byte blocks with a space between them. One value per
      * column, so a logger's status file is a table:
      * Time,Device,Serial,HW,FW,Code,Note,Page0,Page1,Page2. Three page reads, no write: the report is not acknowledged.
      * A logger prints its timestamp, calls this, ends the line. Meant for whenever

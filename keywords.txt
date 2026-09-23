@@ -119,3 +119,4 @@ get16	KEYWORD2
 getFloat	KEYWORD2
 nwPrintHex	KEYWORD2
 isFaultCode	KEYWORD2
+nwPrintPage	KEYWORD2

@@ -100,10 +100,10 @@ size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_
   n += out.print(','); n += out.print(page[NW_REG_FW_PATCH]);                                                               // FW patch
   n += out.print(F(",0x")); n += nwPrintHex(out, &r.code, 1);
   n += out.print(','); n += out.print(r.note(chipNames, nChips));
-  n += out.print(','); n += nwPrintHex(out, page, 32);                                   // Page 0
+  n += out.print(','); n += nwPrintPage(out, page);                                      // Page 0
   for (uint8_t p = 0x20; p <= 0x40; p += 0x20) {                                       // Page 1 (calibration), Page 2 (data)
     n += out.print(',');
-    if (readBytes(p, page, 32)) n += nwPrintHex(out, page, 32); else n += out.print(F("NotAnswering"));
+    if (readBytes(p, page, 32)) n += nwPrintPage(out, page); else n += out.print(F("NotAnswering"));
   }
   return n;
 }

@@ -5,7 +5,7 @@
 [begin] patch 1 < min 2: ok=0 fw=1
 [begin] absent, no boot wait: ok=0 attempts=1
 [begin] boot report: code=0xE6 notice=1 fault=0 note=UnitRestarted after first reading: code=0x00 bootReport=0xE6 cleared=0x00
-[begin] boot status line (Page 0 check failed at boot, then a clean reading): Apis,4101-0007-002A-0000,0.1,2,0xE3,UnitPage0Invalid,01417069730000000...
+[begin] boot status line (Page 0 check failed at boot, then a clean reading): Apis,4101-0007-002A-0000,0.1,2,0xE3,UnitPage0Invalid,0141706973000000 ...
 [begin] boots after 30 ms, wait 100: ok=1 attempts=31 took=30 ms
 [begin] boots after 300 ms, wait 100: ok=0 took=100 ms
 [handshake] newReading before any=1 ready=1
@@ -27,11 +27,11 @@
 [readData] a commit on every transaction: ok=0 moved=1 transactions=8 (bounded by NW_DATA_RETRIES=2)
 [readData] after the runaway stops: ok=1 moved=0 transactions=5 (one recapture)
 [readData] quiet device: ok=1 moved=0 transactions=2
-[snapshot] 253 bytes: Apis,4101-0007-002A-0000,0.1,2,0x29,AccelCalibrationStored,0141706973000000000102000000000041010007002A000000000000004E4E41,0000000000000000000000000000000000000000000000000000000000000000,0104020000000029000000000000000000000000000000000000000000000000
+[snapshot] 259 bytes: Apis,4101-0007-002A-0000,0.1,2,0x29,AccelCalibrationStored,0141706973000000 0001020000000000 41010007002A0000 00000000004E4E41,0000000000000000 0000000000000000 0000000000000000 0000000000000000,0104020000000029 0000000000000000 0000000000000000 0000000000000
 [pages] page0Valid=1 page1Blank=1 name=Mar counter=0
 [pages] after a reading: status=0x85 counter=1 report=0x21 (notice refused while a fault waits) fault=1
 [pages] notice then fault: report=0x01
-[pages] snapshot (251 bytes): Margay,FF03-0007-002A-0000,0.3,1.2.0,0xF0,LoggingStarted,014D6172676179000003000000000000F...
+[pages] snapshot (260 bytes): Margay,FF03-0007-002A-0000,0.3,1.2.0,0xF0,LoggingStarted,014D617267617900 0003000000000000...
 [registers] batch=300 config=0x03 ctrl=0x80 addr=0x45 readConfig=0x03
 [readings] empty: count=0 mean=-9999.0
 [readings] int16 cap 4 after 5 appends: count=4 last=50 mean=35.0000 std=12.9099 sterr=6.4550 median=35.0000
