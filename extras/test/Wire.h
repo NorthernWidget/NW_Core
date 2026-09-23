@@ -11,7 +11,9 @@
 // is not a register file (the T9602 answers every read with the same four
 // status-and-data bytes; a command-response chip would decode the last write).
 // A test sets freeRunPeriodMs to emulate a device that completes readings on
-// its own.
+// its own. A harness with two chips on one bus (Libelle v1: the pyranometer
+// bridge and the ADXL343) sets isPresent for both addresses and branches on
+// address() inside its hooks.
 #pragma once
 #include <cstdint>
 #include <cstring>
@@ -28,6 +30,7 @@ class TwoWire {
   uint32_t _lastFreeRun = 0;
   std::function<void(TwoWire&, uint8_t)> beforeRead;
   std::function<void(TwoWire&, uint8_t, std::deque<uint8_t>&)> onRequest;   // the device answers a read itself
+  std::function<bool(uint8_t)> isPresent;  // which addresses acknowledge; default: deviceAddress alone (a harness with two chips on the bus branches on address())
   std::function<void(TwoWire&, uint8_t, uint8_t)> onWrite;
   unsigned transactions = 0;               // requestFrom calls
   unsigned ackAttempts = 0;                // address-only transmissions (ACK tests)
@@ -56,7 +59,8 @@ class TwoWire {
   uint16_t counter() const { return image[0x22] | (image[0x23] << 8); }
   void bumpCounter() { uint16_t c = counter() + 1; image[0x22] = c & 0xFF; image[0x23] = c >> 8; image[0x20] |= 0x01; }
   private:
-  bool _present() { return present && _adr == deviceAddress && millis() >= presentAfterMs; }
+  uint8_t address() const { return _adr; }  // the address of the transaction in progress, for hooks serving more than one device
+  bool _present() { return present && (isPresent ? isPresent(_adr) : _adr == deviceAddress) && millis() >= presentAfterMs; }
   void _freeRun() {
     if (!freeRunPeriodMs) return;
     while (millis() - _lastFreeRun >= freeRunPeriodMs) { _lastFreeRun += freeRunPeriodMs; bumpCounter(); }
