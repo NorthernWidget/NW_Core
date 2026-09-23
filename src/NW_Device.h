@@ -57,6 +57,12 @@ class NW_Device {
      * @return true if the device answered and passed the three gates
      */
     bool begin(uint8_t address, const char* name, uint8_t minPatch, unsigned long bootTimeoutMs = 0);
+    /**
+     * @brief Why the last begin() refused, as one word for a data-table note:
+     * "NoACK", "ReadFailed", "NotSchema1", "WrongName", "OldFirmware"; "None"
+     * after a successful begin().
+     */
+    String beginFailure() const;
     uint8_t address() const          { return _adr; }
     uint8_t hardwareMajor() const    { return _hwMajor; }
     uint8_t hardwareMinor() const    { return _hwMinor; }
@@ -128,6 +134,7 @@ class NW_Device {
   private:
     uint8_t _adr = 0;
     uint8_t _hwMajor = 0, _hwMinor = 0, _fwPatch = 0;
+    uint8_t _beginFailure = 0;          // 0 none, 1 no ACK, 2 read failed, 3 schema, 4 name, 5 firmware
     unsigned long _timeout = 500;
     uint16_t _lastCounter = 0xFFFF;     // counter of the last captured reading
     uint16_t _counterBefore = 0xFFFF;   // counter seen at the last request

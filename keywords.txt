@@ -37,6 +37,8 @@ faulted	KEYWORD2
 anyFault	KEYWORD2
 faultChip	KEYWORD2
 faultKind	KEYWORD2
+kindWord	KEYWORD2
+beginFailure	KEYWORD2
 readBytes	KEYWORD2
 writeByte	KEYWORD2
 readConfig	KEYWORD2

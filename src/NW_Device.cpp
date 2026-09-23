@@ -9,7 +9,7 @@ bool NW_Device::begin(uint8_t address, const char* name, uint8_t minPatch, unsig
   while (true) {
     Wire.beginTransmission(_adr);
     if (Wire.endTransmission() == 0) break;
-    if (millis() - t0 >= bootTimeoutMs) return false;
+    if (millis() - t0 >= bootTimeoutMs) { _beginFailure = 1; return false; }
     delay(1);
   }
 
@@ -18,19 +18,31 @@ bool NW_Device::begin(uint8_t address, const char* name, uint8_t minPatch, unsig
   // the first reading.
   uint8_t p0[16];
   _hwMajor = _hwMinor = _fwPatch = 0;
-  if (!readBytes(NW_REG_SCHEMA, p0, 16)) return false;
+  if (!readBytes(NW_REG_SCHEMA, p0, 16)) { _beginFailure = 2; return false; }
   _hwMajor = p0[NW_REG_HW_MAJOR];
   _hwMinor = p0[NW_REG_HW_MINOR];
   _fwPatch = p0[NW_REG_FW_PATCH];
-  if (p0[NW_REG_SCHEMA] != 0x01) return false;            // not Schema 1 (0x00 legacy, 0xFF unprovisioned, other)
+  if (p0[NW_REG_SCHEMA] != 0x01) { _beginFailure = 3; return false; }   // not Schema 1 (0x00 legacy, 0xFF unprovisioned, other)
   bool ended = false;                                     // 7-byte name field, null-padded
   for (uint8_t i = 0; i < 7; i++) {
     char expected = ended ? 0 : name[i];
     if (expected == 0) ended = true;
-    if (p0[NW_REG_NAME + i] != (uint8_t)expected) return false;
+    if (p0[NW_REG_NAME + i] != (uint8_t)expected) { _beginFailure = 4; return false; }
   }
-  if (_fwPatch < minPatch) return false;                  // register map older than this library
+  if (_fwPatch < minPatch) { _beginFailure = 5; return false; }   // register map older than this library
+  _beginFailure = 0;
   return true;
+}
+
+String NW_Device::beginFailure() const {
+  switch (_beginFailure) {
+    case 1: return String(F("NoACK"));
+    case 2: return String(F("ReadFailed"));
+    case 3: return String(F("NotSchema1"));
+    case 4: return String(F("WrongName"));
+    case 5: return String(F("OldFirmware"));
+    default: return String(F("None"));
+  }
 }
 
 bool NW_Device::readBytes(uint8_t reg, uint8_t* buf, uint8_t n) {

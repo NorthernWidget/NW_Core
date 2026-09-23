@@ -8,9 +8,9 @@ Three parts, one include:
 #include <NW_Core.h>
 ```
 
-- **`NW_Device`** speaks the [NW-Device-Specification](https://github.com/NorthernWidget/NW-Device-Specification) Schema 1 register map over I2C: Page 0 identity with the three `begin()` gates (schema byte, name, minimum firmware patch) and a boot-time retry; the Block 0 handshake in three steps, `requestReading(chips)`, `waitReading()`, `captureReading()`, or `takeReading(chips)` for all three; batches through the readings-requested word; the latched fault; register reads split at the 32-byte Wire buffer.
+- **`NW_Device`** speaks the [NW-Device-Specification](https://github.com/NorthernWidget/NW-Device-Specification) Schema 1 register map over I2C: Page 0 identity with the three `begin()` gates (schema byte, name, minimum firmware patch) and a boot-time retry, with `beginFailure()` naming the gate that refused; the Block 0 handshake in three steps, `requestReading(chips)`, `waitReading()`, `captureReading()`, or `takeReading(chips)` for all three; batches through the readings-requested word; the latched fault; register reads split at the 32-byte Wire buffer.
 - **`NW_Readings<T, CAPACITY>`** holds one measurement's readings in a fixed array, no heap: every acquisition appends; `last()` is the scalar; `mean()`, `std()`, `sterr()`, `median()` are computed from the array on demand, so a batch logged to a file has its statistics without a second acquisition.
-- **`NW_Fault`** decodes the status and latched-fault bytes and prints the universal fault kind in words; the library prints its own chip name.
+- **`NW_Fault`** decodes the status and latched-fault bytes and gives the universal fault kind in words (`printKind()`) or as one word for a note column (`kindWord()`); the library prints its own chip name.
 
 A sensor library holds one `NW_Device` and one `NW_Readings` per measurement and forwards to them; nothing inherits. The design, and the line between what lives here and what stays in each library, is in [LIBRARY-DESIGN.md](https://github.com/NorthernWidget/NW-Device-Specification/blob/master/LIBRARY-DESIGN.md), section 11.
 
