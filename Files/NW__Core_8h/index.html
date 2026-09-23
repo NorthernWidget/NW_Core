@@ -241,28 +241,11 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#defines">Defines</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#macros-documentation">Macros Documentation</a><ul><li><a href="#define-nw_error">define NW_ERROR</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
+              <ul class="toc__menu"><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#source-code">Source code</a></li></ul>
             </nav>
           </aside>
         
         <p>Northern Widget shared library foundation.  <a href="#detailed-description">More…</a></p>
-
-<h2 id="defines">Defines</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th> </th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td> </td>
-      <td><strong><a href="/NW_Core/Files/NW__Core_8h/#define-nw-error">NW_ERROR</a></strong> <br />Missing or failed value on file, for every NW library (NOAA and earth-science convention).</td>
-    </tr>
-  </tbody>
-</table>
 
 <h2 id="detailed-description">Detailed Description</h2>
 
@@ -273,17 +256,10 @@
 <ul>
   <li><a href="/NW_Core/Classes/classNW__Device/">NW_Device</a>: the NW-Device-Specification Schema 1 device protocol over I2C (Page 0 identity and version gates; Block 0 trigger, ready, counter, batch, and fault handling; chunked register reads).</li>
   <li>NW_Readings&lt;T, CAPACITY&gt;: a measurement’s readings in a fixed array (no heap) with mean, standard deviation, standard error, and median.</li>
-  <li><a href="/NW_Core/Classes/structNW__Fault/">NW_Fault</a>: the decoded status and latched-fault bytes. Sensor libraries hold an <a href="/NW_Core/Classes/classNW__Device/">NW_Device</a> and one <a href="/NW_Core/Classes/classNW__Readings/">NW_Readings</a> per measurement. Names exported by this library carry the NW_ prefix; everything else in an NW sensor library is scoped to its own class.</li>
+  <li><a href="/NW_Core/Classes/structNW__Fault/">NW_Fault</a>: the decoded status and latched-fault bytes.</li>
+  <li><a href="/NW_Core/Files/NW__Error_8h/#file-nw-error.h">NW_Error.h</a>: NW_ERROR (-9999), the missing value on file, and <a href="/NW_Core/Files/NW__Error_8h/#function-nwscaled">nwScaled()</a>.</li>
+  <li><a href="/NW_Core/Classes/structNW__ReadingsConfig/">NW_ReadingsConfig</a>: how many readings a chip group takes and whether its statistics columns print. Sensor libraries hold an <a href="/NW_Core/Classes/classNW__Device/">NW_Device</a> and one <a href="/NW_Core/Classes/classNW__Readings/">NW_Readings</a> per measurement. Names exported by this library carry the NW_ prefix; everything else in an NW sensor library is scoped to its own class.</li>
 </ul>
-
-<h2 id="macros-documentation">Macros Documentation</h2>
-
-<h3 id="define-nw_error">define NW_ERROR</h3>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_ERROR -9999
-</span></code></pre></div></div>
-
-<p>Missing or failed value on file, for every NW library (NOAA and earth-science convention).</p>
 
 <h2 id="source-code">Source code</h2>
 
@@ -291,20 +267,17 @@
 <span class="cp">#ifndef NW_Core_h
 #define NW_Core_h
 </span>
-<span class="cp">#include</span> <span class="cpf">"NW_Fault.h"</span><span class="cp">
+<span class="cp">#include</span> <span class="cpf">"NW_Error.h"</span><span class="cp">
+#include</span> <span class="cpf">"NW_Fault.h"</span><span class="cp">
 #include</span> <span class="cpf">"NW_Readings.h"</span><span class="cp">
 #include</span> <span class="cpf">"NW_Device.h"</span><span class="cp">
-</span>
-<span class="cp">#ifndef NW_ERROR
-#define NW_ERROR -9999
-#endif
 </span>
 <span class="cp">#endif
 </span></code></pre></div></div>
 
 <hr />
 
-<p>Updated on 2026-09-23 at 04:50:30 +0000</p>
+<p>Updated on 2026-09-23 at 16:11:03 +0000</p>
 
         
       </section>

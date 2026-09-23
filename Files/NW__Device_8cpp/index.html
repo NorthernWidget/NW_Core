@@ -309,6 +309,18 @@
   <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
+<span class="kt">bool</span> <span class="n">NW_Device</span><span class="o">::</span><span class="n">readData</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Seqlock over the bus: the counter after the read must equal the one captured</span>
+  <span class="c1">// before it. A device that committed in between gets captured again and re-read.</span>
+  <span class="n">_dataMoved</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">attempt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">;</span> <span class="n">attempt</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">readBytes</span><span class="p">(</span><span class="n">reg</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">readCounter</span><span class="p">()</span> <span class="o">==</span> <span class="n">_lastCounter</span><span class="p">)</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">attempt</span> <span class="o">&gt;=</span> <span class="n">NW_DATA_RETRIES</span><span class="p">)</span> <span class="p">{</span> <span class="n">_dataMoved</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">captureReading</span><span class="p">())</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
 <span class="kt">bool</span> <span class="n">NW_Device</span><span class="o">::</span><span class="n">writeByte</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">Wire</span><span class="p">.</span><span class="n">beginTransmission</span><span class="p">(</span><span class="n">_adr</span><span class="p">);</span>
   <span class="n">Wire</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">reg</span><span class="p">);</span>
@@ -384,7 +396,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 04:50:30 +0000</p>
+<p>Updated on 2026-09-23 at 16:11:03 +0000</p>
 
         
       </section>

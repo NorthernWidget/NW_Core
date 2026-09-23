@@ -261,6 +261,10 @@
       <td>class</td>
       <td><strong><a href="/NW_Core/Classes/classNW__Readings/">NW_Readings</a></strong> <br />Fixed-capacity store for one measurement’s readings, with statistics.</td>
     </tr>
+    <tr>
+      <td>struct</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__ReadingsConfig/">NW_ReadingsConfig</a></strong> <br />How many readings a chip group takes per updateMeasurements() and whether its statistics columns print: one per chip group in a library.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -272,6 +276,7 @@
 </span>
 <span class="cp">#include</span> <span class="cpf">&lt;Arduino.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">"NW_Error.h"</span><span class="cp">
 </span>
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">T</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">CAPACITY</span><span class="p">&gt;</span>
 <span class="k">class</span> <span class="nc">NW_Readings</span> <span class="p">{</span>
@@ -303,7 +308,7 @@
                 <span class="o">:</span> <span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="n">tmp</span><span class="p">[</span><span class="n">_count</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">tmp</span><span class="p">[</span><span class="n">_count</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">float</span> <span class="n">NW_READINGS_EMPTY</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9999</span><span class="p">;</span>   
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">float</span> <span class="n">NW_READINGS_EMPTY</span> <span class="o">=</span> <span class="n">NW_ERROR</span><span class="p">;</span>   
 
   <span class="k">private</span><span class="o">:</span>
     <span class="n">T</span> <span class="n">_v</span><span class="p">[</span><span class="n">CAPACITY</span><span class="p">];</span>
@@ -320,12 +325,20 @@
     <span class="p">}</span>
 <span class="p">};</span>
 
+
+<span class="k">struct</span> <span class="nc">NW_ReadingsConfig</span> <span class="p">{</span>
+  <span class="kt">uint16_t</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">stats</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="kt">uint16_t</span> <span class="n">set</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">v</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">capacity</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span> <span class="o">&gt;</span> <span class="n">capacity</span><span class="p">)</span> <span class="o">?</span> <span class="n">capacity</span> <span class="o">:</span> <span class="n">v</span><span class="p">;</span> <span class="k">return</span> <span class="n">n</span><span class="p">;</span> <span class="p">}</span>
+  <span class="kt">bool</span> <span class="n">columns</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">stats</span> <span class="o">&amp;&amp;</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
 <span class="cp">#endif
 </span></code></pre></div></div>
 
 <hr />
 
-<p>Updated on 2026-09-23 at 04:50:30 +0000</p>
+<p>Updated on 2026-09-23 at 16:11:03 +0000</p>
 
         
       </section>

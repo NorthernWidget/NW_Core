@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://docs.northernwidget.com/NW_Core/Files/CLAUDE_8md/</loc>
+</url>
+<url>
 <loc>https://docs.northernwidget.com/NW_Core/Files/NW__Core_8h/</loc>
 </url>
 <url>
@@ -8,6 +11,9 @@
 </url>
 <url>
 <loc>https://docs.northernwidget.com/NW_Core/Files/NW__Device_8h/</loc>
+</url>
+<url>
+<loc>https://docs.northernwidget.com/NW_Core/Files/NW__Error_8h/</loc>
 </url>
 <url>
 <loc>https://docs.northernwidget.com/NW_Core/Files/NW__Fault_8h/</loc>
@@ -49,9 +55,15 @@
 <loc>https://docs.northernwidget.com/NW_Core/Pages/index_pages/</loc>
 </url>
 <url>
+<loc>https://docs.northernwidget.com/NW_Core/Pages/md_CLAUDE/</loc>
+</url>
+<url>
 <loc>https://docs.northernwidget.com/NW_Core/Pages/md_README/</loc>
 </url>
 <url>
 <loc>https://docs.northernwidget.com/NW_Core/Classes/structNW__Fault/</loc>
+</url>
+<url>
+<loc>https://docs.northernwidget.com/NW_Core/Classes/structNW__ReadingsConfig/</loc>
 </url>
 </urlset>

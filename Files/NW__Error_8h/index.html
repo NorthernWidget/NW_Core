@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 
 
-<!-- begin _includes/seo.html --><title>Files - NW_Core</title>
+<!-- begin _includes/seo.html --><title>src/NW_Error.h - NW_Core</title>
 <meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
 
 
@@ -26,8 +26,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="NW_Core">
-<meta property="og:title" content="Files">
-<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Files/index_files/">
+<meta property="og:title" content="src/NW_Error.h">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Files/NW__Error_8h/">
 
 
   <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
@@ -45,7 +45,7 @@
 
 
 
-<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Files/index_files/">
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Files/NW__Error_8h/">
 
 
 
@@ -217,7 +217,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Files">
+    <meta itemprop="headline" content="src/NW_Error.h">
     
     
     
@@ -226,7 +226,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://docs.northernwidget.com/NW_Core/Files/index_files/" itemprop="url">Files
+            <a href="https://docs.northernwidget.com/NW_Core/Files/NW__Error_8h/" itemprop="url">src/NW_Error.h
 </a>
           </h1>
           
@@ -241,24 +241,81 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              
+              <ul class="toc__menu"><li><a href="#functions">Functions</a></li><li><a href="#defines">Defines</a></li><li><a href="#functions-documentation">Functions Documentation</a><ul><li><a href="#function-nwscaled">function nwScaled</a></li></ul></li><li><a href="#macros-documentation">Macros Documentation</a><ul><li><a href="#define-nw_error">define NW_ERROR</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
             </nav>
           </aside>
         
-        <ul>
-  <li><strong>file <a href="/NW_Core/Files/CLAUDE_8md/#file-claude.md">CLAUDE.md</a></strong></li>
-  <li><strong>file <a href="/NW_Core/Files/README_8md/#file-readme.md">README.md</a></strong></li>
-  <li><strong>dir <a href="/NW_Core/Files/dir_68267d1309a1af8e8297ef4c3efbcdba/#dir-src">src</a></strong>
-    <ul>
-      <li><strong>file <a href="/NW_Core/Files/NW__Core_8h/#file-nw-core.h">src/NW_Core.h</a></strong> <br />Northern Widget shared library foundation.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Device_8cpp/#file-nw-device.cpp">src/NW_Device.cpp</a></strong></li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Device_8h/#file-nw-device.h">src/NW_Device.h</a></strong> <br />The NW-Device-Specification Schema 1 device protocol over I2C.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Error_8h/#file-nw-error.h">src/NW_Error.h</a></strong> <br />The one missing-value sentinel every NW library writes to file.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Fault_8h/#file-nw-fault.h">src/NW_Fault.h</a></strong> <br />Decoded Block 0 status (0x20) and latched fault (0x27) of a Schema 1 device.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Readings_8h/#file-nw-readings.h">src/NW_Readings.h</a></strong> <br />A measurement’s readings in a fixed-capacity array, with statistics.</li>
-    </ul>
-  </li>
-</ul>
+        <p>The one missing-value sentinel every NW library writes to file.</p>
+
+<h2 id="functions">Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>float</td>
+      <td><strong><a href="/NW_Core/Files/NW__Error_8h/#function-nwscaled">nwScaled</a></strong>(float v, float divisor)<br />Scale a statistic from register units to physical units, passing NW_ERROR through untouched.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="defines">Defines</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Error_8h/#define-nw-error">NW_ERROR</a></strong> <br />Missing or failed value on file, for every NW library (NOAA and earth-science convention).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="functions-documentation">Functions Documentation</h2>
+
+<h3 id="function-nwscaled">function nwScaled</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">float</span> <span class="n">nwScaled</span><span class="p">(</span>
+    <span class="kt">float</span> <span class="n">v</span><span class="p">,</span>
+    <span class="kt">float</span> <span class="n">divisor</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Scale a statistic from register units to physical units, passing NW_ERROR through untouched.</p>
+
+<h2 id="macros-documentation">Macros Documentation</h2>
+
+<h3 id="define-nw_error">define NW_ERROR</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_ERROR -9999
+</span></code></pre></div></div>
+
+<p>Missing or failed value on file, for every NW library (NOAA and earth-science convention).</p>
+
+<h2 id="source-code">Source code</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">#ifndef NW_Error_h
+#define NW_Error_h
+</span>
+<span class="cp">#ifndef NW_ERROR
+#define NW_ERROR -9999
+#endif
+</span>
+<span class="kr">inline</span> <span class="kt">float</span> <span class="nf">nwScaled</span><span class="p">(</span><span class="kt">float</span> <span class="n">v</span><span class="p">,</span> <span class="kt">float</span> <span class="n">divisor</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="n">NW_ERROR</span><span class="p">)</span> <span class="o">?</span> <span class="n">NW_ERROR</span> <span class="o">:</span> <span class="n">v</span> <span class="o">/</span> <span class="n">divisor</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="cp">#endif
+</span></code></pre></div></div>
 
 <hr />
 

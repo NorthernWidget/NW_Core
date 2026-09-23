@@ -311,6 +311,26 @@
       <span class="nl">default:</span> <span class="p">{</span> <span class="n">String</span> <span class="n">w</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s">"Kind"</span><span class="p">);</span> <span class="n">w</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">kind</span><span class="p">());</span> <span class="k">return</span> <span class="n">w</span><span class="p">;</span> <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
+  <span class="kt">size_t</span> <span class="nf">print</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="kt">uint8_t</span> <span class="n">c</span> <span class="o">=</span> <span class="n">chip</span><span class="p">(),</span> <span class="n">k</span> <span class="o">=</span> <span class="n">kind</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"none"</span><span class="p">));</span>
+    <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"unit"</span><span class="p">));</span>
+    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">&lt;</span> <span class="n">nChips</span><span class="p">)</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">chipNames</span><span class="p">[</span><span class="n">c</span><span class="p">]);</span>
+    <span class="k">else</span> <span class="p">{</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"chip "</span><span class="p">));</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">c</span><span class="p">);</span> <span class="p">}</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">": "</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">printKind</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">String</span> <span class="nf">note</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="kt">uint8_t</span> <span class="n">c</span> <span class="o">=</span> <span class="n">chip</span><span class="p">();</span>
+    <span class="n">String</span> <span class="n">w</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">kind</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nf">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"UnitNone"</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span> <span class="n">w</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s">"Unit"</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">&lt;</span> <span class="n">nChips</span><span class="p">)</span> <span class="n">w</span> <span class="o">=</span> <span class="n">chipNames</span><span class="p">[</span><span class="n">c</span><span class="p">];</span>
+    <span class="k">else</span> <span class="p">{</span> <span class="n">w</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s">"Chip"</span><span class="p">);</span> <span class="n">w</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">c</span><span class="p">);</span> <span class="p">}</span>
+    <span class="n">w</span> <span class="o">+=</span> <span class="n">kindWord</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">w</span><span class="p">;</span>
+  <span class="p">}</span>
   <span class="kt">bool</span> <span class="n">chipAbsent</span><span class="p">()</span> <span class="k">const</span>               <span class="p">{</span> <span class="k">return</span> <span class="n">kind</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">kind</span><span class="p">()</span> <span class="o">==</span> <span class="mi">5</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">};</span>
 
@@ -319,7 +339,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 04:50:30 +0000</p>
+<p>Updated on 2026-09-23 at 16:11:03 +0000</p>
 
         
       </section>

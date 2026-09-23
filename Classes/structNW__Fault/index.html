@@ -241,7 +241,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-ready">function ready</a></li><li><a href="#function-chipfaulted">function chipFaulted</a></li><li><a href="#function-any">function any</a></li><li><a href="#function-chip">function chip</a></li><li><a href="#function-kind">function kind</a></li><li><a href="#function-isunit">function isUnit</a></li><li><a href="#function-printkind">function printKind</a></li><li><a href="#function-kindword">function kindWord</a></li><li><a href="#function-chipabsent">function chipAbsent</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-status">variable status</a></li><li><a href="#variable-code">variable code</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-ready">function ready</a></li><li><a href="#function-chipfaulted">function chipFaulted</a></li><li><a href="#function-any">function any</a></li><li><a href="#function-chip">function chip</a></li><li><a href="#function-kind">function kind</a></li><li><a href="#function-isunit">function isUnit</a></li><li><a href="#function-printkind">function printKind</a></li><li><a href="#function-kindword">function kindWord</a></li><li><a href="#function-print">function print</a></li><li><a href="#function-note">function note</a></li><li><a href="#function-chipabsent">function chipAbsent</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-status">variable status</a></li><li><a href="#variable-code">variable code</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -292,6 +292,14 @@
       <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-kindword">kindWord</a></strong>() const<br />The kind as one word for a data-table note (“Timeout”; “Kind17” for device-specific kinds).</td>
     </tr>
     <tr>
+      <td>size_t</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-print">print</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips) const<br />Print the latched fault in words: the chip, then the kind, e.g. “MS5803: no acknowledge”, “unit: reset since configured”; “none” when there is no fault. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</td>
+    </tr>
+    <tr>
+      <td>String</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-note">note</a></strong>(const char *const * chipNames, uint8_t nChips) const<br />The latched fault as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NoACK”, “UnitReset”, “Chip2Kind17”; “UnitNone” when there is no fault (check <a href="/NW_Core/Classes/structNW__Fault/#function-any">any()</a> first).</td>
+    </tr>
+    <tr>
       <td>bool</td>
       <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-chipabsent">chipAbsent</a></strong>() const<br />True for the kinds that mean the chip is not coming back this batch (no acknowledge, not initialised).</td>
     </tr>
@@ -326,7 +334,7 @@
 
 <p>The two Block 0 bytes that describe a reading’s health, with their decoding.</p>
 
-<p>status (0x20) is live: bit 0 ready, bits 1-6 chip n-1 faulted now, bit 7 pan-fault (OR of bits 1-6). code (0x27) is latched until the controller next writes Control: bits 7-5 chip (7 = the unit), bits 4-0 kind. Kinds (NW-Device-Specification): 0 none, 1 no acknowledge, 2 timeout, 3 checksum, 4 out of range, 5 not initialised, 6 reset since configured, 7 config rejected, 8 supply fault, 9-15 reserved, 16-31 device-specific. The chip names are the device’s own; a library prints them itself and calls <a href="/NW_Core/Classes/structNW__Fault/#function-printkind">printKind()</a> for the universal part.</p>
+<p>status (0x20) is live: bit 0 ready, bits 1-6 chip n-1 faulted now, bit 7 pan-fault (OR of bits 1-6). code (0x27) is latched until the controller next writes Control: bits 7-5 chip (7 = the unit), bits 4-0 kind. Kinds (NW-Device-Specification): 0 none, 1 no acknowledge, 2 timeout, 3 checksum, 4 out of range, 5 not initialised, 6 reset since configured, 7 config rejected, 8 supply fault, 9-15 reserved, 16-31 device-specific. The chip names are the device’s own: a library passes its table (the spec’s chip table, in order) to <a href="/NW_Core/Classes/structNW__Fault/#function-print">print()</a> and <a href="/NW_Core/Classes/structNW__Fault/#function-note">note()</a>; <a href="/NW_Core/Classes/structNW__Fault/#function-printkind">printKind()</a> and <a href="/NW_Core/Classes/structNW__Fault/#function-kindword">kindWord()</a> give the universal part alone.</p>
 
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
 
@@ -384,6 +392,29 @@
 
 <p>The kind as one word for a data-table note (“Timeout”; “Kind17” for device-specific kinds).</p>
 
+<h3 id="function-print">function print</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">print</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">nChips</span>
+<span class="p">)</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>Print the latched fault in words: the chip, then the kind, e.g. “MS5803: no acknowledge”, “unit: reset since configured”; “none” when there is no fault. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</p>
+
+<p><strong>Return</strong>: Bytes written.</p>
+
+<h3 id="function-note">function note</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">String</span> <span class="n">note</span><span class="p">(</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">nChips</span>
+<span class="p">)</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>The latched fault as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NoACK”, “UnitReset”, “Chip2Kind17”; “UnitNone” when there is no fault (check <a href="/NW_Core/Classes/structNW__Fault/#function-any">any()</a> first).</p>
+
 <h3 id="function-chipabsent">function chipAbsent</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">chipAbsent</span><span class="p">()</span> <span class="k">const</span>
@@ -409,7 +440,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 04:50:30 +0000</p>
+<p>Updated on 2026-09-23 at 16:11:03 +0000</p>
 
         
       </section>

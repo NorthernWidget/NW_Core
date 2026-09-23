@@ -241,7 +241,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#defines">Defines</a></li><li><a href="#macros-documentation">Macros Documentation</a><ul><li><a href="#define-nw_reg_schema">define NW_REG_SCHEMA</a></li><li><a href="#define-nw_reg_name">define NW_REG_NAME</a></li><li><a href="#define-nw_reg_hw_major">define NW_REG_HW_MAJOR</a></li><li><a href="#define-nw_reg_hw_minor">define NW_REG_HW_MINOR</a></li><li><a href="#define-nw_reg_fw_patch">define NW_REG_FW_PATCH</a></li><li><a href="#define-nw_reg_i2c_addr">define NW_REG_I2C_ADDR</a></li><li><a href="#define-nw_reg_status">define NW_REG_STATUS</a></li><li><a href="#define-nw_reg_ctrl">define NW_REG_CTRL</a></li><li><a href="#define-nw_reg_counter">define NW_REG_COUNTER</a></li><li><a href="#define-nw_reg_request">define NW_REG_REQUEST</a></li><li><a href="#define-nw_reg_config">define NW_REG_CONFIG</a></li><li><a href="#define-nw_reg_fault">define NW_REG_FAULT</a></li><li><a href="#define-nw_reg_data">define NW_REG_DATA</a></li><li><a href="#define-nw_bit_ready">define NW_BIT_READY</a></li><li><a href="#define-nw_bit_panfault">define NW_BIT_PANFAULT</a></li><li><a href="#define-nw_ctrl_trigger">define NW_CTRL_TRIGGER</a></li><li><a href="#define-nw_ctrl_sleep">define NW_CTRL_SLEEP</a></li><li><a href="#define-nw_wire_chunk">define NW_WIRE_CHUNK</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
+              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#defines">Defines</a></li><li><a href="#macros-documentation">Macros Documentation</a><ul><li><a href="#define-nw_reg_schema">define NW_REG_SCHEMA</a></li><li><a href="#define-nw_reg_name">define NW_REG_NAME</a></li><li><a href="#define-nw_reg_hw_major">define NW_REG_HW_MAJOR</a></li><li><a href="#define-nw_reg_hw_minor">define NW_REG_HW_MINOR</a></li><li><a href="#define-nw_reg_fw_patch">define NW_REG_FW_PATCH</a></li><li><a href="#define-nw_reg_i2c_addr">define NW_REG_I2C_ADDR</a></li><li><a href="#define-nw_reg_status">define NW_REG_STATUS</a></li><li><a href="#define-nw_reg_ctrl">define NW_REG_CTRL</a></li><li><a href="#define-nw_reg_counter">define NW_REG_COUNTER</a></li><li><a href="#define-nw_reg_request">define NW_REG_REQUEST</a></li><li><a href="#define-nw_reg_config">define NW_REG_CONFIG</a></li><li><a href="#define-nw_reg_fault">define NW_REG_FAULT</a></li><li><a href="#define-nw_reg_data">define NW_REG_DATA</a></li><li><a href="#define-nw_bit_ready">define NW_BIT_READY</a></li><li><a href="#define-nw_bit_panfault">define NW_BIT_PANFAULT</a></li><li><a href="#define-nw_ctrl_trigger">define NW_CTRL_TRIGGER</a></li><li><a href="#define-nw_ctrl_sleep">define NW_CTRL_SLEEP</a></li><li><a href="#define-nw_wire_chunk">define NW_WIRE_CHUNK</a></li><li><a href="#define-nw_data_retries">define NW_DATA_RETRIES</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
             </nav>
           </aside>
         
@@ -345,6 +345,10 @@
     <tr>
       <td> </td>
       <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-wire-chunk">NW_WIRE_CHUNK</a></strong> <br />the AVR Wire buffer; longer reads are split into transactions of this size</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-data-retries">NW_DATA_RETRIES</a></strong> <br />readData() re-reads at most this many times when the counter moved during a read</td>
     </tr>
   </tbody>
 </table>
@@ -465,6 +469,13 @@
 
 <p>the AVR Wire buffer; longer reads are split into transactions of this size</p>
 
+<h3 id="define-nw_data_retries">define NW_DATA_RETRIES</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_DATA_RETRIES 2
+</span></code></pre></div></div>
+
+<p>readData() re-reads at most this many times when the counter moved during a read</p>
+
 <h2 id="source-code">Source code</h2>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
@@ -495,6 +506,7 @@
 #define NW_CTRL_TRIGGER  0x01
 #define NW_CTRL_SLEEP    0x80
 #define NW_WIRE_CHUNK    32    
+#define NW_DATA_RETRIES  2     
 </span>
 <span class="k">class</span> <span class="nc">NW_Device</span> <span class="p">{</span>
   <span class="nl">public:</span>
@@ -521,6 +533,17 @@
     <span class="c1">// --- Batches (NW-Device-Specification 0x24-0x25) ---</span>
     <span class="kt">bool</span> <span class="nf">writeBatch</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">n</span><span class="p">);</span>
     <span class="kt">void</span> <span class="nf">resetBatch</span><span class="p">()</span>                 <span class="p">{</span> <span class="n">_absentChips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">bool</span> <span class="nf">beginBatch</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">n</span><span class="p">)</span>       <span class="p">{</span> <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="n">writeBatch</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">resetBatch</span><span class="p">();</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span><span class="p">&gt;</span>
+    <span class="kt">uint16_t</span> <span class="nf">takeReadings</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">n</span><span class="p">,</span> <span class="n">F</span> <span class="n">readOne</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">beginBatch</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+      <span class="kt">uint16_t</span> <span class="n">taken</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">uint16_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">readOne</span><span class="p">())</span> <span class="n">taken</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">batchFaulted</span><span class="p">(</span><span class="n">chips</span><span class="p">))</span> <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="n">taken</span><span class="p">;</span>
+    <span class="p">}</span>
     <span class="kt">bool</span> <span class="n">batchFaulted</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span> <span class="o">=</span> <span class="mh">0x3F</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">_absentChips</span> <span class="o">&amp;</span> <span class="n">chips</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
 
     <span class="c1">// --- Faults ---</span>
@@ -532,6 +555,8 @@
 
     <span class="c1">// --- Registers ---</span>
     <span class="kt">bool</span> <span class="nf">readBytes</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">n</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="nf">readData</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">n</span><span class="p">);</span>
+    <span class="kt">bool</span> <span class="n">dataMoved</span><span class="p">()</span> <span class="k">const</span>            <span class="p">{</span> <span class="k">return</span> <span class="n">_dataMoved</span><span class="p">;</span> <span class="p">}</span>
     <span class="kt">bool</span> <span class="nf">writeByte</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">value</span><span class="p">);</span>
     <span class="kt">uint8_t</span> <span class="nf">readConfig</span><span class="p">();</span>
     <span class="kt">bool</span> <span class="nf">writeConfig</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">value</span><span class="p">)</span>   <span class="p">{</span> <span class="k">return</span> <span class="n">writeByte</span><span class="p">(</span><span class="n">NW_REG_CONFIG</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span> <span class="p">}</span>
@@ -546,6 +571,7 @@
     <span class="kt">uint16_t</span> <span class="n">_counterBefore</span> <span class="o">=</span> <span class="mh">0xFFFF</span><span class="p">;</span>   <span class="c1">// counter seen at the last request</span>
     <span class="kt">uint8_t</span>  <span class="n">_chips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                <span class="c1">// chips selected at the last request</span>
     <span class="kt">uint8_t</span> <span class="n">_absentChips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>           <span class="c1">// chips that reported absent since the last writeBatch()/resetBatch()</span>
+    <span class="kt">bool</span> <span class="n">_dataMoved</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>            <span class="c1">// readData() exhausted its retries</span>
     <span class="n">NW_Fault</span> <span class="n">_fault</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -554,7 +580,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 04:50:30 +0000</p>
+<p>Updated on 2026-09-23 at 16:11:03 +0000</p>
 
         
       </section>

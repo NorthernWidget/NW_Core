@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 
 
-<!-- begin _includes/seo.html --><title>Files - NW_Core</title>
+<!-- begin _includes/seo.html --><title>NW_Core</title>
 <meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
 
 
@@ -26,8 +26,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="NW_Core">
-<meta property="og:title" content="Files">
-<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Files/index_files/">
+<meta property="og:title" content="NW_Core">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Pages/md_CLAUDE/">
 
 
   <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
@@ -45,7 +45,7 @@
 
 
 
-<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Files/index_files/">
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Pages/md_CLAUDE/">
 
 
 
@@ -217,7 +217,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Files">
+    <meta itemprop="headline" content="NW_Core">
     
     
     
@@ -226,7 +226,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://docs.northernwidget.com/NW_Core/Files/index_files/" itemprop="url">Files
+            <a href="https://docs.northernwidget.com/NW_Core/Pages/md_CLAUDE/" itemprop="url">NW_Core
 </a>
           </h1>
           
@@ -241,24 +241,28 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              
+              <ul class="toc__menu"><li><a href="#standards">Standards</a></li><li><a href="#working-rules">Working rules</a></li><li><a href="#hard-rule">Hard rule</a></li></ul>
             </nav>
           </aside>
         
-        <ul>
-  <li><strong>file <a href="/NW_Core/Files/CLAUDE_8md/#file-claude.md">CLAUDE.md</a></strong></li>
-  <li><strong>file <a href="/NW_Core/Files/README_8md/#file-readme.md">README.md</a></strong></li>
-  <li><strong>dir <a href="/NW_Core/Files/dir_68267d1309a1af8e8297ef4c3efbcdba/#dir-src">src</a></strong>
-    <ul>
-      <li><strong>file <a href="/NW_Core/Files/NW__Core_8h/#file-nw-core.h">src/NW_Core.h</a></strong> <br />Northern Widget shared library foundation.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Device_8cpp/#file-nw-device.cpp">src/NW_Device.cpp</a></strong></li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Device_8h/#file-nw-device.h">src/NW_Device.h</a></strong> <br />The NW-Device-Specification Schema 1 device protocol over I2C.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Error_8h/#file-nw-error.h">src/NW_Error.h</a></strong> <br />The one missing-value sentinel every NW library writes to file.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Fault_8h/#file-nw-fault.h">src/NW_Fault.h</a></strong> <br />Decoded Block 0 status (0x20) and latched fault (0x27) of a Schema 1 device.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Readings_8h/#file-nw-readings.h">src/NW_Readings.h</a></strong> <br />A measurement’s readings in a fixed-capacity array, with statistics.</li>
-    </ul>
-  </li>
+        <p>Shared foundation for the Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol (<code class="language-plaintext highlighter-rouge">[NW_Device](/NW_Core/Classes/classNW__Device/)</code>), the readings store with statistics (<code class="language-plaintext highlighter-rouge">[NW_Readings](/NW_Core/Classes/classNW__Readings/)</code>, <code class="language-plaintext highlighter-rouge">[NW_ReadingsConfig](/NW_Core/Classes/structNW__ReadingsConfig/)</code>), the fault decoder (<code class="language-plaintext highlighter-rouge">[NW_Fault](/NW_Core/Classes/structNW__Fault/)</code>), and the missing-value sentinel (<code class="language-plaintext highlighter-rouge">[NW_Error.h](/NW_Core/Files/NW__Error_8h/#file-nw-error.h)</code>). Apis_Library, Walrus_Library and Haar_Library build on it.</p>
+
+<h1 id="standards">Standards</h1>
+
+<p>Follow the NW library standards for all work here: the root <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> one level above <code class="language-plaintext highlighter-rouge">github/</code> has the checklist and code conventions, mirrored at <a href="https://github.com/NorthernWidget/NW-Device-Specification/blob/master/RELEASING.md">NW-Device-Specification/RELEASING.md</a>. The design and the line between what lives here and what stays in a library is <a href="https://github.com/NorthernWidget/NW-Device-Specification/blob/master/LIBRARY-DESIGN.md">LIBRARY-DESIGN.md</a>, section 0 and section 11.</p>
+
+<h1 id="working-rules">Working rules</h1>
+
+<ul>
+  <li>Core is extracted from what is identical across the libraries, never designed ahead of them. A change here is verified by every consumer’s harness (<code class="language-plaintext highlighter-rouge">extras/test/run.sh</code> in Apis_Library, Walrus_Library, Haar_Library, T9602_Library and MCP23018) staying byte-identical, plus Core’s own harness and a compile for <code class="language-plaintext highlighter-rouge">arduino:avr:uno</code> and <code class="language-plaintext highlighter-rouge">NorthernWidget:avr:NW1284p</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">extras/test/</code> holds the stubs (<code class="language-plaintext highlighter-rouge">Arduino.h</code>, <code class="language-plaintext highlighter-rouge">Wire.h</code>), the shared harness support (<code class="language-plaintext highlighter-rouge">NW_TestSupport.h</code>) and the shared runner (<code class="language-plaintext highlighter-rouge">run_library.sh</code>) that every library harness includes; changing them changes every harness.</li>
+  <li>Formatting: the Arduino IDE auto-format (2-space indent, attached braces); lines under about 80 columns where practical.</li>
+  <li>Unversioned (0.0.0) and unregistered until the 2026 overhaul ends; no CITATION.cff or .zenodo.json until then.</li>
 </ul>
+
+<h1 id="hard-rule">Hard rule</h1>
+
+<p><strong>Never</strong> create a git tag, GitHub release, push to a shared remote, or submit to any external registry (Zenodo, Arduino Library Manager, etc.) unless explicitly asked in the current message. If in doubt, ask.</p>
 
 <hr />
 

@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 
 
-<!-- begin _includes/seo.html --><title>Files - NW_Core</title>
+<!-- begin _includes/seo.html --><title>NW_Core</title>
 <meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
 
 
@@ -26,8 +26,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="NW_Core">
-<meta property="og:title" content="Files">
-<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Files/index_files/">
+<meta property="og:title" content="NW_Core">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Classes/structNW__ReadingsConfig/">
 
 
   <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
@@ -45,7 +45,7 @@
 
 
 
-<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Files/index_files/">
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Classes/structNW__ReadingsConfig/">
 
 
 
@@ -217,7 +217,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Files">
+    
     
     
     
@@ -225,10 +225,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://docs.northernwidget.com/NW_Core/Files/index_files/" itemprop="url">Files
-</a>
-          </h1>
+          
           
 
 
@@ -241,24 +238,91 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-set">function set</a></li><li><a href="#function-columns">function columns</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-n">variable n</a></li><li><a href="#variable-stats">variable stats</a></li></ul></li></ul>
             </nav>
           </aside>
         
-        <ul>
-  <li><strong>file <a href="/NW_Core/Files/CLAUDE_8md/#file-claude.md">CLAUDE.md</a></strong></li>
-  <li><strong>file <a href="/NW_Core/Files/README_8md/#file-readme.md">README.md</a></strong></li>
-  <li><strong>dir <a href="/NW_Core/Files/dir_68267d1309a1af8e8297ef4c3efbcdba/#dir-src">src</a></strong>
-    <ul>
-      <li><strong>file <a href="/NW_Core/Files/NW__Core_8h/#file-nw-core.h">src/NW_Core.h</a></strong> <br />Northern Widget shared library foundation.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Device_8cpp/#file-nw-device.cpp">src/NW_Device.cpp</a></strong></li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Device_8h/#file-nw-device.h">src/NW_Device.h</a></strong> <br />The NW-Device-Specification Schema 1 device protocol over I2C.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Error_8h/#file-nw-error.h">src/NW_Error.h</a></strong> <br />The one missing-value sentinel every NW library writes to file.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Fault_8h/#file-nw-fault.h">src/NW_Fault.h</a></strong> <br />Decoded Block 0 status (0x20) and latched fault (0x27) of a Schema 1 device.</li>
-      <li><strong>file <a href="/NW_Core/Files/NW__Readings_8h/#file-nw-readings.h">src/NW_Readings.h</a></strong> <br />A measurement’s readings in a fixed-capacity array, with statistics.</li>
-    </ul>
-  </li>
-</ul>
+        <p>How many readings a chip group takes per updateMeasurements() and whether its statistics columns print: one per chip group in a library.  <a href="#detailed-description">More…</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">#include &lt;NW_Readings.h&gt;</code></p>
+
+<h2 id="public-functions">Public Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>uint16_t</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__ReadingsConfig/#function-set">set</a></strong>(uint16_t v, uint16_t capacity)</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__ReadingsConfig/#function-columns">columns</a></strong>() const</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="public-attributes">Public Attributes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>uint16_t</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__ReadingsConfig/#variable-n">n</a></strong></td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__ReadingsConfig/#variable-stats">stats</a></strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="detailed-description">Detailed Description</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">NW_ReadingsConfig</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>How many readings a chip group takes per updateMeasurements() and whether its statistics columns print: one per chip group in a library.</p>
+
+<p>set() clamps to the group’s array capacity and returns what was set; columns() is the one rule for printing std and sterr (enabled, and more than one reading, since one reading has no statistics).</p>
+
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+
+<h3 id="function-set">function set</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">uint16_t</span> <span class="n">set</span><span class="p">(</span>
+    <span class="kt">uint16_t</span> <span class="n">v</span><span class="p">,</span>
+    <span class="kt">uint16_t</span> <span class="n">capacity</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="function-columns">function columns</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">columns</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
+
+<h3 id="variable-n">variable n</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">uint16_t</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="variable-stats">variable stats</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">stats</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</code></pre></div></div>
 
 <hr />
 

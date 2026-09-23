@@ -238,7 +238,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-begin">function begin</a></li><li><a href="#function-beginfailure">function beginFailure</a></li><li><a href="#function-address">function address</a></li><li><a href="#function-hardwaremajor">function hardwareMajor</a></li><li><a href="#function-hardwareminor">function hardwareMinor</a></li><li><a href="#function-firmwareversion">function firmwareVersion</a></li><li><a href="#function-seti2caddress">function setI2CAddress</a></li><li><a href="#function-settimeout">function setTimeout</a></li><li><a href="#function-timeout">function timeout</a></li><li><a href="#function-ready">function ready</a></li><li><a href="#function-readcounter">function readCounter</a></li><li><a href="#function-newreading">function newReading</a></li><li><a href="#function-requestreading">function requestReading</a></li><li><a href="#function-waitreading">function waitReading</a></li><li><a href="#function-capturereading">function captureReading</a></li><li><a href="#function-takereading">function takeReading</a></li><li><a href="#function-writebatch">function writeBatch</a></li><li><a href="#function-resetbatch">function resetBatch</a></li><li><a href="#function-batchfaulted">function batchFaulted</a></li><li><a href="#function-fault">function fault</a></li><li><a href="#function-faulted">function faulted</a></li><li><a href="#function-anyfault">function anyFault</a></li><li><a href="#function-faultchip">function faultChip</a></li><li><a href="#function-faultkind">function faultKind</a></li><li><a href="#function-readbytes">function readBytes</a></li><li><a href="#function-writebyte">function writeByte</a></li><li><a href="#function-readconfig">function readConfig</a></li><li><a href="#function-writeconfig">function writeConfig</a></li><li><a href="#function-sleep">function sleep</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-begin">function begin</a></li><li><a href="#function-beginfailure">function beginFailure</a></li><li><a href="#function-address">function address</a></li><li><a href="#function-hardwaremajor">function hardwareMajor</a></li><li><a href="#function-hardwareminor">function hardwareMinor</a></li><li><a href="#function-firmwareversion">function firmwareVersion</a></li><li><a href="#function-seti2caddress">function setI2CAddress</a></li><li><a href="#function-settimeout">function setTimeout</a></li><li><a href="#function-timeout">function timeout</a></li><li><a href="#function-ready">function ready</a></li><li><a href="#function-readcounter">function readCounter</a></li><li><a href="#function-newreading">function newReading</a></li><li><a href="#function-requestreading">function requestReading</a></li><li><a href="#function-waitreading">function waitReading</a></li><li><a href="#function-capturereading">function captureReading</a></li><li><a href="#function-takereading">function takeReading</a></li><li><a href="#function-writebatch">function writeBatch</a></li><li><a href="#function-resetbatch">function resetBatch</a></li><li><a href="#function-beginbatch">function beginBatch</a></li><li><a href="#function-takereadings">function takeReadings</a></li><li><a href="#function-batchfaulted">function batchFaulted</a></li><li><a href="#function-fault">function fault</a></li><li><a href="#function-faulted">function faulted</a></li><li><a href="#function-anyfault">function anyFault</a></li><li><a href="#function-faultchip">function faultChip</a></li><li><a href="#function-faultkind">function faultKind</a></li><li><a href="#function-readbytes">function readBytes</a></li><li><a href="#function-readdata">function readData</a></li><li><a href="#function-datamoved">function dataMoved</a></li><li><a href="#function-writebyte">function writeByte</a></li><li><a href="#function-readconfig">function readConfig</a></li><li><a href="#function-writeconfig">function writeConfig</a></li><li><a href="#function-sleep">function sleep</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -330,6 +330,14 @@
     </tr>
     <tr>
       <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-beginbatch">beginBatch</a></strong>(uint16_t n)<br />Start a batch of n readings: writeBatch(n) when n &gt; 1, else <a href="/NW_Core/Classes/classNW__Device/#function-resetbatch">resetBatch()</a>.</td>
+    </tr>
+    <tr>
+      <td>template &lt;typename F &gt; <br />uint16_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-takereadings">takeReadings</a></strong>(uint8_t chips, uint16_t n, F readOne)<br />Take up to n readings of the given chips, one at a time, through readOne().</td>
+    </tr>
+    <tr>
+      <td>bool</td>
       <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-batchfaulted">batchFaulted</a></strong>(uint8_t chips =0x3F) const<br />Any of the given chips reported, earlier in this batch, that it is not coming (no acknowledge or not initialised). Per chip: an absent accelerometer does not stop the range readings of the same batch.</td>
     </tr>
     <tr>
@@ -355,6 +363,14 @@
     <tr>
       <td>bool</td>
       <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-readbytes">readBytes</a></strong>(uint8_t reg, uint8_t * buf, uint8_t n)<br />Read n bytes from reg; reads longer than NW_WIRE_CHUNK are split into several transactions.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-readdata">readData</a></strong>(uint8_t reg, uint8_t * buf, uint8_t n)<br />Read a reading’s data registers and check that they belong to the captured reading.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-datamoved">dataMoved</a></strong>() const<br />The last <a href="/NW_Core/Classes/classNW__Device/#function-readdata">readData()</a> gave up: the device committed a new reading during every attempt.</td>
     </tr>
     <tr>
       <td>bool</td>
@@ -547,6 +563,35 @@
 
 <p>Forget a previous batch’s absent chips without writing the size (single readings).</p>
 
+<h3 id="function-beginbatch">function beginBatch</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">beginBatch</span><span class="p">(</span>
+    <span class="kt">uint16_t</span> <span class="n">n</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Start a batch of n readings: writeBatch(n) when n &gt; 1, else <a href="/NW_Core/Classes/classNW__Device/#function-resetbatch">resetBatch()</a>.</p>
+
+<p><strong>Return</strong>: false if the batch word could not be written</p>
+
+<p>The library’s loop then calls <a href="/NW_Core/Classes/classNW__Device/#function-takereading">takeReading()</a> n times, appending each successful reading to its <a href="/NW_Core/Classes/classNW__Readings/">NW_Readings</a>, and stops early on batchFaulted(chips). One reading is a batch of one (n = 0 or 1), which writes nothing to the device.</p>
+
+<h3 id="function-takereadings">function takeReadings</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span> <span class="p">&gt;</span>
+<span class="kr">inline</span> <span class="kt">uint16_t</span> <span class="n">takeReadings</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">chips</span><span class="p">,</span>
+    <span class="kt">uint16_t</span> <span class="n">n</span><span class="p">,</span>
+    <span class="n">F</span> <span class="n">readOne</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Take up to n readings of the given chips, one at a time, through readOne().</p>
+
+<p><strong>Return</strong>: how many calls to readOne() returned true</p>
+
+<p>beginBatch(n), then readOne() n times; stops early once a selected chip has reported absent (batchFaulted(chips)), so a dead chip costs one reading, not n. readOne is any callable returning bool: true when it stored a reading (a library’s updateRange(), updatePressure(), …).</p>
+
 <h3 id="function-batchfaulted">function batchFaulted</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">batchFaulted</span><span class="p">(</span>
@@ -602,6 +647,28 @@
 
 <p>Read n bytes from reg; reads longer than NW_WIRE_CHUNK are split into several transactions.</p>
 
+<h3 id="function-readdata">function readData</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">readData</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">buf</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">n</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Read a reading’s data registers and check that they belong to the captured reading.</p>
+
+<p><strong>Return</strong>: true with buf holding one complete reading, the one fault() describes</p>
+
+<p>The device commits data and counter together with interrupts off, and serves each page as a snapshot (NW-Device-Specification, atomic rewrite), but nothing stops it committing between two of the controller’s transactions: a free-running device can do so, and a read longer than NW_WIRE_CHUNK is several transactions. So: <a href="/NW_Core/Classes/classNW__Device/#function-readbytes">readBytes()</a>, then the counter again. Equal to the counter <a href="/NW_Core/Classes/classNW__Device/#function-capturereading">captureReading()</a> saw, every byte is that reading’s. Otherwise capture the new Block 0 and read again, at most NW_DATA_RETRIES times, then give up with <a href="/NW_Core/Classes/classNW__Device/#function-datamoved">dataMoved()</a> set, so a device that commits faster than it can be read never holds the controller. Use it for the data after <a href="/NW_Core/Classes/classNW__Device/#function-takereading">takeReading()</a> or <a href="/NW_Core/Classes/classNW__Device/#function-capturereading">captureReading()</a>; <a href="/NW_Core/Classes/classNW__Device/#function-readbytes">readBytes()</a> is for Page 0 and single registers.</p>
+
+<h3 id="function-datamoved">function dataMoved</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">dataMoved</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>The last <a href="/NW_Core/Classes/classNW__Device/#function-readdata">readData()</a> gave up: the device committed a new reading during every attempt.</p>
+
 <h3 id="function-writebyte">function writeByte</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">writeByte</span><span class="p">(</span>
@@ -631,7 +698,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 04:50:30 +0000</p>
+<p>Updated on 2026-09-23 at 16:11:03 +0000</p>
 
         
       </section>
