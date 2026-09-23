@@ -16,10 +16,10 @@
 <loc>https://docs.northernwidget.com/NW_Core/Files/NW__Error_8h/</loc>
 </url>
 <url>
-<loc>https://docs.northernwidget.com/NW_Core/Files/NW__Fault_8h/</loc>
+<loc>https://docs.northernwidget.com/NW_Core/Files/NW__Readings_8h/</loc>
 </url>
 <url>
-<loc>https://docs.northernwidget.com/NW_Core/Files/NW__Readings_8h/</loc>
+<loc>https://docs.northernwidget.com/NW_Core/Files/NW__Report_8h/</loc>
 </url>
 <url>
 <loc>https://docs.northernwidget.com/NW_Core/Files/README_8md/</loc>
@@ -61,9 +61,9 @@
 <loc>https://docs.northernwidget.com/NW_Core/Pages/md_README/</loc>
 </url>
 <url>
-<loc>https://docs.northernwidget.com/NW_Core/Classes/structNW__Fault/</loc>
+<loc>https://docs.northernwidget.com/NW_Core/Classes/structNW__ReadingsConfig/</loc>
 </url>
 <url>
-<loc>https://docs.northernwidget.com/NW_Core/Classes/structNW__ReadingsConfig/</loc>
+<loc>https://docs.northernwidget.com/NW_Core/Classes/structNW__Report/</loc>
 </url>
 </urlset>

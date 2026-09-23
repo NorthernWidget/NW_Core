@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 
 
-<!-- begin _includes/seo.html --><title>NW_Fault - NW_Core</title>
+<!-- begin _includes/seo.html --><title>NW_Report - NW_Core</title>
 <meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
 
 
@@ -26,8 +26,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="NW_Core">
-<meta property="og:title" content="NW_Fault">
-<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Classes/structNW__Fault/">
+<meta property="og:title" content="NW_Report">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Classes/structNW__Report/">
 
 
   <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
@@ -45,7 +45,7 @@
 
 
 
-<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Classes/structNW__Fault/">
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Classes/structNW__Report/">
 
 
 
@@ -217,7 +217,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="NW_Fault">
+    <meta itemprop="headline" content="NW_Report">
     
     
     
@@ -226,7 +226,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://docs.northernwidget.com/NW_Core/Classes/structNW__Fault/" itemprop="url">NW_Fault
+            <a href="https://docs.northernwidget.com/NW_Core/Classes/structNW__Report/" itemprop="url">NW_Report
 </a>
           </h1>
           
@@ -241,13 +241,13 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-ready">function ready</a></li><li><a href="#function-chipfaulted">function chipFaulted</a></li><li><a href="#function-any">function any</a></li><li><a href="#function-chip">function chip</a></li><li><a href="#function-kind">function kind</a></li><li><a href="#function-isunit">function isUnit</a></li><li><a href="#function-printkind">function printKind</a></li><li><a href="#function-kindword">function kindWord</a></li><li><a href="#function-print">function print</a></li><li><a href="#function-note">function note</a></li><li><a href="#function-chipabsent">function chipAbsent</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-status">variable status</a></li><li><a href="#variable-code">variable code</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-ready">function ready</a></li><li><a href="#function-chipfaulted">function chipFaulted</a></li><li><a href="#function-any">function any</a></li><li><a href="#function-chip">function chip</a></li><li><a href="#function-kind">function kind</a></li><li><a href="#function-isunit">function isUnit</a></li><li><a href="#function-isfault">function isFault</a></li><li><a href="#function-isnotice">function isNotice</a></li><li><a href="#function-printkind">function printKind</a></li><li><a href="#function-kindword">function kindWord</a></li><li><a href="#function-print">function print</a></li><li><a href="#function-note">function note</a></li><li><a href="#function-chipabsent">function chipAbsent</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-status">variable status</a></li><li><a href="#variable-code">variable code</a></li></ul></li></ul>
             </nav>
           </aside>
         
         <p>The two Block 0 bytes that describe a reading’s health, with their decoding.  <a href="#detailed-description">More…</a></p>
 
-<p><code class="language-plaintext highlighter-rouge">#include &lt;NW_Fault.h&gt;</code></p>
+<p><code class="language-plaintext highlighter-rouge">#include &lt;NW_Report.h&gt;</code></p>
 
 <h2 id="public-functions">Public Functions</h2>
 
@@ -261,47 +261,55 @@
   <tbody>
     <tr>
       <td>bool</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-ready">ready</a></strong>() const</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-ready">ready</a></strong>() const</td>
     </tr>
     <tr>
       <td>bool</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-chipfaulted">chipFaulted</a></strong>(uint8_t chip) const<br />chip 0..5 faulted on the last reading</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-chipfaulted">chipFaulted</a></strong>(uint8_t chip) const<br />chip 0..5 faulted on the last reading</td>
     </tr>
     <tr>
       <td>bool</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-any">any</a></strong>() const<br />pan-fault</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-any">any</a></strong>() const<br />pan-fault</td>
     </tr>
     <tr>
       <td>uint8_t</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-chip">chip</a></strong>() const<br />0..6, or 7 for the unit</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-chip">chip</a></strong>() const<br />0..6, or 7 for the unit</td>
     </tr>
     <tr>
       <td>uint8_t</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-kind">kind</a></strong>() const</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-kind">kind</a></strong>() const</td>
     </tr>
     <tr>
       <td>bool</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-isunit">isUnit</a></strong>() const</td>
-    </tr>
-    <tr>
-      <td>size_t</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-printkind">printKind</a></strong>(Print &amp; out) const<br />Print the kind in words (“timeout”; “kind 17” for device-specific kinds).</td>
-    </tr>
-    <tr>
-      <td>String</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-kindword">kindWord</a></strong>() const<br />The kind as one word for a data-table note (“Timeout”; “Kind17” for device-specific kinds).</td>
-    </tr>
-    <tr>
-      <td>size_t</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-print">print</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips) const<br />Print the latched fault in words: the chip, then the kind, e.g. “MS5803: no acknowledge”, “unit: reset since configured”; “none” when there is no fault. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</td>
-    </tr>
-    <tr>
-      <td>String</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-note">note</a></strong>(const char *const * chipNames, uint8_t nChips) const<br />The latched fault as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NoACK”, “UnitReset”, “Chip2Kind17”; “UnitNone” when there is no fault (check <a href="/NW_Core/Classes/structNW__Fault/#function-any">any()</a> first).</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-isunit">isUnit</a></strong>() const</td>
     </tr>
     <tr>
       <td>bool</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-chipabsent">chipAbsent</a></strong>() const<br />True for the kinds that mean the chip is not coming back this batch (no acknowledge, not initialised).</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-isfault">isFault</a></strong>() const<br />The report is a fault: its chip’s status bit is set (the unit: pan-fault), so the data are not to be trusted.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-isnotice">isNotice</a></strong>() const<br />The report is a notice: a code with no status bit behind it (reset, calibration stored, batch abandoned).</td>
+    </tr>
+    <tr>
+      <td>size_t</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-printkind">printKind</a></strong>(Print &amp; out) const<br />Print the kind in words (“timeout”; “kind 17” for device-specific kinds).</td>
+    </tr>
+    <tr>
+      <td>String</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-kindword">kindWord</a></strong>() const<br />The kind as one word for a data-table note (“Timeout”; “Kind17” for device-specific kinds).</td>
+    </tr>
+    <tr>
+      <td>size_t</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-print">print</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips) const<br />Print the report in words: the chip, then the kind, e.g. “MS5803: no acknowledge”, “unit: reset since configured”; “none” when there is no report. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</td>
+    </tr>
+    <tr>
+      <td>String</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-note">note</a></strong>(const char *const * chipNames, uint8_t nChips) const<br />The report as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NoACK”, “UnitReset”, “Chip2Kind17”; “UnitNone” when there is no report.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-chipabsent">chipAbsent</a></strong>() const<br />True for the kinds that mean the chip is not coming back this batch (no acknowledge, not initialised).</td>
     </tr>
   </tbody>
 </table>
@@ -318,23 +326,23 @@
   <tbody>
     <tr>
       <td>uint8_t</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#variable-status">status</a></strong> <br />Block 0 byte 0x20.</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#variable-status">status</a></strong> <br />Block 0 byte 0x20.</td>
     </tr>
     <tr>
       <td>uint8_t</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#variable-code">code</a></strong> <br />Block 0 byte 0x27.</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#variable-code">code</a></strong> <br />Block 0 byte 0x27.</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="detailed-description">Detailed Description</h2>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">NW_Fault</span><span class="p">;</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">NW_Report</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>The two Block 0 bytes that describe a reading’s health, with their decoding.</p>
 
-<p>status (0x20) is live: bit 0 ready, bits 1-6 chip n-1 faulted now, bit 7 pan-fault (OR of bits 1-6). code (0x27) is latched until the controller next writes Control: bits 7-5 chip (7 = the unit), bits 4-0 kind. Kinds (NW-Device-Specification): 0 none, 1 no acknowledge, 2 timeout, 3 checksum, 4 out of range, 5 not initialised, 6 reset since configured, 7 config rejected, 8 supply fault, 9-15 reserved, 16-31 device-specific. The chip names are the device’s own: a library passes its table (the spec’s chip table, in order) to <a href="/NW_Core/Classes/structNW__Fault/#function-print">print()</a> and <a href="/NW_Core/Classes/structNW__Fault/#function-note">note()</a>; <a href="/NW_Core/Classes/structNW__Fault/#function-printkind">printKind()</a> and <a href="/NW_Core/Classes/structNW__Fault/#function-kindword">kindWord()</a> give the universal part alone.</p>
+<p>status (0x20) is live: bit 0 ready, bits 1-6 chip n-1 faulted now, bit 7 pan-fault (OR of bits 1-6). code (0x27) is the Report register, the device’s most recent report, good or bad, latched until the controller next writes Control: bits 7-5 chip (7 = the unit), bits 4-0 kind. A report is a fault when the chip’s status bit is set too, a notice otherwise. Kinds (NW-Device-Specification): 0 none, 1 no acknowledge, 2 timeout, 3 checksum, 4 out of range, 5 not initialised, 6 reset since configured (a notice), 7 config rejected, 8 supply fault, 9 calibration stored (a notice), 10 batch abandoned (a notice), 11-15 reserved, 16-31 device-specific. The chip names are the device’s own: a library passes its table (the spec’s chip table, in order) to <a href="/NW_Core/Classes/structNW__Report/#function-print">print()</a> and <a href="/NW_Core/Classes/structNW__Report/#function-note">note()</a>; <a href="/NW_Core/Classes/structNW__Report/#function-printkind">printKind()</a> and <a href="/NW_Core/Classes/structNW__Report/#function-kindword">kindWord()</a> give the universal part alone.</p>
 
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
 
@@ -376,6 +384,20 @@
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">isUnit</span><span class="p">()</span> <span class="k">const</span>
 </code></pre></div></div>
 
+<h3 id="function-isfault">function isFault</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">isFault</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>The report is a fault: its chip’s status bit is set (the unit: pan-fault), so the data are not to be trusted.</p>
+
+<h3 id="function-isnotice">function isNotice</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">isNotice</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>The report is a notice: a code with no status bit behind it (reset, calibration stored, batch abandoned).</p>
+
 <h3 id="function-printkind">function printKind</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">printKind</span><span class="p">(</span>
@@ -401,7 +423,7 @@
 <span class="p">)</span> <span class="k">const</span>
 </code></pre></div></div>
 
-<p>Print the latched fault in words: the chip, then the kind, e.g. “MS5803: no acknowledge”, “unit: reset since configured”; “none” when there is no fault. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</p>
+<p>Print the report in words: the chip, then the kind, e.g. “MS5803: no acknowledge”, “unit: reset since configured”; “none” when there is no report. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</p>
 
 <p><strong>Return</strong>: Bytes written.</p>
 
@@ -413,7 +435,7 @@
 <span class="p">)</span> <span class="k">const</span>
 </code></pre></div></div>
 
-<p>The latched fault as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NoACK”, “UnitReset”, “Chip2Kind17”; “UnitNone” when there is no fault (check <a href="/NW_Core/Classes/structNW__Fault/#function-any">any()</a> first).</p>
+<p>The report as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NoACK”, “UnitReset”, “Chip2Kind17”; “UnitNone” when there is no report.</p>
 
 <h3 id="function-chipabsent">function chipAbsent</h3>
 
@@ -440,7 +462,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 16:11:03 +0000</p>
+<p>Updated on 2026-09-23 at 17:21:29 +0000</p>
 
         
       </section>
