@@ -241,7 +241,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#defines">Defines</a></li><li><a href="#macros-documentation">Macros Documentation</a><ul><li><a href="#define-nw_reg_schema">define NW_REG_SCHEMA</a></li><li><a href="#define-nw_reg_name">define NW_REG_NAME</a></li><li><a href="#define-nw_reg_hw_major">define NW_REG_HW_MAJOR</a></li><li><a href="#define-nw_reg_hw_minor">define NW_REG_HW_MINOR</a></li><li><a href="#define-nw_reg_fw_patch">define NW_REG_FW_PATCH</a></li><li><a href="#define-nw_reg_i2c_addr">define NW_REG_I2C_ADDR</a></li><li><a href="#define-nw_reg_status">define NW_REG_STATUS</a></li><li><a href="#define-nw_reg_ctrl">define NW_REG_CTRL</a></li><li><a href="#define-nw_reg_counter">define NW_REG_COUNTER</a></li><li><a href="#define-nw_reg_request">define NW_REG_REQUEST</a></li><li><a href="#define-nw_reg_config">define NW_REG_CONFIG</a></li><li><a href="#define-nw_reg_report">define NW_REG_REPORT</a></li><li><a href="#define-nw_reg_data">define NW_REG_DATA</a></li><li><a href="#define-nw_bit_ready">define NW_BIT_READY</a></li><li><a href="#define-nw_bit_panfault">define NW_BIT_PANFAULT</a></li><li><a href="#define-nw_ctrl_trigger">define NW_CTRL_TRIGGER</a></li><li><a href="#define-nw_ctrl_sleep">define NW_CTRL_SLEEP</a></li><li><a href="#define-nw_wire_chunk">define NW_WIRE_CHUNK</a></li><li><a href="#define-nw_data_retries">define NW_DATA_RETRIES</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
+              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#defines">Defines</a></li><li><a href="#macros-documentation">Macros Documentation</a><ul><li><a href="#define-nw_reg_schema">define NW_REG_SCHEMA</a></li><li><a href="#define-nw_reg_name">define NW_REG_NAME</a></li><li><a href="#define-nw_reg_hw_major">define NW_REG_HW_MAJOR</a></li><li><a href="#define-nw_reg_hw_minor">define NW_REG_HW_MINOR</a></li><li><a href="#define-nw_reg_fw_patch">define NW_REG_FW_PATCH</a></li><li><a href="#define-nw_reg_i2c_addr">define NW_REG_I2C_ADDR</a></li><li><a href="#define-nw_reg_cal">define NW_REG_CAL</a></li><li><a href="#define-nw_reg_status">define NW_REG_STATUS</a></li><li><a href="#define-nw_reg_ctrl">define NW_REG_CTRL</a></li><li><a href="#define-nw_reg_counter">define NW_REG_COUNTER</a></li><li><a href="#define-nw_reg_request">define NW_REG_REQUEST</a></li><li><a href="#define-nw_reg_config">define NW_REG_CONFIG</a></li><li><a href="#define-nw_reg_report">define NW_REG_REPORT</a></li><li><a href="#define-nw_reg_data">define NW_REG_DATA</a></li><li><a href="#define-nw_bit_ready">define NW_BIT_READY</a></li><li><a href="#define-nw_bit_panfault">define NW_BIT_PANFAULT</a></li><li><a href="#define-nw_ctrl_trigger">define NW_CTRL_TRIGGER</a></li><li><a href="#define-nw_ctrl_sleep">define NW_CTRL_SLEEP</a></li><li><a href="#define-nw_wire_chunk">define NW_WIRE_CHUNK</a></li><li><a href="#define-nw_data_retries">define NW_DATA_RETRIES</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
             </nav>
           </aside>
         
@@ -300,6 +300,10 @@
     </tr>
     <tr>
       <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-cal">NW_REG_CAL</a></strong> <br />Page 1: calibration, stored; device-specific (0x20-0x3F)</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-status">NW_REG_STATUS</a></strong> <br />bit 0 ready; bits 1-6 chip faults; bit 7 pan-fault</td>
     </tr>
     <tr>
@@ -308,11 +312,11 @@
     </tr>
     <tr>
       <td> </td>
-      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-counter">NW_REG_COUNTER</a></strong> <br />reading counter, uint16 little-endian (0x22-0x23)</td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-counter">NW_REG_COUNTER</a></strong> <br />reading counter, uint16 little-endian (0x42-0x43)</td>
     </tr>
     <tr>
       <td> </td>
-      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-request">NW_REG_REQUEST</a></strong> <br />readings requested (batch size), uint16 little-endian, writable (0x24-0x25)</td>
+      <td><strong><a href="/NW_Core/Files/NW__Device_8h/#define-nw-reg-request">NW_REG_REQUEST</a></strong> <br />readings requested (batch size), uint16 little-endian, writable (0x44-0x45)</td>
     </tr>
     <tr>
       <td> </td>
@@ -393,51 +397,58 @@
 
 <p>writable; takes effect at the device’s next boot</p>
 
+<h3 id="define-nw_reg_cal">define NW_REG_CAL</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_CAL 0x20
+</span></code></pre></div></div>
+
+<p>Page 1: calibration, stored; device-specific (0x20-0x3F)</p>
+
 <h3 id="define-nw_reg_status">define NW_REG_STATUS</h3>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_STATUS 0x20
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_STATUS 0x40
 </span></code></pre></div></div>
 
 <p>bit 0 ready; bits 1-6 chip faults; bit 7 pan-fault</p>
 
 <h3 id="define-nw_reg_ctrl">define NW_REG_CTRL</h3>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_CTRL 0x21
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_CTRL 0x41
 </span></code></pre></div></div>
 
 <p>writable: bit 0 trigger; bits 1-6 chip select; bit 7 sleep</p>
 
 <h3 id="define-nw_reg_counter">define NW_REG_COUNTER</h3>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_COUNTER 0x22
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_COUNTER 0x42
 </span></code></pre></div></div>
 
-<p>reading counter, uint16 little-endian (0x22-0x23)</p>
+<p>reading counter, uint16 little-endian (0x42-0x43)</p>
 
 <h3 id="define-nw_reg_request">define NW_REG_REQUEST</h3>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_REQUEST 0x24
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_REQUEST 0x44
 </span></code></pre></div></div>
 
-<p>readings requested (batch size), uint16 little-endian, writable (0x24-0x25)</p>
+<p>readings requested (batch size), uint16 little-endian, writable (0x44-0x45)</p>
 
 <h3 id="define-nw_reg_config">define NW_REG_CONFIG</h3>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_CONFIG 0x26
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_CONFIG 0x46
 </span></code></pre></div></div>
 
 <p>writable, device-specific, volatile</p>
 
 <h3 id="define-nw_reg_report">define NW_REG_REPORT</h3>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_REPORT 0x27
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_REPORT 0x47
 </span></code></pre></div></div>
 
 <p>report code; cleared by any Control write</p>
 
 <h3 id="define-nw_reg_data">define NW_REG_DATA</h3>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_DATA 0x28
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_REG_DATA 0x48
 </span></code></pre></div></div>
 
 <p>first device data byte</p>
@@ -486,7 +497,7 @@
 #include</span> <span class="cpf">&lt;Wire.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">"NW_Report.h"</span><span class="cp">
 </span>
-<span class="c1">// Page 0 (identity, served from EEPROM) and Page 1 Block 0 (status and control),</span>
+<span class="c1">// Page 0 (identity, served from EEPROM) and Page 2 Block 0 (status and control),</span>
 <span class="c1">// as NW-Device-Specification defines them for every device.</span>
 <span class="cp">#define NW_REG_SCHEMA    0x00  
 #define NW_REG_NAME      0x01  
@@ -494,13 +505,14 @@
 #define NW_REG_HW_MINOR  0x09
 #define NW_REG_FW_PATCH  0x0A  
 #define NW_REG_I2C_ADDR  0x1F  
-#define NW_REG_STATUS    0x20  
-#define NW_REG_CTRL      0x21  
-#define NW_REG_COUNTER   0x22  
-#define NW_REG_REQUEST   0x24  
-#define NW_REG_CONFIG    0x26  
-#define NW_REG_REPORT     0x27  
-#define NW_REG_DATA      0x28  
+#define NW_REG_CAL       0x20  
+#define NW_REG_STATUS    0x40  
+#define NW_REG_CTRL      0x41  
+#define NW_REG_COUNTER   0x42  
+#define NW_REG_REQUEST   0x44  
+#define NW_REG_CONFIG    0x46  
+#define NW_REG_REPORT    0x47  
+#define NW_REG_DATA      0x48  
 #define NW_BIT_READY     0x01
 #define NW_BIT_PANFAULT  0x80
 #define NW_CTRL_TRIGGER  0x01
@@ -581,7 +593,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 17:21:29 +0000</p>
+<p>Updated on 2026-09-23 at 20:12:16 +0000</p>
 
         
       </section>

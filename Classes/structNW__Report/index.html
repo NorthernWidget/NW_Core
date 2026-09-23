@@ -326,11 +326,11 @@
   <tbody>
     <tr>
       <td>uint8_t</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Report/#variable-status">status</a></strong> <br />Block 0 byte 0x20.</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#variable-status">status</a></strong> <br />Block 0 byte 0x40.</td>
     </tr>
     <tr>
       <td>uint8_t</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Report/#variable-code">code</a></strong> <br />Block 0 byte 0x27.</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#variable-code">code</a></strong> <br />Block 0 byte 0x47.</td>
     </tr>
   </tbody>
 </table>
@@ -342,7 +342,7 @@
 
 <p>The two Block 0 bytes that describe a reading’s health, with their decoding.</p>
 
-<p>status (0x20) is live: bit 0 ready, bits 1-6 chip n-1 faulted now, bit 7 pan-fault (OR of bits 1-6). code (0x27) is the Report register, the device’s most recent report, good or bad, latched until the controller next writes Control: bits 7-5 chip (7 = the unit), bits 4-0 kind. A report is a fault when the chip’s status bit is set too, a notice otherwise. Kinds (NW-Device-Specification): 0 none, 1 no acknowledge, 2 timeout, 3 checksum, 4 out of range, 5 not initialised, 6 reset since configured (a notice), 7 config rejected, 8 supply fault, 9 calibration stored (a notice), 10 batch abandoned (a notice), 11-15 reserved, 16-31 device-specific. The chip names are the device’s own: a library passes its table (the spec’s chip table, in order) to <a href="/NW_Core/Classes/structNW__Report/#function-print">print()</a> and <a href="/NW_Core/Classes/structNW__Report/#function-note">note()</a>; <a href="/NW_Core/Classes/structNW__Report/#function-printkind">printKind()</a> and <a href="/NW_Core/Classes/structNW__Report/#function-kindword">kindWord()</a> give the universal part alone.</p>
+<p>status (0x40) is live: bit 0 ready, bits 1-6 chip n-1 faulted now, bit 7 pan-fault (OR of bits 1-6). code (0x47) is the Report register, the device’s most recent report, good or bad, latched until the controller next writes Control: bits 7-5 chip (7 = the unit), bits 4-0 kind. A report is a fault when the chip’s status bit is set too, a notice otherwise. Kinds (NW-Device-Specification): 0 none, 1 no acknowledge, 2 timeout, 3 checksum, 4 out of range, 5 not initialised, 6 reset since configured (a notice), 7 config rejected, 8 supply fault, 9 calibration stored (a notice), 10 batch abandoned (a notice), 11-15 reserved, 16-31 device-specific. The chip names are the device’s own: a library passes its table (the spec’s chip table, in order) to <a href="/NW_Core/Classes/structNW__Report/#function-print">print()</a> and <a href="/NW_Core/Classes/structNW__Report/#function-note">note()</a>; <a href="/NW_Core/Classes/structNW__Report/#function-printkind">printKind()</a> and <a href="/NW_Core/Classes/structNW__Report/#function-kindword">kindWord()</a> give the universal part alone.</p>
 
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
 
@@ -451,18 +451,18 @@
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">uint8_t</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>Block 0 byte 0x20.</p>
+<p>Block 0 byte 0x40.</p>
 
 <h3 id="variable-code">variable code</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">uint8_t</span> <span class="n">code</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>Block 0 byte 0x27.</p>
+<p>Block 0 byte 0x47.</p>
 
 <hr />
 
-<p>Updated on 2026-09-23 at 17:21:29 +0000</p>
+<p>Updated on 2026-09-23 at 20:12:16 +0000</p>
 
         
       </section>
