@@ -20,6 +20,7 @@ class TwoWire {
   bool present = true;
   uint32_t presentAfterMs = 0;             // no ACK before this millis() (boot emulation)
   uint32_t freeRunPeriodMs = 0;            // >0: counter (0x22-0x23) advances every period, ready set
+  bool autoIncrement = true;               // false: a device with no register pointer (T9602): every read starts at 0
   uint32_t _lastFreeRun = 0;
   std::function<void(TwoWire&, uint8_t)> beforeRead;
   std::function<void(TwoWire&, uint8_t, uint8_t)> onWrite;
@@ -40,6 +41,7 @@ class TwoWire {
     _freeRun();
     if (beforeRead) beforeRead(*this, _ptr);
     uint8_t k = n > 32 ? 32 : n;                          // the AVR Wire buffer
+    if (!autoIncrement) _ptr = 0;
     for (uint8_t i = 0; i < k; i++) _q.push_back(image[_ptr++ & 0x7F]);
     return k;
   }
