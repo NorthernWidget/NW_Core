@@ -17,26 +17,38 @@ A sensor library holds one `NW_Device` and one `NW_Readings` per measurement and
 
 ## Using it in a library
 
+The shape every NW sensor library takes on Core (Walrus, two chip groups):
+
 ```cpp
-class Apis {
+class Walrus {
     NW_Device _dev;
-    NW_Readings<int16_t, 64> _range;
+    NW_Readings<int32_t, WALRUS_PRESSURE_CAPACITY> _pressureReadings;   // uBar, as served
+    NW_ReadingsConfig _pressureCfg;                                    // how many readings; stats columns?
   public:
-    bool begin(uint8_t address = DEFAULT_ADDRESS) { return _dev.begin(address, "Apis", 2, 100); }
-    bool updateRange() {
-        if (_dev.batchFaulted() || !_dev.takeReading(0x01)) return false;   // chip 0
-        uint8_t d[2]; _dev.readBytes(NW_REG_DATA, d, 2);
-        _range.append((int16_t)((d[1] << 8) | d[0]));
+    enum Component : uint8_t { MS5803 = 0x01, MCP9808 = 0x02, ALL = 0x03 };   // the chip-select bits
+    bool begin(uint8_t address = DEFAULT_ADDRESS) { return _dev.begin(address, "Walrus", WALRUS_FW_MIN_PATCH); }
+    bool updatePressure() {                                            // one reading of one chip group
+        uint8_t d[6];
+        if (!_dev.takeReading(MS5803) || !_dev.readBytes(PRES_REG, d, 6) || _dev.faulted(0)) return false;
+        _pressureReadings.append((int32_t)(d[0] | (d[1] << 8) | ((uint32_t)d[2] << 16) | ((uint32_t)d[3] << 24)));
         return true;
     }
-    float getRangeMean() { return _range.mean(); }
+    bool updateMeasurements(uint8_t component = ALL) {                 // N readings, then the means
+        _pressureReadings.reset();
+        _dev.takeReadings(MS5803, _pressureCfg.n, [this] { return updatePressure(); });
+        _pressure = nwScaled(_pressureReadings.mean(), 1000.0);        // mBar; NW_ERROR when none
+        return _pressureReadings.count() > 0;
+    }
+    uint16_t setPressureReadings(uint16_t n) { return _pressureCfg.set(n, WALRUS_PRESSURE_CAPACITY); }
+    float getPressureStd() { return nwScaled(_pressureReadings.std(), 1000.0); }
     size_t printFault(Print& out) {
-        size_t n = out.print(_dev.faultChip() == 0 ? "LiDAR" : "accelerometer");
-        n += out.print(": ");
-        return n + _dev.fault().printKind(out);
+        static const char* const chips[] = {"MS5803", "MCP9808"};      // the spec's chip table
+        return _dev.fault().print(out, chips, 2);
     }
 };
 ```
+
+`takeReadings()` declares the batch to the device (`beginBatch`), calls the one-reading function n times, and stops once a selected chip reports absent, so a dead chip costs one reading. `getHeader()`/`getString()` print std and sterr columns when `_pressureCfg.columns()` is true. The full pattern, with the reading interface (`beginReadings`, `printHeader`, `printReading`, `logReading`, `endReadings`), is in Apis_Library, Walrus_Library and Haar_Library.
 
 ## Testing
 
