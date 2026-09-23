@@ -60,6 +60,18 @@ bool NW_Device::readBytes(uint8_t reg, uint8_t* buf, uint8_t n) {
   return true;
 }
 
+bool NW_Device::readData(uint8_t reg, uint8_t* buf, uint8_t n) {
+  // Seqlock over the bus: the counter after the read must equal the one captured
+  // before it. A device that committed in between gets captured again and re-read.
+  _dataMoved = false;
+  for (uint8_t attempt = 0; ; attempt++) {
+    if (!readBytes(reg, buf, n)) return false;
+    if (readCounter() == _lastCounter) return true;
+    if (attempt >= NW_DATA_RETRIES) { _dataMoved = true; return false; }
+    if (!captureReading()) return false;
+  }
+}
+
 bool NW_Device::writeByte(uint8_t reg, uint8_t value) {
   Wire.beginTransmission(_adr);
   Wire.write(reg);

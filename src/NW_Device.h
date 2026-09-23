@@ -29,6 +29,7 @@
 #define NW_CTRL_TRIGGER  0x01
 #define NW_CTRL_SLEEP    0x80
 #define NW_WIRE_CHUNK    32    ///< the AVR Wire buffer; longer reads are split into transactions of this size
+#define NW_DATA_RETRIES  2     ///< readData() re-reads at most this many times when the counter moved during a read
 
 /**
  * @brief One NW Schema 1 device on the I2C bus: identity gates, the reading handshake, batches, faults.
@@ -152,6 +153,23 @@ class NW_Device {
     // --- Registers ---
     /** @brief Read n bytes from reg; reads longer than NW_WIRE_CHUNK are split into several transactions. */
     bool readBytes(uint8_t reg, uint8_t* buf, uint8_t n);
+    /**
+     * @brief Read a reading's data registers and check that they belong to the captured reading.
+     * @details The device commits data and counter together with interrupts off, and
+     * serves each page as a snapshot (NW-Device-Specification, atomic rewrite), but
+     * nothing stops it committing between two of the controller's transactions: a
+     * free-running device can do so, and a read longer than NW_WIRE_CHUNK is several
+     * transactions. So: readBytes(), then the counter again. Equal to the counter
+     * captureReading() saw, every byte is that reading's. Otherwise capture the new
+     * Block 0 and read again, at most NW_DATA_RETRIES times, then give up with
+     * dataMoved() set, so a device that commits faster than it can be read never
+     * holds the controller. Use it for the data after takeReading() or
+     * captureReading(); readBytes() is for Page 0 and single registers.
+     * @return true with buf holding one complete reading, the one fault() describes
+     */
+    bool readData(uint8_t reg, uint8_t* buf, uint8_t n);
+    /** @brief The last readData() gave up: the device committed a new reading during every attempt. */
+    bool dataMoved() const            { return _dataMoved; }
     bool writeByte(uint8_t reg, uint8_t value);
     uint8_t readConfig();
     bool writeConfig(uint8_t value)   { return writeByte(NW_REG_CONFIG, value); }
@@ -167,6 +185,7 @@ class NW_Device {
     uint16_t _counterBefore = 0xFFFF;   // counter seen at the last request
     uint8_t  _chips = 0;                // chips selected at the last request
     uint8_t _absentChips = 0;           // chips that reported absent since the last writeBatch()/resetBatch()
+    bool _dataMoved = false;            // readData() exhausted its retries
     NW_Fault _fault;
 };
 
