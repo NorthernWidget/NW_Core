@@ -38,6 +38,8 @@ class TwoWire {
   unsigned ackAttempts = 0;                // address-only transmissions (ACK tests)
 
   void begin() {}
+  uint8_t address() const { return _adr; }  // the address of the transaction in progress, for hooks serving more than one device
+  uint8_t pointer() const { return _ptr; }  // the register pointer the last write set, for hooks that serve a register file of their own
   void beginTransmission(uint8_t adr) { _adr = adr; _nwrites = 0; }
   size_t write(uint8_t v) {
     if (_nwrites == 0) _ptr = v;
@@ -62,8 +64,6 @@ class TwoWire {
   uint16_t counter() const { return image[0x22] | (image[0x23] << 8); }
   void bumpCounter() { uint16_t c = counter() + 1; image[0x22] = c & 0xFF; image[0x23] = c >> 8; image[0x20] |= 0x01; }
   private:
-  uint8_t address() const { return _adr; }  // the address of the transaction in progress, for hooks serving more than one device
-  uint8_t pointer() const { return _ptr; }  // the register pointer the last write set, for hooks that serve a register file of their own
   bool _present() { return present && (isPresent ? isPresent(_adr) : _adr == deviceAddress) && millis() >= presentAfterMs; }
   void _freeRun() {
     if (!freeRunPeriodMs) return;

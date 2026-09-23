@@ -81,3 +81,17 @@ class Print {
   }
   size_t println() { return print("\n"); }
 };
+
+// Serial: a Print that writes to stdout, so a library's debug helpers link.
+// Harness output that matters goes through printf; keep Serial out of baselines.
+#define HEX 16
+#define DEC 10
+class SerialStub : public Print {
+  public:
+  void begin(unsigned long) {}
+  size_t write(uint8_t c) override { return (size_t)fputc(c, stdout) != EOF; }
+  size_t print(unsigned long v, int base) { char b[24]; snprintf(b, sizeof b, base == 16 ? "%lX" : "%lu", v); return print(b); }
+  size_t print(int v, int base) { return print((unsigned long)v, base); }
+  using Print::print;
+};
+static SerialStub Serial;
