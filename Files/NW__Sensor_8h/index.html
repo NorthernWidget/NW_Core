@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 
 
-<!-- begin _includes/seo.html --><title>Classes - NW_Core</title>
+<!-- begin _includes/seo.html --><title>NW_Core</title>
 <meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
 
 
@@ -26,8 +26,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="NW_Core">
-<meta property="og:title" content="Classes">
-<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Classes/index_classes/">
+<meta property="og:title" content="NW_Core">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Files/NW__Sensor_8h/">
 
 
   <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
@@ -45,7 +45,7 @@
 
 
 
-<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Classes/index_classes/">
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Files/NW__Sensor_8h/">
 
 
 
@@ -217,7 +217,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Classes">
+    
     
     
     
@@ -225,10 +225,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://docs.northernwidget.com/NW_Core/Classes/index_classes/" itemprop="url">Classes
-</a>
-          </h1>
+          
           
 
 
@@ -241,18 +238,50 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              
+              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#source-code">Source code</a></li></ul>
             </nav>
           </aside>
         
-        <ul>
-  <li><strong>class <a href="/NW_Core/Classes/classNW__Device/">NW_Device</a></strong> <br />One NW Schema 1 device on the I2C bus: identity gates, the reading handshake, batches, faults.</li>
-  <li><strong>class <a href="/NW_Core/Classes/classNW__Pages/">NW_Pages</a></strong> <br />The register image a Schema 1 device keeps: Pages 0-1 from EEPROM, Pages 2-3 written per reading.</li>
-  <li><strong>class <a href="/NW_Core/Classes/classNW__Readings/">NW_Readings</a></strong> <br />Fixed-capacity store for one measurement’s readings, with statistics.</li>
-  <li><strong>struct <a href="/NW_Core/Classes/structNW__ReadingsConfig/">NW_ReadingsConfig</a></strong> <br />How many readings a chip group takes per updateMeasurements() and whether its statistics columns print: one per chip group in a library.</li>
-  <li><strong>struct <a href="/NW_Core/Classes/structNW__Report/">NW_Report</a></strong> <br />The two Block 0 bytes that describe a reading’s health, with their decoding.</li>
-  <li><strong>class <a href="/NW_Core/Classes/classNW__Sensor/">NW_Sensor</a></strong> <br />What a data logger needs from a sensor library to keep a status file.</li>
-</ul>
+        <p>The view a logger has of any Northern Widget sensor library: name, reports, status line.</p>
+
+<h2 id="classes">Classes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>class</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/">NW_Sensor</a></strong> <br />What a data logger needs from a sensor library to keep a status file.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="source-code">Source code</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">#ifndef NW_Sensor_h
+#define NW_Sensor_h
+</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Arduino.h&gt;</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">NW_Sensor</span> <span class="p">{</span>
+  <span class="nl">public:</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">NW_Sensor</span><span class="p">()</span> <span class="p">{}</span>
+    <span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">uint8_t</span> <span class="n">reportKind</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">reportIsFault</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">uint8_t</span> <span class="n">bootReportKind</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">clearBootReport</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">size_t</span> <span class="n">printStatus</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">boot</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#endif
+</span></code></pre></div></div>
 
 <hr />
 

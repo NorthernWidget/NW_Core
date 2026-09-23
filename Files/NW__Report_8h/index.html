@@ -241,7 +241,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#source-code">Source code</a></li></ul>
+              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#functions">Functions</a></li><li><a href="#functions-documentation">Functions Documentation</a><ul><li><a href="#function-nwprinthex">function nwPrintHex</a></li><li><a href="#function-nwprintpage">function nwPrintPage</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
             </nav>
           </aside>
         
@@ -264,6 +264,50 @@
   </tbody>
 </table>
 
+<h2 id="functions">Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>size_t</td>
+      <td><strong><a href="/NW_Core/Files/NW__Report_8h/#function-nwprinthex">nwPrintHex</a></strong>(Print &amp; out, const uint8_t * b, uint8_t n)<br />Print n bytes as upper-case hex pairs, no separators.</td>
+    </tr>
+    <tr>
+      <td>size_t</td>
+      <td><strong><a href="/NW_Core/Files/NW__Report_8h/#function-nwprintpage">nwPrintPage</a></strong>(Print &amp; out, const uint8_t * page)<br />Print a 32-byte page as four 8-byte blocks in hex, a space between blocks: the status file’s page columns.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="functions-documentation">Functions Documentation</h2>
+
+<h3 id="function-nwprinthex">function nwPrintHex</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">nwPrintHex</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">n</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Print n bytes as upper-case hex pairs, no separators.</p>
+
+<h3 id="function-nwprintpage">function nwPrintPage</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">nwPrintPage</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">page</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Print a 32-byte page as four 8-byte blocks in hex, a space between blocks: the status file’s page columns.</p>
+
 <h2 id="source-code">Source code</h2>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
@@ -272,6 +316,19 @@
 </span>
 <span class="cp">#include</span> <span class="cpf">&lt;Arduino.h&gt;</span><span class="cp">
 </span>
+<span class="kr">inline</span> <span class="kt">size_t</span> <span class="nf">nwPrintHex</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="kt">char</span> <span class="n">digits</span><span class="p">[]</span> <span class="o">=</span> <span class="s">"0123456789ABCDEF"</span><span class="p">;</span>
+  <span class="kt">size_t</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="n">k</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">]);</span> <span class="n">k</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">digits</span><span class="p">[</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x0F</span><span class="p">]);</span> <span class="p">}</span>
+  <span class="k">return</span> <span class="n">k</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">inline</span> <span class="kt">size_t</span> <span class="nf">nwPrintPage</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">page</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">size_t</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">b</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="n">k</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">' '</span><span class="p">);</span> <span class="n">k</span> <span class="o">+=</span> <span class="n">nwPrintHex</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">page</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span> <span class="p">}</span>
+  <span class="k">return</span> <span class="n">k</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="k">struct</span> <span class="nc">NW_Report</span> <span class="p">{</span>
   <span class="kt">uint8_t</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   
   <span class="kt">uint8_t</span> <span class="n">code</span>   <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   
@@ -288,14 +345,14 @@
   <span class="kt">size_t</span> <span class="nf">printKind</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">kind</span><span class="p">())</span> <span class="p">{</span>
       <span class="k">case</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"none"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"no acknowledge"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"timeout"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">3</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"checksum"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"not answering"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"timed out"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">3</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">isUnit</span><span class="p">()</span> <span class="o">?</span> <span class="n">F</span><span class="p">(</span><span class="s">"Page 0 invalid"</span><span class="p">)</span> <span class="o">:</span> <span class="n">F</span><span class="p">(</span><span class="s">"checksum failed"</span><span class="p">));</span>
       <span class="k">case</span> <span class="mi">4</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"out of range"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">5</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"not initialised"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">6</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"reset since configured"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">7</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"config rejected"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">8</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"supply fault"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">5</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"self-test failed"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">6</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"restarted since configured"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">7</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"configuration rejected"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">8</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"power fault"</span><span class="p">));</span>
       <span class="k">case</span> <span class="mi">9</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"calibration stored"</span><span class="p">));</span>
       <span class="k">case</span> <span class="mi">10</span><span class="p">:</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"batch abandoned"</span><span class="p">));</span>
       <span class="nl">default:</span> <span class="p">{</span> <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"kind "</span><span class="p">));</span> <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">kind</span><span class="p">());</span> <span class="p">}</span>
@@ -304,22 +361,23 @@
   <span class="n">String</span> <span class="nf">kindWord</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">kind</span><span class="p">())</span> <span class="p">{</span>
       <span class="k">case</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"None"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"NoACK"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"NotAnswering"</span><span class="p">));</span>
       <span class="k">case</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Timeout"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">3</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Checksum"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">4</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Range"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">5</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"NotInit"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">6</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Reset"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">7</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Config"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">8</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Supply"</span><span class="p">));</span>
-      <span class="k">case</span> <span class="mi">9</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Calibrated"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">3</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">isUnit</span><span class="p">()</span> <span class="o">?</span> <span class="n">F</span><span class="p">(</span><span class="s">"Page0Invalid"</span><span class="p">)</span> <span class="o">:</span> <span class="n">F</span><span class="p">(</span><span class="s">"ChecksumFailed"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">4</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"OutOfRange"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">5</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"SelfTestFailed"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">6</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Restarted"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">7</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"ConfigRejected"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">8</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"PowerFault"</span><span class="p">));</span>
+      <span class="k">case</span> <span class="mi">9</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"CalibrationStored"</span><span class="p">));</span>
       <span class="k">case</span> <span class="mi">10</span><span class="p">:</span> <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"BatchAbandoned"</span><span class="p">));</span>
       <span class="nl">default:</span> <span class="p">{</span> <span class="n">String</span> <span class="n">w</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s">"Kind"</span><span class="p">);</span> <span class="n">w</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">kind</span><span class="p">());</span> <span class="k">return</span> <span class="n">w</span><span class="p">;</span> <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
-  <span class="kt">size_t</span> <span class="nf">print</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="kt">size_t</span> <span class="nf">print</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">kindWords</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nKindWords</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
     <span class="kt">uint8_t</span> <span class="n">c</span> <span class="o">=</span> <span class="n">chip</span><span class="p">(),</span> <span class="n">k</span> <span class="o">=</span> <span class="n">kind</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"none"</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">&gt;=</span> <span class="mi">16</span> <span class="o">&amp;&amp;</span> <span class="n">kindWords</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">nKindWords</span><span class="p">)</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">kindWords</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">16</span><span class="p">]);</span>   <span class="c1">// a device-specific kind: its own word says it all</span>
     <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"unit"</span><span class="p">));</span>
     <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">&lt;</span> <span class="n">nChips</span><span class="p">)</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">chipNames</span><span class="p">[</span><span class="n">c</span><span class="p">]);</span>
@@ -327,10 +385,11 @@
     <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">": "</span><span class="p">));</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">printKind</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
   <span class="p">}</span>
-  <span class="n">String</span> <span class="nf">note</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+  <span class="n">String</span> <span class="nf">note</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">kindWords</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nKindWords</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
     <span class="kt">uint8_t</span> <span class="n">c</span> <span class="o">=</span> <span class="n">chip</span><span class="p">();</span>
     <span class="n">String</span> <span class="n">w</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">kind</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nf">String</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"UnitNone"</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">kind</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">16</span> <span class="o">&amp;&amp;</span> <span class="n">kindWords</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)(</span><span class="n">kind</span><span class="p">()</span> <span class="o">-</span> <span class="mi">16</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">nKindWords</span><span class="p">)</span> <span class="k">return</span> <span class="nf">String</span><span class="p">(</span><span class="n">kindWords</span><span class="p">[</span><span class="n">kind</span><span class="p">()</span> <span class="o">-</span> <span class="mi">16</span><span class="p">]);</span>   <span class="c1">// device-specific: the appendix's word alone</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span> <span class="n">w</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s">"Unit"</span><span class="p">);</span>
     <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">&lt;</span> <span class="n">nChips</span><span class="p">)</span> <span class="n">w</span> <span class="o">=</span> <span class="n">chipNames</span><span class="p">[</span><span class="n">c</span><span class="p">];</span>
     <span class="k">else</span> <span class="p">{</span> <span class="n">w</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s">"Chip"</span><span class="p">);</span> <span class="n">w</span> <span class="o">+=</span> <span class="n">String</span><span class="p">(</span><span class="n">c</span><span class="p">);</span> <span class="p">}</span>
@@ -345,7 +404,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 20:12:16 +0000</p>
+<p>Updated on 2026-09-23 at 20:56:27 +0000</p>
 
         
       </section>

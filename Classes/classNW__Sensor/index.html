@@ -1,0 +1,441 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>NW_Sensor - NW_Core</title>
+<meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_Core">
+<meta property="og:title" content="NW_Sensor">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Classes/classNW__Sensor/">
+
+
+  <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Classes/classNW__Sensor/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_Core/feed.xml" type="application/atom+xml" rel="alternate" title="NW_Core Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_Core/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_Core/">
+          NW_Core
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_Core/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Device/"><span class="nav__sub-title">NW_Device Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Readings/"><span class="nav__sub-title">NW_Readings Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Fault/"><span class="nav__sub-title">NW_Fault Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="NW_Sensor">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://docs.northernwidget.com/NW_Core/Classes/classNW__Sensor/" itemprop="url">NW_Sensor
+</a>
+          </h1>
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-nw_sensor">function ~NW_Sensor</a></li><li><a href="#function-name">function name</a></li><li><a href="#function-reportkind">function reportKind</a></li><li><a href="#function-reportisfault">function reportIsFault</a></li><li><a href="#function-bootreportkind">function bootReportKind</a></li><li><a href="#function-clearbootreport">function clearBootReport</a></li><li><a href="#function-printstatus">function printStatus</a></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>What a data logger needs from a sensor library to keep a status file.  <a href="#detailed-description">More…</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">#include &lt;NW_Sensor.h&gt;</code></p>
+
+<h2 id="public-functions">Public Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>virtual</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-~nw-sensor">~NW_Sensor</a></strong>()</td>
+    </tr>
+    <tr>
+      <td>virtual const char *</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-name">name</a></strong>() const =0<br />The device name as the spec spells it (“Apis”).</td>
+    </tr>
+    <tr>
+      <td>virtual uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-reportkind">reportKind</a></strong>() =0<br />Kind of the report captured with the last reading (0 = none).</td>
+    </tr>
+    <tr>
+      <td>virtual bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-reportisfault">reportIsFault</a></strong>() =0<br />The last report is a fault: its chip’s status bit is set, the data are not to be trusted.</td>
+    </tr>
+    <tr>
+      <td>virtual uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-bootreportkind">bootReportKind</a></strong>() =0<br />Kind of the report begin() captured at the device’s boot; 0 once cleared or if none.</td>
+    </tr>
+    <tr>
+      <td>virtual void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-clearbootreport">clearBootReport</a></strong>() =0<br />The logger has recorded (or dismissed) the boot report.</td>
+    </tr>
+    <tr>
+      <td>virtual size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-printstatus">printStatus</a></strong>(Print &amp; out, bool boot =false) =0<br />Print one status line for the logger’s status file (no newline): name, serial, HW, FW, report code, note word, Pages 0-2 in hex.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="detailed-description">Detailed Description</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NW_Sensor</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>What a data logger needs from a sensor library to keep a status file.</p>
+
+<p>Every library on NW_Core (Apis, Walrus, Haar, Libelle) inherits this and the logger keeps a list of them (Margay::watch()). The logger writes a row for a device when its report says something happened: after a reading, <a href="/NW_Core/Classes/classNW__Sensor/#function-reportkind">reportKind()</a> is the reading’s report; <a href="/NW_Core/Classes/classNW__Sensor/#function-bootreportkind">bootReportKind()</a> is what begin() captured before the first trigger cleared it, kept until the logger has looked (<a href="/NW_Core/Classes/classNW__Sensor/#function-clearbootreport">clearBootReport()</a>). A reset (kind 6) seen at boot is expected on a logger that powers its sensors per reading and makes no row; any other boot report, and any report after a reading, does.</p>
+
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+
+<h3 id="function-nw_sensor">function ~NW_Sensor</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="k">virtual</span> <span class="o">~</span><span class="n">NW_Sensor</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="function-name">function name</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>The device name as the spec spells it (“Apis”).</p>
+
+<h3 id="function-reportkind">function reportKind</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">uint8_t</span> <span class="n">reportKind</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Kind of the report captured with the last reading (0 = none).</p>
+
+<h3 id="function-reportisfault">function reportIsFault</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">bool</span> <span class="n">reportIsFault</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>The last report is a fault: its chip’s status bit is set, the data are not to be trusted.</p>
+
+<h3 id="function-bootreportkind">function bootReportKind</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">uint8_t</span> <span class="n">bootReportKind</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Kind of the report begin() captured at the device’s boot; 0 once cleared or if none.</p>
+
+<h3 id="function-clearbootreport">function clearBootReport</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">clearBootReport</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>The logger has recorded (or dismissed) the boot report.</p>
+
+<h3 id="function-printstatus">function printStatus</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">size_t</span> <span class="n">printStatus</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">boot</span> <span class="o">=</span><span class="nb">false</span>
+<span class="p">)</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Print one status line for the logger’s status file (no newline): name, serial, HW, FW, report code, note word, Pages 0-2 in hex.</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li><strong>boot</strong> print the boot report (the code begin() captured) instead of the last reading’s</li>
+</ul>
+
+<hr />
+
+<p>Updated on 2026-09-23 at 20:56:27 +0000</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_Core/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_Core</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_Core/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,415 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>NW_Core</title>
+<meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_Core">
+<meta property="og:title" content="NW_Core">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Files/NW__Pages_8h/">
+
+
+  <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Files/NW__Pages_8h/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_Core/feed.xml" type="application/atom+xml" rel="alternate" title="NW_Core Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_Core/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_Core/">
+          NW_Core
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_Core/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Device/"><span class="nav__sub-title">NW_Device Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Readings/"><span class="nav__sub-title">NW_Readings Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Fault/"><span class="nav__sub-title">NW_Fault Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#source-code">Source code</a></li></ul>
+            </nav>
+          </aside>
+        
+        <p>The served pages of a device that runs on a logger: Margay’s and Okapi’s reading of themselves.</p>
+
+<h2 id="classes">Classes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>class</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/">NW_Pages</a></strong> <br />The register image a Schema 1 device keeps: Pages 0-1 from EEPROM, Pages 2-3 written per reading.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="source-code">Source code</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">#ifndef NW_Pages_h
+#define NW_Pages_h
+</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Arduino.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;EEPROM.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">"NW_Report.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">NW_Pages</span> <span class="p">{</span>
+  <span class="nl">public:</span>
+    <span class="k">static</span> <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">SIZE</span> <span class="o">=</span> <span class="mi">128</span><span class="p">;</span>      
+    <span class="kt">uint8_t</span> <span class="n">page</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
+
+    <span class="n">NW_Pages</span><span class="p">()</span> <span class="p">{</span> <span class="n">memset</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SIZE</span><span class="p">);</span> <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">loadStored</span><span class="p">(</span><span class="kt">int</span> <span class="n">base</span><span class="p">)</span> <span class="p">{</span> <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">64</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">page</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">EEPROM</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">base</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span> <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">page0Valid</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">page</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mh">0x01</span> <span class="o">&amp;&amp;</span> <span class="n">page</span><span class="p">[</span><span class="mh">0x1D</span><span class="p">]</span> <span class="o">==</span> <span class="mh">0x4E</span> <span class="o">&amp;&amp;</span> <span class="n">crc8</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="mh">0x1E</span><span class="p">)</span> <span class="o">==</span> <span class="n">page</span><span class="p">[</span><span class="mh">0x1E</span><span class="p">];</span> <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">page1Blank</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mh">0x20</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mh">0x40</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">page</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mh">0xFF</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">// --- Block 0 (0x40-0x47) ---</span>
+    <span class="kt">void</span> <span class="nf">beginReading</span><span class="p">()</span> <span class="p">{</span> <span class="n">page</span><span class="p">[</span><span class="mh">0x40</span><span class="p">]</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="mh">0x01</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">endReading</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chipFaults</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">uint8_t</span> <span class="n">status</span> <span class="o">=</span> <span class="mh">0x01</span> <span class="o">|</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)((</span><span class="n">chipFaults</span> <span class="o">&amp;</span> <span class="mh">0x3F</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">&amp;</span> <span class="mh">0x7E</span><span class="p">)</span> <span class="n">status</span> <span class="o">|=</span> <span class="mh">0x80</span><span class="p">;</span>
+      <span class="kt">uint16_t</span> <span class="n">c</span> <span class="o">=</span> <span class="n">counter</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">page</span><span class="p">[</span><span class="mh">0x42</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">;</span> <span class="n">page</span><span class="p">[</span><span class="mh">0x43</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span>
+      <span class="n">page</span><span class="p">[</span><span class="mh">0x40</span><span class="p">]</span> <span class="o">=</span> <span class="n">status</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">uint16_t</span> <span class="nf">counter</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">page</span><span class="p">[</span><span class="mh">0x42</span><span class="p">]</span> <span class="o">|</span> <span class="p">(</span><span class="n">page</span><span class="p">[</span><span class="mh">0x43</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">);</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">latchFault</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">code</span><span class="p">)</span> <span class="p">{</span> <span class="n">page</span><span class="p">[</span><span class="mh">0x47</span><span class="p">]</span> <span class="o">=</span> <span class="n">code</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">latchNotice</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">code</span><span class="p">)</span> <span class="p">{</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">isFaultCode</span><span class="p">(</span><span class="n">page</span><span class="p">[</span><span class="mh">0x47</span><span class="p">]))</span> <span class="n">page</span><span class="p">[</span><span class="mh">0x47</span><span class="p">]</span> <span class="o">=</span> <span class="n">code</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">acknowledge</span><span class="p">()</span> <span class="p">{</span> <span class="n">page</span><span class="p">[</span><span class="mh">0x47</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">NW_Report</span> <span class="n">report</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="n">NW_Report</span> <span class="n">r</span><span class="p">;</span> <span class="n">r</span><span class="p">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">page</span><span class="p">[</span><span class="mh">0x40</span><span class="p">];</span> <span class="n">r</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">page</span><span class="p">[</span><span class="mh">0x47</span><span class="p">];</span> <span class="k">return</span> <span class="n">r</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">// --- Data helpers (little-endian, bus addresses) ---</span>
+    <span class="kt">void</span> <span class="nf">put8</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">at</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">v</span><span class="p">)</span>   <span class="p">{</span> <span class="n">page</span><span class="p">[</span><span class="n">at</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">put16</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">at</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span> <span class="n">page</span><span class="p">[</span><span class="n">at</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">;</span> <span class="n">page</span><span class="p">[</span><span class="n">at</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">put32</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">at</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span> <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">page</span><span class="p">[</span><span class="n">at</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">i</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">uint16_t</span> <span class="nf">get16</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">at</span><span class="p">)</span> <span class="k">const</span>   <span class="p">{</span> <span class="k">return</span> <span class="n">page</span><span class="p">[</span><span class="n">at</span><span class="p">]</span> <span class="o">|</span> <span class="p">(</span><span class="n">page</span><span class="p">[</span><span class="n">at</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">);</span> <span class="p">}</span>
+    <span class="kt">float</span> <span class="n">getFloat</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">at</span><span class="p">)</span> <span class="k">const</span>   <span class="p">{</span> <span class="kt">float</span> <span class="n">f</span><span class="p">;</span> <span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">f</span><span class="p">,</span> <span class="n">page</span> <span class="o">+</span> <span class="n">at</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span> <span class="k">return</span> <span class="n">f</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="kt">size_t</span> <span class="nf">printSnapshot</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fw</span><span class="p">,</span> <span class="k">const</span> <span class="n">NW_Report</span><span class="o">*</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">,</span>
+                         <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">kindWords</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nKindWords</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+      <span class="n">NW_Report</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">report</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">r</span><span class="p">)</span> <span class="n">r</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">cur</span><span class="p">;</span>
+      <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">7</span> <span class="o">&amp;&amp;</span> <span class="n">page</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">((</span><span class="kt">char</span><span class="p">)</span><span class="n">page</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+      <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">'-'</span><span class="p">);</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">nwPrintHex</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">page</span> <span class="o">+</span> <span class="mh">0x10</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="p">}</span>
+      <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">page</span><span class="p">[</span><span class="mh">0x08</span><span class="p">]);</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">'.'</span><span class="p">);</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">page</span><span class="p">[</span><span class="mh">0x09</span><span class="p">]);</span>
+      <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">fw</span><span class="p">);</span>
+      <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">",0x"</span><span class="p">));</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">nwPrintHex</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">code</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+      <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">note</span><span class="p">(</span><span class="n">chipNames</span><span class="p">,</span> <span class="n">nChips</span><span class="p">,</span> <span class="n">kindWords</span><span class="p">,</span> <span class="n">nKindWords</span><span class="p">));</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mh">0x60</span><span class="p">;</span> <span class="n">p</span> <span class="o">+=</span> <span class="mh">0x20</span><span class="p">)</span> <span class="p">{</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">nwPrintPage</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">page</span> <span class="o">+</span> <span class="n">p</span><span class="p">);</span> <span class="p">}</span>
+      <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">static</span> <span class="kt">uint8_t</span> <span class="nf">crc8</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">d</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">uint8_t</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="n">c</span> <span class="o">^=</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">b</span><span class="o">++</span><span class="p">)</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span> <span class="o">&amp;</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">?</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)((</span><span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="mh">0x07</span><span class="p">)</span> <span class="o">:</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)(</span><span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">);</span> <span class="p">}</span>
+      <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">static</span> <span class="kt">bool</span> <span class="nf">isFaultCode</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">code</span><span class="p">)</span> <span class="p">{</span> <span class="kt">uint8_t</span> <span class="n">k</span> <span class="o">=</span> <span class="n">code</span> <span class="o">&amp;</span> <span class="mh">0x1F</span><span class="p">;</span> <span class="k">return</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">8</span> <span class="o">&amp;&amp;</span> <span class="n">k</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="cp">#endif
+</span></code></pre></div></div>
+
+<hr />
+
+<p>Updated on 2026-09-23 at 20:56:27 +0000</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_Core/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_Core</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_Core/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

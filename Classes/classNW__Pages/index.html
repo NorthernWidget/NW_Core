@@ -1,0 +1,618 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>NW_Core</title>
+<meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_Core">
+<meta property="og:title" content="NW_Core">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Classes/classNW__Pages/">
+
+
+  <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Classes/classNW__Pages/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_Core/feed.xml" type="application/atom+xml" rel="alternate" title="NW_Core Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_Core/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_Core/">
+          NW_Core
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_Core/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Device/"><span class="nav__sub-title">NW_Device Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Readings/"><span class="nav__sub-title">NW_Readings Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Fault/"><span class="nav__sub-title">NW_Fault Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-nw_pages">function NW_Pages</a></li><li><a href="#function-loadstored">function loadStored</a></li><li><a href="#function-page0valid">function page0Valid</a></li><li><a href="#function-page1blank">function page1Blank</a></li><li><a href="#function-beginreading">function beginReading</a></li><li><a href="#function-endreading">function endReading</a></li><li><a href="#function-counter">function counter</a></li><li><a href="#function-latchfault">function latchFault</a></li><li><a href="#function-latchnotice">function latchNotice</a></li><li><a href="#function-acknowledge">function acknowledge</a></li><li><a href="#function-report">function report</a></li><li><a href="#function-put8">function put8</a></li><li><a href="#function-put16">function put16</a></li><li><a href="#function-put32">function put32</a></li><li><a href="#function-get16">function get16</a></li><li><a href="#function-getfloat">function getFloat</a></li><li><a href="#function-printsnapshot">function printSnapshot</a></li><li><a href="#function-crc8">function crc8</a></li><li><a href="#function-isfaultcode">function isFaultCode</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-size">variable SIZE</a></li><li><a href="#variable-page">variable page</a></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>The register image a Schema 1 device keeps: Pages 0-1 from EEPROM, Pages 2-3 written per reading.  <a href="#detailed-description">More…</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">#include &lt;NW_Pages.h&gt;</code></p>
+
+<h2 id="public-functions">Public Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-nw-pages">NW_Pages</a></strong>()</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-loadstored">loadStored</a></strong>(int base)<br />Pages 0 and 1 from EEPROM[base .. base + 63] (base = EEPROM.length() - 64).</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-page0valid">page0Valid</a></strong>() const<br />Page 0 says Schema 1, carries the magic byte and passes its CRC.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-page1blank">page1Blank</a></strong>() const<br />Page 1 was never written (every byte 0xFF): use built-in constants instead.</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-beginreading">beginReading</a></strong>()<br />A reading begins: ready clears. Fill Page 2 after this.</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-endreading">endReading</a></strong>(uint8_t chipFaults)<br />A reading is complete: status carries the chip-fault bits given (bit n = chip n), the pan-fault bit follows them, the counter moves, ready sets.</td>
+    </tr>
+    <tr>
+      <td>uint16_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-counter">counter</a></strong>() const</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-latchfault">latchFault</a></strong>(uint8_t code)<br />Latch a fault code (chip in bits 7-5, kind in bits 4-0): overwrites anything.</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-latchnotice">latchNotice</a></strong>(uint8_t code)<br />Latch a notice unless a fault is waiting to be acknowledged (spec: one report at a time).</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-acknowledge">acknowledge</a></strong>()<br />The controller’s acknowledge: a logger acknowledges its own report once it has written the row.</td>
+    </tr>
+    <tr>
+      <td><a href="/NW_Core/Classes/structNW__Report/">NW_Report</a></td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-report">report</a></strong>() const<br />The report as <a href="">NW_Report</a> decodes it: status byte and code.</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-put8">put8</a></strong>(uint8_t at, uint8_t v)</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-put16">put16</a></strong>(uint8_t at, uint16_t v)</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-put32">put32</a></strong>(uint8_t at, uint32_t v)</td>
+    </tr>
+    <tr>
+      <td>uint16_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-get16">get16</a></strong>(uint8_t at) const</td>
+    </tr>
+    <tr>
+      <td>float</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-getfloat">getFloat</a></strong>(uint8_t at) const</td>
+    </tr>
+    <tr>
+      <td>size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-printsnapshot">printSnapshot</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips, const char * fw, const <a href="/NW_Core/Classes/structNW__Report/">NW_Report</a> * r =nullptr, const char *const * kindWords =nullptr, uint8_t nKindWords =0) const<br />One status line for the logger’s status file, the columns of <a href="">NW_Device::printSnapshot()</a>: name, serial (Page 0 Block 2), HW major.minor, FW (the library version, given), report code and note word (r, the current report by default; device-specific kinds through kindWords), Pages 0, 1 and 2 in hex. No newline.</td>
+    </tr>
+    <tr>
+      <td>uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-crc8">crc8</a></strong>(const uint8_t * d, uint8_t len)<br />CRC-8/SMBUS, as Page 0 carries it.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#function-isfaultcode">isFaultCode</a></strong>(uint8_t code)<br />A report code whose kind is a fault (1-5, 7, 8), as opposed to a notice (6, 9, 10, device-specific notices).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="public-attributes">Public Attributes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>const uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#variable-size">SIZE</a></strong> <br />Pages 0-3, 0x00-0x7F.</td>
+    </tr>
+    <tr>
+      <td>uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Pages/#variable-page">page</a></strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="detailed-description">Detailed Description</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NW_Pages</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The register image a Schema 1 device keeps: Pages 0-1 from EEPROM, Pages 2-3 written per reading.</p>
+
+<p>The counterpart of <a href="/NW_Core/Classes/classNW__Device/">NW_Device</a>. A logger library holds one, loads the stored half at boot (loadStored), fills Page 2 at each reading between <a href="/NW_Core/Classes/classNW__Pages/#function-beginreading">beginReading()</a> and <a href="/NW_Core/Classes/classNW__Pages/#function-endreading">endReading()</a>, and latches its reports into Block 0 with the spec’s rules: a fault overwrites a notice, a notice never overwrites an unacknowledged fault, and the counter moves when the reading is complete. <a href="/NW_Core/Classes/classNW__Pages/#function-printsnapshot">printSnapshot()</a> is the status line a logger writes for itself, in the same columns as <a href="/NW_Core/Classes/classNW__Device/#function-printsnapshot">NW_Device::printSnapshot()</a>. Nothing here serves a bus: a transport (UART, Okapi) reads page[] when it comes.</p>
+
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+
+<h3 id="function-nw_pages">function NW_Pages</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">NW_Pages</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="function-loadstored">function loadStored</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">loadStored</span><span class="p">(</span>
+    <span class="kt">int</span> <span class="n">base</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Pages 0 and 1 from EEPROM[base .. base + 63] (base = EEPROM.length() - 64).</p>
+
+<h3 id="function-page0valid">function page0Valid</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">page0Valid</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>Page 0 says Schema 1, carries the magic byte and passes its CRC.</p>
+
+<h3 id="function-page1blank">function page1Blank</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">page1Blank</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>Page 1 was never written (every byte 0xFF): use built-in constants instead.</p>
+
+<h3 id="function-beginreading">function beginReading</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">beginReading</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>A reading begins: ready clears. Fill Page 2 after this.</p>
+
+<h3 id="function-endreading">function endReading</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">endReading</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">chipFaults</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>A reading is complete: status carries the chip-fault bits given (bit n = chip n), the pan-fault bit follows them, the counter moves, ready sets.</p>
+
+<h3 id="function-counter">function counter</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">uint16_t</span> <span class="n">counter</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-latchfault">function latchFault</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">latchFault</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">code</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Latch a fault code (chip in bits 7-5, kind in bits 4-0): overwrites anything.</p>
+
+<h3 id="function-latchnotice">function latchNotice</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">latchNotice</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">code</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Latch a notice unless a fault is waiting to be acknowledged (spec: one report at a time).</p>
+
+<h3 id="function-acknowledge">function acknowledge</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">acknowledge</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The controller’s acknowledge: a logger acknowledges its own report once it has written the row.</p>
+
+<h3 id="function-report">function report</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">NW_Report</span> <span class="n">report</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>The report as <a href="">NW_Report</a> decodes it: status byte and code.</p>
+
+<h3 id="function-put8">function put8</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">put8</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">at</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">v</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="function-put16">function put16</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">put16</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">at</span><span class="p">,</span>
+    <span class="kt">uint16_t</span> <span class="n">v</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="function-put32">function put32</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">put32</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">at</span><span class="p">,</span>
+    <span class="kt">uint32_t</span> <span class="n">v</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="function-get16">function get16</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">uint16_t</span> <span class="n">get16</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">at</span>
+<span class="p">)</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-getfloat">function getFloat</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">float</span> <span class="n">getFloat</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">at</span>
+<span class="p">)</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<h3 id="function-printsnapshot">function printSnapshot</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">printSnapshot</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">fw</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">NW_Report</span> <span class="o">*</span> <span class="n">r</span> <span class="o">=</span><span class="nb">nullptr</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">kindWords</span> <span class="o">=</span><span class="nb">nullptr</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">nKindWords</span> <span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>One status line for the logger’s status file, the columns of <a href="">NW_Device::printSnapshot()</a>: name, serial (Page 0 Block 2), HW major.minor, FW (the library version, given), report code and note word (r, the current report by default; device-specific kinds through kindWords), Pages 0, 1 and 2 in hex. No newline.</p>
+
+<h3 id="function-crc8">function crc8</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kr">inline</span> <span class="kt">uint8_t</span> <span class="n">crc8</span><span class="p">(</span>
+    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">d</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">len</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>CRC-8/SMBUS, as Page 0 carries it.</p>
+
+<h3 id="function-isfaultcode">function isFaultCode</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="kr">inline</span> <span class="kt">bool</span> <span class="n">isFaultCode</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">code</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>A report code whose kind is a fault (1-5, 7, 8), as opposed to a notice (6, 9, 10, device-specific notices).</p>
+
+<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
+
+<h3 id="variable-size">variable SIZE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">static</span> <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">SIZE</span> <span class="o">=</span> <span class="mi">128</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Pages 0-3, 0x00-0x7F.</p>
+
+<h3 id="variable-page">variable page</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">uint8_t</span> <span class="n">page</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>Updated on 2026-09-23 at 20:56:27 +0000</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_Core/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_Core</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_Core/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

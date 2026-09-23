@@ -238,7 +238,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-begin">function begin</a></li><li><a href="#function-beginfailure">function beginFailure</a></li><li><a href="#function-address">function address</a></li><li><a href="#function-hardwaremajor">function hardwareMajor</a></li><li><a href="#function-hardwareminor">function hardwareMinor</a></li><li><a href="#function-firmwareversion">function firmwareVersion</a></li><li><a href="#function-seti2caddress">function setI2CAddress</a></li><li><a href="#function-printsnapshot">function printSnapshot</a></li><li><a href="#function-settimeout">function setTimeout</a></li><li><a href="#function-timeout">function timeout</a></li><li><a href="#function-ready">function ready</a></li><li><a href="#function-readcounter">function readCounter</a></li><li><a href="#function-newreading">function newReading</a></li><li><a href="#function-requestreading">function requestReading</a></li><li><a href="#function-waitreading">function waitReading</a></li><li><a href="#function-capturereading">function captureReading</a></li><li><a href="#function-takereading">function takeReading</a></li><li><a href="#function-writebatch">function writeBatch</a></li><li><a href="#function-resetbatch">function resetBatch</a></li><li><a href="#function-beginbatch">function beginBatch</a></li><li><a href="#function-takereadings">function takeReadings</a></li><li><a href="#function-batchfaulted">function batchFaulted</a></li><li><a href="#function-report">function report</a></li><li><a href="#function-faulted">function faulted</a></li><li><a href="#function-anyfault">function anyFault</a></li><li><a href="#function-reportchip">function reportChip</a></li><li><a href="#function-reportkind">function reportKind</a></li><li><a href="#function-readbytes">function readBytes</a></li><li><a href="#function-readdata">function readData</a></li><li><a href="#function-datamoved">function dataMoved</a></li><li><a href="#function-writebyte">function writeByte</a></li><li><a href="#function-readconfig">function readConfig</a></li><li><a href="#function-writeconfig">function writeConfig</a></li><li><a href="#function-sleep">function sleep</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-begin">function begin</a></li><li><a href="#function-beginfailure">function beginFailure</a></li><li><a href="#function-address">function address</a></li><li><a href="#function-hardwaremajor">function hardwareMajor</a></li><li><a href="#function-hardwareminor">function hardwareMinor</a></li><li><a href="#function-firmwareversion">function firmwareVersion</a></li><li><a href="#function-seti2caddress">function setI2CAddress</a></li><li><a href="#function-printsnapshot">function printSnapshot</a></li><li><a href="#function-settimeout">function setTimeout</a></li><li><a href="#function-timeout">function timeout</a></li><li><a href="#function-ready">function ready</a></li><li><a href="#function-readcounter">function readCounter</a></li><li><a href="#function-newreading">function newReading</a></li><li><a href="#function-requestreading">function requestReading</a></li><li><a href="#function-waitreading">function waitReading</a></li><li><a href="#function-capturereading">function captureReading</a></li><li><a href="#function-takereading">function takeReading</a></li><li><a href="#function-writebatch">function writeBatch</a></li><li><a href="#function-resetbatch">function resetBatch</a></li><li><a href="#function-beginbatch">function beginBatch</a></li><li><a href="#function-takereadings">function takeReadings</a></li><li><a href="#function-batchfaulted">function batchFaulted</a></li><li><a href="#function-report">function report</a></li><li><a href="#function-faulted">function faulted</a></li><li><a href="#function-anyfault">function anyFault</a></li><li><a href="#function-reportchip">function reportChip</a></li><li><a href="#function-reportkind">function reportKind</a></li><li><a href="#function-readbytes">function readBytes</a></li><li><a href="#function-readdata">function readData</a></li><li><a href="#function-datamoved">function dataMoved</a></li><li><a href="#function-bootreport">function bootReport</a></li><li><a href="#function-clearbootreport">function clearBootReport</a></li><li><a href="#function-writebyte">function writeByte</a></li><li><a href="#function-readconfig">function readConfig</a></li><li><a href="#function-writeconfig">function writeConfig</a></li><li><a href="#function-sleep">function sleep</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -262,7 +262,7 @@
     </tr>
     <tr>
       <td>String</td>
-      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-beginfailure">beginFailure</a></strong>() const<br />Why the last <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a> refused, as one word for a data-table note: “NoACK”, “ReadFailed”, “NotSchema1”, “WrongName”, “OldFirmware”; “None” after a successful <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a>.</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-beginfailure">beginFailure</a></strong>() const<br />Why the last <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a> refused, as one word for a data-table note: “NotAnswering”, “ReadFailed”, “NotSchema1”, “WrongName”, “OldFirmware”; “None” after a successful <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a>.</td>
     </tr>
     <tr>
       <td>uint8_t</td>
@@ -286,7 +286,7 @@
     </tr>
     <tr>
       <td>size_t</td>
-      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-printsnapshot">printSnapshot</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips)<br />Print one status line for a logger’s status file: the device as it is now.</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-printsnapshot">printSnapshot</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips, bool boot =false)<br />Print one status line for a logger’s status file: the device as it is now.</td>
     </tr>
     <tr>
       <td>void</td>
@@ -377,6 +377,14 @@
       <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-datamoved">dataMoved</a></strong>() const<br />The last <a href="/NW_Core/Classes/classNW__Device/#function-readdata">readData()</a> gave up: the device committed a new reading during every attempt.</td>
     </tr>
     <tr>
+      <td>const <a href="/NW_Core/Classes/structNW__Report/">NW_Report</a> &amp;</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-bootreport">bootReport</a></strong>() const<br />The report <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a> captured before the first trigger cleared it (unit reset 0xE6, Page 0 check 0xE3, …), kept until clearBootReport(); code 0 once cleared or if none.</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-clearbootreport">clearBootReport</a></strong>()</td>
+    </tr>
+    <tr>
       <td>bool</td>
       <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-writebyte">writeByte</a></strong>(uint8_t reg, uint8_t value)</td>
     </tr>
@@ -436,7 +444,7 @@
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="n">beginFailure</span><span class="p">()</span> <span class="k">const</span>
 </code></pre></div></div>
 
-<p>Why the last <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a> refused, as one word for a data-table note: “NoACK”, “ReadFailed”, “NotSchema1”, “WrongName”, “OldFirmware”; “None” after a successful <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a>.</p>
+<p>Why the last <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a> refused, as one word for a data-table note: “NotAnswering”, “ReadFailed”, “NotSchema1”, “WrongName”, “OldFirmware”; “None” after a successful <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a>.</p>
 
 <h3 id="function-address">function address</h3>
 
@@ -472,7 +480,8 @@
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">size_t</span> <span class="n">printSnapshot</span><span class="p">(</span>
     <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span>
-    <span class="kt">uint8_t</span> <span class="n">nChips</span>
+    <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">boot</span> <span class="o">=</span><span class="nb">false</span>
 <span class="p">)</span>
 </code></pre></div></div>
 
@@ -482,11 +491,12 @@
 
 <ul>
   <li><strong>chipNames</strong> the device’s chip table for the note word; nullptr for “ChipN”</li>
+  <li><strong>boot</strong> print the boot report (<a href="/NW_Core/Classes/classNW__Device/#function-bootreport">bootReport()</a>) in the code and note columns instead of report()</li>
 </ul>
 
 <p><strong>Return</strong>: bytes written</p>
 
-<p>Columns, comma separated, no newline: name, serial (Page 0 Block 2 as four hex groups), HW version (major.minor), FW patch, the last report captured as code (0xNN) and as note word, then Pages 0, 1 and 2 as hex. One value per column, so a logger’s status file is a table: Time,Device,Serial,HW,FW,Code,Note,Page0,Page1,Page2. Three page reads, no write: the report is not acknowledged. A logger prints its timestamp, calls this, ends the line. Meant for whenever reportKind() is not zero, and for any moment worth a record (boot, a visit).</p>
+<p>Columns, comma separated, no newline: name, serial (Page 0 Block 2 as four hex groups), HW version (major.minor), FW patch, the last report captured as code (0xNN) and as note word, then Pages 0, 1 and 2 as hex, each page four 8-byte blocks with a space between them. One value per column, so a logger’s status file is a table: Time,Device,Serial,HW,FW,Code,Note,Page0,Page1,Page2. Three page reads, no write: the report is not acknowledged. A logger prints its timestamp, calls this, ends the line. Meant for whenever reportKind() is not zero, and for any moment worth a record (boot, a visit).</p>
 
 <h3 id="function-settimeout">function setTimeout</h3>
 
@@ -694,6 +704,18 @@
 
 <p>The last <a href="/NW_Core/Classes/classNW__Device/#function-readdata">readData()</a> gave up: the device committed a new reading during every attempt.</p>
 
+<h3 id="function-bootreport">function bootReport</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="k">const</span> <span class="n">NW_Report</span> <span class="o">&amp;</span> <span class="n">bootReport</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>The report <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a> captured before the first trigger cleared it (unit reset 0xE6, Page 0 check 0xE3, …), kept until clearBootReport(); code 0 once cleared or if none.</p>
+
+<h3 id="function-clearbootreport">function clearBootReport</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">clearBootReport</span><span class="p">()</span>
+</code></pre></div></div>
+
 <h3 id="function-writebyte">function writeByte</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">writeByte</span><span class="p">(</span>
@@ -723,7 +745,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 20:12:16 +0000</p>
+<p>Updated on 2026-09-23 at 20:56:27 +0000</p>
 
         
       </section>

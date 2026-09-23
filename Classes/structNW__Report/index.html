@@ -293,7 +293,7 @@
     </tr>
     <tr>
       <td>size_t</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-printkind">printKind</a></strong>(Print &amp; out) const<br />Print the kind in words (“timeout”; “kind 17” for device-specific kinds).</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-printkind">printKind</a></strong>(Print &amp; out) const<br />Print the kind in words (“timed out”; “kind 17” for device-specific kinds): the spec’s table of note words, spoken.</td>
     </tr>
     <tr>
       <td>String</td>
@@ -301,11 +301,11 @@
     </tr>
     <tr>
       <td>size_t</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-print">print</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips) const<br />Print the report in words: the chip, then the kind, e.g. “MS5803: no acknowledge”, “unit: reset since configured”; “none” when there is no report. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-print">print</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips, const char *const * kindWords =nullptr, uint8_t nKindWords =0) const<br />Print the report in words: the chip, then the kind, e.g. “MS5803: not answering”, “unit: restarted since configured”; “none” when there is no report. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</td>
     </tr>
     <tr>
       <td>String</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-note">note</a></strong>(const char *const * chipNames, uint8_t nChips) const<br />The report as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NoACK”, “UnitReset”, “Chip2Kind17”; “UnitNone” when there is no report.</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-note">note</a></strong>(const char *const * chipNames, uint8_t nChips, const char *const * kindWords =nullptr, uint8_t nKindWords =0) const<br />The report as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NotAnswering”, “UnitRestarted”, “Chip2Kind17”; “UnitNone” when there is no report. A device-specific kind (16-31) prints its appendix word alone when the library passes its table (“LoggingStarted”).</td>
     </tr>
     <tr>
       <td>bool</td>
@@ -405,7 +405,7 @@
 <span class="p">)</span> <span class="k">const</span>
 </code></pre></div></div>
 
-<p>Print the kind in words (“timeout”; “kind 17” for device-specific kinds).</p>
+<p>Print the kind in words (“timed out”; “kind 17” for device-specific kinds): the spec’s table of note words, spoken.</p>
 
 <h3 id="function-kindword">function kindWord</h3>
 
@@ -419,11 +419,13 @@
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">print</span><span class="p">(</span>
     <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span>
-    <span class="kt">uint8_t</span> <span class="n">nChips</span>
+    <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">kindWords</span> <span class="o">=</span><span class="nb">nullptr</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">nKindWords</span> <span class="o">=</span><span class="mi">0</span>
 <span class="p">)</span> <span class="k">const</span>
 </code></pre></div></div>
 
-<p>Print the report in words: the chip, then the kind, e.g. “MS5803: no acknowledge”, “unit: reset since configured”; “none” when there is no report. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</p>
+<p>Print the report in words: the chip, then the kind, e.g. “MS5803: not answering”, “unit: restarted since configured”; “none” when there is no report. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</p>
 
 <p><strong>Return</strong>: Bytes written.</p>
 
@@ -431,11 +433,13 @@
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">String</span> <span class="n">note</span><span class="p">(</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span>
-    <span class="kt">uint8_t</span> <span class="n">nChips</span>
+    <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">kindWords</span> <span class="o">=</span><span class="nb">nullptr</span><span class="p">,</span>
+    <span class="kt">uint8_t</span> <span class="n">nKindWords</span> <span class="o">=</span><span class="mi">0</span>
 <span class="p">)</span> <span class="k">const</span>
 </code></pre></div></div>
 
-<p>The report as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NoACK”, “UnitReset”, “Chip2Kind17”; “UnitNone” when there is no report.</p>
+<p>The report as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NotAnswering”, “UnitRestarted”, “Chip2Kind17”; “UnitNone” when there is no report. A device-specific kind (16-31) prints its appendix word alone when the library passes its table (“LoggingStarted”).</p>
 
 <h3 id="function-chipabsent">function chipAbsent</h3>
 
@@ -462,7 +466,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 20:12:16 +0000</p>
+<p>Updated on 2026-09-23 at 20:56:27 +0000</p>
 
         
       </section>

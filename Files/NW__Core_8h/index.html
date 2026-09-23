@@ -257,6 +257,8 @@
   <li><a href="/NW_Core/Classes/classNW__Device/">NW_Device</a>: the NW-Device-Specification Schema 1 device protocol over I2C (Page 0 identity and version gates; Block 0 trigger, ready, counter, batch, and report handling; chunked register reads).</li>
   <li>NW_Readings&lt;T, CAPACITY&gt;: a measurement’s readings in a fixed array (no heap) with mean, standard deviation, standard error, and median.</li>
   <li><a href="/NW_Core/Classes/structNW__Report/">NW_Report</a>: the decoded Status and Report bytes (faults and notices).</li>
+  <li><a href="/NW_Core/Classes/classNW__Sensor/">NW_Sensor</a>: the interface a logger keeps a status file through (name, reports, status line).</li>
+  <li><a href="/NW_Core/Classes/classNW__Pages/">NW_Pages</a>: the served pages of a device that runs on a logger (its reading of itself).</li>
   <li><a href="/NW_Core/Files/NW__Error_8h/#file-nw-error.h">NW_Error.h</a>: NW_ERROR (-9999), the missing value on file, and <a href="/NW_Core/Files/NW__Error_8h/#function-nwscaled">nwScaled()</a>.</li>
   <li><a href="/NW_Core/Classes/structNW__ReadingsConfig/">NW_ReadingsConfig</a>: how many readings a chip group takes and whether its statistics columns print. Sensor libraries hold an <a href="/NW_Core/Classes/classNW__Device/">NW_Device</a> and one <a href="/NW_Core/Classes/classNW__Readings/">NW_Readings</a> per measurement. Names exported by this library carry the NW_ prefix; everything else in an NW sensor library is scoped to its own class.</li>
 </ul>
@@ -269,6 +271,8 @@
 </span>
 <span class="cp">#include</span> <span class="cpf">"NW_Error.h"</span><span class="cp">
 #include</span> <span class="cpf">"NW_Report.h"</span><span class="cp">
+#include</span> <span class="cpf">"NW_Sensor.h"</span><span class="cp">
+#include</span> <span class="cpf">"NW_Pages.h"</span><span class="cp">
 #include</span> <span class="cpf">"NW_Readings.h"</span><span class="cp">
 #include</span> <span class="cpf">"NW_Device.h"</span><span class="cp">
 </span>
@@ -277,7 +281,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-23 at 20:12:16 +0000</p>
+<p>Updated on 2026-09-23 at 20:56:27 +0000</p>
 
         
       </section>
