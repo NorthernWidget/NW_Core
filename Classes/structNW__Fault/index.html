@@ -241,7 +241,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-ready">function ready</a></li><li><a href="#function-chipfaulted">function chipFaulted</a></li><li><a href="#function-any">function any</a></li><li><a href="#function-chip">function chip</a></li><li><a href="#function-kind">function kind</a></li><li><a href="#function-isunit">function isUnit</a></li><li><a href="#function-printkind">function printKind</a></li><li><a href="#function-chipabsent">function chipAbsent</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-status">variable status</a></li><li><a href="#variable-code">variable code</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-ready">function ready</a></li><li><a href="#function-chipfaulted">function chipFaulted</a></li><li><a href="#function-any">function any</a></li><li><a href="#function-chip">function chip</a></li><li><a href="#function-kind">function kind</a></li><li><a href="#function-isunit">function isUnit</a></li><li><a href="#function-printkind">function printKind</a></li><li><a href="#function-kindword">function kindWord</a></li><li><a href="#function-chipabsent">function chipAbsent</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-status">variable status</a></li><li><a href="#variable-code">variable code</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -286,6 +286,10 @@
     <tr>
       <td>size_t</td>
       <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-printkind">printKind</a></strong>(Print &amp; out) const<br />Print the kind in words (“timeout”; “kind 17” for device-specific kinds).</td>
+    </tr>
+    <tr>
+      <td>String</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Fault/#function-kindword">kindWord</a></strong>() const<br />The kind as one word for a data-table note (“Timeout”; “Kind17” for device-specific kinds).</td>
     </tr>
     <tr>
       <td>bool</td>
@@ -373,6 +377,13 @@
 
 <p>Print the kind in words (“timeout”; “kind 17” for device-specific kinds).</p>
 
+<h3 id="function-kindword">function kindWord</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">String</span> <span class="n">kindWord</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>The kind as one word for a data-table note (“Timeout”; “Kind17” for device-specific kinds).</p>
+
 <h3 id="function-chipabsent">function chipAbsent</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">chipAbsent</span><span class="p">()</span> <span class="k">const</span>
@@ -398,7 +409,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-22 at 23:09:52 +0000</p>
+<p>Updated on 2026-09-23 at 04:50:30 +0000</p>
 
         
       </section>

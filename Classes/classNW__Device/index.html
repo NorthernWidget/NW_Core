@@ -238,7 +238,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-begin">function begin</a></li><li><a href="#function-address">function address</a></li><li><a href="#function-hardwaremajor">function hardwareMajor</a></li><li><a href="#function-hardwareminor">function hardwareMinor</a></li><li><a href="#function-firmwareversion">function firmwareVersion</a></li><li><a href="#function-seti2caddress">function setI2CAddress</a></li><li><a href="#function-settimeout">function setTimeout</a></li><li><a href="#function-timeout">function timeout</a></li><li><a href="#function-ready">function ready</a></li><li><a href="#function-readcounter">function readCounter</a></li><li><a href="#function-newreading">function newReading</a></li><li><a href="#function-requestreading">function requestReading</a></li><li><a href="#function-waitreading">function waitReading</a></li><li><a href="#function-capturereading">function captureReading</a></li><li><a href="#function-takereading">function takeReading</a></li><li><a href="#function-writebatch">function writeBatch</a></li><li><a href="#function-resetbatch">function resetBatch</a></li><li><a href="#function-batchfaulted">function batchFaulted</a></li><li><a href="#function-fault">function fault</a></li><li><a href="#function-faulted">function faulted</a></li><li><a href="#function-anyfault">function anyFault</a></li><li><a href="#function-faultchip">function faultChip</a></li><li><a href="#function-faultkind">function faultKind</a></li><li><a href="#function-readbytes">function readBytes</a></li><li><a href="#function-writebyte">function writeByte</a></li><li><a href="#function-readconfig">function readConfig</a></li><li><a href="#function-writeconfig">function writeConfig</a></li><li><a href="#function-sleep">function sleep</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-begin">function begin</a></li><li><a href="#function-beginfailure">function beginFailure</a></li><li><a href="#function-address">function address</a></li><li><a href="#function-hardwaremajor">function hardwareMajor</a></li><li><a href="#function-hardwareminor">function hardwareMinor</a></li><li><a href="#function-firmwareversion">function firmwareVersion</a></li><li><a href="#function-seti2caddress">function setI2CAddress</a></li><li><a href="#function-settimeout">function setTimeout</a></li><li><a href="#function-timeout">function timeout</a></li><li><a href="#function-ready">function ready</a></li><li><a href="#function-readcounter">function readCounter</a></li><li><a href="#function-newreading">function newReading</a></li><li><a href="#function-requestreading">function requestReading</a></li><li><a href="#function-waitreading">function waitReading</a></li><li><a href="#function-capturereading">function captureReading</a></li><li><a href="#function-takereading">function takeReading</a></li><li><a href="#function-writebatch">function writeBatch</a></li><li><a href="#function-resetbatch">function resetBatch</a></li><li><a href="#function-batchfaulted">function batchFaulted</a></li><li><a href="#function-fault">function fault</a></li><li><a href="#function-faulted">function faulted</a></li><li><a href="#function-anyfault">function anyFault</a></li><li><a href="#function-faultchip">function faultChip</a></li><li><a href="#function-faultkind">function faultKind</a></li><li><a href="#function-readbytes">function readBytes</a></li><li><a href="#function-writebyte">function writeByte</a></li><li><a href="#function-readconfig">function readConfig</a></li><li><a href="#function-writeconfig">function writeConfig</a></li><li><a href="#function-sleep">function sleep</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -259,6 +259,10 @@
     <tr>
       <td>bool</td>
       <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-begin">begin</a></strong>(uint8_t address, const char * name, uint8_t minPatch, unsigned long bootTimeoutMs =0)<br />Open the device and check that it is what the library expects.</td>
+    </tr>
+    <tr>
+      <td>String</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Device/#function-beginfailure">beginFailure</a></strong>() const<br />Why the last <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a> refused, as one word for a data-table note: “NoACK”, “ReadFailed”, “NotSchema1”, “WrongName”, “OldFirmware”; “None” after a successful <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a>.</td>
     </tr>
     <tr>
       <td>uint8_t</td>
@@ -406,6 +410,13 @@
 <p><strong>Return</strong>: true if the device answered and passed the three gates</p>
 
 <p>Starts Wire, waits for an acknowledge at the address for up to bootTimeoutMs (a logger often calls <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a> the instant it powers the sensor rail), reads Page 0 bytes 0x00-0x0F, stores the hardware and firmware versions, then refuses the device unless the schema byte is 0x01, the 7-byte name matches, and the firmware patch is at least minPatch. The versions are stored before any refusal so a sketch can report why.</p>
+
+<h3 id="function-beginfailure">function beginFailure</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">String</span> <span class="n">beginFailure</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>Why the last <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a> refused, as one word for a data-table note: “NoACK”, “ReadFailed”, “NotSchema1”, “WrongName”, “OldFirmware”; “None” after a successful <a href="/NW_Core/Classes/classNW__Device/#function-begin">begin()</a>.</p>
 
 <h3 id="function-address">function address</h3>
 
@@ -620,7 +631,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-22 at 23:09:52 +0000</p>
+<p>Updated on 2026-09-23 at 04:50:30 +0000</p>
 
         
       </section>
