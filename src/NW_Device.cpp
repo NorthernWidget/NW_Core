@@ -101,8 +101,8 @@ size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_
   for (uint8_t i = 1; i <= 7 && page[i]; i++) n += out.print((char)page[i]);   // name
   n += out.print(',');
   for (uint8_t i = 0; i < 4; i++) { if (i) n += out.print('-'); n += printHex(out, page + 0x10 + 2 * i, 2); }   // serial, Block 2
-  n += out.print(F(",HW")); n += out.print(page[NW_REG_HW_MAJOR]); n += out.print('.'); n += out.print(page[NW_REG_HW_MINOR]);
-  n += out.print(F(",FW")); n += out.print(page[NW_REG_FW_PATCH]);
+  n += out.print(','); n += out.print(page[NW_REG_HW_MAJOR]); n += out.print('.'); n += out.print(page[NW_REG_HW_MINOR]);   // HW version
+  n += out.print(','); n += out.print(page[NW_REG_FW_PATCH]);                                                               // FW patch
   n += out.print(F(",0x")); n += printHex(out, &_report.code, 1);
   n += out.print(','); n += out.print(_report.note(chipNames, nChips));
   n += out.print(','); n += printHex(out, page, 32);                                   // Page 0

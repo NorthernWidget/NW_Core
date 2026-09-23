@@ -75,9 +75,11 @@ class NW_Device {
     bool setI2CAddress(uint8_t newAddress);
     /**
      * @brief Print one status line for a logger's status file: the device as it is now.
-     * @details name, serial (Page 0 Block 2 as four hex groups), HW and FW versions, the
-     * last report captured (code and note word), then Pages 0, 1 and 2 as hex, comma
-     * separated, no newline. Three page reads, no write: the report is not acknowledged.
+     * @details Columns, comma separated, no newline: name, serial (Page 0 Block 2 as
+     * four hex groups), HW version (major.minor), FW patch, the last report captured
+     * as code (0xNN) and as note word, then Pages 0, 1 and 2 as hex. One value per
+     * column, so a logger's status file is a table:
+     * Time,Device,Serial,HW,FW,Code,Note,Page0,Page1,Page2. Three page reads, no write: the report is not acknowledged.
      * A logger prints its timestamp, calls this, ends the line. Meant for whenever
      * reportKind() is not zero, and for any moment worth a record (boot, a visit).
      * @param chipNames the device's chip table for the note word; nullptr for "ChipN"
