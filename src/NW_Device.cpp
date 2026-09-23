@@ -120,16 +120,16 @@ bool NW_Device::waitReading() {
 }
 
 bool NW_Device::captureReading() {
-  // Block 0 of the new reading: status (0x20) and latched fault (0x27), one 8-byte read.
+  // Block 0 of the new reading: status (0x20) and report (0x27), one 8-byte read.
   uint8_t b0[8] = {0, 0, 0, 0, 0, 0, 0, 0};
   if (!readBytes(NW_REG_STATUS, b0, 8)) return false;
-  _fault.status = b0[0];
-  _fault.code   = b0[7];
+  _report.status = b0[0];
+  _report.code   = b0[7];
   _lastCounter  = (uint16_t)((b0[3] << 8) | b0[2]);       // the counter of the reading captured
   // A selected chip that reports "no acknowledge" or "not initialised" is not
   // coming for the rest of this batch (NW-Device-Specification, Readings requested).
-  uint8_t chip = _fault.chip();
-  if (chip < 6 && (_chips & (1 << chip)) && _fault.chipFaulted(chip) && _fault.chipAbsent()) _absentChips |= (1 << chip);
+  uint8_t chip = _report.chip();
+  if (chip < 6 && (_chips & (1 << chip)) && _report.chipFaulted(chip) && _report.chipAbsent()) _absentChips |= (1 << chip);
   return true;
 }
 

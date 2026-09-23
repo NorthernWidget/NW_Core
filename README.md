@@ -8,10 +8,10 @@ Three parts, one include:
 #include <NW_Core.h>
 ```
 
-- **`NW_Device`** speaks the [NW-Device-Specification](https://github.com/NorthernWidget/NW-Device-Specification) Schema 1 register map over I2C: Page 0 identity with the three `begin()` gates (schema byte, name, minimum firmware patch) and a boot-time retry, with `beginFailure()` naming the gate that refused; the Block 0 handshake in three steps, `requestReading(chips)`, `waitReading()`, `captureReading()`, or `takeReading(chips)` for all three; batches through the readings-requested word (`beginBatch(n)`, `batchFaulted(chips)`, and `takeReadings(chips, n, readOne)`, the N-readings loop every library runs); the latched fault; `readData()`, the data read checked against the counter with a bounded retry (`dataMoved()` when a device outruns it); register reads split at the 32-byte Wire buffer.
+- **`NW_Device`** speaks the [NW-Device-Specification](https://github.com/NorthernWidget/NW-Device-Specification) Schema 1 register map over I2C: Page 0 identity with the three `begin()` gates (schema byte, name, minimum firmware patch) and a boot-time retry, with `beginFailure()` naming the gate that refused; the Block 0 handshake in three steps, `requestReading(chips)`, `waitReading()`, `captureReading()`, or `takeReading(chips)` for all three; batches through the readings-requested word (`beginBatch(n)`, `batchFaulted(chips)`, and `takeReadings(chips, n, readOne)`, the N-readings loop every library runs); the report; `readData()`, the data read checked against the counter with a bounded retry (`dataMoved()` when a device outruns it); register reads split at the 32-byte Wire buffer.
 - **`NW_Readings<T, CAPACITY>`** holds one measurement's readings in a fixed array, no heap: every acquisition appends; `last()` is the scalar; `mean()`, `std()`, `sterr()`, `median()` are computed from the array on demand, so a batch logged to a file has its statistics without a second acquisition.
 - **`NW_Error.h`** defines `NW_ERROR` (-9999), the missing value on file, and `nwScaled(v, divisor)`, which scales a statistic from register units and passes the sentinel through. **`NW_ReadingsConfig`** holds, per chip group, how many readings `updateMeasurements()` takes (`set(n, capacity)` clamps) and whether its std and sterr columns print (`columns()`).
-- **`NW_Fault`** decodes the status and latched-fault bytes and prints the whole fault (`print(out, chipNames, n)`: "MS5803: no acknowledge") or gives it as one word for a note column (`note(chipNames, n)`: "MS5803NoACK"), the library passing its chip-name table; `printKind()` and `kindWord()` give the universal kind alone.
+- **`NW_Report`** decodes the status and Report bytes and prints the whole report (`print(out, chipNames, n)`: "MS5803: no acknowledge") or gives it as one word for a note column (`note(chipNames, n)`: "MS5803NoACK"), the library passing its chip-name table; `printKind()` and `kindWord()` give the universal kind alone.
 
 A sensor library holds one `NW_Device` and one `NW_Readings` per measurement and forwards to them; nothing inherits. The design, and the line between what lives here and what stays in each library, is in [LIBRARY-DESIGN.md](https://github.com/NorthernWidget/NW-Device-Specification/blob/master/LIBRARY-DESIGN.md), section 11.
 
@@ -41,9 +41,9 @@ class Walrus {
     }
     uint16_t setPressureReadings(uint16_t n) { return _pressureCfg.set(n, WALRUS_PRESSURE_CAPACITY); }
     float getPressureStd() { return nwScaled(_pressureReadings.std(), 1000.0); }
-    size_t printFault(Print& out) {
+    size_t printReport(Print& out) {
         static const char* const chips[] = {"MS5803", "MCP9808"};      // the spec's chip table
-        return _dev.fault().print(out, chips, 2);
+        return _dev.report().print(out, chips, 2);
     }
 };
 ```

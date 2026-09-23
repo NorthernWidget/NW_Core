@@ -7,7 +7,7 @@
 
 #include <Arduino.h>
 #include <Wire.h>
-#include "NW_Fault.h"
+#include "NW_Report.h"
 
 // Page 0 (identity, served from EEPROM) and Page 1 Block 0 (status and control),
 // as NW-Device-Specification defines them for every device.
@@ -22,7 +22,7 @@
 #define NW_REG_COUNTER   0x22  ///< reading counter, uint16 little-endian (0x22-0x23)
 #define NW_REG_REQUEST   0x24  ///< readings requested (batch size), uint16 little-endian, writable (0x24-0x25)
 #define NW_REG_CONFIG    0x26  ///< writable, device-specific, volatile
-#define NW_REG_FAULT     0x27  ///< latched fault code; cleared by any Control write
+#define NW_REG_REPORT     0x27  ///< report code; cleared by any Control write
 #define NW_REG_DATA      0x28  ///< first device data byte
 #define NW_BIT_READY     0x01
 #define NW_BIT_PANFAULT  0x80
@@ -93,7 +93,7 @@ class NW_Device {
     bool requestReading(uint8_t chips);
     /** @brief Wait until the counter moves past the value seen at the last request (or the last capture), within timeout(). */
     bool waitReading();
-    /** @brief Read Block 0 after a reading: status and latched fault into fault(); notes the counter. */
+    /** @brief Read Block 0 after a reading: status and the Report register into report(); notes the counter. */
     bool captureReading();
     /** @brief requestReading() + waitReading() + captureReading(). false on bus error or timeout. */
     bool takeReading(uint8_t chips);
@@ -143,12 +143,12 @@ class NW_Device {
      */
     bool batchFaulted(uint8_t chips = 0x3F) const { return (_absentChips & chips) != 0; }
 
-    // --- Faults ---
-    const NW_Fault& fault() const     { return _fault; }
-    bool faulted(uint8_t chip) const  { return _fault.chipFaulted(chip); }
-    bool anyFault() const             { return _fault.any(); }
-    uint8_t faultChip() const         { return _fault.chip(); }
-    uint8_t faultKind() const         { return _fault.kind(); }
+    // --- Reports (the Report register, latched) and faults (status bits, live) ---
+    const NW_Report& report() const     { return _report; }
+    bool faulted(uint8_t chip) const  { return _report.chipFaulted(chip); }
+    bool anyFault() const             { return _report.any(); }
+    uint8_t reportChip() const         { return _report.chip(); }
+    uint8_t reportKind() const         { return _report.kind(); }
 
     // --- Registers ---
     /** @brief Read n bytes from reg; reads longer than NW_WIRE_CHUNK are split into several transactions. */
@@ -165,7 +165,7 @@ class NW_Device {
      * dataMoved() set, so a device that commits faster than it can be read never
      * holds the controller. Use it for the data after takeReading() or
      * captureReading(); readBytes() is for Page 0 and single registers.
-     * @return true with buf holding one complete reading, the one fault() describes
+     * @return true with buf holding one complete reading, the one report() describes
      */
     bool readData(uint8_t reg, uint8_t* buf, uint8_t n);
     /** @brief The last readData() gave up: the device committed a new reading during every attempt. */
@@ -186,7 +186,7 @@ class NW_Device {
     uint8_t  _chips = 0;                // chips selected at the last request
     uint8_t _absentChips = 0;           // chips that reported absent since the last writeBatch()/resetBatch()
     bool _dataMoved = false;            // readData() exhausted its retries
-    NW_Fault _fault;
+    NW_Report _report;
 };
 
 #endif

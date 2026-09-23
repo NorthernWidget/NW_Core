@@ -1,6 +1,6 @@
 # NW_Core
 
-Shared foundation for the Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol (`NW_Device`), the readings store with statistics (`NW_Readings`, `NW_ReadingsConfig`), the fault decoder (`NW_Fault`), and the missing-value sentinel (`NW_Error.h`). Apis_Library, Walrus_Library and Haar_Library build on it.
+Shared foundation for the Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol (`NW_Device`), the readings store with statistics (`NW_Readings`, `NW_ReadingsConfig`), the report decoder (`NW_Report`), and the missing-value sentinel (`NW_Error.h`). Apis_Library, Walrus_Library and Haar_Library build on it.
 
 ## Standards
 

@@ -1,5 +1,5 @@
 // Output-regression test for NW_Core: compiles the library on the host against
-// the stubs here and prints what NW_Device, NW_Fault, and NW_Readings do for
+// the stubs here and prints what NW_Device, NW_Report, and NW_Readings do for
 // fixed device images and emulated firmware. run.sh diffs against baseline.txt.
 #include "Arduino.h"
 #include "Wire.h"
@@ -16,7 +16,7 @@ static void loadImage(uint8_t fwPatch = 2, uint8_t schema = 0x01, const char* na
 }
 // Emulated firmware: a trigger completes a reading at once.
 static void firmware() { installFirmwareEmulation(); }
-static const char* kindText(const NW_Fault& f) { static char b[40]; BufferPrint bp(b, sizeof b); f.printKind(bp); return b; }
+static const char* kindText(const NW_Report& f) { static char b[40]; BufferPrint bp(b, sizeof b); f.printKind(bp); return b; }
 
 int main() {
   // 1. begin() gates
@@ -37,10 +37,10 @@ int main() {
     printf("[handshake] newReading before any=%d ready=%d\n", d.newReading(), d.ready());
     unsigned tx = Wire.transactions; bool ok = d.takeReading(0x01);
     printf("[handshake] takeReading(chip0): ok=%d counter=%u newReading=%d ctrl=0x%02X fault='%s' transactions=%u\n",
-       ok, d.readCounter(), d.newReading(), Wire.image[0x21], kindText(d.fault()), Wire.transactions - tx);
+       ok, d.readCounter(), d.newReading(), Wire.image[0x21], kindText(d.report()), Wire.transactions - tx);
     // split form: request now, wait later
     ok = d.requestReading(0x03); printf("[handshake] request(chips 0,1) ok=%d ctrl written=0x%02X", ok, 0x01 | (0x03 << 1));
-    ok = d.waitReading(); printf(" wait=%d", ok); ok = d.captureReading(); printf(" capture=%d status=0x%02X\n", ok, d.fault().status); }
+    ok = d.waitReading(); printf(" wait=%d", ok); ok = d.captureReading(); printf(" capture=%d status=0x%02X\n", ok, d.report().status); }
 
   // 3. Free-running device: no request, the counter moves on its own
   { loadImage(); NW_Device d; d.begin(0x41, "Apis", 2); d.captureReading(); Wire.freeRunPeriodMs = 10;
@@ -55,18 +55,18 @@ int main() {
   { loadImage(); firmware(); NW_Device d; d.begin(0x41, "Apis", 2);
     Wire.beforeRead = [](TwoWire& w, uint8_t) { w.image[0x20] = 0x83; w.image[0x27] = 0x02; };   // ready | chip0 fault | pan; chip 0 timeout
     d.takeReading(0x01);
-    printf("[fault] faulted(0)=%d faulted(1)=%d any=%d chip=%u kind=%u '%s' batchFaulted=%d\n",
-       d.faulted(0), d.faulted(1), d.anyFault(), d.faultChip(), d.faultKind(), kindText(d.fault()), d.batchFaulted());
+    printf("[report] faulted(0)=%d faulted(1)=%d any=%d chip=%u kind=%u '%s' batchFaulted=%d\n",
+       d.faulted(0), d.faulted(1), d.anyFault(), d.reportChip(), d.reportKind(), kindText(d.report()), d.batchFaulted());
     Wire.beforeRead = [](TwoWire& w, uint8_t) { w.image[0x20] = 0x83; w.image[0x27] = 0x01; };   // chip 0 no acknowledge
-    d.takeReading(0x01); printf("[fault] chip0 no-ack, chip0 selected: batchFaulted=%d '%s'\n", d.batchFaulted(), kindText(d.fault()));
-    d.writeBatch(4); printf("[fault] writeBatch(4): batchFaulted=%d word=%u\n", d.batchFaulted(), Wire.image[0x24] | (Wire.image[0x25] << 8));
+    d.takeReading(0x01); printf("[report] chip0 no-ack, chip0 selected: batchFaulted=%d '%s'\n", d.batchFaulted(), kindText(d.report()));
+    d.writeBatch(4); printf("[report] writeBatch(4): batchFaulted=%d word=%u\n", d.batchFaulted(), Wire.image[0x24] | (Wire.image[0x25] << 8));
     Wire.beforeRead = [](TwoWire& w, uint8_t) { w.image[0x20] = 0x85; w.image[0x27] = 0x21; };   // chip 1 no-ack
-    d.takeReading(0x01); printf("[fault] chip1 no-ack, only chip0 selected: batchFaulted=%d\n", d.batchFaulted());
-    d.takeReading(0x02); printf("[fault] chip1 no-ack, chip1 selected: batchFaulted(any)=%d chip0=%d chip1=%d\n", d.batchFaulted(), d.batchFaulted(0x01), d.batchFaulted(0x02));
+    d.takeReading(0x01); printf("[report] chip1 no-ack, only chip0 selected: batchFaulted=%d\n", d.batchFaulted());
+    d.takeReading(0x02); printf("[report] chip1 no-ack, chip1 selected: batchFaulted(any)=%d chip0=%d chip1=%d\n", d.batchFaulted(), d.batchFaulted(0x01), d.batchFaulted(0x02));
     Wire.beforeRead = [](TwoWire& w, uint8_t) { w.image[0x20] = 0x01; w.image[0x27] = 0xE6; };   // unit: reset since configured
-    d.resetBatch(); d.takeReading(0x01); printf("[fault] unit: chip=%u isUnit=%d '%s' batchFaulted=%d\n", d.faultChip(), d.fault().isUnit(), kindText(d.fault()), d.batchFaulted());
+    d.resetBatch(); d.takeReading(0x01); printf("[report] unit: chip=%u isUnit=%d '%s' batchFaulted=%d\n", d.reportChip(), d.report().isUnit(), kindText(d.report()), d.batchFaulted());
     Wire.beforeRead = [](TwoWire& w, uint8_t) { w.image[0x20] = 0x01; w.image[0x27] = 0x11; };   // chip 0 kind 17
-    d.takeReading(0x01); printf("[fault] device-specific kind: '%s'\n", kindText(d.fault())); Wire.beforeRead = nullptr; }
+    d.takeReading(0x01); printf("[report] device-specific kind: '%s'\n", kindText(d.report())); Wire.beforeRead = nullptr; }
 
   // 6. Long reads are chunked at the 32-byte Wire buffer
   { loadImage(); NW_Device d; d.begin(0x41, "Apis", 2); for (int i = 0; i < 128; i++) Wire.image[i] = i;
@@ -117,7 +117,7 @@ int main() {
     printf("[takeReadings] n=5: taken=%u calls=%d lastRequest=%u batchFaulted=%d\n", taken, calls, lastRequest, d.batchFaulted(0x01));
     onReading = [](TwoWire& w) { w.image[0x20] = 0x83; w.image[0x27] = 0x01; };   // LiDAR: no acknowledge
     calls = 0; taken = d.takeReadings(0x01, 10, [&] { calls++; return d.takeReading(0x01) && !d.faulted(0); });
-    printf("[takeReadings] dead chip, n=10: taken=%u calls=%d batchFaulted=%d note=%s\n", taken, calls, d.batchFaulted(0x01), d.fault().note(nullptr, 0).c_str());
+    printf("[takeReadings] dead chip, n=10: taken=%u calls=%d batchFaulted=%d note=%s\n", taken, calls, d.batchFaulted(0x01), d.report().note(nullptr, 0).c_str());
     onReading = nullptr;
     taken = d.takeReadings(0x01, 0, [&] { return true; }); printf("[takeReadings] n=0: taken=%u\n", taken); }
 
@@ -128,10 +128,10 @@ int main() {
     printf("[nwScaled] 101325/100=%.2f  -9999 passes=%.0f  mean of empty=%.0f\n", nwScaled(101325, 100.0), nwScaled(NW_ERROR, 100.0), nwScaled(NW_Readings<int16_t, 4>().mean(), 100.0)); }
 
   // Fault text with a library's chip-name table: chip 0, chip 1, unit, and a chip beyond the table.
-  { static const char* const chips[] = {"MS5803", "MCP9808"}; NW_Fault f; char b[48];
+  { static const char* const chips[] = {"MS5803", "MCP9808"}; NW_Report f; char b[48];
     uint8_t codes[] = {0x01, 0x22, 0xE6, 0x51, 0x00};
     for (uint8_t code : codes) { f.code = code; BufferPrint bp(b, sizeof b); f.print(bp, chips, 2);
-      printf("[fault text] code=0x%02X text='%s' note='%s'\n", code, b, f.note(chips, 2).c_str()); } }
+      printf("[report text] code=0x%02X text='%s' note='%s'\n", code, b, f.note(chips, 2).c_str()); } }
 
   fprintf(stderr, "bus transactions total: %u\n", Wire.transactions);
   return 0;
