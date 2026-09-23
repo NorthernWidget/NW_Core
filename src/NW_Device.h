@@ -115,6 +115,24 @@ class NW_Device {
      */
     bool beginBatch(uint16_t n)       { if (n > 1) return writeBatch(n); resetBatch(); return true; }
     /**
+     * @brief Take up to n readings of the given chips, one at a time, through readOne().
+     * @details beginBatch(n), then readOne() n times; stops early once a selected
+     * chip has reported absent (batchFaulted(chips)), so a dead chip costs one
+     * reading, not n. readOne is any callable returning bool: true when it stored
+     * a reading (a library's updateRange(), updatePressure(), ...).
+     * @return how many calls to readOne() returned true
+     */
+    template <typename F>
+    uint16_t takeReadings(uint8_t chips, uint16_t n, F readOne) {
+      beginBatch(n);
+      uint16_t taken = 0;
+      for (uint16_t i = 0; i < n; i++) {
+        if (readOne()) taken++;
+        else if (batchFaulted(chips)) break;
+      }
+      return taken;
+    }
+    /**
      * @brief Any of the given chips reported, earlier in this batch, that it is not coming
      * (no acknowledge or not initialised). Per chip: an absent accelerometer does not stop
      * the range readings of the same batch.
