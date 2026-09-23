@@ -73,6 +73,27 @@ int main() {
     uint8_t buf[40] = {0}; unsigned tx = Wire.transactions; bool ok = d.readBytes(0x20, buf, 40);
     printf("[readBytes] 40 bytes from 0x20: ok=%d transactions=%u first=0x%02X last=0x%02X\n", ok, Wire.transactions - tx, buf[0], buf[39]); }
 
+  // 6b. readData(): the counter check. A device commits a new reading (data 0xAA, counter +1)
+  //     right after the first data read. The plain readBytes pairs the captured counter with
+  //     the newer data; readData() sees the counter move, captures again, re-reads, and returns
+  //     the reading its fault() describes. Then a device that commits on every transaction:
+  //     readData() gives up after NW_DATA_RETRIES re-reads instead of looping.
+  { loadImage(); firmware(); NW_Device d; d.begin(0x41, "Apis", 2); d.takeReading(0x01);
+    int commits = 0; Wire.image[0x28] = 0x11;
+    Wire.afterRequest = [&](TwoWire& w) { if (commits++ == 0) { w.image[0x28] = 0xAA; w.bumpCounter(); } };
+    uint16_t captured = d.readCounter(); uint8_t b = 0; d.readBytes(0x28, &b, 1);
+    printf("[readData] plain readBytes: captured counter=%u data=0x%02X counter now=%u (data belongs to the next reading)\n", captured, b, d.readCounter());
+    commits = 0; Wire.image[0x28] = 0x11; d.captureReading(); unsigned tx = Wire.transactions;
+    bool ok = d.readData(0x28, &b, 1);
+    printf("[readData] one commit during the read: ok=%d data=0x%02X counter=%u moved=%d transactions=%u\n", ok, b, d.readCounter(), d.dataMoved(), Wire.transactions - tx);
+    Wire.afterRequest = [](TwoWire& w) { w.image[0x28]++; w.bumpCounter(); };
+    d.captureReading(); tx = Wire.transactions; ok = d.readData(0x28, &b, 1);
+    printf("[readData] a commit on every transaction: ok=%d moved=%d transactions=%u (bounded by NW_DATA_RETRIES=%d)\n", ok, d.dataMoved(), Wire.transactions - tx, NW_DATA_RETRIES);
+    Wire.afterRequest = nullptr; tx = Wire.transactions; ok = d.readData(0x28, &b, 1);
+    printf("[readData] after the runaway stops: ok=%d moved=%d transactions=%u (one recapture)\n", ok, d.dataMoved(), Wire.transactions - tx);
+    tx = Wire.transactions; ok = d.readData(0x28, &b, 1);
+    printf("[readData] quiet device: ok=%d moved=%d transactions=%u\n", ok, d.dataMoved(), Wire.transactions - tx); }
+
   // 7. Registers: batch word, config, sleep, address
   { loadImage(); NW_Device d; d.begin(0x41, "Apis", 2); d.writeBatch(300); d.writeConfig(0x03); d.sleep(); d.setI2CAddress(0x45);
     printf("[registers] batch=%u config=0x%02X ctrl=0x%02X addr=0x%02X readConfig=0x%02X\n",

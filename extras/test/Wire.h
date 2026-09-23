@@ -34,6 +34,7 @@ class TwoWire {
   std::function<bool(uint8_t)> isPresent;  // which addresses acknowledge; default: deviceAddress alone (a harness with two chips on the bus branches on address())
   std::function<bool(uint8_t)> hookOnly;   // addresses whose register writes never touch the image (a second chip served entirely by the hooks)
   std::function<void(TwoWire&, uint8_t, uint8_t)> onWrite;
+  std::function<void(TwoWire&)> afterRequest;  // runs after a read is served: a device that commits a reading between two transactions
   unsigned transactions = 0;               // requestFrom calls
   unsigned ackAttempts = 0;                // address-only transmissions (ACK tests)
 
@@ -56,6 +57,7 @@ class TwoWire {
     if (onRequest && onRequest(*this, k, _q)) return n;
     if (beforeRead) beforeRead(*this, _ptr);
     for (uint8_t i = 0; i < k; i++) _q.push_back(image[_ptr++ & 0x7F]);
+    if (afterRequest) afterRequest(*this);              // a device committing between two transactions
     return k;
   }
   uint8_t requestFrom(int adr, int n) { return requestFrom((uint8_t)adr, (uint8_t)n); }
