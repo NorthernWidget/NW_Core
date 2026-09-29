@@ -109,6 +109,44 @@
 #define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE "Cel"
 #define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE  "rangefinder~apis_accelerometer__anomaly_of_temperature [Cel]"
 
+// Accel X raw - Raw X axis word as the accelerometer returns it, 12-bit left-justified.
+#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__x_component_of_adc_output"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT "1"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT  "rangefinder~apis_accelerometer__x_component_of_adc_output [1]"
+
+// Accel Y raw - Raw Y axis word as the accelerometer returns it.
+#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__y_component_of_adc_output"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT "1"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT  "rangefinder~apis_accelerometer__y_component_of_adc_output [1]"
+
+// Accel Z raw - Raw Z axis word as the accelerometer returns it.
+#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__z_component_of_adc_output"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT "1"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT  "rangefinder~apis_accelerometer__z_component_of_adc_output [1]"
+
+// Acceleration magnitude - Magnitude of the acceleration vector. Reads 9.81 whenever the unit is static, so a departure means the Apis moved or the accelerometer is faulted.
+#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "rangefinder~apis_accelerometer__magnitude_of_acceleration"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "m/s2"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION  "rangefinder~apis_accelerometer__magnitude_of_acceleration [m/s2]"
+#define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION  "rangefinder~apis_accelerometer__mean_of_magnitude_of_acceleration [m/s2]"
+#define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION  "rangefinder~apis_accelerometer__standard_deviation_of_magnitude_of_acceleration [m/s2]"
+#define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION  "rangefinder~apis_accelerometer__standard_error_of_magnitude_of_acceleration [m/s2]"
+#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION  "rangefinder~apis_accelerometer__median_of_magnitude_of_acceleration [m/s2]"
+
+// Tilt - Angle between the housing axis and vertical. One number for a levelling correction; pitch and roll stay, because recovering the direction of tilt needs both.
+#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "rangefinder~apis_accelerometer__tilt_angle"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "deg"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE  "rangefinder~apis_accelerometer__tilt_angle [deg]"
+#define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE  "rangefinder~apis_accelerometer__mean_of_tilt_angle [deg]"
+#define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE  "rangefinder~apis_accelerometer__standard_deviation_of_tilt_angle [deg]"
+#define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE  "rangefinder~apis_accelerometer__standard_error_of_tilt_angle [deg]"
+#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE  "rangefinder~apis_accelerometer__median_of_tilt_angle [deg]"
+
+// Zero generation - Zeros stored since manufacture; 0 means never zeroed. Increments when the Hall-effect zero is taken.
+#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION "rangefinder~apis_accelerometer__zero_generation"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION "1"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION  "rangefinder~apis_accelerometer__zero_generation [1]"
+
 // Pressure sensor temperature - Die temperature of the submersible pressure sensor; used to compensate its reading.
 #define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "submersible-sensor~walrus_pressure-sensor__temperature"
 #define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "Cel"
@@ -187,5 +225,5 @@
 #define NW_UNIT_EVENT_COUNTER_TALLY__COUNT "1"
 #define NW_HDR_EVENT_COUNTER_TALLY__COUNT  "event-counter~tally__count [1]"
 
-// 28 accepted of 28 names
+// 34 accepted of 34 names
 #endif
