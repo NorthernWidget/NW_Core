@@ -41,12 +41,12 @@
 
 // Water pressure - Absolute pressure at the sensor when submerged.
 #define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "submersible-sensor~walrus_water__pressure"
-#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "ubar"
-#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__pressure [ubar]"
-#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__mean_of_pressure [ubar]"
-#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__standard_deviation_of_pressure [ubar]"
-#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__standard_error_of_pressure [ubar]"
-#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__median_of_pressure [ubar]"
+#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "mbar"
+#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__pressure [mbar]"
+#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__mean_of_pressure [mbar]"
+#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__standard_deviation_of_pressure [mbar]"
+#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__standard_error_of_pressure [mbar]"
+#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__median_of_pressure [mbar]"
 
 // Medium temperature - Temperature at the exposed thermometer. The medium is whatever the unit is installed in; the device cannot know it.
 #define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "submersible-sensor~walrus_thermometer__temperature"
