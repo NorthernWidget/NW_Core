@@ -225,5 +225,5 @@
 #define NW_UNIT_EVENT_COUNTER_TALLY__COUNT "1"
 #define NW_HDR_EVENT_COUNTER_TALLY__COUNT  "event-counter~tally__count [1]"
 
-// 34 accepted of 34 names
+// 34 accepted of 36 names
 #endif
