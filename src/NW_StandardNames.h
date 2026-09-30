@@ -156,6 +156,16 @@
 #define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE  "submersible-sensor~walrus_pressure-sensor__standard_error_of_temperature [Cel]"
 #define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE  "submersible-sensor~walrus_pressure-sensor__median_of_temperature [Cel]"
 
+// Pressure ADC - The pressure sensor's pressure conversion as the part returns it, 24 bits wide. It carries no physical unit: it becomes a pressure only once the fitted variant's calibration constants are known.
+#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR_PRESSURE__ADC_OUTPUT "submersible-sensor~walrus_pressure-sensor~pressure__adc_output"
+#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR_PRESSURE__ADC_OUTPUT "1"
+#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR_PRESSURE__ADC_OUTPUT  "submersible-sensor~walrus_pressure-sensor~pressure__adc_output [1]"
+
+// Pressure sensor temperature ADC - The pressure sensor's temperature conversion as the part returns it, 24 bits wide. Compensating the pressure conversion requires it, and it carries no physical unit until the variant is known.
+#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR_TEMPERATURE__ADC_OUTPUT "submersible-sensor~walrus_pressure-sensor~temperature__adc_output"
+#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR_TEMPERATURE__ADC_OUTPUT "1"
+#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR_TEMPERATURE__ADC_OUTPUT  "submersible-sensor~walrus_pressure-sensor~temperature__adc_output [1]"
+
 // Barometer temperature - Die temperature of the barometric pressure sensor.
 #define NW_NAME_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "weather-sensor~haar_barometer__temperature"
 #define NW_UNIT_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "Cel"
@@ -225,5 +235,5 @@
 #define NW_UNIT_EVENT_COUNTER_TALLY__COUNT "1"
 #define NW_HDR_EVENT_COUNTER_TALLY__COUNT  "event-counter~tally__count [1]"
 
-// 34 accepted of 36 names
+// 36 accepted of 36 names
 #endif
