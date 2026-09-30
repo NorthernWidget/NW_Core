@@ -39,23 +39,23 @@
 #define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE  "weather-sensor~haar_air__standard_error_of_pressure [mbar]"
 #define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE  "weather-sensor~haar_air__median_of_pressure [mbar]"
 
-// Water pressure - Absolute pressure at the sensor when submerged.
-#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "submersible-sensor~walrus_water__pressure"
-#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "mbar"
-#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__pressure [mbar]"
-#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__mean_of_pressure [mbar]"
-#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__standard_deviation_of_pressure [mbar]"
-#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__standard_error_of_pressure [mbar]"
-#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__median_of_pressure [mbar]"
+// Fluid pressure - Absolute pressure of the fluid at the sensor.
+#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_FLUID__PRESSURE "submersible-sensor~walrus_fluid__pressure"
+#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_FLUID__PRESSURE "mbar"
+#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_FLUID__PRESSURE  "submersible-sensor~walrus_fluid__pressure [mbar]"
+#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_FLUID__PRESSURE  "submersible-sensor~walrus_fluid__mean_of_pressure [mbar]"
+#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_FLUID__PRESSURE  "submersible-sensor~walrus_fluid__standard_deviation_of_pressure [mbar]"
+#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_FLUID__PRESSURE  "submersible-sensor~walrus_fluid__standard_error_of_pressure [mbar]"
+#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_FLUID__PRESSURE  "submersible-sensor~walrus_fluid__median_of_pressure [mbar]"
 
-// Medium temperature - Temperature at the exposed thermometer. The medium is whatever the unit is installed in; the device cannot know it.
-#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "submersible-sensor~walrus_thermometer__temperature"
-#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "Cel"
-#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE  "submersible-sensor~walrus_thermometer__temperature [Cel]"
-#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE  "submersible-sensor~walrus_thermometer__mean_of_temperature [Cel]"
-#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE  "submersible-sensor~walrus_thermometer__standard_deviation_of_temperature [Cel]"
-#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE  "submersible-sensor~walrus_thermometer__standard_error_of_temperature [Cel]"
-#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE  "submersible-sensor~walrus_thermometer__median_of_temperature [Cel]"
+// Fluid temperature - Temperature of the fluid at the exposed thermometer.
+#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_FLUID__TEMPERATURE "submersible-sensor~walrus_fluid__temperature"
+#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_FLUID__TEMPERATURE "Cel"
+#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_FLUID__TEMPERATURE  "submersible-sensor~walrus_fluid__temperature [Cel]"
+#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_FLUID__TEMPERATURE  "submersible-sensor~walrus_fluid__mean_of_temperature [Cel]"
+#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_FLUID__TEMPERATURE  "submersible-sensor~walrus_fluid__standard_deviation_of_temperature [Cel]"
+#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_FLUID__TEMPERATURE  "submersible-sensor~walrus_fluid__standard_error_of_temperature [Cel]"
+#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_FLUID__TEMPERATURE  "submersible-sensor~walrus_fluid__median_of_temperature [Cel]"
 
 // Distance to target - Line-of-sight distance to the first surface the rangefinder detects.
 #define NW_NAME_RANGEFINDER_APIS__DISTANCE "rangefinder~apis__distance"
