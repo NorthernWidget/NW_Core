@@ -1,0 +1,1927 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>src/NW_StandardNames.h - NW_Core</title>
+<meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_Core">
+<meta property="og:title" content="src/NW_StandardNames.h">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Files/NW__StandardNames_8h/">
+
+
+  <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Files/NW__StandardNames_8h/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_Core/feed.xml" type="application/atom+xml" rel="alternate" title="NW_Core Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_Core/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_Core/">
+          NW_Core
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_Core/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Device/"><span class="nav__sub-title">NW_Device Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Readings/"><span class="nav__sub-title">NW_Readings Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Fault/"><span class="nav__sub-title">NW_Fault Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="src/NW_StandardNames.h">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://docs.northernwidget.com/NW_Core/Files/NW__StandardNames_8h/" itemprop="url">src/NW_StandardNames.h
+</a>
+          </h1>
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#defines">Defines</a></li><li><a href="#macros-documentation">Macros Documentation</a><ul><li><a href="#define-nw_name_time">define NW_NAME_TIME</a></li><li><a href="#define-nw_unit_time">define NW_UNIT_TIME</a></li><li><a href="#define-nw_hdr_time">define NW_HDR_TIME</a></li><li><a href="#define-nw_name_weather_sensor_haar_air__temperature">define NW_NAME_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></li><li><a href="#define-nw_unit_weather_sensor_haar_air__temperature">define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_weather_sensor_haar_air__temperature">define NW_HDR_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_mean_of_weather_sensor_haar_air__temperature">define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_std_of_weather_sensor_haar_air__temperature">define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_sterr_of_weather_sensor_haar_air__temperature">define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_median_of_weather_sensor_haar_air__temperature">define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></li><li><a href="#define-nw_name_weather_sensor_haar_air__relative_humidity">define NW_NAME_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></li><li><a href="#define-nw_unit_weather_sensor_haar_air__relative_humidity">define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></li><li><a href="#define-nw_hdr_weather_sensor_haar_air__relative_humidity">define NW_HDR_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></li><li><a href="#define-nw_hdr_mean_of_weather_sensor_haar_air__relative_humidity">define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></li><li><a href="#define-nw_hdr_std_of_weather_sensor_haar_air__relative_humidity">define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></li><li><a href="#define-nw_hdr_sterr_of_weather_sensor_haar_air__relative_humidity">define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></li><li><a href="#define-nw_hdr_median_of_weather_sensor_haar_air__relative_humidity">define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></li><li><a href="#define-nw_name_weather_sensor_haar_air__pressure">define NW_NAME_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></li><li><a href="#define-nw_unit_weather_sensor_haar_air__pressure">define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></li><li><a href="#define-nw_hdr_weather_sensor_haar_air__pressure">define NW_HDR_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></li><li><a href="#define-nw_hdr_mean_of_weather_sensor_haar_air__pressure">define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></li><li><a href="#define-nw_hdr_std_of_weather_sensor_haar_air__pressure">define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></li><li><a href="#define-nw_hdr_sterr_of_weather_sensor_haar_air__pressure">define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></li><li><a href="#define-nw_hdr_median_of_weather_sensor_haar_air__pressure">define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></li><li><a href="#define-nw_name_submersible_sensor_walrus_water__pressure">define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></li><li><a href="#define-nw_unit_submersible_sensor_walrus_water__pressure">define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></li><li><a href="#define-nw_hdr_submersible_sensor_walrus_water__pressure">define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></li><li><a href="#define-nw_hdr_mean_of_submersible_sensor_walrus_water__pressure">define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></li><li><a href="#define-nw_hdr_std_of_submersible_sensor_walrus_water__pressure">define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></li><li><a href="#define-nw_hdr_sterr_of_submersible_sensor_walrus_water__pressure">define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></li><li><a href="#define-nw_hdr_median_of_submersible_sensor_walrus_water__pressure">define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></li><li><a href="#define-nw_name_submersible_sensor_walrus_thermometer__temperature">define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></li><li><a href="#define-nw_unit_submersible_sensor_walrus_thermometer__temperature">define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></li><li><a href="#define-nw_hdr_submersible_sensor_walrus_thermometer__temperature">define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></li><li><a href="#define-nw_hdr_mean_of_submersible_sensor_walrus_thermometer__temperature">define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></li><li><a href="#define-nw_hdr_std_of_submersible_sensor_walrus_thermometer__temperature">define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></li><li><a href="#define-nw_hdr_sterr_of_submersible_sensor_walrus_thermometer__temperature">define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></li><li><a href="#define-nw_hdr_median_of_submersible_sensor_walrus_thermometer__temperature">define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></li><li><a href="#define-nw_name_rangefinder_apis__distance">define NW_NAME_RANGEFINDER_APIS__DISTANCE</a></li><li><a href="#define-nw_unit_rangefinder_apis__distance">define NW_UNIT_RANGEFINDER_APIS__DISTANCE</a></li><li><a href="#define-nw_hdr_rangefinder_apis__distance">define NW_HDR_RANGEFINDER_APIS__DISTANCE</a></li><li><a href="#define-nw_hdr_mean_of_rangefinder_apis__distance">define NW_HDR_MEAN_OF_RANGEFINDER_APIS__DISTANCE</a></li><li><a href="#define-nw_hdr_std_of_rangefinder_apis__distance">define NW_HDR_STD_OF_RANGEFINDER_APIS__DISTANCE</a></li><li><a href="#define-nw_hdr_sterr_of_rangefinder_apis__distance">define NW_HDR_STERR_OF_RANGEFINDER_APIS__DISTANCE</a></li><li><a href="#define-nw_hdr_median_of_rangefinder_apis__distance">define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS__DISTANCE</a></li><li><a href="#define-nw_name_rangefinder_apis__signal_strength">define NW_NAME_RANGEFINDER_APIS__SIGNAL_STRENGTH</a></li><li><a href="#define-nw_unit_rangefinder_apis__signal_strength">define NW_UNIT_RANGEFINDER_APIS__SIGNAL_STRENGTH</a></li><li><a href="#define-nw_hdr_rangefinder_apis__signal_strength">define NW_HDR_RANGEFINDER_APIS__SIGNAL_STRENGTH</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__x_component_of_acceleration">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__x_component_of_acceleration">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__x_component_of_acceleration">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__y_component_of_acceleration">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__y_component_of_acceleration">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__y_component_of_acceleration">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__z_component_of_acceleration">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__z_component_of_acceleration">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__z_component_of_acceleration">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__pitch_angle">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__pitch_angle">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__pitch_angle">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></li><li><a href="#define-nw_hdr_mean_of_rangefinder_apis_accelerometer__pitch_angle">define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></li><li><a href="#define-nw_hdr_std_of_rangefinder_apis_accelerometer__pitch_angle">define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></li><li><a href="#define-nw_hdr_sterr_of_rangefinder_apis_accelerometer__pitch_angle">define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></li><li><a href="#define-nw_hdr_median_of_rangefinder_apis_accelerometer__pitch_angle">define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__roll_angle">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__roll_angle">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__roll_angle">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></li><li><a href="#define-nw_hdr_mean_of_rangefinder_apis_accelerometer__roll_angle">define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></li><li><a href="#define-nw_hdr_std_of_rangefinder_apis_accelerometer__roll_angle">define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></li><li><a href="#define-nw_hdr_sterr_of_rangefinder_apis_accelerometer__roll_angle">define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></li><li><a href="#define-nw_hdr_median_of_rangefinder_apis_accelerometer__roll_angle">define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__anomaly_of_temperature">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__anomaly_of_temperature">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__anomaly_of_temperature">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__x_component_of_adc_output">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__x_component_of_adc_output">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__x_component_of_adc_output">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__y_component_of_adc_output">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__y_component_of_adc_output">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__y_component_of_adc_output">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__z_component_of_adc_output">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__z_component_of_adc_output">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__z_component_of_adc_output">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></li><li><a href="#define-nw_hdr_mean_of_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></li><li><a href="#define-nw_hdr_std_of_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></li><li><a href="#define-nw_hdr_sterr_of_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></li><li><a href="#define-nw_hdr_median_of_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__tilt_angle">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__tilt_angle">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__tilt_angle">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></li><li><a href="#define-nw_hdr_mean_of_rangefinder_apis_accelerometer__tilt_angle">define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></li><li><a href="#define-nw_hdr_std_of_rangefinder_apis_accelerometer__tilt_angle">define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></li><li><a href="#define-nw_hdr_sterr_of_rangefinder_apis_accelerometer__tilt_angle">define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></li><li><a href="#define-nw_hdr_median_of_rangefinder_apis_accelerometer__tilt_angle">define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></li><li><a href="#define-nw_name_rangefinder_apis_accelerometer__zero_generation">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION</a></li><li><a href="#define-nw_unit_rangefinder_apis_accelerometer__zero_generation">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION</a></li><li><a href="#define-nw_hdr_rangefinder_apis_accelerometer__zero_generation">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION</a></li><li><a href="#define-nw_name_submersible_sensor_walrus_pressure_sensor__temperature">define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></li><li><a href="#define-nw_unit_submersible_sensor_walrus_pressure_sensor__temperature">define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_submersible_sensor_walrus_pressure_sensor__temperature">define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_mean_of_submersible_sensor_walrus_pressure_sensor__temperature">define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_std_of_submersible_sensor_walrus_pressure_sensor__temperature">define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_sterr_of_submersible_sensor_walrus_pressure_sensor__temperature">define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_median_of_submersible_sensor_walrus_pressure_sensor__temperature">define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></li><li><a href="#define-nw_name_weather_sensor_haar_barometer__temperature">define NW_NAME_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></li><li><a href="#define-nw_unit_weather_sensor_haar_barometer__temperature">define NW_UNIT_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></li><li><a href="#define-nw_hdr_weather_sensor_haar_barometer__temperature">define NW_HDR_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></li><li><a href="#define-nw_hdr_mean_of_weather_sensor_haar_barometer__temperature">define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></li><li><a href="#define-nw_hdr_std_of_weather_sensor_haar_barometer__temperature">define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></li><li><a href="#define-nw_hdr_sterr_of_weather_sensor_haar_barometer__temperature">define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></li><li><a href="#define-nw_hdr_median_of_weather_sensor_haar_barometer__temperature">define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></li><li><a href="#define-nw_name_data_logger_margay_air__temperature">define NW_NAME_DATA_LOGGER_MARGAY_AIR__TEMPERATURE</a></li><li><a href="#define-nw_unit_data_logger_margay_air__temperature">define NW_UNIT_DATA_LOGGER_MARGAY_AIR__TEMPERATURE</a></li><li><a href="#define-nw_hdr_data_logger_margay_air__temperature">define NW_HDR_DATA_LOGGER_MARGAY_AIR__TEMPERATURE</a></li><li><a href="#define-nw_name_data_logger_margay_air__relative_humidity">define NW_NAME_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY</a></li><li><a href="#define-nw_unit_data_logger_margay_air__relative_humidity">define NW_UNIT_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY</a></li><li><a href="#define-nw_hdr_data_logger_margay_air__relative_humidity">define NW_HDR_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY</a></li><li><a href="#define-nw_name_data_logger_margay_air__pressure">define NW_NAME_DATA_LOGGER_MARGAY_AIR__PRESSURE</a></li><li><a href="#define-nw_unit_data_logger_margay_air__pressure">define NW_UNIT_DATA_LOGGER_MARGAY_AIR__PRESSURE</a></li><li><a href="#define-nw_hdr_data_logger_margay_air__pressure">define NW_HDR_DATA_LOGGER_MARGAY_AIR__PRESSURE</a></li><li><a href="#define-nw_name_data_logger_margay_board__temperature">define NW_NAME_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE</a></li><li><a href="#define-nw_unit_data_logger_margay_board__temperature">define NW_UNIT_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE</a></li><li><a href="#define-nw_hdr_data_logger_margay_board__temperature">define NW_HDR_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE</a></li><li><a href="#define-nw_name_data_logger_margay_clock__temperature">define NW_NAME_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE</a></li><li><a href="#define-nw_unit_data_logger_margay_clock__temperature">define NW_UNIT_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE</a></li><li><a href="#define-nw_hdr_data_logger_margay_clock__temperature">define NW_HDR_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE</a></li><li><a href="#define-nw_name_data_logger_margay_battery__voltage">define NW_NAME_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE</a></li><li><a href="#define-nw_unit_data_logger_margay_battery__voltage">define NW_UNIT_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE</a></li><li><a href="#define-nw_hdr_data_logger_margay_battery__voltage">define NW_HDR_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE</a></li><li><a href="#define-nw_name_data_logger_margay_battery__charge_fraction">define NW_NAME_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION</a></li><li><a href="#define-nw_unit_data_logger_margay_battery__charge_fraction">define NW_UNIT_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION</a></li><li><a href="#define-nw_hdr_data_logger_margay_battery__charge_fraction">define NW_HDR_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION</a></li><li><a href="#define-nw_name_data_logger_okapi_battery_lithium_ion__voltage">define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE</a></li><li><a href="#define-nw_unit_data_logger_okapi_battery_lithium_ion__voltage">define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE</a></li><li><a href="#define-nw_hdr_data_logger_okapi_battery_lithium_ion__voltage">define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE</a></li><li><a href="#define-nw_name_data_logger_okapi_battery_lithium_ion__charge_fraction">define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION</a></li><li><a href="#define-nw_unit_data_logger_okapi_battery_lithium_ion__charge_fraction">define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION</a></li><li><a href="#define-nw_hdr_data_logger_okapi_battery_lithium_ion__charge_fraction">define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION</a></li><li><a href="#define-nw_name_data_logger_okapi_battery_backup__voltage">define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE</a></li><li><a href="#define-nw_unit_data_logger_okapi_battery_backup__voltage">define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE</a></li><li><a href="#define-nw_hdr_data_logger_okapi_battery_backup__voltage">define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE</a></li><li><a href="#define-nw_name_event_counter_tally_capacitor_super__voltage">define NW_NAME_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE</a></li><li><a href="#define-nw_unit_event_counter_tally_capacitor_super__voltage">define NW_UNIT_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE</a></li><li><a href="#define-nw_hdr_event_counter_tally_capacitor_super__voltage">define NW_HDR_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE</a></li><li><a href="#define-nw_name_event_counter_tally__count">define NW_NAME_EVENT_COUNTER_TALLY__COUNT</a></li><li><a href="#define-nw_unit_event_counter_tally__count">define NW_UNIT_EVENT_COUNTER_TALLY__COUNT</a></li><li><a href="#define-nw_hdr_event_counter_tally__count">define NW_HDR_EVENT_COUNTER_TALLY__COUNT</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
+            </nav>
+          </aside>
+        
+        <h2 id="defines">Defines</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-time">NW_NAME_TIME</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-time">NW_UNIT_TIME</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-time">NW_HDR_TIME</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-weather-sensor-haar-air--temperature">NW_NAME_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-weather-sensor-haar-air--temperature">NW_UNIT_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-weather-sensor-haar-air--temperature">NW_HDR_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-weather-sensor-haar-air--temperature">NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-weather-sensor-haar-air--temperature">NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-weather-sensor-haar-air--temperature">NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-weather-sensor-haar-air--temperature">NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-weather-sensor-haar-air--relative-humidity">NW_NAME_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-weather-sensor-haar-air--relative-humidity">NW_UNIT_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-weather-sensor-haar-air--relative-humidity">NW_HDR_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-weather-sensor-haar-air--relative-humidity">NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-weather-sensor-haar-air--relative-humidity">NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-weather-sensor-haar-air--relative-humidity">NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-weather-sensor-haar-air--relative-humidity">NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-weather-sensor-haar-air--pressure">NW_NAME_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-weather-sensor-haar-air--pressure">NW_UNIT_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-weather-sensor-haar-air--pressure">NW_HDR_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-weather-sensor-haar-air--pressure">NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-weather-sensor-haar-air--pressure">NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-weather-sensor-haar-air--pressure">NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-weather-sensor-haar-air--pressure">NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-submersible-sensor-walrus-water--pressure">NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-submersible-sensor-walrus-water--pressure">NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-submersible-sensor-walrus-water--pressure">NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-submersible-sensor-walrus-water--pressure">NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-submersible-sensor-walrus-water--pressure">NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-submersible-sensor-walrus-water--pressure">NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-submersible-sensor-walrus-water--pressure">NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-submersible-sensor-walrus-thermometer--temperature">NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-submersible-sensor-walrus-thermometer--temperature">NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-submersible-sensor-walrus-thermometer--temperature">NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-submersible-sensor-walrus-thermometer--temperature">NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-submersible-sensor-walrus-thermometer--temperature">NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-submersible-sensor-walrus-thermometer--temperature">NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-submersible-sensor-walrus-thermometer--temperature">NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis--distance">NW_NAME_RANGEFINDER_APIS__DISTANCE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis--distance">NW_UNIT_RANGEFINDER_APIS__DISTANCE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis--distance">NW_HDR_RANGEFINDER_APIS__DISTANCE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-rangefinder-apis--distance">NW_HDR_MEAN_OF_RANGEFINDER_APIS__DISTANCE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-rangefinder-apis--distance">NW_HDR_STD_OF_RANGEFINDER_APIS__DISTANCE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-rangefinder-apis--distance">NW_HDR_STERR_OF_RANGEFINDER_APIS__DISTANCE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-rangefinder-apis--distance">NW_HDR_MEDIAN_OF_RANGEFINDER_APIS__DISTANCE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis--signal-strength">NW_NAME_RANGEFINDER_APIS__SIGNAL_STRENGTH</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis--signal-strength">NW_UNIT_RANGEFINDER_APIS__SIGNAL_STRENGTH</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis--signal-strength">NW_HDR_RANGEFINDER_APIS__SIGNAL_STRENGTH</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--x-component-of-acceleration">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--x-component-of-acceleration">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--x-component-of-acceleration">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--y-component-of-acceleration">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--y-component-of-acceleration">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--y-component-of-acceleration">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--z-component-of-acceleration">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--z-component-of-acceleration">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--z-component-of-acceleration">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--pitch-angle">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--pitch-angle">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--pitch-angle">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-rangefinder-apis-accelerometer--pitch-angle">NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-rangefinder-apis-accelerometer--pitch-angle">NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-rangefinder-apis-accelerometer--pitch-angle">NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-rangefinder-apis-accelerometer--pitch-angle">NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--roll-angle">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--roll-angle">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--roll-angle">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-rangefinder-apis-accelerometer--roll-angle">NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-rangefinder-apis-accelerometer--roll-angle">NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-rangefinder-apis-accelerometer--roll-angle">NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-rangefinder-apis-accelerometer--roll-angle">NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--anomaly-of-temperature">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--anomaly-of-temperature">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--anomaly-of-temperature">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--x-component-of-adc-output">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--x-component-of-adc-output">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--x-component-of-adc-output">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--y-component-of-adc-output">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--y-component-of-adc-output">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--y-component-of-adc-output">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--z-component-of-adc-output">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--z-component-of-adc-output">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--z-component-of-adc-output">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--magnitude-of-acceleration">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--magnitude-of-acceleration">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--magnitude-of-acceleration">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-rangefinder-apis-accelerometer--magnitude-of-acceleration">NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-rangefinder-apis-accelerometer--magnitude-of-acceleration">NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-rangefinder-apis-accelerometer--magnitude-of-acceleration">NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-rangefinder-apis-accelerometer--magnitude-of-acceleration">NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--tilt-angle">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--tilt-angle">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--tilt-angle">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-rangefinder-apis-accelerometer--tilt-angle">NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-rangefinder-apis-accelerometer--tilt-angle">NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-rangefinder-apis-accelerometer--tilt-angle">NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-rangefinder-apis-accelerometer--tilt-angle">NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-rangefinder-apis-accelerometer--zero-generation">NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-rangefinder-apis-accelerometer--zero-generation">NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-rangefinder-apis-accelerometer--zero-generation">NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-submersible-sensor-walrus-pressure-sensor--temperature">NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-submersible-sensor-walrus-pressure-sensor--temperature">NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-submersible-sensor-walrus-pressure-sensor--temperature">NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-submersible-sensor-walrus-pressure-sensor--temperature">NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-submersible-sensor-walrus-pressure-sensor--temperature">NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-submersible-sensor-walrus-pressure-sensor--temperature">NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-submersible-sensor-walrus-pressure-sensor--temperature">NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-weather-sensor-haar-barometer--temperature">NW_NAME_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-weather-sensor-haar-barometer--temperature">NW_UNIT_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-weather-sensor-haar-barometer--temperature">NW_HDR_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-mean-of-weather-sensor-haar-barometer--temperature">NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-std-of-weather-sensor-haar-barometer--temperature">NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-sterr-of-weather-sensor-haar-barometer--temperature">NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-median-of-weather-sensor-haar-barometer--temperature">NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-data-logger-margay-air--temperature">NW_NAME_DATA_LOGGER_MARGAY_AIR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-data-logger-margay-air--temperature">NW_UNIT_DATA_LOGGER_MARGAY_AIR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-data-logger-margay-air--temperature">NW_HDR_DATA_LOGGER_MARGAY_AIR__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-data-logger-margay-air--relative-humidity">NW_NAME_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-data-logger-margay-air--relative-humidity">NW_UNIT_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-data-logger-margay-air--relative-humidity">NW_HDR_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-data-logger-margay-air--pressure">NW_NAME_DATA_LOGGER_MARGAY_AIR__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-data-logger-margay-air--pressure">NW_UNIT_DATA_LOGGER_MARGAY_AIR__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-data-logger-margay-air--pressure">NW_HDR_DATA_LOGGER_MARGAY_AIR__PRESSURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-data-logger-margay-board--temperature">NW_NAME_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-data-logger-margay-board--temperature">NW_UNIT_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-data-logger-margay-board--temperature">NW_HDR_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-data-logger-margay-clock--temperature">NW_NAME_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-data-logger-margay-clock--temperature">NW_UNIT_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-data-logger-margay-clock--temperature">NW_HDR_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-data-logger-margay-battery--voltage">NW_NAME_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-data-logger-margay-battery--voltage">NW_UNIT_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-data-logger-margay-battery--voltage">NW_HDR_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-data-logger-margay-battery--charge-fraction">NW_NAME_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-data-logger-margay-battery--charge-fraction">NW_UNIT_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-data-logger-margay-battery--charge-fraction">NW_HDR_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-data-logger-okapi-battery-lithium-ion--voltage">NW_NAME_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-data-logger-okapi-battery-lithium-ion--voltage">NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-data-logger-okapi-battery-lithium-ion--voltage">NW_HDR_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-data-logger-okapi-battery-lithium-ion--charge-fraction">NW_NAME_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-data-logger-okapi-battery-lithium-ion--charge-fraction">NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-data-logger-okapi-battery-lithium-ion--charge-fraction">NW_HDR_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-data-logger-okapi-battery-backup--voltage">NW_NAME_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-data-logger-okapi-battery-backup--voltage">NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-data-logger-okapi-battery-backup--voltage">NW_HDR_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-event-counter-tally-capacitor-super--voltage">NW_NAME_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-event-counter-tally-capacitor-super--voltage">NW_UNIT_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-event-counter-tally-capacitor-super--voltage">NW_HDR_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-name-event-counter-tally--count">NW_NAME_EVENT_COUNTER_TALLY__COUNT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-unit-event-counter-tally--count">NW_UNIT_EVENT_COUNTER_TALLY__COUNT</a></strong></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__StandardNames_8h/#define-nw-hdr-event-counter-tally--count">NW_HDR_EVENT_COUNTER_TALLY__COUNT</a></strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="macros-documentation">Macros Documentation</h2>
+
+<h3 id="define-nw_name_time">define NW_NAME_TIME</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_TIME "time"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_time">define NW_UNIT_TIME</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_TIME "ISO8601"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_time">define NW_HDR_TIME</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_TIME "time [ISO8601]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_weather_sensor_haar_air__temperature">define NW_NAME_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE "weather-sensor~haar_air__temperature"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_weather_sensor_haar_air__temperature">define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE "Cel"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_weather_sensor_haar_air__temperature">define NW_HDR_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE "weather-sensor~haar_air__temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_weather_sensor_haar_air__temperature">define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE "weather-sensor~haar_air__mean_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_weather_sensor_haar_air__temperature">define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE "weather-sensor~haar_air__standard_deviation_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_weather_sensor_haar_air__temperature">define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE "weather-sensor~haar_air__standard_error_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_weather_sensor_haar_air__temperature">define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE "weather-sensor~haar_air__median_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_weather_sensor_haar_air__relative_humidity">define NW_NAME_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY "weather-sensor~haar_air__relative_humidity"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_weather_sensor_haar_air__relative_humidity">define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY "%"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_weather_sensor_haar_air__relative_humidity">define NW_HDR_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY "weather-sensor~haar_air__relative_humidity [%]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_weather_sensor_haar_air__relative_humidity">define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY "weather-sensor~haar_air__mean_of_relative_humidity [%]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_weather_sensor_haar_air__relative_humidity">define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY "weather-sensor~haar_air__standard_deviation_of_relative_humidity [%]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_weather_sensor_haar_air__relative_humidity">define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY "weather-sensor~haar_air__standard_error_of_relative_humidity [%]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_weather_sensor_haar_air__relative_humidity">define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY "weather-sensor~haar_air__median_of_relative_humidity [%]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_weather_sensor_haar_air__pressure">define NW_NAME_WEATHER_SENSOR_HAAR_AIR__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_WEATHER_SENSOR_HAAR_AIR__PRESSURE "weather-sensor~haar_air__pressure"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_weather_sensor_haar_air__pressure">define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__PRESSURE "mbar"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_weather_sensor_haar_air__pressure">define NW_HDR_WEATHER_SENSOR_HAAR_AIR__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_WEATHER_SENSOR_HAAR_AIR__PRESSURE "weather-sensor~haar_air__pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_weather_sensor_haar_air__pressure">define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE "weather-sensor~haar_air__mean_of_pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_weather_sensor_haar_air__pressure">define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE "weather-sensor~haar_air__standard_deviation_of_pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_weather_sensor_haar_air__pressure">define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE "weather-sensor~haar_air__standard_error_of_pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_weather_sensor_haar_air__pressure">define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE "weather-sensor~haar_air__median_of_pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_submersible_sensor_walrus_water__pressure">define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "submersible-sensor~walrus_water__pressure"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_submersible_sensor_walrus_water__pressure">define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "mbar"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_submersible_sensor_walrus_water__pressure">define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "submersible-sensor~walrus_water__pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_submersible_sensor_walrus_water__pressure">define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "submersible-sensor~walrus_water__mean_of_pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_submersible_sensor_walrus_water__pressure">define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "submersible-sensor~walrus_water__standard_deviation_of_pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_submersible_sensor_walrus_water__pressure">define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "submersible-sensor~walrus_water__standard_error_of_pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_submersible_sensor_walrus_water__pressure">define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "submersible-sensor~walrus_water__median_of_pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_submersible_sensor_walrus_thermometer__temperature">define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "submersible-sensor~walrus_thermometer__temperature"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_submersible_sensor_walrus_thermometer__temperature">define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "Cel"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_submersible_sensor_walrus_thermometer__temperature">define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "submersible-sensor~walrus_thermometer__temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_submersible_sensor_walrus_thermometer__temperature">define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "submersible-sensor~walrus_thermometer__mean_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_submersible_sensor_walrus_thermometer__temperature">define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "submersible-sensor~walrus_thermometer__standard_deviation_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_submersible_sensor_walrus_thermometer__temperature">define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "submersible-sensor~walrus_thermometer__standard_error_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_submersible_sensor_walrus_thermometer__temperature">define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "submersible-sensor~walrus_thermometer__median_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis__distance">define NW_NAME_RANGEFINDER_APIS__DISTANCE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS__DISTANCE "rangefinder~apis__distance"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis__distance">define NW_UNIT_RANGEFINDER_APIS__DISTANCE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS__DISTANCE "cm"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis__distance">define NW_HDR_RANGEFINDER_APIS__DISTANCE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS__DISTANCE "rangefinder~apis__distance [cm]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_rangefinder_apis__distance">define NW_HDR_MEAN_OF_RANGEFINDER_APIS__DISTANCE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_RANGEFINDER_APIS__DISTANCE "rangefinder~apis__mean_of_distance [cm]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_rangefinder_apis__distance">define NW_HDR_STD_OF_RANGEFINDER_APIS__DISTANCE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_RANGEFINDER_APIS__DISTANCE "rangefinder~apis__standard_deviation_of_distance [cm]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_rangefinder_apis__distance">define NW_HDR_STERR_OF_RANGEFINDER_APIS__DISTANCE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_RANGEFINDER_APIS__DISTANCE "rangefinder~apis__standard_error_of_distance [cm]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_rangefinder_apis__distance">define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS__DISTANCE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS__DISTANCE "rangefinder~apis__median_of_distance [cm]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis__signal_strength">define NW_NAME_RANGEFINDER_APIS__SIGNAL_STRENGTH</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS__SIGNAL_STRENGTH "rangefinder~apis__signal_strength"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis__signal_strength">define NW_UNIT_RANGEFINDER_APIS__SIGNAL_STRENGTH</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS__SIGNAL_STRENGTH "1"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis__signal_strength">define NW_HDR_RANGEFINDER_APIS__SIGNAL_STRENGTH</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS__SIGNAL_STRENGTH "rangefinder~apis__signal_strength [1]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__x_component_of_acceleration">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION "rangefinder~apis_accelerometer__x_component_of_acceleration"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__x_component_of_acceleration">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION "m/s2"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__x_component_of_acceleration">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION "rangefinder~apis_accelerometer__x_component_of_acceleration [m/s2]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__y_component_of_acceleration">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION "rangefinder~apis_accelerometer__y_component_of_acceleration"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__y_component_of_acceleration">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION "m/s2"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__y_component_of_acceleration">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION "rangefinder~apis_accelerometer__y_component_of_acceleration [m/s2]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__z_component_of_acceleration">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION "rangefinder~apis_accelerometer__z_component_of_acceleration"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__z_component_of_acceleration">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION "m/s2"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__z_component_of_acceleration">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION "rangefinder~apis_accelerometer__z_component_of_acceleration [m/s2]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__pitch_angle">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE "rangefinder~apis_accelerometer__pitch_angle"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__pitch_angle">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE "deg"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__pitch_angle">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE "rangefinder~apis_accelerometer__pitch_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_rangefinder_apis_accelerometer__pitch_angle">define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE "rangefinder~apis_accelerometer__mean_of_pitch_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_rangefinder_apis_accelerometer__pitch_angle">define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE "rangefinder~apis_accelerometer__standard_deviation_of_pitch_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_rangefinder_apis_accelerometer__pitch_angle">define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE "rangefinder~apis_accelerometer__standard_error_of_pitch_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_rangefinder_apis_accelerometer__pitch_angle">define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE "rangefinder~apis_accelerometer__median_of_pitch_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__roll_angle">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE "rangefinder~apis_accelerometer__roll_angle"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__roll_angle">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE "deg"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__roll_angle">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE "rangefinder~apis_accelerometer__roll_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_rangefinder_apis_accelerometer__roll_angle">define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE "rangefinder~apis_accelerometer__mean_of_roll_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_rangefinder_apis_accelerometer__roll_angle">define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE "rangefinder~apis_accelerometer__standard_deviation_of_roll_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_rangefinder_apis_accelerometer__roll_angle">define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE "rangefinder~apis_accelerometer__standard_error_of_roll_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_rangefinder_apis_accelerometer__roll_angle">define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE "rangefinder~apis_accelerometer__median_of_roll_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__anomaly_of_temperature">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE "rangefinder~apis_accelerometer__anomaly_of_temperature"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__anomaly_of_temperature">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE "Cel"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__anomaly_of_temperature">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE "rangefinder~apis_accelerometer__anomaly_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__x_component_of_adc_output">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__x_component_of_adc_output"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__x_component_of_adc_output">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT "1"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__x_component_of_adc_output">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__x_component_of_adc_output [1]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__y_component_of_adc_output">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__y_component_of_adc_output"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__y_component_of_adc_output">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT "1"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__y_component_of_adc_output">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__y_component_of_adc_output [1]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__z_component_of_adc_output">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__z_component_of_adc_output"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__z_component_of_adc_output">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT "1"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__z_component_of_adc_output">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__z_component_of_adc_output [1]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "rangefinder~apis_accelerometer__magnitude_of_acceleration"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "m/s2"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "rangefinder~apis_accelerometer__magnitude_of_acceleration [m/s2]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "rangefinder~apis_accelerometer__mean_of_magnitude_of_acceleration [m/s2]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "rangefinder~apis_accelerometer__standard_deviation_of_magnitude_of_acceleration [m/s2]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "rangefinder~apis_accelerometer__standard_error_of_magnitude_of_acceleration [m/s2]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_rangefinder_apis_accelerometer__magnitude_of_acceleration">define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "rangefinder~apis_accelerometer__median_of_magnitude_of_acceleration [m/s2]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__tilt_angle">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "rangefinder~apis_accelerometer__tilt_angle"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__tilt_angle">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "deg"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__tilt_angle">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "rangefinder~apis_accelerometer__tilt_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_rangefinder_apis_accelerometer__tilt_angle">define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "rangefinder~apis_accelerometer__mean_of_tilt_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_rangefinder_apis_accelerometer__tilt_angle">define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "rangefinder~apis_accelerometer__standard_deviation_of_tilt_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_rangefinder_apis_accelerometer__tilt_angle">define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "rangefinder~apis_accelerometer__standard_error_of_tilt_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_rangefinder_apis_accelerometer__tilt_angle">define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "rangefinder~apis_accelerometer__median_of_tilt_angle [deg]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_rangefinder_apis_accelerometer__zero_generation">define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION "rangefinder~apis_accelerometer__zero_generation"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_rangefinder_apis_accelerometer__zero_generation">define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION "1"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_rangefinder_apis_accelerometer__zero_generation">define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION "rangefinder~apis_accelerometer__zero_generation [1]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_submersible_sensor_walrus_pressure_sensor__temperature">define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "submersible-sensor~walrus_pressure-sensor__temperature"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_submersible_sensor_walrus_pressure_sensor__temperature">define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "Cel"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_submersible_sensor_walrus_pressure_sensor__temperature">define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "submersible-sensor~walrus_pressure-sensor__temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_submersible_sensor_walrus_pressure_sensor__temperature">define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "submersible-sensor~walrus_pressure-sensor__mean_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_submersible_sensor_walrus_pressure_sensor__temperature">define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "submersible-sensor~walrus_pressure-sensor__standard_deviation_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_submersible_sensor_walrus_pressure_sensor__temperature">define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "submersible-sensor~walrus_pressure-sensor__standard_error_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_submersible_sensor_walrus_pressure_sensor__temperature">define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "submersible-sensor~walrus_pressure-sensor__median_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_weather_sensor_haar_barometer__temperature">define NW_NAME_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "weather-sensor~haar_barometer__temperature"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_weather_sensor_haar_barometer__temperature">define NW_UNIT_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "Cel"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_weather_sensor_haar_barometer__temperature">define NW_HDR_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "weather-sensor~haar_barometer__temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_mean_of_weather_sensor_haar_barometer__temperature">define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "weather-sensor~haar_barometer__mean_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_std_of_weather_sensor_haar_barometer__temperature">define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "weather-sensor~haar_barometer__standard_deviation_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_sterr_of_weather_sensor_haar_barometer__temperature">define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "weather-sensor~haar_barometer__standard_error_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_median_of_weather_sensor_haar_barometer__temperature">define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "weather-sensor~haar_barometer__median_of_temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_data_logger_margay_air__temperature">define NW_NAME_DATA_LOGGER_MARGAY_AIR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_AIR__TEMPERATURE "data-logger~margay_air__temperature"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_data_logger_margay_air__temperature">define NW_UNIT_DATA_LOGGER_MARGAY_AIR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_DATA_LOGGER_MARGAY_AIR__TEMPERATURE "Cel"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_data_logger_margay_air__temperature">define NW_HDR_DATA_LOGGER_MARGAY_AIR__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_DATA_LOGGER_MARGAY_AIR__TEMPERATURE "data-logger~margay_air__temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_data_logger_margay_air__relative_humidity">define NW_NAME_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY "data-logger~margay_air__relative_humidity"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_data_logger_margay_air__relative_humidity">define NW_UNIT_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY "%"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_data_logger_margay_air__relative_humidity">define NW_HDR_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY "data-logger~margay_air__relative_humidity [%]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_data_logger_margay_air__pressure">define NW_NAME_DATA_LOGGER_MARGAY_AIR__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_AIR__PRESSURE "data-logger~margay_air__pressure"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_data_logger_margay_air__pressure">define NW_UNIT_DATA_LOGGER_MARGAY_AIR__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_DATA_LOGGER_MARGAY_AIR__PRESSURE "mbar"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_data_logger_margay_air__pressure">define NW_HDR_DATA_LOGGER_MARGAY_AIR__PRESSURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_DATA_LOGGER_MARGAY_AIR__PRESSURE "data-logger~margay_air__pressure [mbar]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_data_logger_margay_board__temperature">define NW_NAME_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE "data-logger~margay_board__temperature"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_data_logger_margay_board__temperature">define NW_UNIT_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE "Cel"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_data_logger_margay_board__temperature">define NW_HDR_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE "data-logger~margay_board__temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_data_logger_margay_clock__temperature">define NW_NAME_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE "data-logger~margay_clock__temperature"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_data_logger_margay_clock__temperature">define NW_UNIT_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE "Cel"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_data_logger_margay_clock__temperature">define NW_HDR_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE "data-logger~margay_clock__temperature [Cel]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_data_logger_margay_battery__voltage">define NW_NAME_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE "data-logger~margay_battery__voltage"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_data_logger_margay_battery__voltage">define NW_UNIT_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE "V"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_data_logger_margay_battery__voltage">define NW_HDR_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE "data-logger~margay_battery__voltage [V]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_data_logger_margay_battery__charge_fraction">define NW_NAME_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION "data-logger~margay_battery__charge_fraction"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_data_logger_margay_battery__charge_fraction">define NW_UNIT_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION "%"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_data_logger_margay_battery__charge_fraction">define NW_HDR_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION "data-logger~margay_battery__charge_fraction [%]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_data_logger_okapi_battery_lithium_ion__voltage">define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE "data-logger~okapi_battery~lithium-ion__voltage"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_data_logger_okapi_battery_lithium_ion__voltage">define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE "V"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_data_logger_okapi_battery_lithium_ion__voltage">define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE "data-logger~okapi_battery~lithium-ion__voltage [V]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_data_logger_okapi_battery_lithium_ion__charge_fraction">define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION "data-logger~okapi_battery~lithium-ion__charge_fraction"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_data_logger_okapi_battery_lithium_ion__charge_fraction">define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION "%"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_data_logger_okapi_battery_lithium_ion__charge_fraction">define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION "data-logger~okapi_battery~lithium-ion__charge_fraction [%]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_data_logger_okapi_battery_backup__voltage">define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE "data-logger~okapi_battery~backup__voltage"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_data_logger_okapi_battery_backup__voltage">define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE "V"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_data_logger_okapi_battery_backup__voltage">define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE "data-logger~okapi_battery~backup__voltage [V]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_event_counter_tally_capacitor_super__voltage">define NW_NAME_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE "event-counter~tally_capacitor~super__voltage"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_event_counter_tally_capacitor_super__voltage">define NW_UNIT_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE "V"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_event_counter_tally_capacitor_super__voltage">define NW_HDR_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE "event-counter~tally_capacitor~super__voltage [V]"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_name_event_counter_tally__count">define NW_NAME_EVENT_COUNTER_TALLY__COUNT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_NAME_EVENT_COUNTER_TALLY__COUNT "event-counter~tally__count"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_unit_event_counter_tally__count">define NW_UNIT_EVENT_COUNTER_TALLY__COUNT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_UNIT_EVENT_COUNTER_TALLY__COUNT "1"
+</span></code></pre></div></div>
+
+<h3 id="define-nw_hdr_event_counter_tally__count">define NW_HDR_EVENT_COUNTER_TALLY__COUNT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_HDR_EVENT_COUNTER_TALLY__COUNT "event-counter~tally__count [1]"
+</span></code></pre></div></div>
+
+<h2 id="source-code">Source code</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// GENERATED from NW-Device-Specification/standard-names.csv. Do not edit.</span>
+<span class="c1">// Regenerate with: python3 generate_names.py &gt; this file</span>
+<span class="c1">//</span>
+<span class="c1">// Each NW_HDR_* is a complete CSV header cell: the CSDMS standard name</span>
+<span class="c1">// followed by its UCUM unit in square brackets, as DATA-FORMAT.md specifies.</span>
+
+<span class="cp">#ifndef NW_STANDARD_NAMES_H
+#define NW_STANDARD_NAMES_H
+</span>
+<span class="c1">// Time - Instant of the reading in UTC. The unit names a format rather than a unit.</span>
+<span class="cp">#define NW_NAME_TIME "time"
+#define NW_UNIT_TIME "ISO8601"
+#define NW_HDR_TIME  "time [ISO8601]"
+</span>
+<span class="c1">// Air temperature - Temperature of air outside any enclosure.</span>
+<span class="cp">#define NW_NAME_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE "weather-sensor~haar_air__temperature"
+#define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE "Cel"
+#define NW_HDR_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE  "weather-sensor~haar_air__temperature [Cel]"
+#define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE  "weather-sensor~haar_air__mean_of_temperature [Cel]"
+#define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE  "weather-sensor~haar_air__standard_deviation_of_temperature [Cel]"
+#define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE  "weather-sensor~haar_air__standard_error_of_temperature [Cel]"
+#define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__TEMPERATURE  "weather-sensor~haar_air__median_of_temperature [Cel]"
+</span>
+<span class="c1">// Relative humidity - Relative humidity of air outside any enclosure.</span>
+<span class="cp">#define NW_NAME_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY "weather-sensor~haar_air__relative_humidity"
+#define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY "%"
+#define NW_HDR_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY  "weather-sensor~haar_air__relative_humidity [%]"
+#define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY  "weather-sensor~haar_air__mean_of_relative_humidity [%]"
+#define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY  "weather-sensor~haar_air__standard_deviation_of_relative_humidity [%]"
+#define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY  "weather-sensor~haar_air__standard_error_of_relative_humidity [%]"
+#define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__RELATIVE_HUMIDITY  "weather-sensor~haar_air__median_of_relative_humidity [%]"
+</span>
+<span class="c1">// Air pressure - Near-surface barometric pressure.</span>
+<span class="cp">#define NW_NAME_WEATHER_SENSOR_HAAR_AIR__PRESSURE "weather-sensor~haar_air__pressure"
+#define NW_UNIT_WEATHER_SENSOR_HAAR_AIR__PRESSURE "mbar"
+#define NW_HDR_WEATHER_SENSOR_HAAR_AIR__PRESSURE  "weather-sensor~haar_air__pressure [mbar]"
+#define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE  "weather-sensor~haar_air__mean_of_pressure [mbar]"
+#define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE  "weather-sensor~haar_air__standard_deviation_of_pressure [mbar]"
+#define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE  "weather-sensor~haar_air__standard_error_of_pressure [mbar]"
+#define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_AIR__PRESSURE  "weather-sensor~haar_air__median_of_pressure [mbar]"
+</span>
+<span class="c1">// Water pressure - Absolute pressure at the sensor when submerged.</span>
+<span class="cp">#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "submersible-sensor~walrus_water__pressure"
+#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE "mbar"
+#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__pressure [mbar]"
+#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__mean_of_pressure [mbar]"
+#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__standard_deviation_of_pressure [mbar]"
+#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__standard_error_of_pressure [mbar]"
+#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_WATER__PRESSURE  "submersible-sensor~walrus_water__median_of_pressure [mbar]"
+</span>
+<span class="c1">// Medium temperature - Temperature at the exposed thermometer. The medium is whatever the unit is installed in; the device cannot know it.</span>
+<span class="cp">#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "submersible-sensor~walrus_thermometer__temperature"
+#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE "Cel"
+#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE  "submersible-sensor~walrus_thermometer__temperature [Cel]"
+#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE  "submersible-sensor~walrus_thermometer__mean_of_temperature [Cel]"
+#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE  "submersible-sensor~walrus_thermometer__standard_deviation_of_temperature [Cel]"
+#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE  "submersible-sensor~walrus_thermometer__standard_error_of_temperature [Cel]"
+#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_THERMOMETER__TEMPERATURE  "submersible-sensor~walrus_thermometer__median_of_temperature [Cel]"
+</span>
+<span class="c1">// Distance to target - Line-of-sight distance to the first surface the rangefinder detects.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS__DISTANCE "rangefinder~apis__distance"
+#define NW_UNIT_RANGEFINDER_APIS__DISTANCE "cm"
+#define NW_HDR_RANGEFINDER_APIS__DISTANCE  "rangefinder~apis__distance [cm]"
+#define NW_HDR_MEAN_OF_RANGEFINDER_APIS__DISTANCE  "rangefinder~apis__mean_of_distance [cm]"
+#define NW_HDR_STD_OF_RANGEFINDER_APIS__DISTANCE  "rangefinder~apis__standard_deviation_of_distance [cm]"
+#define NW_HDR_STERR_OF_RANGEFINDER_APIS__DISTANCE  "rangefinder~apis__standard_error_of_distance [cm]"
+#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS__DISTANCE  "rangefinder~apis__median_of_distance [cm]"
+</span>
+<span class="c1">// Signal strength - Strength of the returned signal as the rangefinder reports it.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS__SIGNAL_STRENGTH "rangefinder~apis__signal_strength"
+#define NW_UNIT_RANGEFINDER_APIS__SIGNAL_STRENGTH "1"
+#define NW_HDR_RANGEFINDER_APIS__SIGNAL_STRENGTH  "rangefinder~apis__signal_strength [1]"
+</span>
+<span class="c1">// Acceleration X - Acceleration along the accelerometer X axis.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION "rangefinder~apis_accelerometer__x_component_of_acceleration"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION "m/s2"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ACCELERATION  "rangefinder~apis_accelerometer__x_component_of_acceleration [m/s2]"
+</span>
+<span class="c1">// Acceleration Y - Acceleration along the accelerometer Y axis.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION "rangefinder~apis_accelerometer__y_component_of_acceleration"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION "m/s2"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ACCELERATION  "rangefinder~apis_accelerometer__y_component_of_acceleration [m/s2]"
+</span>
+<span class="c1">// Acceleration Z - Acceleration along the accelerometer Z axis.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION "rangefinder~apis_accelerometer__z_component_of_acceleration"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION "m/s2"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ACCELERATION  "rangefinder~apis_accelerometer__z_component_of_acceleration [m/s2]"
+</span>
+<span class="c1">// Pitch - Pitch of the sensor housing, derived from the accelerometer axes.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE "rangefinder~apis_accelerometer__pitch_angle"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE "deg"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE  "rangefinder~apis_accelerometer__pitch_angle [deg]"
+#define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE  "rangefinder~apis_accelerometer__mean_of_pitch_angle [deg]"
+#define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE  "rangefinder~apis_accelerometer__standard_deviation_of_pitch_angle [deg]"
+#define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE  "rangefinder~apis_accelerometer__standard_error_of_pitch_angle [deg]"
+#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__PITCH_ANGLE  "rangefinder~apis_accelerometer__median_of_pitch_angle [deg]"
+</span>
+<span class="c1">// Roll - Roll of the sensor housing, derived from the accelerometer axes.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE "rangefinder~apis_accelerometer__roll_angle"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE "deg"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE  "rangefinder~apis_accelerometer__roll_angle [deg]"
+#define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE  "rangefinder~apis_accelerometer__mean_of_roll_angle [deg]"
+#define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE  "rangefinder~apis_accelerometer__standard_deviation_of_roll_angle [deg]"
+#define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE  "rangefinder~apis_accelerometer__standard_error_of_roll_angle [deg]"
+#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__ROLL_ANGLE  "rangefinder~apis_accelerometer__median_of_roll_angle [deg]"
+</span>
+<span class="c1">// Accelerometer temperature change - Accelerometer temperature relative to the temperature at which the zero was stored. The part measures change, not temperature: LIS3DH Table 5 specifies only its output change versus temperature, 1 digit per degree C and not guaranteed, with no offset or reference point.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE "rangefinder~apis_accelerometer__anomaly_of_temperature"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE "Cel"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ANOMALY_OF_TEMPERATURE  "rangefinder~apis_accelerometer__anomaly_of_temperature [Cel]"
+</span>
+<span class="c1">// Accel X raw - Raw X axis word as the accelerometer returns it, 12-bit left-justified.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__x_component_of_adc_output"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT "1"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__X_COMPONENT_OF_ADC_OUTPUT  "rangefinder~apis_accelerometer__x_component_of_adc_output [1]"
+</span>
+<span class="c1">// Accel Y raw - Raw Y axis word as the accelerometer returns it.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__y_component_of_adc_output"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT "1"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Y_COMPONENT_OF_ADC_OUTPUT  "rangefinder~apis_accelerometer__y_component_of_adc_output [1]"
+</span>
+<span class="c1">// Accel Z raw - Raw Z axis word as the accelerometer returns it.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT "rangefinder~apis_accelerometer__z_component_of_adc_output"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT "1"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__Z_COMPONENT_OF_ADC_OUTPUT  "rangefinder~apis_accelerometer__z_component_of_adc_output [1]"
+</span>
+<span class="c1">// Acceleration magnitude - Magnitude of the acceleration vector. Reads 9.81 whenever the unit is static, so a departure means the Apis moved or the accelerometer is faulted.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "rangefinder~apis_accelerometer__magnitude_of_acceleration"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION "m/s2"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION  "rangefinder~apis_accelerometer__magnitude_of_acceleration [m/s2]"
+#define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION  "rangefinder~apis_accelerometer__mean_of_magnitude_of_acceleration [m/s2]"
+#define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION  "rangefinder~apis_accelerometer__standard_deviation_of_magnitude_of_acceleration [m/s2]"
+#define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION  "rangefinder~apis_accelerometer__standard_error_of_magnitude_of_acceleration [m/s2]"
+#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__MAGNITUDE_OF_ACCELERATION  "rangefinder~apis_accelerometer__median_of_magnitude_of_acceleration [m/s2]"
+</span>
+<span class="c1">// Tilt - Angle between the housing axis and vertical. One number for a levelling correction; pitch and roll stay, because recovering the direction of tilt needs both.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "rangefinder~apis_accelerometer__tilt_angle"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE "deg"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE  "rangefinder~apis_accelerometer__tilt_angle [deg]"
+#define NW_HDR_MEAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE  "rangefinder~apis_accelerometer__mean_of_tilt_angle [deg]"
+#define NW_HDR_STD_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE  "rangefinder~apis_accelerometer__standard_deviation_of_tilt_angle [deg]"
+#define NW_HDR_STERR_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE  "rangefinder~apis_accelerometer__standard_error_of_tilt_angle [deg]"
+#define NW_HDR_MEDIAN_OF_RANGEFINDER_APIS_ACCELEROMETER__TILT_ANGLE  "rangefinder~apis_accelerometer__median_of_tilt_angle [deg]"
+</span>
+<span class="c1">// Zero generation - Zeros stored since manufacture; 0 means never zeroed. Increments when the Hall-effect zero is taken.</span>
+<span class="cp">#define NW_NAME_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION "rangefinder~apis_accelerometer__zero_generation"
+#define NW_UNIT_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION "1"
+#define NW_HDR_RANGEFINDER_APIS_ACCELEROMETER__ZERO_GENERATION  "rangefinder~apis_accelerometer__zero_generation [1]"
+</span>
+<span class="c1">// Pressure sensor temperature - Die temperature of the submersible pressure sensor; used to compensate its reading.</span>
+<span class="cp">#define NW_NAME_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "submersible-sensor~walrus_pressure-sensor__temperature"
+#define NW_UNIT_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE "Cel"
+#define NW_HDR_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE  "submersible-sensor~walrus_pressure-sensor__temperature [Cel]"
+#define NW_HDR_MEAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE  "submersible-sensor~walrus_pressure-sensor__mean_of_temperature [Cel]"
+#define NW_HDR_STD_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE  "submersible-sensor~walrus_pressure-sensor__standard_deviation_of_temperature [Cel]"
+#define NW_HDR_STERR_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE  "submersible-sensor~walrus_pressure-sensor__standard_error_of_temperature [Cel]"
+#define NW_HDR_MEDIAN_OF_SUBMERSIBLE_SENSOR_WALRUS_PRESSURE_SENSOR__TEMPERATURE  "submersible-sensor~walrus_pressure-sensor__median_of_temperature [Cel]"
+</span>
+<span class="c1">// Barometer temperature - Die temperature of the barometric pressure sensor.</span>
+<span class="cp">#define NW_NAME_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "weather-sensor~haar_barometer__temperature"
+#define NW_UNIT_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE "Cel"
+#define NW_HDR_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE  "weather-sensor~haar_barometer__temperature [Cel]"
+#define NW_HDR_MEAN_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE  "weather-sensor~haar_barometer__mean_of_temperature [Cel]"
+#define NW_HDR_STD_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE  "weather-sensor~haar_barometer__standard_deviation_of_temperature [Cel]"
+#define NW_HDR_STERR_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE  "weather-sensor~haar_barometer__standard_error_of_temperature [Cel]"
+#define NW_HDR_MEDIAN_OF_WEATHER_SENSOR_HAAR_BAROMETER__TEMPERATURE  "weather-sensor~haar_barometer__median_of_temperature [Cel]"
+</span>
+<span class="c1">// Air temperature - Air temperature  at the logger.</span>
+<span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_AIR__TEMPERATURE "data-logger~margay_air__temperature"
+#define NW_UNIT_DATA_LOGGER_MARGAY_AIR__TEMPERATURE "Cel"
+#define NW_HDR_DATA_LOGGER_MARGAY_AIR__TEMPERATURE  "data-logger~margay_air__temperature [Cel]"
+</span>
+<span class="c1">// Air humidity - Relative humidity  at the logger; a rise indicates a leak.</span>
+<span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY "data-logger~margay_air__relative_humidity"
+#define NW_UNIT_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY "%"
+#define NW_HDR_DATA_LOGGER_MARGAY_AIR__RELATIVE_HUMIDITY  "data-logger~margay_air__relative_humidity [%]"
+</span>
+<span class="c1">// Air pressure - Air pressure  at the logger. Equals ambient only when vented.</span>
+<span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_AIR__PRESSURE "data-logger~margay_air__pressure"
+#define NW_UNIT_DATA_LOGGER_MARGAY_AIR__PRESSURE "mbar"
+#define NW_HDR_DATA_LOGGER_MARGAY_AIR__PRESSURE  "data-logger~margay_air__pressure [mbar]"
+</span>
+<span class="c1">// Board temperature - Temperature of the logger board as read by its thermistor.</span>
+<span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE "data-logger~margay_board__temperature"
+#define NW_UNIT_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE "Cel"
+#define NW_HDR_DATA_LOGGER_MARGAY_BOARD__TEMPERATURE  "data-logger~margay_board__temperature [Cel]"
+</span>
+<span class="c1">// Clock temperature - Die temperature of the real-time clock; its drift reference.</span>
+<span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE "data-logger~margay_clock__temperature"
+#define NW_UNIT_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE "Cel"
+#define NW_HDR_DATA_LOGGER_MARGAY_CLOCK__TEMPERATURE  "data-logger~margay_clock__temperature [Cel]"
+</span>
+<span class="c1">// Battery voltage - Terminal voltage of the primary battery.</span>
+<span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE "data-logger~margay_battery__voltage"
+#define NW_UNIT_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE "V"
+#define NW_HDR_DATA_LOGGER_MARGAY_BATTERY__VOLTAGE  "data-logger~margay_battery__voltage [V]"
+</span>
+<span class="c1">// Battery charge - Remaining charge as a percentage of full.</span>
+<span class="cp">#define NW_NAME_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION "data-logger~margay_battery__charge_fraction"
+#define NW_UNIT_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION "%"
+#define NW_HDR_DATA_LOGGER_MARGAY_BATTERY__CHARGE_FRACTION  "data-logger~margay_battery__charge_fraction [%]"
+</span>
+<span class="c1">// LiPo voltage - Terminal voltage of the rechargeable lithium-ion battery.</span>
+<span class="cp">#define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE "data-logger~okapi_battery~lithium-ion__voltage"
+#define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE "V"
+#define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__VOLTAGE  "data-logger~okapi_battery~lithium-ion__voltage [V]"
+</span>
+<span class="c1">// LiPo charge - Remaining charge of the lithium-ion battery as a percentage of full.</span>
+<span class="cp">#define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION "data-logger~okapi_battery~lithium-ion__charge_fraction"
+#define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION "%"
+#define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_LITHIUM_ION__CHARGE_FRACTION  "data-logger~okapi_battery~lithium-ion__charge_fraction [%]"
+</span>
+<span class="c1">// Backup battery voltage - Terminal voltage of the backup primary cells.</span>
+<span class="cp">#define NW_NAME_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE "data-logger~okapi_battery~backup__voltage"
+#define NW_UNIT_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE "V"
+#define NW_HDR_DATA_LOGGER_OKAPI_BATTERY_BACKUP__VOLTAGE  "data-logger~okapi_battery~backup__voltage [V]"
+</span>
+<span class="c1">// Supercapacitor voltage - Terminal voltage of the supercapacitor holding the counter alive.</span>
+<span class="cp">#define NW_NAME_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE "event-counter~tally_capacitor~super__voltage"
+#define NW_UNIT_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE "V"
+#define NW_HDR_EVENT_COUNTER_TALLY_CAPACITOR_SUPER__VOLTAGE  "event-counter~tally_capacitor~super__voltage [V]"
+</span>
+<span class="c1">// Event count - Cumulative count of events since power-up.</span>
+<span class="cp">#define NW_NAME_EVENT_COUNTER_TALLY__COUNT "event-counter~tally__count"
+#define NW_UNIT_EVENT_COUNTER_TALLY__COUNT "1"
+#define NW_HDR_EVENT_COUNTER_TALLY__COUNT  "event-counter~tally__count [1]"
+</span>
+<span class="c1">// 34 accepted of 34 names</span>
+<span class="cp">#endif
+</span></code></pre></div></div>
+
+<hr />
+
+<p>Updated on 2026-09-30 at 19:40:23 +0000</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_Core/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_Core</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_Core/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
