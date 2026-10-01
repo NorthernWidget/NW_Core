@@ -54,11 +54,14 @@ static void installFirmwareEmulation() {
 
 // Print into a fixed buffer: the in-memory Print destination from the design.
 class BufferPrint : public Print {
-  char* _buf; size_t _cap, _len = 0;
+  char* _buf; size_t _cap, _len = 0; bool _truncated = false;
   public:
   BufferPrint(char* buf, size_t cap) : _buf(buf), _cap(cap) { _buf[0] = 0; }
-  size_t write(uint8_t c) override { if (_len + 1 >= _cap) return 0; _buf[_len++] = c; _buf[_len] = 0; return 1; }
+  size_t write(uint8_t c) override { if (_len + 1 >= _cap) { _truncated = true; return 0; } _buf[_len++] = c; _buf[_len] = 0; return 1; }
   size_t length() const { return _len; }
+  // A full buffer drops the rest of the line and reports nothing, which is how a
+  // harness passes a test it never ran. Print this beside anything streamed.
+  bool truncated() const { return _truncated; }
 };
 
 #endif
