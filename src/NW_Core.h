@@ -13,6 +13,10 @@
  *   - NW_Error.h: NW_ERROR (-9999), the missing value on file, and nwScaled().
  *   - NW_ReadingsConfig: how many readings a chip group takes and whether its
  *     statistics columns print.
+ *   - NW_StandardNames.h: the header cell for every accepted standard name,
+ *     generated from NW-Device-Specification/standard-names.csv. Wrap a cell in
+ *     F() where you print it: a plain literal on AVR is copied into RAM at
+ *     startup, and a full header is hundreds of bytes.
  * Sensor libraries hold an NW_Device and one NW_Readings per measurement.
  * Names exported by this library carry the NW_ prefix; everything else in an
  * NW sensor library is scoped to its own class.
@@ -34,5 +38,6 @@
 #include "NW_Pages.h"
 #include "NW_Readings.h"
 #include "NW_Device.h"
+#include "NW_StandardNames.h"
 
 #endif
