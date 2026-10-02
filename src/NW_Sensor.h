@@ -37,6 +37,28 @@ class NW_Sensor {
      * @param boot print the boot report (the code begin() captured) instead of the last reading's
      */
     virtual size_t printStatus(Print& out, bool boot = false) = 0;
+
+    /**
+     * @brief Print this sensor's summary columns: the means, with whatever
+     * statistics columns it has enabled.
+     * @details The logger composes the data file's header from its own columns
+     * and then each watched sensor's, in watch order, which is also the column
+     * order. No row is composed in RAM: the logger passes the open file, and
+     * each sensor writes its own columns into it.
+     * @param out Where to print.
+     * @return Bytes printed.
+     */
+    virtual size_t printDataHeader(Print& out) = 0;
+
+    /**
+     * @brief Print one summary row, in printDataHeader()'s column order.
+     * @details Takes no reading. The logger acquires first, then writes the row
+     * to the card and to the serial monitor, and a row written to two sinks
+     * must not acquire twice.
+     * @param out Where to print.
+     * @return Bytes printed.
+     */
+    virtual size_t printDataRow(Print& out) = 0;
 };
 
 #endif
