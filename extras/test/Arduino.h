@@ -50,6 +50,11 @@ class String {
   String& operator+=(const String& o) { s += o.s; return *this; }
   String& operator+=(const char* o) { s += o; return *this; }
   const char* c_str() const { return s.c_str(); }
+  // The real String's growth and append primitives, which NW_StringPrint uses.
+  // A host has a real heap, so both always succeed here.
+  unsigned int length() const { return (unsigned int)s.size(); }
+  unsigned char reserve(unsigned int n) { s.reserve(n); return 1; }
+  unsigned char concat(char c) { s += c; return 1; }
 };
 inline String operator+(const char* a, const String& b) { return String(std::string(a) + b.c_str()); }
 
