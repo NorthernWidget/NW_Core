@@ -13,6 +13,9 @@
  *   - NW_Error.h: NW_ERROR (-9999), the missing value on file, and nwScaled().
  *   - NW_ReadingsConfig: how many readings a chip group takes and whether its
  *     statistics columns print.
+ *   - NW_StringPrint: a Print that appends to a String and reports a failed
+ *     append, so the String-returning functions can be implemented over the
+ *     streaming pair instead of beside it.
  *   - NW_StandardNames.h: the header cell for every accepted standard name,
  *     generated from NW-Device-Specification/standard-names.csv. Wrap a cell in
  *     F() where you print it: a plain literal on AVR is copied into RAM at
@@ -38,6 +41,7 @@
 #include "NW_Pages.h"
 #include "NW_Readings.h"
 #include "NW_Device.h"
+#include "NW_StringPrint.h"
 #include "NW_StandardNames.h"
 
 #endif
