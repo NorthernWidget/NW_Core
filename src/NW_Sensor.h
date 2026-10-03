@@ -19,26 +19,26 @@
  * report, and any report after a reading, does.
  */
 class NW_Sensor {
-  public:
-    virtual ~NW_Sensor() {}
-    /** @brief The device name as the spec spells it ("Apis"). */
-    virtual const char* name() const = 0;
-    /** @brief Kind of the report captured with the last reading (0 = none). */
-    virtual uint8_t reportKind() = 0;
-    /** @brief The last report is a fault: its chip's status bit is set, the data are not to be trusted. */
-    virtual bool reportIsFault() = 0;
-    /** @brief Kind of the report begin() captured at the device's boot; 0 once cleared or if none. */
-    virtual uint8_t bootReportKind() = 0;
-    /** @brief The logger has recorded (or dismissed) the boot report. */
-    virtual void clearBootReport() = 0;
-    /**
+public:
+  virtual ~NW_Sensor() {}
+  /** @brief The device name as the spec spells it ("Apis"). */
+  virtual const char* name() const = 0;
+  /** @brief Kind of the report captured with the last reading (0 = none). */
+  virtual uint8_t reportKind() = 0;
+  /** @brief The last report is a fault: its chip's status bit is set, the data are not to be trusted. */
+  virtual bool reportIsFault() = 0;
+  /** @brief Kind of the report begin() captured at the device's boot; 0 once cleared or if none. */
+  virtual uint8_t bootReportKind() = 0;
+  /** @brief The logger has recorded (or dismissed) the boot report. */
+  virtual void clearBootReport() = 0;
+  /**
      * @brief Print one status line for the logger's status file (no newline):
      * name, serial, HW, FW, report code, note word, Pages 0-2 in hex.
      * @param boot print the boot report (the code begin() captured) instead of the last reading's
      */
-    virtual size_t printStatus(Print& out, bool boot = false) = 0;
+  virtual size_t printStatus(Print& out, bool boot = false) = 0;
 
-    /**
+  /**
      * @brief Print this sensor's summary columns: the means, with whatever
      * statistics columns it has enabled.
      * @details The logger composes the data file's header from its own columns
@@ -48,9 +48,9 @@ class NW_Sensor {
      * @param out Where to print.
      * @return Bytes printed.
      */
-    virtual size_t printDataHeader(Print& out) = 0;
+  virtual size_t printDataHeader(Print& out) = 0;
 
-    /**
+  /**
      * @brief Print one summary row, in printDataHeader()'s column order.
      * @details Takes no reading. The logger acquires first, then writes the row
      * to the card and to the serial monitor, and a row written to two sinks
@@ -58,17 +58,17 @@ class NW_Sensor {
      * @param out Where to print.
      * @return Bytes printed.
      */
-    virtual size_t printDataRow(Print& out) = 0;
+  virtual size_t printDataRow(Print& out) = 0;
 
-    /**
+  /**
      * @brief The address this sensor answers at unless told otherwise.
      * @details How a logger builds its own bus-test list from the sensors
      * watch() gave it, rather than being handed a second list that has to stay
      * in step with them (LIBRARY-DESIGN.md section 14).
      */
-    virtual uint8_t defaultAddress() const = 0;
+  virtual uint8_t defaultAddress() const = 0;
 
-    /**
+  /**
      * @brief Come back on the bus: the logger cut the sensor rail to sleep.
      * @details The first of the three calls run(logInterval) makes on each
      * watched sensor. The logger passes the address it was given at watch(),
@@ -77,23 +77,23 @@ class NW_Sensor {
      * @param address where to find this sensor.
      * @return True when the sensor answered and passed begin()'s gates.
      */
-    virtual bool wake(uint8_t address) = 0;
+  virtual bool wake(uint8_t address) = 0;
 
-    /**
+  /**
      * @brief Take this row's readings and store them, for printDataRow().
      * @details Separate from printDataRow() because a row is written to the
      * card and to the serial monitor, and must not be acquired twice.
      * @return True when a reading was taken.
      */
-    virtual bool acquire() = 0;
+  virtual bool acquire() = 0;
 
-    /**
+  /**
      * @brief Print one word for the logger's Note column, with no comma.
      * @param beginFailed print why begin() refused, rather than what the last
      *        reading reported. The sketch used two different words here.
      * @return Bytes printed.
      */
-    virtual size_t printNote(Print& out, bool beginFailed = false) = 0;
+  virtual size_t printNote(Print& out, bool beginFailed = false) = 0;
 };
 
 #endif

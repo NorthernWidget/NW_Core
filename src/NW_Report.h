@@ -11,7 +11,10 @@
 inline size_t nwPrintHex(Print& out, const uint8_t* b, uint8_t n) {
   static const char digits[] = "0123456789ABCDEF";
   size_t k = 0;
-  for (uint8_t i = 0; i < n; i++) { k += out.print(digits[b[i] >> 4]); k += out.print(digits[b[i] & 0x0F]); }
+  for (uint8_t i = 0; i < n; i++) {
+    k += out.print(digits[b[i] >> 4]);
+    k += out.print(digits[b[i] & 0x0F]);
+  }
   return k;
 }
 
@@ -30,7 +33,10 @@ inline size_t nwPrintCommit(Print& out, const uint8_t* b) {
 /** @brief Print a 32-byte page as four 8-byte blocks in hex, a space between blocks: the status file's page columns. */
 inline size_t nwPrintPage(Print& out, const uint8_t* page) {
   size_t k = 0;
-  for (uint8_t b = 0; b < 4; b++) { if (b) k += out.print(' '); k += nwPrintHex(out, page + 8 * b, 8); }
+  for (uint8_t b = 0; b < 4; b++) {
+    if (b) k += out.print(' ');
+    k += nwPrintHex(out, page + 8 * b, 8);
+  }
   return k;
 }
 
@@ -50,19 +56,35 @@ inline size_t nwPrintPage(Print& out, const uint8_t* page) {
  * printKindWord() give the universal part alone.
  */
 struct NW_Report {
-  uint8_t status = 0;   ///< Block 0 byte 0x40
-  uint8_t code   = 0;   ///< Block 0 byte 0x47
+  uint8_t status = 0;  ///< Block 0 byte 0x40
+  uint8_t code = 0;    ///< Block 0 byte 0x47
 
-  bool ready() const                    { return status & 0x01; }
-  bool chipFaulted(uint8_t chip) const  { return status & (1 << (chip + 1)); }   ///< chip 0..5 faulted on the last reading
-  bool any() const                      { return status & 0x80; }               ///< pan-fault
-  uint8_t chip() const                  { return code >> 5; }                   ///< 0..6, or 7 for the unit
-  uint8_t kind() const                  { return code & 0x1F; }
-  bool isUnit() const                   { return chip() == 7; }
+  bool ready() const {
+    return status & 0x01;
+  }
+  bool chipFaulted(uint8_t chip) const {
+    return status & (1 << (chip + 1));
+  }  ///< chip 0..5 faulted on the last reading
+  bool any() const {
+    return status & 0x80;
+  }  ///< pan-fault
+  uint8_t chip() const {
+    return code >> 5;
+  }  ///< 0..6, or 7 for the unit
+  uint8_t kind() const {
+    return code & 0x1F;
+  }
+  bool isUnit() const {
+    return chip() == 7;
+  }
   /** @brief The report is a fault: its chip's status bit is set (the unit: pan-fault), so the data are not to be trusted. */
-  bool isFault() const                  { return kind() != 0 && (isUnit() ? any() : chipFaulted(chip())); }
+  bool isFault() const {
+    return kind() != 0 && (isUnit() ? any() : chipFaulted(chip()));
+  }
   /** @brief The report is a notice: a code with no status bit behind it (reset, calibration stored, batch abandoned). */
-  bool isNotice() const                 { return kind() != 0 && !isFault(); }
+  bool isNotice() const {
+    return kind() != 0 && !isFault();
+  }
 
   /** @brief Print the kind in words ("timed out"; "kind 17" for device-specific kinds): the spec's table of note words, spoken. */
   size_t printKind(Print& out) const {
@@ -78,7 +100,11 @@ struct NW_Report {
       case 8: return out.print(F("power fault"));
       case 9: return out.print(F("calibration stored"));
       case 10: return out.print(F("batch abandoned"));
-      default: { size_t n = out.print(F("kind ")); return n + out.print(kind()); }
+      default:
+        {
+          size_t n = out.print(F("kind "));
+          return n + out.print(kind());
+        }
     }
   }
   /**
@@ -99,7 +125,11 @@ struct NW_Report {
       case 8: return out.print(F("PowerFault"));
       case 9: return out.print(F("CalibrationStored"));
       case 10: return out.print(F("BatchAbandoned"));
-      default: { size_t n = out.print(F("Kind")); return n + out.print(kind()); }
+      default:
+        {
+          size_t n = out.print(F("Kind"));
+          return n + out.print(kind());
+        }
     }
   }
   /**
@@ -112,11 +142,14 @@ struct NW_Report {
   size_t print(Print& out, const char* const* chipNames, uint8_t nChips, const char* const* kindWords = nullptr, uint8_t nKindWords = 0) const {
     uint8_t c = chip(), k = kind();
     if (k == 0) return out.print(F("none"));
-    if (k >= 16 && kindWords && (uint8_t)(k - 16) < nKindWords) return out.print(kindWords[k - 16]);   // a device-specific kind: its own word says it all
+    if (k >= 16 && kindWords && (uint8_t)(k - 16) < nKindWords) return out.print(kindWords[k - 16]);  // a device-specific kind: its own word says it all
     size_t n = 0;
     if (c == 7) n += out.print(F("unit"));
     else if (c < nChips) n += out.print(chipNames[c]);
-    else { n += out.print(F("chip ")); n += out.print(c); }
+    else {
+      n += out.print(F("chip "));
+      n += out.print(c);
+    }
     n += out.print(F(": "));
     return n + printKind(out);
   }
@@ -129,15 +162,20 @@ struct NW_Report {
   size_t printNote(Print& out, const char* const* chipNames, uint8_t nChips, const char* const* kindWords = nullptr, uint8_t nKindWords = 0) const {
     uint8_t c = chip();
     if (kind() == 0) return out.print(F("UnitNone"));
-    if (kind() >= 16 && kindWords && (uint8_t)(kind() - 16) < nKindWords) return out.print(kindWords[kind() - 16]);   // device-specific: the appendix's word alone
+    if (kind() >= 16 && kindWords && (uint8_t)(kind() - 16) < nKindWords) return out.print(kindWords[kind() - 16]);  // device-specific: the appendix's word alone
     size_t n = 0;
     if (c == 7) n += out.print(F("Unit"));
     else if (c < nChips) n += out.print(chipNames[c]);
-    else { n += out.print(F("Chip")); n += out.print(c); }
+    else {
+      n += out.print(F("Chip"));
+      n += out.print(c);
+    }
     return n + printKindWord(out);
   }
   /** @brief True for the kinds that mean the chip is not coming back this batch (no acknowledge, not initialised). */
-  bool chipAbsent() const               { return kind() == 1 || kind() == 5; }
+  bool chipAbsent() const {
+    return kind() == 1 || kind() == 5;
+  }
 };
 
 #endif

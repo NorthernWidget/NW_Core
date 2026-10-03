@@ -11,6 +11,8 @@
 #endif
 
 /// Scale a statistic from register units to physical units, passing NW_ERROR through untouched.
-inline float nwScaled(float v, float divisor) { return (v == NW_ERROR) ? NW_ERROR : v / divisor; }
+inline float nwScaled(float v, float divisor) {
+  return (v == NW_ERROR) ? NW_ERROR : v / divisor;
+}
 
 #endif

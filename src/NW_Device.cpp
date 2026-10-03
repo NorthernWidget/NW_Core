@@ -9,7 +9,10 @@ bool NW_Device::begin(uint8_t address, const char* name, uint8_t minPatch, unsig
   while (true) {
     Wire.beginTransmission(_adr);
     if (Wire.endTransmission() == 0) break;
-    if (millis() - t0 >= bootTimeoutMs) { _beginFailure = 1; return false; }
+    if (millis() - t0 >= bootTimeoutMs) {
+      _beginFailure = 1;
+      return false;
+    }
     delay(1);
   }
 
@@ -18,25 +21,40 @@ bool NW_Device::begin(uint8_t address, const char* name, uint8_t minPatch, unsig
   // the first reading.
   uint8_t p0[16];
   _hwMajor = _hwMinor = _fwPatch = 0;
-  if (!readBytes(NW_REG_SCHEMA, p0, 16)) { _beginFailure = 2; return false; }
+  if (!readBytes(NW_REG_SCHEMA, p0, 16)) {
+    _beginFailure = 2;
+    return false;
+  }
   _hwMajor = p0[NW_REG_HW_MAJOR];
   _hwMinor = p0[NW_REG_HW_MINOR];
   _fwPatch = p0[NW_REG_FW_PATCH];
-  if (p0[NW_REG_SCHEMA] != 0x01) { _beginFailure = 3; return false; }   // not Schema 1 (0x00 legacy, 0xFF unprovisioned, other)
-  bool ended = false;                                     // 7-byte name field, null-padded
+  if (p0[NW_REG_SCHEMA] != 0x01) {
+    _beginFailure = 3;
+    return false;
+  }                    // not Schema 1 (0x00 legacy, 0xFF unprovisioned, other)
+  bool ended = false;  // 7-byte name field, null-padded
   for (uint8_t i = 0; i < 7; i++) {
     char expected = ended ? 0 : name[i];
     if (expected == 0) ended = true;
-    if (p0[NW_REG_NAME + i] != (uint8_t)expected) { _beginFailure = 4; return false; }
+    if (p0[NW_REG_NAME + i] != (uint8_t)expected) {
+      _beginFailure = 4;
+      return false;
+    }
   }
-  if (_fwPatch < minPatch) { _beginFailure = 5; return false; }   // register map older than this library
+  if (_fwPatch < minPatch) {
+    _beginFailure = 5;
+    return false;
+  }  // register map older than this library
   // Block 0 before any write: the boot reports (unit reset 0xE6, Page 0 check 0xE3)
   // would be cleared by the first trigger, which is a Control write.
-  uint8_t b0[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-  if (!readBytes(NW_REG_STATUS, b0, 8)) { _beginFailure = 2; return false; }
+  uint8_t b0[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+  if (!readBytes(NW_REG_STATUS, b0, 8)) {
+    _beginFailure = 2;
+    return false;
+  }
   _report.status = b0[0];
-  _report.code   = b0[7];
-  _bootReport = _report;               // kept for the logger's status file until it clears it
+  _report.code = b0[7];
+  _bootReport = _report;  // kept for the logger's status file until it clears it
   _beginFailure = 0;
   return true;
 }
@@ -62,7 +80,9 @@ bool NW_Device::readBytes(uint8_t reg, uint8_t* buf, uint8_t n) {
     if (Wire.endTransmission() != 0) return false;
     if (Wire.requestFrom(_adr, k) != k) return false;
     for (uint8_t i = 0; i < k; i++) buf[i] = Wire.read();
-    buf += k; reg += k; n -= k;
+    buf += k;
+    reg += k;
+    n -= k;
   }
   return true;
 }
@@ -71,10 +91,13 @@ bool NW_Device::readData(uint8_t reg, uint8_t* buf, uint8_t n) {
   // Seqlock over the bus: the counter after the read must equal the one captured
   // before it. A device that committed in between gets captured again and re-read.
   _dataMoved = false;
-  for (uint8_t attempt = 0; ; attempt++) {
+  for (uint8_t attempt = 0;; attempt++) {
     if (!readBytes(reg, buf, n)) return false;
     if (readCounter() == _lastCounter) return true;
-    if (attempt >= NW_DATA_RETRIES) { _dataMoved = true; return false; }
+    if (attempt >= NW_DATA_RETRIES) {
+      _dataMoved = true;
+      return false;
+    }
     if (!captureReading()) return false;
   }
 }
@@ -86,26 +109,43 @@ bool NW_Device::writeByte(uint8_t reg, uint8_t value) {
   return Wire.endTransmission() == 0;
 }
 
-bool NW_Device::setI2CAddress(uint8_t newAddress) { return writeByte(NW_REG_I2C_ADDR, newAddress); }
+bool NW_Device::setI2CAddress(uint8_t newAddress) {
+  return writeByte(NW_REG_I2C_ADDR, newAddress);
+}
 
 size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_t nChips, bool boot, const char* lib, const char* libCommit) {
   const NW_Report& r = boot ? _bootReport : _report;
   uint8_t page[32];
   size_t n = 0;
   if (!readBytes(0x00, page, 32)) return out.print(F("NotAnswering"));
-  for (uint8_t i = 1; i <= 7 && page[i]; i++) n += out.print((char)page[i]);   // name
+  for (uint8_t i = 1; i <= 7 && page[i]; i++) n += out.print((char)page[i]);  // name
   n += out.print(',');
-  for (uint8_t i = 0; i < 4; i++) { if (i) n += out.print('-'); n += nwPrintHex(out, page + 0x10 + 2 * i, 2); }   // serial, Block 2
-  n += out.print(','); n += out.print(page[NW_REG_HW_MAJOR]); n += out.print('.'); n += out.print(page[NW_REG_HW_MINOR]);   // HW version
-  n += out.print(','); n += out.print(page[NW_REG_FW_PATCH]);                                                               // FW patch
-  n += out.print(','); n += nwPrintCommit(out, page + 0x18);                                                                // FW build commit, Block 3
-  n += out.print(','); n += out.print(lib); n += out.print(','); n += out.print(libCommit);                                // the reading library
-  n += out.print(F(",0x")); n += nwPrintHex(out, &r.code, 1);
-  n += out.print(','); n += r.printNote(out, chipNames, nChips);
-  n += out.print(','); n += nwPrintPage(out, page);                                      // Page 0
-  for (uint8_t p = 0x20; p <= 0x40; p += 0x20) {                                       // Page 1 (calibration), Page 2 (data)
+  for (uint8_t i = 0; i < 4; i++) {
+    if (i) n += out.print('-');
+    n += nwPrintHex(out, page + 0x10 + 2 * i, 2);
+  }  // serial, Block 2
+  n += out.print(',');
+  n += out.print(page[NW_REG_HW_MAJOR]);
+  n += out.print('.');
+  n += out.print(page[NW_REG_HW_MINOR]);  // HW version
+  n += out.print(',');
+  n += out.print(page[NW_REG_FW_PATCH]);  // FW patch
+  n += out.print(',');
+  n += nwPrintCommit(out, page + 0x18);  // FW build commit, Block 3
+  n += out.print(',');
+  n += out.print(lib);
+  n += out.print(',');
+  n += out.print(libCommit);  // the reading library
+  n += out.print(F(",0x"));
+  n += nwPrintHex(out, &r.code, 1);
+  n += out.print(',');
+  n += r.printNote(out, chipNames, nChips);
+  n += out.print(',');
+  n += nwPrintPage(out, page);                    // Page 0
+  for (uint8_t p = 0x20; p <= 0x40; p += 0x20) {  // Page 1 (calibration), Page 2 (data)
     n += out.print(',');
-    if (readBytes(p, page, 32)) n += nwPrintPage(out, page); else n += out.print(F("NotAnswering"));
+    if (readBytes(p, page, 32)) n += nwPrintPage(out, page);
+    else n += out.print(F("NotAnswering"));
   }
   return n;
 }
@@ -122,12 +162,14 @@ bool NW_Device::ready() {
 }
 
 uint16_t NW_Device::readCounter() {
-  uint8_t d[2] = {0xFF, 0xFF};
+  uint8_t d[2] = { 0xFF, 0xFF };
   readBytes(NW_REG_COUNTER, d, 2);
   return (uint16_t)((d[1] << 8) | d[0]);
 }
 
-bool NW_Device::newReading() { return readCounter() != _lastCounter; }
+bool NW_Device::newReading() {
+  return readCounter() != _lastCounter;
+}
 
 bool NW_Device::requestReading(uint8_t chips) {
   _counterBefore = readCounter();
@@ -142,7 +184,11 @@ bool NW_Device::waitReading() {
   unsigned long start = millis();
   while (millis() - start < _timeout) {
     uint16_t now = readCounter();
-    if (now != before) { _lastCounter = now; _counterBefore = 0xFFFF; return true; }
+    if (now != before) {
+      _lastCounter = now;
+      _counterBefore = 0xFFFF;
+      return true;
+    }
     delay(1);
   }
   return false;
@@ -150,11 +196,11 @@ bool NW_Device::waitReading() {
 
 bool NW_Device::captureReading() {
   // Block 0 of the new reading: status (0x40) and report (0x47), one 8-byte read.
-  uint8_t b0[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+  uint8_t b0[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
   if (!readBytes(NW_REG_STATUS, b0, 8)) return false;
   _report.status = b0[0];
-  _report.code   = b0[7];
-  _lastCounter  = (uint16_t)((b0[3] << 8) | b0[2]);       // the counter of the reading captured
+  _report.code = b0[7];
+  _lastCounter = (uint16_t)((b0[3] << 8) | b0[2]);  // the counter of the reading captured
   // A selected chip that reports "no acknowledge" or "not initialised" is not
   // coming for the rest of this batch (NW-Device-Specification, Readings requested).
   uint8_t chip = _report.chip();
