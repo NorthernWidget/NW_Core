@@ -7,7 +7,9 @@
 #        run_library.sh <binary> --record   (rewrite baseline.txt)
 NW_CORE="${NW_CORE:-../../../NW_Core}"
 BIN="$1"; [ -n "$BIN" ] || { echo "usage: run_library.sh <binary> [--record]"; exit 2; }
-g++ -std=c++17 -Wall -Werror=format -Wno-unused-function -I"$NW_CORE/extras/test" -I"$NW_CORE/src" -o "$BIN" test_output.cpp "$NW_CORE/src/NW_Device.cpp" || exit 1
+# -I../../src so a library whose sources include its own header with angle
+# brackets compiles here as it does for the board.
+g++ -std=c++17 -Wall -Werror=format -Wno-unused-function -I"$NW_CORE/extras/test" -I"$NW_CORE/src" -I../../src -o "$BIN" test_output.cpp "$NW_CORE/src/NW_Device.cpp" || exit 1
 ./"$BIN" > output.txt || exit 1
 if [ "$2" = "--record" ]; then cp output.txt baseline.txt; echo "baseline recorded"; exit 0; fi
 if diff -u baseline.txt output.txt; then echo "OK: output identical to baseline"; else echo "FAIL: output differs from baseline"; exit 1; fi
