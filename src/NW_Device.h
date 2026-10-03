@@ -66,6 +66,10 @@ class NW_Device {
      * "NotAnswering", "ReadFailed", "NotSchema1", "WrongName", "OldFirmware"; "None"
      * after a successful begin().
      */
+    /// @brief Print which gate begin() refused at, as one word. @return Bytes written.
+    size_t printBeginFailure(Print& out) const;
+
+    /// @brief The same word as a String, for a library not yet on the streaming interface.
     String beginFailure() const;
     uint8_t address() const          { return _adr; }
     uint8_t hardwareMajor() const    { return _hwMajor; }

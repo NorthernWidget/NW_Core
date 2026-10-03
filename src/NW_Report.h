@@ -81,6 +81,27 @@ struct NW_Report {
       default: { size_t n = out.print(F("kind ")); return n + out.print(kind()); }
     }
   }
+  /**
+   * @brief Print the kind as one word for a data-table note ("Timeout";
+   * "Kind17" for a device-specific kind).
+   * @return Bytes written.
+   */
+  size_t printKindWord(Print& out) const {
+    switch (kind()) {
+      case 0: return out.print(F("None"));
+      case 1: return out.print(F("NotAnswering"));
+      case 2: return out.print(F("Timeout"));
+      case 3: return out.print(isUnit() ? F("Page0Invalid") : F("ChecksumFailed"));
+      case 4: return out.print(F("OutOfRange"));
+      case 5: return out.print(F("SelfTestFailed"));
+      case 6: return out.print(F("Restarted"));
+      case 7: return out.print(F("ConfigRejected"));
+      case 8: return out.print(F("PowerFault"));
+      case 9: return out.print(F("CalibrationStored"));
+      case 10: return out.print(F("BatchAbandoned"));
+      default: { size_t n = out.print(F("Kind")); return n + out.print(kind()); }
+    }
+  }
   /** @brief The kind as one word for a data-table note ("Timeout"; "Kind17" for device-specific kinds). */
   String kindWord() const {
     switch (kind()) {
@@ -121,6 +142,21 @@ struct NW_Report {
    * chip, then the kind, e.g. "MS5803NotAnswering", "UnitRestarted", "Chip2Kind17";
    * "UnitNone" when there is no report. A device-specific kind (16-31) prints its
    * appendix word alone when the library passes its table ("LoggingStarted").
+   */
+  size_t printNote(Print& out, const char* const* chipNames, uint8_t nChips, const char* const* kindWords = nullptr, uint8_t nKindWords = 0) const {
+    uint8_t c = chip();
+    if (kind() == 0) return out.print(F("UnitNone"));
+    if (kind() >= 16 && kindWords && (uint8_t)(kind() - 16) < nKindWords) return out.print(kindWords[kind() - 16]);   // device-specific: the appendix's word alone
+    size_t n = 0;
+    if (c == 7) n += out.print(F("Unit"));
+    else if (c < nChips) n += out.print(chipNames[c]);
+    else { n += out.print(F("Chip")); n += out.print(c); }
+    return n + printKindWord(out);
+  }
+  /**
+   * @brief The same word as a String.
+   * @details Haar, Libelle and T9602 still call this; printNote() is what the
+   * libraries on the streaming interface use.
    */
   String note(const char* const* chipNames, uint8_t nChips, const char* const* kindWords = nullptr, uint8_t nKindWords = 0) const {
     uint8_t c = chip();

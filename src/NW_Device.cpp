@@ -41,6 +41,17 @@ bool NW_Device::begin(uint8_t address, const char* name, uint8_t minPatch, unsig
   return true;
 }
 
+size_t NW_Device::printBeginFailure(Print& out) const {
+  switch (_beginFailure) {
+    case 1: return out.print(F("NotAnswering"));
+    case 2: return out.print(F("ReadFailed"));
+    case 3: return out.print(F("NotSchema1"));
+    case 4: return out.print(F("WrongName"));
+    case 5: return out.print(F("OldFirmware"));
+    default: return out.print(F("None"));
+  }
+}
+
 String NW_Device::beginFailure() const {
   switch (_beginFailure) {
     case 1: return String(F("NotAnswering"));
