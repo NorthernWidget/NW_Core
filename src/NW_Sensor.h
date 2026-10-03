@@ -61,12 +61,23 @@ class NW_Sensor {
     virtual size_t printDataRow(Print& out) = 0;
 
     /**
+     * @brief The address this sensor answers at unless told otherwise.
+     * @details How a logger builds its own bus-test list from the sensors
+     * watch() gave it, rather than being handed a second list that has to stay
+     * in step with them (LIBRARY-DESIGN.md section 14).
+     */
+    virtual uint8_t defaultAddress() const = 0;
+
+    /**
      * @brief Come back on the bus: the logger cut the sensor rail to sleep.
      * @details The first of the three calls run(logInterval) makes on each
-     * watched sensor. A logger is never powered down and answers true.
+     * watched sensor. The logger passes the address it was given at watch(),
+     * so the address is stated once and in one place. A logger is never
+     * powered down and answers true.
+     * @param address where to find this sensor.
      * @return True when the sensor answered and passed begin()'s gates.
      */
-    virtual bool wake() = 0;
+    virtual bool wake(uint8_t address) = 0;
 
     /**
      * @brief Take this row's readings and store them, for printDataRow().
