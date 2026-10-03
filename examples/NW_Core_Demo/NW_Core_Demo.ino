@@ -21,7 +21,8 @@ void setup() {
   Serial.begin(9600);
   if (!device.begin(0x41, "Apis", 2, 100)) {   // Schema 1, name, minimum firmware patch, 100 ms boot wait
     Serial.print("refused: ");
-    Serial.println(device.beginFailure());
+    device.printBeginFailure(Serial);
+    Serial.println();
   }
   rangeCfg.set(5, range.capacity());
   Serial.println("Range mean [cm],Range std [cm],Range median [cm],Fault");

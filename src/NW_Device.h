@@ -70,7 +70,6 @@ class NW_Device {
     size_t printBeginFailure(Print& out) const;
 
     /// @brief The same word as a String, for a library not yet on the streaming interface.
-    String beginFailure() const;
     uint8_t address() const          { return _adr; }
     uint8_t hardwareMajor() const    { return _hwMajor; }
     uint8_t hardwareMinor() const    { return _hwMinor; }

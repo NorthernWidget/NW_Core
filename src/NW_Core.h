@@ -15,9 +15,6 @@
  *     statistics columns print.
  *   - NW_BufferPrint: a Print that fills a fixed buffer and says when it ran
  *     out, which is what a device holds where a String used to be.
- *   - NW_StringPrint: a Print that appends to a String and reports a failed
- *     append. Haar, Libelle and T9602 still return Strings and build them
- *     through this; the libraries on the streaming interface do not need it.
  *   - NW_StandardNames.h: the header cell for every accepted standard name,
  *     generated from NW-Device-Specification/standard-names.csv. Wrap a cell in
  *     F() where you print it: a plain literal on AVR is copied into RAM at
@@ -44,7 +41,6 @@
 #include "NW_Readings.h"
 #include "NW_Device.h"
 #include "NW_BufferPrint.h"
-#include "NW_StringPrint.h"
 #include "NW_StandardNames.h"
 
 #endif

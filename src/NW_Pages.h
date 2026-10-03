@@ -84,7 +84,7 @@ class NW_Pages {
       n += out.print(','); n += out.print(fwCommit);                                   // the logger's library commit: its firmware's
       n += out.print(','); n += out.print(lib); n += out.print(','); n += out.print(libCommit);   // for a logger: blank, and the sketch's commit
       n += out.print(F(",0x")); n += nwPrintHex(out, &r->code, 1);
-      n += out.print(','); n += out.print(r->note(chipNames, nChips, kindWords, nKindWords));
+      n += out.print(','); n += r->printNote(out, chipNames, nChips, kindWords, nKindWords);
       for (uint8_t p = 0; p < 0x60; p += 0x20) { n += out.print(','); n += nwPrintPage(out, page + p); }
       return n;
     }

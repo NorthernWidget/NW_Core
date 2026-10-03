@@ -46,8 +46,8 @@ inline size_t nwPrintPage(Print& out, const uint8_t* page) {
  * (a notice), 7 config rejected, 8 supply fault, 9 calibration stored (a
  * notice), 10 batch abandoned (a notice), 11-15 reserved, 16-31 device-specific.
  * The chip names are the device's own: a library passes its table (the spec's
- * chip table, in order) to print() and note(); printKind() and kindWord() give
- * the universal part alone.
+ * chip table, in order) to print() and printNote(); printKind() and
+ * printKindWord() give the universal part alone.
  */
 struct NW_Report {
   uint8_t status = 0;   ///< Block 0 byte 0x40
@@ -102,23 +102,6 @@ struct NW_Report {
       default: { size_t n = out.print(F("Kind")); return n + out.print(kind()); }
     }
   }
-  /** @brief The kind as one word for a data-table note ("Timeout"; "Kind17" for device-specific kinds). */
-  String kindWord() const {
-    switch (kind()) {
-      case 0: return String(F("None"));
-      case 1: return String(F("NotAnswering"));
-      case 2: return String(F("Timeout"));
-      case 3: return String(isUnit() ? F("Page0Invalid") : F("ChecksumFailed"));
-      case 4: return String(F("OutOfRange"));
-      case 5: return String(F("SelfTestFailed"));
-      case 6: return String(F("Restarted"));
-      case 7: return String(F("ConfigRejected"));
-      case 8: return String(F("PowerFault"));
-      case 9: return String(F("CalibrationStored"));
-      case 10: return String(F("BatchAbandoned"));
-      default: { String w = F("Kind"); w += String(kind()); return w; }
-    }
-  }
   /**
    * @brief Print the report in words: the chip, then the kind, e.g.
    * "MS5803: not answering", "unit: restarted since configured"; "none" when
@@ -152,22 +135,6 @@ struct NW_Report {
     else if (c < nChips) n += out.print(chipNames[c]);
     else { n += out.print(F("Chip")); n += out.print(c); }
     return n + printKindWord(out);
-  }
-  /**
-   * @brief The same word as a String.
-   * @details Haar, Libelle and T9602 still call this; printNote() is what the
-   * libraries on the streaming interface use.
-   */
-  String note(const char* const* chipNames, uint8_t nChips, const char* const* kindWords = nullptr, uint8_t nKindWords = 0) const {
-    uint8_t c = chip();
-    String w;
-    if (kind() == 0) return String(F("UnitNone"));
-    if (kind() >= 16 && kindWords && (uint8_t)(kind() - 16) < nKindWords) return String(kindWords[kind() - 16]);   // device-specific: the appendix's word alone
-    if (c == 7) w = F("Unit");
-    else if (c < nChips) w = chipNames[c];
-    else { w = F("Chip"); w += String(c); }
-    w += kindWord();
-    return w;
   }
   /** @brief True for the kinds that mean the chip is not coming back this batch (no acknowledge, not initialised). */
   bool chipAbsent() const               { return kind() == 1 || kind() == 5; }

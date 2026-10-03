@@ -52,17 +52,6 @@ size_t NW_Device::printBeginFailure(Print& out) const {
   }
 }
 
-String NW_Device::beginFailure() const {
-  switch (_beginFailure) {
-    case 1: return String(F("NotAnswering"));
-    case 2: return String(F("ReadFailed"));
-    case 3: return String(F("NotSchema1"));
-    case 4: return String(F("WrongName"));
-    case 5: return String(F("OldFirmware"));
-    default: return String(F("None"));
-  }
-}
-
 bool NW_Device::readBytes(uint8_t reg, uint8_t* buf, uint8_t n) {
   // One transaction per chunk: pointer write, then requestFrom. Schema 1 firmware
   // serves up to 32 bytes with auto-increment, and the AVR Wire buffer is 32.
@@ -112,7 +101,7 @@ size_t NW_Device::printSnapshot(Print& out, const char* const* chipNames, uint8_
   n += out.print(','); n += nwPrintCommit(out, page + 0x18);                                                                // FW build commit, Block 3
   n += out.print(','); n += out.print(lib); n += out.print(','); n += out.print(libCommit);                                // the reading library
   n += out.print(F(",0x")); n += nwPrintHex(out, &r.code, 1);
-  n += out.print(','); n += out.print(r.note(chipNames, nChips));
+  n += out.print(','); n += r.printNote(out, chipNames, nChips);
   n += out.print(','); n += nwPrintPage(out, page);                                      // Page 0
   for (uint8_t p = 0x20; p <= 0x40; p += 0x20) {                                       // Page 1 (calibration), Page 2 (data)
     n += out.print(',');

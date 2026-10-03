@@ -17,6 +17,15 @@ static void loadImage(uint8_t fwPatch = 2, uint8_t schema = 0x01, const char* na
 // Emulated firmware: a trigger completes a reading at once.
 static void firmware() { installFirmwareEmulation(); }
 static const char* kindText(const NW_Report& f) { static char b[40]; BufferPrint bp(b, sizeof b); f.printKind(bp); return b; }
+// NW_Report::note() is gone (section 15): the note word is streamed. This gives
+// the harness the same bytes through a buffer that reports a truncation.
+static const char* note(const NW_Report& f, const char* const* chips, uint8_t nChips) {
+  static char b[64];
+  BufferPrint bp(b, sizeof b);
+  f.printNote(bp, chips, nChips);
+  if (bp.truncated()) printf("  TRUNCATED: note() needs a bigger buffer\n");
+  return b;
+}
 
 int main() {
   // 1. begin() gates
@@ -30,7 +39,7 @@ int main() {
   // The boot report: the firmware latches 0xE6 (unit reset) before any reading; begin() reads it
   // before its first write, and the first trigger (a Control write) then clears it.
   { loadImage(); Wire.image[0x47] = 0xE6; firmware(); NW_Device d; d.begin(0x41, "Apis", 2);
-    printf("[begin] boot report: code=0x%02X notice=%d fault=%d note=%s", d.report().code, d.report().isNotice(), d.report().isFault(), d.report().note(nullptr, 0).c_str());
+    printf("[begin] boot report: code=0x%02X notice=%d fault=%d note=%s", d.report().code, d.report().isNotice(), d.report().isFault(), note(d.report(), nullptr, 0));
     d.takeReading(0x01); printf(" after first reading: code=0x%02X bootReport=0x%02X", d.report().code, d.bootReport().code);
     d.clearBootReport(); printf(" cleared=0x%02X\n", d.bootReport().code); }
   { loadImage(); Wire.image[0x47] = 0xE3; firmware(); NW_Device d; d.begin(0x41, "Apis", 2); d.takeReading(0x01); char sb[320];
@@ -150,7 +159,7 @@ int main() {
     printf("[takeReadings] n=5: taken=%u calls=%d lastRequest=%u batchFaulted=%d\n", taken, calls, lastRequest, d.batchFaulted(0x01));
     onReading = [](TwoWire& w) { w.image[0x40] = 0x83; w.image[0x47] = 0x01; };   // LiDAR: no acknowledge
     calls = 0; taken = d.takeReadings(0x01, 10, [&] { calls++; return d.takeReading(0x01) && !d.faulted(0); });
-    printf("[takeReadings] dead chip, n=10: taken=%u calls=%d batchFaulted=%d note=%s\n", taken, calls, d.batchFaulted(0x01), d.report().note(nullptr, 0).c_str());
+    printf("[takeReadings] dead chip, n=10: taken=%u calls=%d batchFaulted=%d note=%s\n", taken, calls, d.batchFaulted(0x01), note(d.report(), nullptr, 0));
     onReading = nullptr;
     taken = d.takeReadings(0x01, 0, [&] { return true; }); printf("[takeReadings] n=0: taken=%u\n", taken); }
 
@@ -165,7 +174,7 @@ int main() {
     uint8_t codes[] = {0x01, 0x22, 0xE6, 0x51, 0x00};
     uint8_t statuses[] = {0x83, 0x85, 0x01, 0x89, 0x01};   // the chip's fault bit set for the faults; none for the notice and for no report
     for (int i = 0; i < 5; i++) { uint8_t code = codes[i]; f.code = code; f.status = statuses[i]; BufferPrint bp(b, sizeof b); f.print(bp, chips, 2);
-      printf("[report text] code=0x%02X text='%s' note='%s' fault=%d notice=%d\n", code, b, f.note(chips, 2).c_str(), f.isFault(), f.isNotice()); } }
+      printf("[report text] code=0x%02X text='%s' note='%s' fault=%d notice=%d\n", code, b, note(f, chips, 2), f.isFault(), f.isNotice()); } }
 
   fprintf(stderr, "bus transactions total: %u\n", Wire.transactions);
   return 0;
