@@ -13,6 +13,8 @@
  *   - NW_Error.h: NW_ERROR (-9999), the missing value on file, and nwScaled().
  *   - NW_ReadingsConfig: how many readings a chip group takes and whether its
  *     statistics columns print.
+ *   - NW_BufferPrint: a Print that fills a fixed buffer and says when it ran
+ *     out, which is what a device holds where a String used to be.
  *   - NW_StringPrint: a Print that appends to a String and reports a failed
  *     append, so the String-returning functions can be implemented over the
  *     streaming pair instead of beside it.
@@ -41,6 +43,7 @@
 #include "NW_Pages.h"
 #include "NW_Readings.h"
 #include "NW_Device.h"
+#include "NW_BufferPrint.h"
 #include "NW_StringPrint.h"
 #include "NW_StandardNames.h"
 
