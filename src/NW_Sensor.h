@@ -59,6 +59,30 @@ class NW_Sensor {
      * @return Bytes printed.
      */
     virtual size_t printDataRow(Print& out) = 0;
+
+    /**
+     * @brief Come back on the bus: the logger cut the sensor rail to sleep.
+     * @details The first of the three calls run(logInterval) makes on each
+     * watched sensor. A logger is never powered down and answers true.
+     * @return True when the sensor answered and passed begin()'s gates.
+     */
+    virtual bool wake() = 0;
+
+    /**
+     * @brief Take this row's readings and store them, for printDataRow().
+     * @details Separate from printDataRow() because a row is written to the
+     * card and to the serial monitor, and must not be acquired twice.
+     * @return True when a reading was taken.
+     */
+    virtual bool acquire() = 0;
+
+    /**
+     * @brief Print one word for the logger's Note column, with no comma.
+     * @param beginFailed print why begin() refused, rather than what the last
+     *        reading reported. The sketch used two different words here.
+     * @return Bytes printed.
+     */
+    virtual size_t printNote(Print& out, bool beginFailed = false) = 0;
 };
 
 #endif
