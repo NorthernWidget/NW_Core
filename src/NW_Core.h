@@ -9,6 +9,9 @@
  *     (no heap) with mean, standard deviation, standard error, and median.
  *   - NW_Report: the decoded Status and Report bytes (faults and notices).
  *   - NW_Sensor: the interface a logger keeps a status file through (name, reports, status line).
+ *   - NW_PlainSensor: NW_Sensor for a device with no identity page. A
+ *     third-party chip cannot be discovered, because it cannot name itself, but
+ *     a sketch can watch() it and its columns reach the file like any other's.
  *   - NW_Pages: the served pages of a device that runs on a logger (its reading of itself).
  *   - NW_Error.h: NW_ERROR (-9999), the missing value on file, and nwScaled().
  *   - NW_ReadingsConfig: how many readings a chip group takes and whether its
@@ -37,6 +40,7 @@
 
 #include "NW_Report.h"
 #include "NW_Sensor.h"
+#include "NW_PlainSensor.h"
 #include "NW_Pages.h"
 #include "NW_Readings.h"
 #include "NW_Device.h"
