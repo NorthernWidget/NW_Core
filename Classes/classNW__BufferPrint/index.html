@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 
 
-<!-- begin _includes/seo.html --><title>NW_Core</title>
+<!-- begin _includes/seo.html --><title>NW_BufferPrint - NW_Core</title>
 <meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
 
 
@@ -26,8 +26,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="NW_Core">
-<meta property="og:title" content="NW_Core">
-<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Pages/md_CLAUDE/">
+<meta property="og:title" content="NW_BufferPrint">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Classes/classNW__BufferPrint/">
 
 
   <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
@@ -45,7 +45,7 @@
 
 
 
-<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Pages/md_CLAUDE/">
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Classes/classNW__BufferPrint/">
 
 
 
@@ -217,7 +217,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="NW_Core">
+    <meta itemprop="headline" content="NW_BufferPrint">
     
     
     
@@ -226,7 +226,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://docs.northernwidget.com/NW_Core/Pages/md_CLAUDE/" itemprop="url">NW_Core
+            <a href="https://docs.northernwidget.com/NW_Core/Classes/classNW__BufferPrint/" itemprop="url">NW_BufferPrint
 </a>
           </h1>
           
@@ -241,28 +241,95 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#standards">Standards</a></li><li><a href="#working-rules">Working rules</a></li><li><a href="#hard-rule">Hard rule</a></li></ul>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-nw_bufferprint">function NW_BufferPrint</a></li><li><a href="#function-write">function write</a></li><li><a href="#function-length">function length</a></li><li><a href="#function-truncated">function truncated</a></li></ul></li></ul>
             </nav>
           </aside>
         
-        <p>Shared foundation for the Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol (<code class="language-plaintext highlighter-rouge">[NW_Device](/NW_Core/Classes/classNW__Device/)</code>), the readings store with statistics (<code class="language-plaintext highlighter-rouge">[NW_Readings](/NW_Core/Classes/classNW__Readings/)</code>, <code class="language-plaintext highlighter-rouge">[NW_ReadingsConfig](/NW_Core/Classes/structNW__ReadingsConfig/)</code>), the report decoder (<code class="language-plaintext highlighter-rouge">[NW_Report](/NW_Core/Classes/structNW__Report/)</code>), and the missing-value sentinel (<code class="language-plaintext highlighter-rouge">[NW_Error.h](/NW_Core/Files/NW__Error_8h/#file-nw-error.h)</code>). Apis_Library, Walrus_Library and Haar_Library build on it.</p>
+        <p>Collect printed output into a caller’s char buffer.  <a href="#detailed-description">More…</a></p>
 
-<h1 id="standards">Standards</h1>
+<p><code class="language-plaintext highlighter-rouge">#include &lt;NW_BufferPrint.h&gt;</code></p>
 
-<p>Follow the NW library standards for all work here: the root <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> one level above <code class="language-plaintext highlighter-rouge">github/</code> has the checklist and code conventions, mirrored at <a href="https://github.com/NorthernWidget/NW-Device-Specification/blob/master/RELEASING.md">NW-Device-Specification/RELEASING.md</a>. The design and the line between what lives here and what stays in a library is <a href="https://github.com/NorthernWidget/NW-Device-Specification/blob/master/LIBRARY-DESIGN.md">LIBRARY-DESIGN.md</a>, section 0 and section 11.</p>
+<p>Inherits from Print</p>
 
-<h1 id="working-rules">Working rules</h1>
+<h2 id="public-functions">Public Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Classes/classNW__BufferPrint/#function-nw-bufferprint">NW_BufferPrint</a></strong>(char * buffer, size_t capacity, bool append =false)</td>
+    </tr>
+    <tr>
+      <td>size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__BufferPrint/#function-write">write</a></strong>(uint8_t c) override</td>
+    </tr>
+    <tr>
+      <td>size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__BufferPrint/#function-length">length</a></strong>() const<br />How many bytes the buffer holds, terminator excluded.</td>
+    </tr>
+    <tr>
+      <td>bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__BufferPrint/#function-truncated">truncated</a></strong>() const<br />Whether anything was dropped for want of room.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="detailed-description">Detailed Description</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NW_BufferPrint</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Collect printed output into a caller’s char buffer.</p>
+
+<p>What a device uses where a String used to be held: a buffer whose size is fixed and known, rather than a heap object that can silently empty. The buffer is kept null-terminated, so it can be printed or compared at any point.</p>
+
+<p>Running out is the hazard a String has too, and the reason this reports it: write() returns 0 when the byte did not fit, Print sums what it wrote, and <a href="/NW_Core/Classes/classNW__BufferPrint/#function-truncated">truncated()</a> latches whether anything was dropped. A caller that ignores both gets a short line and no warning, which is the failure this exists to end.</p>
+
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+
+<h3 id="function-nw_bufferprint">function NW_BufferPrint</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">NW_BufferPrint</span><span class="p">(</span>
+    <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
+    <span class="kt">size_t</span> <span class="n">capacity</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">append</span> <span class="o">=</span><span class="nb">false</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Parameters</strong>:</p>
 
 <ul>
-  <li>Core is extracted from what is identical across the libraries, never designed ahead of them. A change here is verified by every consumer’s harness (<code class="language-plaintext highlighter-rouge">extras/test/run.sh</code> in Apis_Library, Walrus_Library, Haar_Library, T9602_Library and MCP23018) staying byte-identical, plus Core’s own harness and a compile for <code class="language-plaintext highlighter-rouge">arduino:avr:uno</code> and <code class="language-plaintext highlighter-rouge">NorthernWidget:avr:NW1284p</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">extras/test/</code> holds the stubs (<code class="language-plaintext highlighter-rouge">Arduino.h</code>, <code class="language-plaintext highlighter-rouge">Wire.h</code>), the shared harness support (<code class="language-plaintext highlighter-rouge">NW_TestSupport.h</code>) and the shared runner (<code class="language-plaintext highlighter-rouge">run_library.sh</code>) that every library harness includes; changing them changes every harness.</li>
-  <li>Formatting: the Arduino IDE auto-format (2-space indent, attached braces); lines under about 80 columns where practical.</li>
-  <li>Unversioned (0.0.0) and unregistered until the 2026 overhaul ends; no CITATION.cff or .zenodo.json until then.</li>
+  <li><strong>buffer</strong> where to collect.</li>
+  <li><strong>capacity</strong> its size in bytes, terminator included.</li>
+  <li><strong>append</strong> keep what the buffer already holds and add to it, rather than clearing it first.</li>
 </ul>
 
-<h1 id="hard-rule">Hard rule</h1>
+<h3 id="function-write">function write</h3>
 
-<p><strong>Never</strong> create a git tag, GitHub release, push to a shared remote, or submit to any external registry (Zenodo, Arduino Library Manager, etc.) unless explicitly asked in the current message. If in doubt, ask.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">write</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">c</span>
+<span class="p">)</span> <span class="k">override</span>
+</code></pre></div></div>
+
+<h3 id="function-length">function length</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">length</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>How many bytes the buffer holds, terminator excluded.</p>
+
+<h3 id="function-truncated">function truncated</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">bool</span> <span class="n">truncated</span><span class="p">()</span> <span class="k">const</span>
+</code></pre></div></div>
+
+<p>Whether anything was dropped for want of room.</p>
 
 <hr />
 

@@ -1,0 +1,504 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>NW_PlainSensor - NW_Core</title>
+<meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_Core">
+<meta property="og:title" content="NW_PlainSensor">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Classes/classNW__PlainSensor/">
+
+
+  <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Classes/classNW__PlainSensor/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_Core/feed.xml" type="application/atom+xml" rel="alternate" title="NW_Core Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_Core/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_Core/">
+          NW_Core
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_Core/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Device/"><span class="nav__sub-title">NW_Device Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Readings/"><span class="nav__sub-title">NW_Readings Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Fault/"><span class="nav__sub-title">NW_Fault Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="NW_PlainSensor">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://docs.northernwidget.com/NW_Core/Classes/classNW__PlainSensor/" itemprop="url">NW_PlainSensor
+</a>
+          </h1>
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#additional-inherited-members">Additional inherited members</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-reportkind">function reportKind</a></li><li><a href="#function-reportisfault">function reportIsFault</a></li><li><a href="#function-bootreportkind">function bootReportKind</a></li><li><a href="#function-clearbootreport">function clearBootReport</a></li><li><a href="#function-printstatus">function printStatus</a></li><li><a href="#function-printnote">function printNote</a></li></ul></li></ul>
+            </nav>
+          </aside>
+        
+        <p>What a logger can hold that is not a Schema 1 device.  <a href="#detailed-description">More…</a></p>
+
+<p><code class="language-plaintext highlighter-rouge">#include &lt;NW_PlainSensor.h&gt;</code></p>
+
+<p>Inherits from <a href="/NW_Core/Classes/classNW__Sensor/">NW_Sensor</a></p>
+
+<h2 id="public-functions">Public Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>virtual uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__PlainSensor/#function-reportkind">reportKind</a></strong>() override<br />Kind of the report this library latched during the last reading (0 = none).</td>
+    </tr>
+    <tr>
+      <td>virtual bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__PlainSensor/#function-reportisfault">reportIsFault</a></strong>() override<br />The last report is a fault: its chip’s status bit is set, the data are not to be trusted.</td>
+    </tr>
+    <tr>
+      <td>virtual uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__PlainSensor/#function-bootreportkind">bootReportKind</a></strong>() override<br />Always 0: a chip with no Report register cannot say it restarted.</td>
+    </tr>
+    <tr>
+      <td>virtual void</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__PlainSensor/#function-clearbootreport">clearBootReport</a></strong>() override<br />The logger has recorded (or dismissed) the boot report.</td>
+    </tr>
+    <tr>
+      <td>virtual size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__PlainSensor/#function-printstatus">printStatus</a></strong>(Print &amp; out, bool boot =false) override<br />One status row, with a lone <code class="language-plaintext highlighter-rouge">-</code> wherever a Page 0 would have answered.</td>
+    </tr>
+    <tr>
+      <td>virtual size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__PlainSensor/#function-printnote">printNote</a></strong>(Print &amp; out, bool beginFailed =false) override<br />One word for the logger’s Note column, with no comma.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="additional-inherited-members">Additional inherited members</h2>
+
+<p><strong>Public Functions inherited from <a href="/NW_Core/Classes/classNW__Sensor/">NW_Sensor</a></strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>virtual</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-~nw-sensor">~NW_Sensor</a></strong>()</td>
+    </tr>
+    <tr>
+      <td>virtual const char *</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-name">name</a></strong>() const =0<br />The device name as the spec spells it (“Apis”).</td>
+    </tr>
+    <tr>
+      <td>virtual size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-printdataheader">printDataHeader</a></strong>(Print &amp; out) =0<br />Print this sensor’s summary columns: the means, with whatever statistics columns it has enabled.</td>
+    </tr>
+    <tr>
+      <td>virtual size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-printdatarow">printDataRow</a></strong>(Print &amp; out) =0<br />Print one summary row, in <a href="/NW_Core/Classes/classNW__Sensor/#function-printdataheader">printDataHeader()</a>’s column order.</td>
+    </tr>
+    <tr>
+      <td>virtual uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-defaultaddress">defaultAddress</a></strong>() const =0<br />The address this sensor answers at unless told otherwise.</td>
+    </tr>
+    <tr>
+      <td>virtual bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-wake">wake</a></strong>(uint8_t address) =0<br />Come back on the bus: the logger cut the sensor rail to sleep.</td>
+    </tr>
+    <tr>
+      <td>virtual bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-acquire">acquire</a></strong>() =0<br />Take this row’s readings and store them, for <a href="/NW_Core/Classes/classNW__Sensor/#function-printdatarow">printDataRow()</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="detailed-description">Detailed Description</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">NW_PlainSensor</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>What a logger can hold that is not a Schema 1 device.</p>
+
+<p>A third-party chip has no Page 0 and no Report register, so it cannot name itself on the bus and cannot be found by NW_Logger::discover(): a device with no valid Page 0 never matches a candidate name, which is why discovery needs no special case for one of these (Andy, 2026-10-03: a non-NW sensor has no schema and therefore cannot be automatically detected). A sketch can still name it, and watch() then logs its columns like any other sensor’s.</p>
+
+<p>This fills in the half of <a href="/NW_Core/Classes/classNW__Sensor/">NW_Sensor</a> that a device with no Report register cannot answer, so a library supplies only what it genuinely knows: <a href="/NW_Core/Classes/classNW__Sensor/#function-name">name()</a>, <a href="/NW_Core/Classes/classNW__Sensor/#function-defaultaddress">defaultAddress()</a>, <a href="/NW_Core/Classes/classNW__Sensor/#function-wake">wake()</a>, <a href="/NW_Core/Classes/classNW__Sensor/#function-acquire">acquire()</a>, <a href="/NW_Core/Classes/classNW__Sensor/#function-printdataheader">printDataHeader()</a> and <a href="/NW_Core/Classes/classNW__Sensor/#function-printdatarow">printDataRow()</a>.</p>
+
+<p>The report is the LIBRARY’s rather than the device’s, which is the honest reading of it: latchFault(NW_PLAIN_NOT_ANSWERING) when the chip does not acknowledge, latchFault(NW_PLAIN_TIMEOUT) when a reading does not arrive. The kinds are the specification’s universal ones, so the note word a logger writes reads the same as any other sensor’s: “T9602NotAnswering”, “T9602Timeout”.</p>
+
+<p>Its status row carries the same columns as a Schema 1 sensor’s and writes a lone <code class="language-plaintext highlighter-rouge">-</code> in each one a Page 0 would have filled: serial, hardware version, firmware patch, firmware commit and the three pages. A row with a device name and a dash where its serial belongs says “this device has no identity page”, which is a fact about the device rather than a field that failed to read.</p>
+
+<h2 id="public-functions-documentation">Public Functions Documentation</h2>
+
+<h3 id="function-reportkind">function reportKind</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="k">virtual</span> <span class="kt">uint8_t</span> <span class="n">reportKind</span><span class="p">()</span> <span class="k">override</span>
+</code></pre></div></div>
+
+<p>Kind of the report this library latched during the last reading (0 = none).</p>
+
+<p><strong>Reimplements</strong>: <a href="/NW_Core/Classes/classNW__Sensor/#function-reportkind">NW_Sensor::reportKind</a></p>
+
+<h3 id="function-reportisfault">function reportIsFault</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">reportIsFault</span><span class="p">()</span> <span class="k">override</span>
+</code></pre></div></div>
+
+<p>The last report is a fault: its chip’s status bit is set, the data are not to be trusted.</p>
+
+<p><strong>Reimplements</strong>: <a href="/NW_Core/Classes/classNW__Sensor/#function-reportisfault">NW_Sensor::reportIsFault</a></p>
+
+<h3 id="function-bootreportkind">function bootReportKind</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="k">virtual</span> <span class="kt">uint8_t</span> <span class="n">bootReportKind</span><span class="p">()</span> <span class="k">override</span>
+</code></pre></div></div>
+
+<p>Always 0: a chip with no Report register cannot say it restarted.</p>
+
+<p><strong>Reimplements</strong>: <a href="/NW_Core/Classes/classNW__Sensor/#function-bootreportkind">NW_Sensor::bootReportKind</a></p>
+
+<p>A Schema 1 device latches a report at its own power-up and serves it until a controller acknowledges. There is nowhere for this one to keep such a thing, and inventing one would put a word in the status file that no device said.</p>
+
+<h3 id="function-clearbootreport">function clearBootReport</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="k">virtual</span> <span class="kt">void</span> <span class="n">clearBootReport</span><span class="p">()</span> <span class="k">override</span>
+</code></pre></div></div>
+
+<p>The logger has recorded (or dismissed) the boot report.</p>
+
+<p><strong>Reimplements</strong>: <a href="/NW_Core/Classes/classNW__Sensor/#function-clearbootreport">NW_Sensor::clearBootReport</a></p>
+
+<h3 id="function-printstatus">function printStatus</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="k">virtual</span> <span class="kt">size_t</span> <span class="n">printStatus</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">boot</span> <span class="o">=</span><span class="nb">false</span>
+<span class="p">)</span> <span class="k">override</span>
+</code></pre></div></div>
+
+<p>One status row, with a lone <code class="language-plaintext highlighter-rouge">-</code> wherever a Page 0 would have answered.</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li><strong>boot</strong> ignored: there is no boot report to tell apart from the current one. The parameter stays because the logger calls every sensor the same way.</li>
+</ul>
+
+<p><strong>Reimplements</strong>: <a href="/NW_Core/Classes/classNW__Sensor/#function-printstatus">NW_Sensor::printStatus</a></p>
+
+<p>Columns, as <a href="/NW_Core/Classes/classNW__Pages/#function-printsnapshot">NW_Pages::printSnapshot()</a> writes them: name, serial, hardware version, firmware patch, firmware commit, library version, library commit, report code, note word, then Pages 0, 1 and 2. This device has none of the first group and no pages, so each is a dash.</p>
+
+<h3 id="function-printnote">function printNote</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="k">virtual</span> <span class="kt">size_t</span> <span class="n">printNote</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">beginFailed</span> <span class="o">=</span><span class="nb">false</span>
+<span class="p">)</span> <span class="k">override</span>
+</code></pre></div></div>
+
+<p>One word for the logger’s Note column, with no comma.</p>
+
+<p><strong>Reimplements</strong>: <a href="/NW_Core/Classes/classNW__Sensor/#function-printnote">NW_Sensor::printNote</a></p>
+
+<p>The device name then the kind, as any sensor’s does: “T9602Timeout”. A failed begin() can only mean one thing here, because the only gate a chip without an identity page has is whether it acknowledges.</p>
+
+<hr />
+
+<p>Updated on 2026-10-04 at 04:51:37 +0000</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_Core/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_Core</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_Core/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

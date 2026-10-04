@@ -1,0 +1,495 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>src/NW_PlainSensor.h - NW_Core</title>
+<meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_Core">
+<meta property="og:title" content="src/NW_PlainSensor.h">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Files/NW__PlainSensor_8h/">
+
+
+  <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Files/NW__PlainSensor_8h/">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_Core/feed.xml" type="application/atom+xml" rel="alternate" title="NW_Core Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_Core/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_Core/">
+          NW_Core
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_Core/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Device/"><span class="nav__sub-title">NW_Device Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Readings/"><span class="nav__sub-title">NW_Readings Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/classNW__Fault/"><span class="nav__sub-title">NW_Fault Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_Core/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="src/NW_PlainSensor.h">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="https://docs.northernwidget.com/NW_Core/Files/NW__PlainSensor_8h/" itemprop="url">src/NW_PlainSensor.h
+</a>
+          </h1>
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc" aria-label="Table of contents">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#defines">Defines</a></li><li><a href="#macros-documentation">Macros Documentation</a><ul><li><a href="#define-nw_plain_not_answering">define NW_PLAIN_NOT_ANSWERING</a></li><li><a href="#define-nw_plain_timeout">define NW_PLAIN_TIMEOUT</a></li><li><a href="#define-nw_plain_checksum">define NW_PLAIN_CHECKSUM</a></li><li><a href="#define-nw_plain_out_of_range">define NW_PLAIN_OUT_OF_RANGE</a></li></ul></li><li><a href="#source-code">Source code</a></li></ul>
+            </nav>
+          </aside>
+        
+        <h2 id="classes">Classes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>class</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__PlainSensor/">NW_PlainSensor</a></strong> <br />What a logger can hold that is not a Schema 1 device.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="defines">Defines</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__PlainSensor_8h/#define-nw-plain-not-answering">NW_PLAIN_NOT_ANSWERING</a></strong> <br />the chip did not acknowledge its address</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__PlainSensor_8h/#define-nw-plain-timeout">NW_PLAIN_TIMEOUT</a></strong> <br />a reading was asked for and did not arrive</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__PlainSensor_8h/#define-nw-plain-checksum">NW_PLAIN_CHECKSUM</a></strong> <br />the chip answered and the data did not check</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong><a href="/NW_Core/Files/NW__PlainSensor_8h/#define-nw-plain-out-of-range">NW_PLAIN_OUT_OF_RANGE</a></strong> <br />the value is outside what the part can mean</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="macros-documentation">Macros Documentation</h2>
+
+<h3 id="define-nw_plain_not_answering">define NW_PLAIN_NOT_ANSWERING</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_PLAIN_NOT_ANSWERING 1
+</span></code></pre></div></div>
+
+<p>the chip did not acknowledge its address</p>
+
+<h3 id="define-nw_plain_timeout">define NW_PLAIN_TIMEOUT</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_PLAIN_TIMEOUT 2
+</span></code></pre></div></div>
+
+<p>a reading was asked for and did not arrive</p>
+
+<h3 id="define-nw_plain_checksum">define NW_PLAIN_CHECKSUM</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_PLAIN_CHECKSUM 3
+</span></code></pre></div></div>
+
+<p>the chip answered and the data did not check</p>
+
+<h3 id="define-nw_plain_out_of_range">define NW_PLAIN_OUT_OF_RANGE</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define NW_PLAIN_OUT_OF_RANGE 4
+</span></code></pre></div></div>
+
+<p>the value is outside what the part can mean</p>
+
+<h2 id="source-code">Source code</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+NW_PlainSensor: a sensor a logger can hold that has no identity page.
+Licensed: GNU GPL v3
+*/</span>
+
+<span class="cp">#ifndef NW_PlainSensor_h
+#define NW_PlainSensor_h
+</span>
+<span class="cp">#include</span> <span class="cpf">"NW_Report.h"</span><span class="cp">
+#include</span> <span class="cpf">"NW_Sensor.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">NW_PlainSensor</span> <span class="o">:</span> <span class="k">public</span> <span class="n">NW_Sensor</span> <span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="kt">uint8_t</span> <span class="n">reportKind</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">kind</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="kt">bool</span> <span class="nf">reportIsFault</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">isFault</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="kt">uint8_t</span> <span class="n">bootReportKind</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">void</span> <span class="n">clearBootReport</span><span class="p">()</span> <span class="k">override</span> <span class="p">{}</span>
+
+  <span class="kt">size_t</span> <span class="n">printStatus</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">boot</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">boot</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">chips</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">name</span><span class="p">()</span> <span class="p">};</span>
+    <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">name</span><span class="p">());</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">",-"</span><span class="p">));</span>  <span class="c1">// serial, HW, FW, FW commit</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">_lib</span><span class="p">);</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">_libCommit</span><span class="p">);</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">",0x"</span><span class="p">));</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="n">nwPrintHex</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">_report</span><span class="p">.</span><span class="n">code</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="n">_report</span><span class="p">.</span><span class="n">printNote</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">chips</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">",-"</span><span class="p">));</span>  <span class="c1">// Pages 0, 1 and 2</span>
+    <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">size_t</span> <span class="nf">printNote</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">beginFailed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">beginFailed</span><span class="p">)</span> <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"NotAnswering"</span><span class="p">));</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">chips</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="n">name</span><span class="p">()</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">printNote</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">chips</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="p">}</span>
+
+<span class="k">protected</span><span class="o">:</span>
+  <span class="n">NW_PlainSensor</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">lib</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">libCommit</span> <span class="o">=</span> <span class="s">""</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">_lib</span><span class="p">(</span><span class="n">lib</span><span class="p">),</span> <span class="n">_libCommit</span><span class="p">(</span><span class="n">libCommit</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="kt">void</span> <span class="nf">latchFault</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">kind</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_report</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)(</span><span class="n">kind</span> <span class="o">&amp;</span> <span class="mh">0x1F</span><span class="p">);</span>  <span class="c1">// chip 0: the device is its own chip</span>
+    <span class="n">_report</span><span class="p">.</span><span class="n">status</span> <span class="o">|=</span> <span class="mh">0x82</span><span class="p">;</span>                 <span class="c1">// its chip bit, and the pan-fault bit</span>
+  <span class="p">}</span>
+
+  <span class="kt">void</span> <span class="nf">latchNotice</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">kind</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_report</span><span class="p">.</span><span class="n">isFault</span><span class="p">())</span> <span class="k">return</span><span class="p">;</span>
+    <span class="n">_report</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="p">)(</span><span class="n">kind</span> <span class="o">&amp;</span> <span class="mh">0x1F</span><span class="p">);</span>
+    <span class="n">_report</span><span class="p">.</span><span class="n">status</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">void</span> <span class="nf">clearReport</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_report</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">_report</span><span class="p">.</span><span class="n">status</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">const</span> <span class="n">NW_Report</span><span class="o">&amp;</span> <span class="n">report</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_report</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="n">NW_Report</span> <span class="n">_report</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">_lib</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">_libCommit</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#define NW_PLAIN_NOT_ANSWERING 1  
+#define NW_PLAIN_TIMEOUT 2        
+#define NW_PLAIN_CHECKSUM 3       
+#define NW_PLAIN_OUT_OF_RANGE 4   
+</span>
+<span class="cp">#endif
+</span></code></pre></div></div>
+
+<hr />
+
+<p>Updated on 2026-10-04 at 04:51:37 +0000</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_Core/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_Core</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_Core/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

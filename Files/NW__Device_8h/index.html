@@ -499,97 +499,139 @@
 </span>
 <span class="c1">// Page 0 (identity, served from EEPROM) and Page 2 Block 0 (status and control),</span>
 <span class="c1">// as NW-Device-Specification defines them for every device.</span>
-<span class="cp">#define NW_REG_SCHEMA    0x00  
-#define NW_REG_NAME      0x01  
-#define NW_REG_HW_MAJOR  0x08
-#define NW_REG_HW_MINOR  0x09
-#define NW_REG_FW_PATCH  0x0A  
-#define NW_REG_I2C_ADDR  0x1F  
-#define NW_REG_CAL       0x20  
-#define NW_REG_STATUS    0x40  
-#define NW_REG_CTRL      0x41  
-#define NW_REG_COUNTER   0x42  
-#define NW_REG_REQUEST   0x44  
-#define NW_REG_CONFIG    0x46  
-#define NW_REG_REPORT    0x47  
-#define NW_REG_DATA      0x48  
-#define NW_BIT_READY     0x01
-#define NW_BIT_PANFAULT  0x80
-#define NW_CTRL_TRIGGER  0x01
-#define NW_CTRL_SLEEP    0x80
-#define NW_WIRE_CHUNK    32    
-#define NW_DATA_RETRIES  2     
+<span class="cp">#define NW_REG_SCHEMA 0x00  
+#define NW_REG_NAME 0x01    
+#define NW_REG_HW_MAJOR 0x08
+#define NW_REG_HW_MINOR 0x09
+#define NW_REG_FW_PATCH 0x0A  
+#define NW_REG_I2C_ADDR 0x1F  
+#define NW_REG_CAL 0x20       
+#define NW_REG_STATUS 0x40    
+#define NW_REG_CTRL 0x41      
+#define NW_REG_COUNTER 0x42   
+#define NW_REG_REQUEST 0x44   
+#define NW_REG_CONFIG 0x46    
+#define NW_REG_REPORT 0x47    
+#define NW_REG_DATA 0x48      
+#define NW_BIT_READY 0x01
+#define NW_BIT_PANFAULT 0x80
+#define NW_CTRL_TRIGGER 0x01
+#define NW_CTRL_SLEEP 0x80
+#define NW_WIRE_CHUNK 32   
+#define NW_DATA_RETRIES 2  
 </span>
 <span class="k">class</span> <span class="nc">NW_Device</span> <span class="p">{</span>
-  <span class="nl">public:</span>
-    <span class="kt">bool</span> <span class="n">begin</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">address</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">minPatch</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">bootTimeoutMs</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">String</span> <span class="n">beginFailure</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
-    <span class="kt">uint8_t</span> <span class="n">address</span><span class="p">()</span> <span class="k">const</span>          <span class="p">{</span> <span class="k">return</span> <span class="n">_adr</span><span class="p">;</span> <span class="p">}</span>
-    <span class="kt">uint8_t</span> <span class="n">hardwareMajor</span><span class="p">()</span> <span class="k">const</span>    <span class="p">{</span> <span class="k">return</span> <span class="n">_hwMajor</span><span class="p">;</span> <span class="p">}</span>
-    <span class="kt">uint8_t</span> <span class="n">hardwareMinor</span><span class="p">()</span> <span class="k">const</span>    <span class="p">{</span> <span class="k">return</span> <span class="n">_hwMinor</span><span class="p">;</span> <span class="p">}</span>
-    <span class="kt">uint8_t</span> <span class="n">firmwareVersion</span><span class="p">()</span> <span class="k">const</span>  <span class="p">{</span> <span class="k">return</span> <span class="n">_fwPatch</span><span class="p">;</span> <span class="p">}</span>
+<span class="nl">public:</span>
+  <span class="kt">bool</span> <span class="n">begin</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">address</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">minPatch</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">bootTimeoutMs</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="kt">size_t</span> <span class="n">printBeginFailure</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
 
-    <span class="kt">bool</span> <span class="nf">setI2CAddress</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">newAddress</span><span class="p">);</span>
-    <span class="kt">size_t</span> <span class="nf">printSnapshot</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">boot</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
-                         <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">lib</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">libCommit</span> <span class="o">=</span> <span class="s">""</span><span class="p">);</span>
-    <span class="kt">void</span> <span class="nf">setTimeout</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">ms</span><span class="p">)</span> <span class="p">{</span> <span class="n">_timeout</span> <span class="o">=</span> <span class="n">ms</span><span class="p">;</span> <span class="p">}</span>
-    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">timeout</span><span class="p">()</span> <span class="k">const</span>     <span class="p">{</span> <span class="k">return</span> <span class="n">_timeout</span><span class="p">;</span> <span class="p">}</span>
+  <span class="kt">uint8_t</span> <span class="n">address</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_adr</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">uint8_t</span> <span class="n">hardwareMajor</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_hwMajor</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">uint8_t</span> <span class="n">hardwareMinor</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_hwMinor</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">uint8_t</span> <span class="n">firmwareVersion</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_fwPatch</span><span class="p">;</span>
+  <span class="p">}</span>
 
-    <span class="c1">// --- Handshake ---</span>
-    <span class="kt">bool</span> <span class="nf">ready</span><span class="p">();</span>
-    <span class="kt">uint16_t</span> <span class="nf">readCounter</span><span class="p">();</span>
-    <span class="kt">bool</span> <span class="nf">newReading</span><span class="p">();</span>
-    <span class="kt">bool</span> <span class="nf">requestReading</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span><span class="p">);</span>
-    <span class="kt">bool</span> <span class="nf">waitReading</span><span class="p">();</span>
-    <span class="kt">bool</span> <span class="nf">captureReading</span><span class="p">();</span>
-    <span class="kt">bool</span> <span class="nf">takeReading</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span><span class="p">);</span>
+  <span class="kt">bool</span> <span class="nf">setI2CAddress</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">newAddress</span><span class="p">);</span>
+  <span class="kt">size_t</span> <span class="nf">printSnapshot</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">boot</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+                       <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">lib</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">libCommit</span> <span class="o">=</span> <span class="s">""</span><span class="p">);</span>
+  <span class="kt">void</span> <span class="nf">setTimeout</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">ms</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_timeout</span> <span class="o">=</span> <span class="n">ms</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">timeout</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_timeout</span><span class="p">;</span>
+  <span class="p">}</span>
 
-    <span class="c1">// --- Batches (NW-Device-Specification 0x24-0x25) ---</span>
-    <span class="kt">bool</span> <span class="nf">writeBatch</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">n</span><span class="p">);</span>
-    <span class="kt">void</span> <span class="nf">resetBatch</span><span class="p">()</span>                 <span class="p">{</span> <span class="n">_absentChips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
-    <span class="kt">bool</span> <span class="nf">beginBatch</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">n</span><span class="p">)</span>       <span class="p">{</span> <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="n">writeBatch</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">resetBatch</span><span class="p">();</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span><span class="p">&gt;</span>
-    <span class="kt">uint16_t</span> <span class="nf">takeReadings</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">n</span><span class="p">,</span> <span class="n">F</span> <span class="n">readOne</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">beginBatch</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
-      <span class="kt">uint16_t</span> <span class="n">taken</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-      <span class="k">for</span> <span class="p">(</span><span class="kt">uint16_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">readOne</span><span class="p">())</span> <span class="n">taken</span><span class="o">++</span><span class="p">;</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">batchFaulted</span><span class="p">(</span><span class="n">chips</span><span class="p">))</span> <span class="k">break</span><span class="p">;</span>
-      <span class="p">}</span>
-      <span class="k">return</span> <span class="n">taken</span><span class="p">;</span>
+  <span class="c1">// --- Handshake ---</span>
+  <span class="kt">bool</span> <span class="nf">ready</span><span class="p">();</span>
+  <span class="kt">uint16_t</span> <span class="nf">readCounter</span><span class="p">();</span>
+  <span class="kt">bool</span> <span class="nf">newReading</span><span class="p">();</span>
+  <span class="kt">bool</span> <span class="nf">requestReading</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span><span class="p">);</span>
+  <span class="kt">bool</span> <span class="nf">waitReading</span><span class="p">();</span>
+  <span class="kt">bool</span> <span class="nf">captureReading</span><span class="p">();</span>
+  <span class="kt">bool</span> <span class="nf">takeReading</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span><span class="p">);</span>
+
+  <span class="c1">// --- Batches (NW-Device-Specification 0x24-0x25) ---</span>
+  <span class="kt">bool</span> <span class="nf">writeBatch</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">n</span><span class="p">);</span>
+  <span class="kt">void</span> <span class="nf">resetBatch</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_absentChips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">bool</span> <span class="nf">beginBatch</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="n">writeBatch</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">resetBatch</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="nc">F</span><span class="p">&gt;</span>
+  <span class="kt">uint16_t</span> <span class="nf">takeReadings</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">n</span><span class="p">,</span> <span class="n">F</span> <span class="n">readOne</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">beginBatch</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="kt">uint16_t</span> <span class="n">taken</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">uint16_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">readOne</span><span class="p">())</span> <span class="n">taken</span><span class="o">++</span><span class="p">;</span>
+      <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">batchFaulted</span><span class="p">(</span><span class="n">chips</span><span class="p">))</span> <span class="k">break</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="kt">bool</span> <span class="n">batchFaulted</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span> <span class="o">=</span> <span class="mh">0x3F</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">_absentChips</span> <span class="o">&amp;</span> <span class="n">chips</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="n">taken</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">bool</span> <span class="n">batchFaulted</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chips</span> <span class="o">=</span> <span class="mh">0x3F</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">_absentChips</span> <span class="o">&amp;</span> <span class="n">chips</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
 
-    <span class="c1">// --- Reports (the Report register, latched) and faults (status bits, live) ---</span>
-    <span class="k">const</span> <span class="n">NW_Report</span><span class="o">&amp;</span> <span class="n">report</span><span class="p">()</span> <span class="k">const</span>     <span class="p">{</span> <span class="k">return</span> <span class="n">_report</span><span class="p">;</span> <span class="p">}</span>
-    <span class="kt">bool</span> <span class="nf">faulted</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chip</span><span class="p">)</span> <span class="k">const</span>  <span class="p">{</span> <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">chipFaulted</span><span class="p">(</span><span class="n">chip</span><span class="p">);</span> <span class="p">}</span>
-    <span class="kt">bool</span> <span class="nf">anyFault</span><span class="p">()</span> <span class="k">const</span>             <span class="p">{</span> <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">any</span><span class="p">();</span> <span class="p">}</span>
-    <span class="kt">uint8_t</span> <span class="nf">reportChip</span><span class="p">()</span> <span class="k">const</span>         <span class="p">{</span> <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">chip</span><span class="p">();</span> <span class="p">}</span>
-    <span class="kt">uint8_t</span> <span class="nf">reportKind</span><span class="p">()</span> <span class="k">const</span>         <span class="p">{</span> <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">kind</span><span class="p">();</span> <span class="p">}</span>
+  <span class="c1">// --- Reports (the Report register, latched) and faults (status bits, live) ---</span>
+  <span class="k">const</span> <span class="n">NW_Report</span><span class="o">&amp;</span> <span class="n">report</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_report</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">bool</span> <span class="nf">faulted</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">chip</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">chipFaulted</span><span class="p">(</span><span class="n">chip</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">bool</span> <span class="nf">anyFault</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">any</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="kt">uint8_t</span> <span class="nf">reportChip</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">chip</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="kt">uint8_t</span> <span class="nf">reportKind</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_report</span><span class="p">.</span><span class="n">kind</span><span class="p">();</span>
+  <span class="p">}</span>
 
-    <span class="c1">// --- Registers ---</span>
-    <span class="kt">bool</span> <span class="nf">readBytes</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">n</span><span class="p">);</span>
-    <span class="kt">bool</span> <span class="nf">readData</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">n</span><span class="p">);</span>
-    <span class="kt">bool</span> <span class="n">dataMoved</span><span class="p">()</span> <span class="k">const</span>            <span class="p">{</span> <span class="k">return</span> <span class="n">_dataMoved</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">const</span> <span class="n">NW_Report</span><span class="o">&amp;</span> <span class="n">bootReport</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_bootReport</span><span class="p">;</span> <span class="p">}</span>
-    <span class="kt">void</span> <span class="nf">clearBootReport</span><span class="p">()</span>            <span class="p">{</span> <span class="n">_bootReport</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">_bootReport</span><span class="p">.</span><span class="n">status</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
-    <span class="kt">bool</span> <span class="nf">writeByte</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">value</span><span class="p">);</span>
-    <span class="kt">uint8_t</span> <span class="nf">readConfig</span><span class="p">();</span>
-    <span class="kt">bool</span> <span class="nf">writeConfig</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">value</span><span class="p">)</span>   <span class="p">{</span> <span class="k">return</span> <span class="n">writeByte</span><span class="p">(</span><span class="n">NW_REG_CONFIG</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span> <span class="p">}</span>
-    <span class="kt">bool</span> <span class="nf">sleep</span><span class="p">()</span>                      <span class="p">{</span> <span class="k">return</span> <span class="n">writeByte</span><span class="p">(</span><span class="n">NW_REG_CTRL</span><span class="p">,</span> <span class="n">NW_CTRL_SLEEP</span><span class="p">);</span> <span class="p">}</span>
+  <span class="c1">// --- Registers ---</span>
+  <span class="kt">bool</span> <span class="nf">readBytes</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">n</span><span class="p">);</span>
+  <span class="kt">bool</span> <span class="nf">readData</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">n</span><span class="p">);</span>
+  <span class="kt">bool</span> <span class="n">dataMoved</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_dataMoved</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">const</span> <span class="n">NW_Report</span><span class="o">&amp;</span> <span class="n">bootReport</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_bootReport</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="nf">clearBootReport</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_bootReport</span><span class="p">.</span><span class="n">code</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">_bootReport</span><span class="p">.</span><span class="n">status</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">bool</span> <span class="nf">writeByte</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">value</span><span class="p">);</span>
+  <span class="kt">uint8_t</span> <span class="nf">readConfig</span><span class="p">();</span>
+  <span class="kt">bool</span> <span class="nf">writeConfig</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">writeByte</span><span class="p">(</span><span class="n">NW_REG_CONFIG</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="kt">bool</span> <span class="nf">sleep</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">writeByte</span><span class="p">(</span><span class="n">NW_REG_CTRL</span><span class="p">,</span> <span class="n">NW_CTRL_SLEEP</span><span class="p">);</span>
+  <span class="p">}</span>
 
-  <span class="k">private</span><span class="o">:</span>
-    <span class="kt">uint8_t</span> <span class="n">_adr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">uint8_t</span> <span class="n">_hwMajor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_hwMinor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_fwPatch</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">uint8_t</span> <span class="n">_beginFailure</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>          <span class="c1">// 0 none, 1 no ACK, 2 read failed, 3 schema, 4 name, 5 firmware</span>
-    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">_timeout</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
-    <span class="kt">uint16_t</span> <span class="n">_lastCounter</span> <span class="o">=</span> <span class="mh">0xFFFF</span><span class="p">;</span>     <span class="c1">// counter of the last captured reading</span>
-    <span class="kt">uint16_t</span> <span class="n">_counterBefore</span> <span class="o">=</span> <span class="mh">0xFFFF</span><span class="p">;</span>   <span class="c1">// counter seen at the last request</span>
-    <span class="kt">uint8_t</span>  <span class="n">_chips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                <span class="c1">// chips selected at the last request</span>
-    <span class="kt">uint8_t</span> <span class="n">_absentChips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>           <span class="c1">// chips that reported absent since the last writeBatch()/resetBatch()</span>
-    <span class="kt">bool</span> <span class="n">_dataMoved</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>            <span class="c1">// readData() exhausted its retries</span>
-    <span class="n">NW_Report</span> <span class="n">_report</span><span class="p">;</span>
-    <span class="n">NW_Report</span> <span class="n">_bootReport</span><span class="p">;</span>              <span class="c1">// what begin() captured, until the logger clears it</span>
+<span class="k">private</span><span class="o">:</span>
+  <span class="kt">uint8_t</span> <span class="n">_adr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">_hwMajor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_hwMinor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_fwPatch</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">_beginFailure</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// 0 none, 1 no ACK, 2 read failed, 3 schema, 4 name, 5 firmware</span>
+  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">_timeout</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span>
+  <span class="kt">uint16_t</span> <span class="n">_lastCounter</span> <span class="o">=</span> <span class="mh">0xFFFF</span><span class="p">;</span>    <span class="c1">// counter of the last captured reading</span>
+  <span class="kt">uint16_t</span> <span class="n">_counterBefore</span> <span class="o">=</span> <span class="mh">0xFFFF</span><span class="p">;</span>  <span class="c1">// counter seen at the last request</span>
+  <span class="kt">uint8_t</span> <span class="n">_chips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                <span class="c1">// chips selected at the last request</span>
+  <span class="kt">uint8_t</span> <span class="n">_absentChips</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>          <span class="c1">// chips that reported absent since the last writeBatch()/resetBatch()</span>
+  <span class="kt">bool</span> <span class="n">_dataMoved</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>           <span class="c1">// readData() exhausted its retries</span>
+  <span class="n">NW_Report</span> <span class="n">_report</span><span class="p">;</span>
+  <span class="n">NW_Report</span> <span class="n">_bootReport</span><span class="p">;</span>  <span class="c1">// what begin() captured, until the logger clears it</span>
 <span class="p">};</span>
 
 <span class="cp">#endif
@@ -597,7 +639,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-30 at 19:40:23 +0000</p>
+<p>Updated on 2026-10-04 at 04:51:37 +0000</p>
 
         
       </section>

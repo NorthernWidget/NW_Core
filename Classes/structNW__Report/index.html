@@ -241,7 +241,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-ready">function ready</a></li><li><a href="#function-chipfaulted">function chipFaulted</a></li><li><a href="#function-any">function any</a></li><li><a href="#function-chip">function chip</a></li><li><a href="#function-kind">function kind</a></li><li><a href="#function-isunit">function isUnit</a></li><li><a href="#function-isfault">function isFault</a></li><li><a href="#function-isnotice">function isNotice</a></li><li><a href="#function-printkind">function printKind</a></li><li><a href="#function-kindword">function kindWord</a></li><li><a href="#function-print">function print</a></li><li><a href="#function-note">function note</a></li><li><a href="#function-chipabsent">function chipAbsent</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-status">variable status</a></li><li><a href="#variable-code">variable code</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-attributes">Public Attributes</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-ready">function ready</a></li><li><a href="#function-chipfaulted">function chipFaulted</a></li><li><a href="#function-any">function any</a></li><li><a href="#function-chip">function chip</a></li><li><a href="#function-kind">function kind</a></li><li><a href="#function-isunit">function isUnit</a></li><li><a href="#function-isfault">function isFault</a></li><li><a href="#function-isnotice">function isNotice</a></li><li><a href="#function-printkind">function printKind</a></li><li><a href="#function-printkindword">function printKindWord</a></li><li><a href="#function-print">function print</a></li><li><a href="#function-printnote">function printNote</a></li><li><a href="#function-chipabsent">function chipAbsent</a></li></ul></li><li><a href="#public-attributes-documentation">Public Attributes Documentation</a><ul><li><a href="#variable-status">variable status</a></li><li><a href="#variable-code">variable code</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -296,16 +296,16 @@
       <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-printkind">printKind</a></strong>(Print &amp; out) const<br />Print the kind in words (“timed out”; “kind 17” for device-specific kinds): the spec’s table of note words, spoken.</td>
     </tr>
     <tr>
-      <td>String</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-kindword">kindWord</a></strong>() const<br />The kind as one word for a data-table note (“Timeout”; “Kind17” for device-specific kinds).</td>
+      <td>size_t</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-printkindword">printKindWord</a></strong>(Print &amp; out) const<br />Print the kind as one word for a data-table note (“Timeout”; “Kind17” for a device-specific kind).</td>
     </tr>
     <tr>
       <td>size_t</td>
       <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-print">print</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips, const char *const * kindWords =nullptr, uint8_t nKindWords =0) const<br />Print the report in words: the chip, then the kind, e.g. “MS5803: not answering”, “unit: restarted since configured”; “none” when there is no report. A library passes its chip-name table from the spec’s chip table; a chip beyond it prints as “chip N”.</td>
     </tr>
     <tr>
-      <td>String</td>
-      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-note">note</a></strong>(const char *const * chipNames, uint8_t nChips, const char *const * kindWords =nullptr, uint8_t nKindWords =0) const<br />The report as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NotAnswering”, “UnitRestarted”, “Chip2Kind17”; “UnitNone” when there is no report. A device-specific kind (16-31) prints its appendix word alone when the library passes its table (“LoggingStarted”).</td>
+      <td>size_t</td>
+      <td><strong><a href="/NW_Core/Classes/structNW__Report/#function-printnote">printNote</a></strong>(Print &amp; out, const char *const * chipNames, uint8_t nChips, const char *const * kindWords =nullptr, uint8_t nKindWords =0) const<br />The report as one word for a data-table note column: the chip, then the kind, e.g. “MS5803NotAnswering”, “UnitRestarted”, “Chip2Kind17”; “UnitNone” when there is no report. A device-specific kind (16-31) prints its appendix word alone when the library passes its table (“LoggingStarted”).</td>
     </tr>
     <tr>
       <td>bool</td>
@@ -342,7 +342,7 @@
 
 <p>The two Block 0 bytes that describe a reading’s health, with their decoding.</p>
 
-<p>status (0x40) is live: bit 0 ready, bits 1-6 chip n-1 faulted now, bit 7 pan-fault (OR of bits 1-6). code (0x47) is the Report register, the device’s most recent report, good or bad, latched until the controller next writes Control: bits 7-5 chip (7 = the unit), bits 4-0 kind. A report is a fault when the chip’s status bit is set too, a notice otherwise. Kinds (NW-Device-Specification): 0 none, 1 no acknowledge, 2 timeout, 3 checksum, 4 out of range, 5 not initialised, 6 reset since configured (a notice), 7 config rejected, 8 supply fault, 9 calibration stored (a notice), 10 batch abandoned (a notice), 11-15 reserved, 16-31 device-specific. The chip names are the device’s own: a library passes its table (the spec’s chip table, in order) to <a href="/NW_Core/Classes/structNW__Report/#function-print">print()</a> and <a href="/NW_Core/Classes/structNW__Report/#function-note">note()</a>; <a href="/NW_Core/Classes/structNW__Report/#function-printkind">printKind()</a> and <a href="/NW_Core/Classes/structNW__Report/#function-kindword">kindWord()</a> give the universal part alone.</p>
+<p>status (0x40) is live: bit 0 ready, bits 1-6 chip n-1 faulted now, bit 7 pan-fault (OR of bits 1-6). code (0x47) is the Report register, the device’s most recent report, good or bad, latched until the controller next writes Control: bits 7-5 chip (7 = the unit), bits 4-0 kind. A report is a fault when the chip’s status bit is set too, a notice otherwise. Kinds (NW-Device-Specification): 0 none, 1 no acknowledge, 2 timeout, 3 checksum, 4 out of range, 5 not initialised, 6 reset since configured (a notice), 7 config rejected, 8 supply fault, 9 calibration stored (a notice), 10 batch abandoned (a notice), 11-15 reserved, 16-31 device-specific. The chip names are the device’s own: a library passes its table (the spec’s chip table, in order) to <a href="/NW_Core/Classes/structNW__Report/#function-print">print()</a> and <a href="/NW_Core/Classes/structNW__Report/#function-printnote">printNote()</a>; <a href="/NW_Core/Classes/structNW__Report/#function-printkind">printKind()</a> and <a href="/NW_Core/Classes/structNW__Report/#function-printkindword">printKindWord()</a> give the universal part alone.</p>
 
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
 
@@ -407,12 +407,16 @@
 
 <p>Print the kind in words (“timed out”; “kind 17” for device-specific kinds): the spec’s table of note words, spoken.</p>
 
-<h3 id="function-kindword">function kindWord</h3>
+<h3 id="function-printkindword">function printKindWord</h3>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">String</span> <span class="n">kindWord</span><span class="p">()</span> <span class="k">const</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">printKindWord</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span>
+<span class="p">)</span> <span class="k">const</span>
 </code></pre></div></div>
 
-<p>The kind as one word for a data-table note (“Timeout”; “Kind17” for device-specific kinds).</p>
+<p>Print the kind as one word for a data-table note (“Timeout”; “Kind17” for a device-specific kind).</p>
+
+<p><strong>Return</strong>: Bytes written.</p>
 
 <h3 id="function-print">function print</h3>
 
@@ -429,9 +433,10 @@
 
 <p><strong>Return</strong>: Bytes written.</p>
 
-<h3 id="function-note">function note</h3>
+<h3 id="function-printnote">function printNote</h3>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">String</span> <span class="n">note</span><span class="p">(</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">size_t</span> <span class="n">printNote</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">chipNames</span><span class="p">,</span>
     <span class="kt">uint8_t</span> <span class="n">nChips</span><span class="p">,</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="o">*</span> <span class="n">kindWords</span> <span class="o">=</span><span class="nb">nullptr</span><span class="p">,</span>
@@ -466,7 +471,7 @@
 
 <hr />
 
-<p>Updated on 2026-09-30 at 19:40:23 +0000</p>
+<p>Updated on 2026-10-04 at 04:51:37 +0000</p>
 
         
       </section>

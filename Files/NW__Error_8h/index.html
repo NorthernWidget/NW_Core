@@ -312,14 +312,16 @@
 #define NW_ERROR -9999
 #endif
 </span>
-<span class="kr">inline</span> <span class="kt">float</span> <span class="nf">nwScaled</span><span class="p">(</span><span class="kt">float</span> <span class="n">v</span><span class="p">,</span> <span class="kt">float</span> <span class="n">divisor</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="n">NW_ERROR</span><span class="p">)</span> <span class="o">?</span> <span class="n">NW_ERROR</span> <span class="o">:</span> <span class="n">v</span> <span class="o">/</span> <span class="n">divisor</span><span class="p">;</span> <span class="p">}</span>
+<span class="kr">inline</span> <span class="kt">float</span> <span class="nf">nwScaled</span><span class="p">(</span><span class="kt">float</span> <span class="n">v</span><span class="p">,</span> <span class="kt">float</span> <span class="n">divisor</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="n">NW_ERROR</span><span class="p">)</span> <span class="o">?</span> <span class="n">NW_ERROR</span> <span class="o">:</span> <span class="n">v</span> <span class="o">/</span> <span class="n">divisor</span><span class="p">;</span>
+<span class="p">}</span>
 
 <span class="cp">#endif
 </span></code></pre></div></div>
 
 <hr />
 
-<p>Updated on 2026-09-30 at 19:40:23 +0000</p>
+<p>Updated on 2026-10-04 at 04:51:37 +0000</p>
 
         
       </section>

@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 
 
-<!-- begin _includes/seo.html --><title>NW_Core</title>
+<!-- begin _includes/seo.html --><title>src/NW_BufferPrint.h - NW_Core</title>
 <meta name="description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
 
 
@@ -26,8 +26,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="NW_Core">
-<meta property="og:title" content="NW_Core">
-<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Pages/md_CLAUDE/">
+<meta property="og:title" content="src/NW_BufferPrint.h">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_Core/Files/NW__BufferPrint_8h/">
 
 
   <meta property="og:description" content="Shared foundation for Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol and a fixed-capacity readings store with statistics">
@@ -45,7 +45,7 @@
 
 
 
-<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Pages/md_CLAUDE/">
+<link rel="canonical" href="https://docs.northernwidget.com/NW_Core/Files/NW__BufferPrint_8h/">
 
 
 
@@ -217,7 +217,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="NW_Core">
+    <meta itemprop="headline" content="src/NW_BufferPrint.h">
     
     
     
@@ -226,7 +226,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://docs.northernwidget.com/NW_Core/Pages/md_CLAUDE/" itemprop="url">NW_Core
+            <a href="https://docs.northernwidget.com/NW_Core/Files/NW__BufferPrint_8h/" itemprop="url">src/NW_BufferPrint.h
 </a>
           </h1>
           
@@ -241,28 +241,74 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#standards">Standards</a></li><li><a href="#working-rules">Working rules</a></li><li><a href="#hard-rule">Hard rule</a></li></ul>
+              <ul class="toc__menu"><li><a href="#classes">Classes</a></li><li><a href="#source-code">Source code</a></li></ul>
             </nav>
           </aside>
         
-        <p>Shared foundation for the Northern Widget sensor libraries: the NW-Device-Specification Schema 1 device protocol (<code class="language-plaintext highlighter-rouge">[NW_Device](/NW_Core/Classes/classNW__Device/)</code>), the readings store with statistics (<code class="language-plaintext highlighter-rouge">[NW_Readings](/NW_Core/Classes/classNW__Readings/)</code>, <code class="language-plaintext highlighter-rouge">[NW_ReadingsConfig](/NW_Core/Classes/structNW__ReadingsConfig/)</code>), the report decoder (<code class="language-plaintext highlighter-rouge">[NW_Report](/NW_Core/Classes/structNW__Report/)</code>), and the missing-value sentinel (<code class="language-plaintext highlighter-rouge">[NW_Error.h](/NW_Core/Files/NW__Error_8h/#file-nw-error.h)</code>). Apis_Library, Walrus_Library and Haar_Library build on it.</p>
+        <p>A Print that fills a fixed buffer and says when it ran out.</p>
 
-<h1 id="standards">Standards</h1>
+<h2 id="classes">Classes</h2>
 
-<p>Follow the NW library standards for all work here: the root <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> one level above <code class="language-plaintext highlighter-rouge">github/</code> has the checklist and code conventions, mirrored at <a href="https://github.com/NorthernWidget/NW-Device-Specification/blob/master/RELEASING.md">NW-Device-Specification/RELEASING.md</a>. The design and the line between what lives here and what stays in a library is <a href="https://github.com/NorthernWidget/NW-Device-Specification/blob/master/LIBRARY-DESIGN.md">LIBRARY-DESIGN.md</a>, section 0 and section 11.</p>
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>class</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__BufferPrint/">NW_BufferPrint</a></strong> <br />Collect printed output into a caller’s char buffer.</td>
+    </tr>
+  </tbody>
+</table>
 
-<h1 id="working-rules">Working rules</h1>
+<h2 id="source-code">Source code</h2>
 
-<ul>
-  <li>Core is extracted from what is identical across the libraries, never designed ahead of them. A change here is verified by every consumer’s harness (<code class="language-plaintext highlighter-rouge">extras/test/run.sh</code> in Apis_Library, Walrus_Library, Haar_Library, T9602_Library and MCP23018) staying byte-identical, plus Core’s own harness and a compile for <code class="language-plaintext highlighter-rouge">arduino:avr:uno</code> and <code class="language-plaintext highlighter-rouge">NorthernWidget:avr:NW1284p</code>.</li>
-  <li><code class="language-plaintext highlighter-rouge">extras/test/</code> holds the stubs (<code class="language-plaintext highlighter-rouge">Arduino.h</code>, <code class="language-plaintext highlighter-rouge">Wire.h</code>), the shared harness support (<code class="language-plaintext highlighter-rouge">NW_TestSupport.h</code>) and the shared runner (<code class="language-plaintext highlighter-rouge">run_library.sh</code>) that every library harness includes; changing them changes every harness.</li>
-  <li>Formatting: the Arduino IDE auto-format (2-space indent, attached braces); lines under about 80 columns where practical.</li>
-  <li>Unversioned (0.0.0) and unregistered until the 2026 overhaul ends; no CITATION.cff or .zenodo.json until then.</li>
-</ul>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">#ifndef NW_BufferPrint_h
+#define NW_BufferPrint_h
+</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Arduino.h&gt;</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">NW_BufferPrint</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Print</span> <span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="k">using</span> <span class="n">Print</span><span class="o">::</span><span class="n">write</span><span class="p">;</span>  <span class="c1">// Print's non-virtual write() overloads, which this class would otherwise hide</span>
 
-<h1 id="hard-rule">Hard rule</h1>
+  <span class="n">NW_BufferPrint</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">capacity</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">append</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">_buffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span> <span class="n">_capacity</span><span class="p">(</span><span class="n">capacity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">append</span><span class="p">)</span> <span class="n">_length</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">_buffer</span><span class="p">);</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">_capacity</span><span class="p">)</span> <span class="n">_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+  <span class="p">}</span>
 
-<p><strong>Never</strong> create a git tag, GitHub release, push to a shared remote, or submit to any external registry (Zenodo, Arduino Library Manager, etc.) unless explicitly asked in the current message. If in doubt, ask.</p>
+  <span class="kt">size_t</span> <span class="nf">write</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">c</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_length</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="n">_capacity</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">_truncated</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">_buffer</span><span class="p">[</span><span class="n">_length</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">c</span><span class="p">;</span>
+    <span class="n">_buffer</span><span class="p">[</span><span class="n">_length</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">size_t</span> <span class="n">length</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_length</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">bool</span> <span class="n">truncated</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_truncated</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="kt">char</span><span class="o">*</span> <span class="n">_buffer</span><span class="p">;</span>
+  <span class="kt">size_t</span> <span class="n">_capacity</span><span class="p">;</span>
+  <span class="kt">size_t</span> <span class="n">_length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kt">bool</span> <span class="n">_truncated</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cp">#endif
+</span></code></pre></div></div>
 
 <hr />
 

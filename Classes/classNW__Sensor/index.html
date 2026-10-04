@@ -241,13 +241,15 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-nw_sensor">function ~NW_Sensor</a></li><li><a href="#function-name">function name</a></li><li><a href="#function-reportkind">function reportKind</a></li><li><a href="#function-reportisfault">function reportIsFault</a></li><li><a href="#function-bootreportkind">function bootReportKind</a></li><li><a href="#function-clearbootreport">function clearBootReport</a></li><li><a href="#function-printstatus">function printStatus</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#detailed-description">Detailed Description</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-nw_sensor">function ~NW_Sensor</a></li><li><a href="#function-name">function name</a></li><li><a href="#function-reportkind">function reportKind</a></li><li><a href="#function-reportisfault">function reportIsFault</a></li><li><a href="#function-bootreportkind">function bootReportKind</a></li><li><a href="#function-clearbootreport">function clearBootReport</a></li><li><a href="#function-printstatus">function printStatus</a></li><li><a href="#function-printdataheader">function printDataHeader</a></li><li><a href="#function-printdatarow">function printDataRow</a></li><li><a href="#function-defaultaddress">function defaultAddress</a></li><li><a href="#function-wake">function wake</a></li><li><a href="#function-acquire">function acquire</a></li><li><a href="#function-printnote">function printNote</a></li></ul></li></ul>
             </nav>
           </aside>
         
         <p>What a data logger needs from a sensor library to keep a status file.  <a href="#detailed-description">More…</a></p>
 
 <p><code class="language-plaintext highlighter-rouge">#include &lt;NW_Sensor.h&gt;</code></p>
+
+<p>Inherited by <a href="/NW_Core/Classes/classNW__PlainSensor/">NW_PlainSensor</a></p>
 
 <h2 id="public-functions">Public Functions</h2>
 
@@ -287,6 +289,30 @@
       <td>virtual size_t</td>
       <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-printstatus">printStatus</a></strong>(Print &amp; out, bool boot =false) =0<br />Print one status line for the logger’s status file (no newline): name, serial, HW, FW, report code, note word, Pages 0-2 in hex.</td>
     </tr>
+    <tr>
+      <td>virtual size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-printdataheader">printDataHeader</a></strong>(Print &amp; out) =0<br />Print this sensor’s summary columns: the means, with whatever statistics columns it has enabled.</td>
+    </tr>
+    <tr>
+      <td>virtual size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-printdatarow">printDataRow</a></strong>(Print &amp; out) =0<br />Print one summary row, in <a href="/NW_Core/Classes/classNW__Sensor/#function-printdataheader">printDataHeader()</a>’s column order.</td>
+    </tr>
+    <tr>
+      <td>virtual uint8_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-defaultaddress">defaultAddress</a></strong>() const =0<br />The address this sensor answers at unless told otherwise.</td>
+    </tr>
+    <tr>
+      <td>virtual bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-wake">wake</a></strong>(uint8_t address) =0<br />Come back on the bus: the logger cut the sensor rail to sleep.</td>
+    </tr>
+    <tr>
+      <td>virtual bool</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-acquire">acquire</a></strong>() =0<br />Take this row’s readings and store them, for <a href="/NW_Core/Classes/classNW__Sensor/#function-printdatarow">printDataRow()</a>.</td>
+    </tr>
+    <tr>
+      <td>virtual size_t</td>
+      <td><strong><a href="/NW_Core/Classes/classNW__Sensor/#function-printnote">printNote</a></strong>(Print &amp; out, bool beginFailed =false) =0<br />Print one word for the logger’s Note column, with no comma.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -320,12 +346,16 @@
 
 <p>Kind of the report captured with the last reading (0 = none).</p>
 
+<p><strong>Reimplemented by</strong>: <a href="/NW_Core/Classes/classNW__PlainSensor/#function-reportkind">NW_PlainSensor::reportKind</a></p>
+
 <h3 id="function-reportisfault">function reportIsFault</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">bool</span> <span class="n">reportIsFault</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
 </code></pre></div></div>
 
 <p>The last report is a fault: its chip’s status bit is set, the data are not to be trusted.</p>
+
+<p><strong>Reimplemented by</strong>: <a href="/NW_Core/Classes/classNW__PlainSensor/#function-reportisfault">NW_PlainSensor::reportIsFault</a></p>
 
 <h3 id="function-bootreportkind">function bootReportKind</h3>
 
@@ -334,12 +364,16 @@
 
 <p>Kind of the report begin() captured at the device’s boot; 0 once cleared or if none.</p>
 
+<p><strong>Reimplemented by</strong>: <a href="/NW_Core/Classes/classNW__PlainSensor/#function-bootreportkind">NW_PlainSensor::bootReportKind</a></p>
+
 <h3 id="function-clearbootreport">function clearBootReport</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">clearBootReport</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
 </code></pre></div></div>
 
 <p>The logger has recorded (or dismissed) the boot report.</p>
+
+<p><strong>Reimplemented by</strong>: <a href="/NW_Core/Classes/classNW__PlainSensor/#function-clearbootreport">NW_PlainSensor::clearBootReport</a></p>
 
 <h3 id="function-printstatus">function printStatus</h3>
 
@@ -357,9 +391,108 @@
   <li><strong>boot</strong> print the boot report (the code begin() captured) instead of the last reading’s</li>
 </ul>
 
+<p><strong>Reimplemented by</strong>: <a href="/NW_Core/Classes/classNW__PlainSensor/#function-printstatus">NW_PlainSensor::printStatus</a></p>
+
+<h3 id="function-printdataheader">function printDataHeader</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">size_t</span> <span class="n">printDataHeader</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span>
+<span class="p">)</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Print this sensor’s summary columns: the means, with whatever statistics columns it has enabled.</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li><strong>out</strong> Where to print.</li>
+</ul>
+
+<p><strong>Return</strong>: Bytes printed.</p>
+
+<p>The logger composes the data file’s header from its own columns and then each watched sensor’s, in watch order, which is also the column order. No row is composed in RAM: the logger passes the open file, and each sensor writes its own columns into it.</p>
+
+<h3 id="function-printdatarow">function printDataRow</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">size_t</span> <span class="n">printDataRow</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span>
+<span class="p">)</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Print one summary row, in <a href="/NW_Core/Classes/classNW__Sensor/#function-printdataheader">printDataHeader()</a>’s column order.</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li><strong>out</strong> Where to print.</li>
+</ul>
+
+<p><strong>Return</strong>: Bytes printed.</p>
+
+<p>Takes no reading. The logger acquires first, then writes the row to the card and to the serial monitor, and a row written to two sinks must not acquire twice.</p>
+
+<h3 id="function-defaultaddress">function defaultAddress</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">uint8_t</span> <span class="n">defaultAddress</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>The address this sensor answers at unless told otherwise.</p>
+
+<p>How a logger builds its own bus-test list from the sensors watch() gave it, rather than being handed a second list that has to stay in step with them (LIBRARY-DESIGN.md section 14).</p>
+
+<h3 id="function-wake">function wake</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">bool</span> <span class="n">wake</span><span class="p">(</span>
+    <span class="kt">uint8_t</span> <span class="n">address</span>
+<span class="p">)</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Come back on the bus: the logger cut the sensor rail to sleep.</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li><strong>address</strong> where to find this sensor.</li>
+</ul>
+
+<p><strong>Return</strong>: True when the sensor answered and passed begin()’s gates.</p>
+
+<p>The first of the three calls run(logInterval) makes on each watched sensor. The logger passes the address it was given at watch(), so the address is stated once and in one place. A logger is never powered down and answers true.</p>
+
+<h3 id="function-acquire">function acquire</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">bool</span> <span class="n">acquire</span><span class="p">()</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Take this row’s readings and store them, for <a href="/NW_Core/Classes/classNW__Sensor/#function-printdatarow">printDataRow()</a>.</p>
+
+<p><strong>Return</strong>: True when a reading was taken.</p>
+
+<p>Separate from <a href="/NW_Core/Classes/classNW__Sensor/#function-printdatarow">printDataRow()</a> because a row is written to the card and to the serial monitor, and must not be acquired twice.</p>
+
+<h3 id="function-printnote">function printNote</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">size_t</span> <span class="n">printNote</span><span class="p">(</span>
+    <span class="n">Print</span> <span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span>
+    <span class="kt">bool</span> <span class="n">beginFailed</span> <span class="o">=</span><span class="nb">false</span>
+<span class="p">)</span> <span class="o">=</span><span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Print one word for the logger’s Note column, with no comma.</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li><strong>beginFailed</strong> print why begin() refused, rather than what the last reading reported. The sketch used two different words here.</li>
+</ul>
+
+<p><strong>Return</strong>: Bytes printed.</p>
+
+<p><strong>Reimplemented by</strong>: <a href="/NW_Core/Classes/classNW__PlainSensor/#function-printnote">NW_PlainSensor::printNote</a></p>
+
 <hr />
 
-<p>Updated on 2026-09-30 at 19:40:23 +0000</p>
+<p>Updated on 2026-10-04 at 04:51:37 +0000</p>
 
         
       </section>
